@@ -11,6 +11,7 @@ This repository uses the conventional agent skills layout so it can be cloned, i
 Current skills:
 
 - `.agents/skills/ai-skills-library-welcome`
+- `.agents/skills/openspec-dashboard` - custom optional OpenSpecUI dashboard workflow
 - `.agents/skills/openspec-grill-me` - custom optional OpenSpec interview workflow
 - OpenSpec core profile skills:
   - `.agents/skills/openspec-explore`
@@ -20,4 +21,4 @@ Current skills:
   - `.agents/skills/openspec-sync-specs`
   - `.agents/skills/openspec-archive-change`
 
-The OpenSpec core set intentionally matches the lightweight core profile: explore, propose, apply, update, sync, and archive. `openspec-grill-me` is a custom optional companion workflow, not part of OpenSpec's core profile.
+The OpenSpec core set intentionally matches the lightweight core profile: explore, propose, apply, update, sync, and archive. `openspec-dashboard` and `openspec-grill-me` are custom optional companion workflows, not part of OpenSpec's core profile.
