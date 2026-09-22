@@ -2,18 +2,22 @@
 
 Shared AI skills and agent workflow library.
 
-Current Codex skills:
+This repository uses the conventional agent skills layout so it can be cloned, inspected, or wired into Codex like a normal project-level skill source:
 
-- `codex/skills/ai-skills-library-welcome`
-- `codex/skills/openspec-grill-me` - custom optional OpenSpec interview workflow
+```text
+.agents/skills/<skill-name>/SKILL.md
+```
+
+Current skills:
+
+- `.agents/skills/ai-skills-library-welcome`
+- `.agents/skills/openspec-grill-me` - custom optional OpenSpec interview workflow
 - OpenSpec core profile skills:
-  - `codex/skills/openspec-explore`
-  - `codex/skills/openspec-propose`
-  - `codex/skills/openspec-apply-change`
-  - `codex/skills/openspec-update-change`
-  - `codex/skills/openspec-sync-specs`
-  - `codex/skills/openspec-archive-change`
+  - `.agents/skills/openspec-explore`
+  - `.agents/skills/openspec-propose`
+  - `.agents/skills/openspec-apply-change`
+  - `.agents/skills/openspec-update-change`
+  - `.agents/skills/openspec-sync-specs`
+  - `.agents/skills/openspec-archive-change`
 
-The OpenSpec core set intentionally matches the lightweight core profile: explore, propose, apply, update, sync, and archive. `openspec-grill-me` is a custom optional companion workflow, not part of the OpenSpec core profile.
-
-Future Codex skills and related AI workflow assets can be added under tool-specific namespaces such as `codex/skills/`.
+The OpenSpec core set intentionally matches the lightweight core profile: explore, propose, apply, update, sync, and archive. `openspec-grill-me` is a custom optional companion workflow, not part of OpenSpec's core profile.
