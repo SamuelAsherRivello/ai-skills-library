@@ -12,6 +12,7 @@ Current skills:
 
 - `.agents/skills/ai-skills-library-welcome`
 - `.agents/skills/openspec-dashboard` - custom optional OpenSpecUI dashboard workflow
+- `.agents/skills/openspec-finalize-sync-archive-commit-push` - custom optional post-apply finalization workflow
 - `.agents/skills/openspec-grill-me` - custom optional OpenSpec interview workflow
 - `.agents/skills/openspec-release-version` - custom optional GitHub Actions release workflow
 - OpenSpec core profile skills:
@@ -22,4 +23,4 @@ Current skills:
   - `.agents/skills/openspec-sync-specs`
   - `.agents/skills/openspec-archive-change`
 
-The OpenSpec core set intentionally matches the lightweight core profile: explore, propose, apply, update, sync, and archive. `openspec-dashboard`, `openspec-grill-me`, and `openspec-release-version` are custom optional companion workflows, not part of OpenSpec's core profile.
+The OpenSpec core set intentionally matches the lightweight core profile: explore, propose, apply, update, sync, and archive. `openspec-dashboard`, `openspec-finalize-sync-archive-commit-push`, `openspec-grill-me`, and `openspec-release-version` are custom optional companion workflows, not part of OpenSpec's core profile.
