@@ -1,14 +1,10 @@
 <!-- AI: Keep commands rooted at the repository. The Vite application, source, tests, and build output belong in project-name/. -->
 ![Samuel Asher Rivello](https://raw.githubusercontent.com/SamuelAsherRivello/github-repository-template/main/project-name/documentation/samuel-asher-rivello-banner.png)
 
-# ai-skills-library
+# AI Skills Library
 
 <!-- AI: Update this project summary when the template is used. -->
-Shared AI skills and agent workflow library for Codex. This repository uses the conventional agent skills layout so it can be cloned, inspected, or wired into Codex like a normal project-level skill source:
-
-```text
-.agents/skills/<skill-name>/SKILL.md
-```
+Shared AI skills and agent workflow library for Codex. 
 
 ## Table of Contents
 
@@ -20,12 +16,7 @@ Shared AI skills and agent workflow library for Codex. This repository uses the 
 <!-- AI: Preserve the additive setup model. Do not remove or rename existing user/project skills when installing this library unless explicitly requested. -->
 Use these steps when you want an arbitrary checkout to use this shared skills library alongside the user's existing skills.
 
-### 🛠 Build Project
-
-1. No build step is required; this repository contains Markdown skill instructions and optional skill metadata.
-2. To validate a skill after editing, run the local Codex skill validator against that skill folder.
-
-### 🛠 Run Project
+### 🛠 Add Library To Your Project
 
 1. Clone or update this library.
 
@@ -69,11 +60,6 @@ Use these steps when you want an arbitrary checkout to use this shared skills li
    Use $ai-skills-library-welcome
    ```
 
-### 🛠 Release Version
-
-1. Review changed skill files and validate edited skills before release.
-2. Commit and push changes to the repository's default branch.
-3. Pull this repository on each machine that consumes the shared skills.
 
 ## Credits
 
