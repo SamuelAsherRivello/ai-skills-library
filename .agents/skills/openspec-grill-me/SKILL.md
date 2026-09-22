@@ -1,9 +1,6 @@
 ---
 name: openspec-grill-me
 description: Interview the user about an OpenSpec exploration, proposal, or standalone plan using consistent numbered choices and a recommended answer. Investigate codebase facts directly and reconcile confirmed decisions into authorized planning artifacts. Planning only; never implements code.
-metadata:
-  short-description: Interview and reconcile OpenSpec decisions
-  origin: custom
 ---
 
 # OpenSpec Grill Me

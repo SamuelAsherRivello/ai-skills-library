@@ -1,9 +1,6 @@
 ---
 name: openspec-dashboard
 description: Open, set up, or inspect the local OpenSpecUI dashboard for an OpenSpec project. Check required CLI dependencies first, install or initialize missing pieces when authorized, and keep the dashboard read-only unless the user explicitly requests an action.
-metadata:
-  short-description: Open and inspect OpenSpecUI
-  origin: custom
 ---
 
 # OpenSpec Dashboard
@@ -63,6 +60,24 @@ Treat the dashboard as a view by default.
 When the user asks to look at the dashboard, summarize the actual visible state: active changes, artifact/task progress, blocked or ready work, and repository scope. Do not summarize the product marketing page when the project dashboard is what the user requested.
 
 Do not click workflow actions such as Apply, Archive, Continue, Fast-forward, Verify, or destructive/irreversible controls unless the user explicitly asks for that action.
+
+## Configure Codex As The Default Agent
+
+When the user explicitly asks to configure the dashboard or project for Codex,
+use the dashboard's **Settings → Agent Integrations → Manage** surface. Select
+**Codex** in Agent Inventory and run the server-owned initialization command.
+OpenSpecUI currently invokes:
+
+```powershell
+openspec init --tools codex --profile custom
+```
+
+This creates or refreshes the project-local `.agents/skills/` OpenSpec skills
+and records `codex` in `.agents/skills/.openspec-target`; it does not install
+the Codex application or modify product implementation code. Treat this as a
+project-planning configuration write: do it only when the user explicitly asks
+for Codex setup, then verify the command exits successfully and the target file
+contains `codex`. Reload the dashboard before reporting the result.
 
 ## Windows CLI-Runner Recovery
 

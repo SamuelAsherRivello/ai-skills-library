@@ -1,9 +1,6 @@
 ---
 name: openspec-release-version
 description: Release a repository through its checked-in GitHub Actions version workflow. Inspect the repository setup first; if required workflow/version infrastructure is missing, do not create it, and instead report why the repo is not release-ready.
-metadata:
-  short-description: Release via GitHub Actions version workflow
-  origin: custom
 ---
 
 # OpenSpec Release Version

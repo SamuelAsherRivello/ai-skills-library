@@ -3,11 +3,22 @@
 
 # AI Skills Library
 
+<<<<<<< Updated upstream
 <!-- AI: Update this project summary when the template is used. -->
 Shared AI skills and agent workflow library for Codex. 
+=======
+Reusable Codex skills for local projects and teams.
 
-## Table of Contents
+## Use With a Project
+>>>>>>> Stashed changes
 
+1. Clone the project you want to work on, such as
+   [Babylon Lite ASCII RPG](https://github.com/SamuelAsherRivello/babylon-lite-ascii-rpg).
+2. Clone the [AI Skills Library](https://github.com/SamuelAsherRivello/ai-skills-library)
+   and add its reusable skills to your personal Codex skills folder. Existing
+   personal skills stay in place.
+
+<<<<<<< Updated upstream
 1. [Getting Started](#getting-started)
 2. [Credits](#credits)
 
@@ -60,6 +71,9 @@ Use these steps when you want an arbitrary checkout to use this shared skills li
    Use $ai-skills-library-welcome
    ```
 
+=======
+The library uses the standard `.agents/skills/<skill-name>/SKILL.md` layout.
+>>>>>>> Stashed changes
 
 ## Credits
 

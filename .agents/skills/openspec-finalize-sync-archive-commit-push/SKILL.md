@@ -1,9 +1,6 @@
 ---
 name: openspec-finalize-sync-archive-commit-push
 description: After OpenSpec apply is complete, finish exactly one change by verifying readiness, syncing specs, archiving, committing only scoped files, and pushing normally when the remote branch is unchanged. Stop with clear blockers instead of creating release infrastructure, merging divergent branches, or sweeping unrelated work.
-metadata:
-  short-description: Finish an applied OpenSpec change safely
-  origin: custom
 ---
 
 # OpenSpec Finalize: Sync, Archive, Commit, Push
