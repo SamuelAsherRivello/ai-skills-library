@@ -1,7 +1,9 @@
-<!-- AI: Keep commands rooted at the repository. This repository stores shared Codex skills in .agents/skills/. -->
+<!-- AI: Keep commands rooted at the repository. The Vite application, source, tests, and build output belong in project-name/. -->
+![Samuel Asher Rivello](https://raw.githubusercontent.com/SamuelAsherRivello/github-repository-template/main/project-name/documentation/samuel-asher-rivello-banner.png)
+
 # ai-skills-library
 
-<!-- AI: Update this project summary only when the shared library purpose changes. -->
+<!-- AI: Update this project summary when the template is used. -->
 Shared AI skills and agent workflow library for Codex. This repository uses the conventional agent skills layout so it can be cloned, inspected, or wired into Codex like a normal project-level skill source:
 
 ```text
