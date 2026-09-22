@@ -8,9 +8,9 @@ This repository uses the conventional agent skills layout so it can be cloned, i
 .agents/skills/<skill-name>/SKILL.md
 ```
 
-## Install In A Codex Machine
+## Add This Library To Codex
 
-Give an AI agent these steps when you want an arbitrary checkout to use this shared skills library.
+Give an AI agent these steps when you want an arbitrary checkout to use this shared skills library alongside the user's existing skills.
 
 1. Clone or update this library.
 
@@ -24,47 +24,31 @@ Give an AI agent these steps when you want an arbitrary checkout to use this sha
    }
    ```
 
-2. Optional: remove existing global Codex skills from scope.
+2. Link each library skill into the user's global Codex skills folder.
 
-   Do this only if you want this library to be the only global/user skill source. Prefer renaming the folder instead of deleting it.
-
-   ```powershell
-   $UserSkills = Join-Path $HOME ".agents\skills"
-   if (Test-Path -LiteralPath $UserSkills) {
-     $Backup = Join-Path $HOME (".agents\skills.disabled-" + (Get-Date -Format "yyyyMMdd-HHmmss"))
-     Move-Item -LiteralPath $UserSkills -Destination $Backup
-   }
-   ```
-
-3. Optional: remove project-local Codex skills from the current checkout.
-
-   Do this only if you want to test with no project-local skills. Prefer renaming the folder instead of deleting it, and do not touch unrelated project files.
-
-   ```powershell
-   $ProjectSkills = Join-Path (Get-Location) ".agents\skills"
-   if (Test-Path -LiteralPath $ProjectSkills) {
-     $Backup = Join-Path (Get-Location) (".agents\skills.disabled-" + (Get-Date -Format "yyyyMMdd-HHmmss"))
-     Move-Item -LiteralPath $ProjectSkills -Destination $Backup
-   }
-   ```
-
-4. Point Codex's user skills at this library.
-
-   Use this step after step 2 if you want the library checkout to be the active global/user skill source.
+   This keeps existing user skills intact and adds this library's skills beside them. Existing skills with the same name are left unchanged and reported.
 
    ```powershell
    $LibrarySkills = "D:\Documents\Projects\VC\Github\ai-skills-library\.agents\skills"
-   $UserAgents = Join-Path $HOME ".agents"
-   $UserSkills = Join-Path $UserAgents "skills"
-   New-Item -ItemType Directory -Force -Path $UserAgents | Out-Null
-   try {
-     New-Item -ItemType SymbolicLink -Path $UserSkills -Target $LibrarySkills -ErrorAction Stop | Out-Null
-   } catch {
-     New-Item -ItemType Junction -Path $UserSkills -Target $LibrarySkills | Out-Null
+   $UserSkills = Join-Path $HOME ".agents\skills"
+   New-Item -ItemType Directory -Force -Path $UserSkills | Out-Null
+
+   Get-ChildItem -LiteralPath $LibrarySkills -Directory | ForEach-Object {
+     $Target = Join-Path $UserSkills $_.Name
+     if (Test-Path -LiteralPath $Target) {
+       Write-Host "Skipping existing skill: $($_.Name)"
+     } else {
+       try {
+         New-Item -ItemType SymbolicLink -Path $Target -Target $_.FullName -ErrorAction Stop | Out-Null
+       } catch {
+         New-Item -ItemType Junction -Path $Target -Target $_.FullName | Out-Null
+       }
+       Write-Host "Linked skill: $($_.Name)"
+     }
    }
    ```
 
-5. Smoke test discovery from any project.
+3. Smoke test discovery from any project.
 
    Start or restart Codex in a project checkout and ask:
 
