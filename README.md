@@ -1,16 +1,29 @@
+<!-- AI: Keep commands rooted at the repository. This repository stores shared Codex skills in .agents/skills/. -->
 # ai-skills-library
 
-Shared AI skills and agent workflow library.
-
-This repository uses the conventional agent skills layout so it can be cloned, inspected, or wired into Codex like a normal project-level skill source:
+<!-- AI: Update this project summary only when the shared library purpose changes. -->
+Shared AI skills and agent workflow library for Codex. This repository uses the conventional agent skills layout so it can be cloned, inspected, or wired into Codex like a normal project-level skill source:
 
 ```text
 .agents/skills/<skill-name>/SKILL.md
 ```
 
-## Add This Library To Codex
+## Table of Contents
 
-Give an AI agent these steps when you want an arbitrary checkout to use this shared skills library alongside the user's existing skills.
+1. [Getting Started](#getting-started)
+2. [Credits](#credits)
+
+## Getting Started
+
+<!-- AI: Preserve the additive setup model. Do not remove or rename existing user/project skills when installing this library unless explicitly requested. -->
+Use these steps when you want an arbitrary checkout to use this shared skills library alongside the user's existing skills.
+
+### 🛠 Build Project
+
+1. No build step is required; this repository contains Markdown skill instructions and optional skill metadata.
+2. To validate a skill after editing, run the local Codex skill validator against that skill folder.
+
+### 🛠 Run Project
 
 1. Clone or update this library.
 
@@ -48,29 +61,35 @@ Give an AI agent these steps when you want an arbitrary checkout to use this sha
    }
    ```
 
-3. Smoke test discovery from any project.
-
-   Start or restart Codex in a project checkout and ask:
+3. Start or restart Codex in any project checkout and smoke test discovery.
 
    ```text
    Use $ai-skills-library-welcome
    ```
 
-   If the skill responds, the shared library is in scope. Pull this repository later to update the shared skills.
+### 🛠 Release Version
 
-## Current Skills
+1. Review changed skill files and validate edited skills before release.
+2. Commit and push changes to the repository's default branch.
+3. Pull this repository on each machine that consumes the shared skills.
 
-- `.agents/skills/ai-skills-library-welcome`
-- `.agents/skills/openspec-dashboard` - custom optional OpenSpecUI dashboard workflow
-- `.agents/skills/openspec-finalize-sync-archive-commit-push` - custom optional post-apply finalization workflow
-- `.agents/skills/openspec-grill-me` - custom optional OpenSpec interview workflow
-- `.agents/skills/openspec-release-version` - custom optional GitHub Actions release workflow
-- OpenSpec core profile skills:
-  - `.agents/skills/openspec-explore`
-  - `.agents/skills/openspec-propose`
-  - `.agents/skills/openspec-apply-change`
-  - `.agents/skills/openspec-update-change`
-  - `.agents/skills/openspec-sync-specs`
-  - `.agents/skills/openspec-archive-change`
+## Credits
 
-The OpenSpec core set intentionally matches the lightweight core profile: explore, propose, apply, update, sync, and archive. `openspec-dashboard`, `openspec-finalize-sync-archive-commit-push`, `openspec-grill-me`, and `openspec-release-version` are custom optional companion workflows, not part of OpenSpec's core profile.
+<!-- AI: Preserve established attribution and ownership. Customize the following subsections only from confirmed contributor, contact, and license information; do not infer a new owner from the repository name. -->
+### 💡 Contributors
+
+<!-- AI: Preserve existing contributor credit and add contributors only when confirmed. Do not automatically advance experience counts or their reference year. -->
+- Samuel Asher Rivello - Over 25 years of game development XP (2026)
+
+### 💡 Contact
+
+<!-- AI: Preserve confirmed contact destinations and their order unless requested otherwise. Use readable display URLs without a protocol or trailing slash while keeping the real link target intact. Do not invent accounts or change target capitalization based on display styling. -->
+- [LinkedIn.com/in/SamuelAsherRivello](https://Linkedin.com/in/SamuelAsherRivello) ⭐
+- [GitHub.com/SamuelAsherRivello](https://github.com/SamuelAsherRivello/)
+- [Twitter.com/srivello](https://twitter.com/srivello/)
+- Resume / Portfolio: [SamuelAsherRivello.com](http://www.SamuelAsherRivello.com)
+
+### 💡 License
+
+<!-- AI: Keep the license statement consistent with the actual repository files. Do not add a license name, owner, or date unless a matching license file exists or the user explicitly requests it. -->
+- No license file is currently provided in this repository.
