@@ -12,7 +12,13 @@ Reusable Codex skills for local projects and teams.
 
 ## Getting Started
 
+### 1. Install Commands
+
 Ask your AI to copy this library's `.agents/skills` folder into your chosen repository's local `.agents/skills` folder.
+
+### 2. Use Commands
+
+Invoke the installed skills in Codex with their `$skill-name` commands.
 
 ## OpenSpec Workflow
 
@@ -20,15 +26,15 @@ Here are the workflow commands and the proposal artifacts.
 
 | # | Name | Command | Comment | Model intelligence |
 | --- | --- | --- | --- | --- |
-| - | (Git Synchronize) | - | Share progress. |![LOW](https://img.shields.io/badge/LOW-22C55E?style=flat&labelColor=22C55E) |
-| 1 | Explore | `$openspec-explore` | (Optional) Brainstorm possibilities. |![HIGH](https://img.shields.io/badge/HIGH-EF4444?style=flat&labelColor=EF4444) |
-| 2 | Propose | `$openspec-propose` | Creates one focused feature change. |![HIGH](https://img.shields.io/badge/HIGH-EF4444?style=flat&labelColor=EF4444) |
-| 3 | Refine | `$openspec-grill-me {n}` | (Optional) Clear doubts via {n} multiple-choice questions. |![HIGH](https://img.shields.io/badge/HIGH-EF4444?style=flat&labelColor=EF4444) |
-| - | (Git Synchronize) | - | Share progress. |![LOW](https://img.shields.io/badge/LOW-22C55E?style=flat&labelColor=22C55E) |
-| 4 | Apply | `$openspec-apply-change` | Implements and completes one change. |![MED](https://img.shields.io/badge/MED-F59E0B?style=flat&labelColor=F59E0B) |
-| 5 | Sync | `$openspec-sync-specs` | Updates main specs without archiving. |![MED](https://img.shields.io/badge/MED-F59E0B?style=flat&labelColor=F59E0B) |
-| 6 | Archive | `$openspec-archive-change` | Finalizes and archives a change. |![LOW](https://img.shields.io/badge/LOW-22C55E?style=flat&labelColor=22C55E) |
-| - | (Git Synchronize) | - | Share progress. |![LOW](https://img.shields.io/badge/LOW-22C55E?style=flat&labelColor=22C55E) |
+| - | (Git Synchronize) | - | Share progress. |![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) |
+| 1 | Explore | `$openspec-explore` | (Optional) Brainstorm possibilities. |![HIGH](https://img.shields.io/badge/-HIGH-EF4444?style=flat) |
+| 2 | Propose | `$openspec-propose` | Creates one focused feature change. |![HIGH](https://img.shields.io/badge/-HIGH-EF4444?style=flat) |
+| 3 | Refine | `$openspec-grill-me {n}` | (Optional) Clear doubts via {n} multiple-choice questions. |![HIGH](https://img.shields.io/badge/-HIGH-EF4444?style=flat) |
+| - | (Git Synchronize) | - | Share progress. |![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) |
+| 4 | Apply | `$openspec-apply-change` | Implements and completes one change. |![MED](https://img.shields.io/badge/-MED-F59E0B?style=flat) |
+| 5 | Sync | `$openspec-sync-specs` | Updates main specs without archiving. |![MED](https://img.shields.io/badge/-MED-F59E0B?style=flat) |
+| 6 | Archive | `$openspec-archive-change` | Finalizes and archives a change. |![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) |
+| - | (Git Synchronize) | - | Share progress. |![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) |
 
 ### Proposal Artifacts
 
