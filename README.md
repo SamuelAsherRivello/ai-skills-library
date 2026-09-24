@@ -6,54 +6,7 @@ Reusable Codex skills for local projects and teams.
 
 ## Getting Started
 
-Use these steps to add this library to a project alongside your existing skills.
-
-First, clone the project you want to work on, such as
-[Babylon Lite ASCII RPG](https://github.com/SamuelAsherRivello/babylon-lite-ascii-rpg).
-
-### 🛠 Add Library To Your Project
-
-1. Clone or update this library.
-
-   ```powershell
-   $LibraryRoot = "D:\Documents\Projects\VC\Github\ai-skills-library"
-   if (Test-Path -LiteralPath $LibraryRoot) {
-     Set-Location -LiteralPath $LibraryRoot
-     git pull
-   } else {
-     git clone https://github.com/SamuelAsherRivello/ai-skills-library $LibraryRoot
-   }
-   ```
-
-2. Link each library skill into the user's global Codex skills folder.
-
-   This keeps existing user skills intact and adds this library's skills beside them. Existing skills with the same name are left unchanged and reported.
-
-   ```powershell
-   $LibrarySkills = "D:\Documents\Projects\VC\Github\ai-skills-library\.agents\skills"
-   $UserSkills = Join-Path $HOME ".agents\skills"
-   New-Item -ItemType Directory -Force -Path $UserSkills | Out-Null
-
-   Get-ChildItem -LiteralPath $LibrarySkills -Directory | ForEach-Object {
-     $Target = Join-Path $UserSkills $_.Name
-     if (Test-Path -LiteralPath $Target) {
-       Write-Host "Skipping existing skill: $($_.Name)"
-     } else {
-       try {
-         New-Item -ItemType SymbolicLink -Path $Target -Target $_.FullName -ErrorAction Stop | Out-Null
-       } catch {
-         New-Item -ItemType Junction -Path $Target -Target $_.FullName | Out-Null
-       }
-       Write-Host "Linked skill: $($_.Name)"
-     }
-   }
-   ```
-
-3. Start or restart Codex in any project checkout and smoke test discovery.
-
-   ```text
-   Use $ai-skills-library-welcome
-   ```
+Ask your AI to copy this library's `.agents/skills` folder into your chosen repository's local `.agents/skills` folder.
 
 ## OpenSpec Workflow
 
