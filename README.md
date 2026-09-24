@@ -4,6 +4,12 @@
 
 Reusable Codex skills for local projects and teams.
 
+## Table of Contents
+
+1. [Getting Started](#getting-started)
+2. [OpenSpec Workflow](#openspec-workflow)
+3. [Credits](#credits)
+
 ## Getting Started
 
 Ask your AI to copy this library's `.agents/skills` folder into your chosen repository's local `.agents/skills` folder.
