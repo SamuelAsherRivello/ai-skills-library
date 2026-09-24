@@ -20,15 +20,15 @@ Here are the workflow commands and the proposal artifacts.
 
 | # | Name | Command | Comment | Model intelligence |
 | --- | --- | --- | --- | --- |
-| - | (Git Synchronize) | - | Share progress. | ![Low](https://img.shields.io/badge/Low-22C55E?style=flat&labelColor=22C55E) |
-| 1 | Explore | `$openspec-explore` | (Optional) Brainstorm possibilities. | ![High](https://img.shields.io/badge/High-EF4444?style=flat&labelColor=EF4444) |
-| 2 | Propose | `$openspec-propose` | Creates one focused feature change. | ![High](https://img.shields.io/badge/High-EF4444?style=flat&labelColor=EF4444) |
-| 3 | Refine | `$openspec-grill-me {n}` | (Optional) Clear doubts via {n} multiple-choice questions. | ![High](https://img.shields.io/badge/High-EF4444?style=flat&labelColor=EF4444) |
-| - | (Git Synchronize) | - | Share progress. | ![Low](https://img.shields.io/badge/Low-22C55E?style=flat&labelColor=22C55E) |
-| 4 | Apply | `$openspec-apply-change` | Implements and completes one change. | ![Medium](https://img.shields.io/badge/Medium-F59E0B?style=flat&labelColor=F59E0B) |
-| 5 | Sync | `$openspec-sync-specs` | Updates main specs without archiving. | ![Medium](https://img.shields.io/badge/Medium-F59E0B?style=flat&labelColor=F59E0B) |
-| 6 | Archive | `$openspec-archive-change` | Finalizes and archives a change. | ![Low](https://img.shields.io/badge/Low-22C55E?style=flat&labelColor=22C55E) |
-| - | (Git Synchronize) | - | Share progress. | ![Low](https://img.shields.io/badge/Low-22C55E?style=flat&labelColor=22C55E) |
+| - | (Git Synchronize) | - | Share progress. |![LOW](https://img.shields.io/badge/LOW-22C55E?style=flat&labelColor=22C55E) |
+| 1 | Explore | `$openspec-explore` | (Optional) Brainstorm possibilities. |![HIGH](https://img.shields.io/badge/HIGH-EF4444?style=flat&labelColor=EF4444) |
+| 2 | Propose | `$openspec-propose` | Creates one focused feature change. |![HIGH](https://img.shields.io/badge/HIGH-EF4444?style=flat&labelColor=EF4444) |
+| 3 | Refine | `$openspec-grill-me {n}` | (Optional) Clear doubts via {n} multiple-choice questions. |![HIGH](https://img.shields.io/badge/HIGH-EF4444?style=flat&labelColor=EF4444) |
+| - | (Git Synchronize) | - | Share progress. |![LOW](https://img.shields.io/badge/LOW-22C55E?style=flat&labelColor=22C55E) |
+| 4 | Apply | `$openspec-apply-change` | Implements and completes one change. |![MED](https://img.shields.io/badge/MED-F59E0B?style=flat&labelColor=F59E0B) |
+| 5 | Sync | `$openspec-sync-specs` | Updates main specs without archiving. |![MED](https://img.shields.io/badge/MED-F59E0B?style=flat&labelColor=F59E0B) |
+| 6 | Archive | `$openspec-archive-change` | Finalizes and archives a change. |![LOW](https://img.shields.io/badge/LOW-22C55E?style=flat&labelColor=22C55E) |
+| - | (Git Synchronize) | - | Share progress. |![LOW](https://img.shields.io/badge/LOW-22C55E?style=flat&labelColor=22C55E) |
 
 ### Proposal Artifacts
 
