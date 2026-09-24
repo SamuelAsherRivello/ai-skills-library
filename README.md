@@ -6,9 +6,15 @@ Reusable Codex skills for local projects and teams.
 
 ## Table of Contents
 
-1. [Getting Started](#getting-started)
-2. [OpenSpec Workflow](#openspec-workflow)
-3. [Credits](#credits)
+1. [What About Sandbox?](#what-about-sandbox)
+2. [Getting Started](#getting-started)
+3. [OpenSpec Workflow](#openspec-workflow)
+4. [Credits](#credits)
+
+## What About Sandbox?
+
+- [What About Sandbox? (YouTube Short)](https://www.youtube.com/shorts/tY40HHLnNxE)
+- [Codex Windows sandbox documentation](https://learn.chatgpt.com/docs/windows/windows-sandbox)
 
 ## Getting Started
 
