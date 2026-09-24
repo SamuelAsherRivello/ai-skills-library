@@ -10,7 +10,7 @@ Ask your AI to copy this library's `.agents/skills` folder into your chosen repo
 
 ## OpenSpec Workflow
 
-This workflow is adapted from the [Babylon Lite ASCII RPG README](https://github.com/SamuelAsherRivello/babylon-lite-ascii-rpg#readme). The intelligence levels are recommendations for the model or reasoning effort you choose; increase them when a change is complex or unclear.
+Here are the workflow commands and the proposal artifacts.
 
 | # | Name | Command | Comment | Model intelligence |
 | --- | --- | --- | --- | --- |
