@@ -14,7 +14,13 @@ Reusable Codex skills for local projects and teams.
 
 ### 1. Install Commands
 
+#### Manual Copy (Default)
+
 Ask your AI to copy this library's `.agents/skills` folder into your chosen repository's local `.agents/skills` folder.
+
+#### Simlink (Optional)
+
+Ask your AI explicitly to install this library globally with symlinks. This is not the default installation method. See [Global Symlink Installation](documentation/global-symlink-installation.md).
 
 ### 2. Use Commands
 
