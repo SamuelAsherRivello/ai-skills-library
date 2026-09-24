@@ -28,12 +28,12 @@ This workflow is adapted from the [Babylon Lite ASCII RPG README](https://github
 
 With the default spec-driven schema, `$openspec-propose` creates these files inside `openspec/changes/<change-name>/`. Other schemas may use different artifacts.
 
-| Artifact | Answers | What it contains |
-| --- | --- | --- |
-| `proposal.md` | **Why and what** | The problem or opportunity, goals, and scope of the change. |
-| `specs/<capability-path>/spec.md` | **What** | Requirements and scenarios describing the required behavior; these are changes to the main specs. |
-| `design.md` | **How** | Technical approach, architecture, and key implementation decisions. |
-| `tasks.md` | **How, step by step** | The actionable implementation checklist and progress. |
+| # | Artifact | Answers | What it contains |
+| --- | --- | --- | --- |
+| 1 | `proposal.md` | **Why** | The problem or opportunity, goals, and scope of the change. |
+| 2 | `specs/<capability-path>/spec.md` | **What** | Requirements and scenarios describing the required behavior; these are changes to the main specs. |
+| 3 | `design.md` | **How** | Technical approach, architecture, and key implementation decisions. |
+| 4 | `tasks.md` | **Steps** | The actionable implementation checklist and progress. |
 
 ## Credits
 
