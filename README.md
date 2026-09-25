@@ -13,8 +13,7 @@ Reusable Codex skills for local projects and teams.
 
 ## What About Sandbox?
 
-- [What About Sandbox? (YouTube Short)](https://www.youtube.com/shorts/tY40HHLnNxE)
-- [Codex Windows sandbox documentation](https://learn.chatgpt.com/docs/windows/windows-sandbox)
+- [Windows Sandbox Setup for Codex](documentation/setup-sandbox-windows.md): Video overview, official documentation, setup, permissions, and usage.
 
 ## Getting Started
 
