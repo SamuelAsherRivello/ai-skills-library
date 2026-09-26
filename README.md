@@ -27,6 +27,7 @@ Use these commands to copy or move skills between this library, your Codex user 
 | `$ai-skills-library-pull` | Copies all library skills into Codex user skills. |
 | `$ai-skills-library-move-global <skill>` | Moves one skill from the current project's `.agents/skills` to Codex user skills. |
 | `$ai-skills-library-move-project <skill>` | Moves one skill from Codex user skills to the current project's `.agents/skills`. |
+| `$ai-skills-library-status` | Lists every library skill and the differences in Codex user and project skills. |
 
 Codex user skills are stored in `C:\\Users\\<your-user>\\.agents\\skills` on Windows. Commands stop for an existing destination skill instead of overwriting it without your explicit approval.
 
