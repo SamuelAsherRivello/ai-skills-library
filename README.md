@@ -30,9 +30,6 @@ Use these commands to copy or move skills between this library, your Codex user 
 
 Codex user skills are stored in `C:\\Users\\<your-user>\\.agents\\skills` on Windows. Commands stop for an existing destination skill instead of overwriting it without your explicit approval.
 
-### 2. Use Commands
-
-Invoke the installed skills in Codex with their `$skill-name` commands.
 
 ## OpenSpec Workflow
 
