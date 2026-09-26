@@ -8,7 +8,7 @@ Some commands are optional, depending on your needs.
 
 Use Git Synchronize between phases when you want to share progress.
 
-| # | Name | Recommended Model Intelligence | Comment |
+| # | Name | **Recommended<br>Model?** | Comment |
 | --- | --- | --- | --- |
 | - | (Git Synchronize)<br>- | ![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) | Share progress. |
 | 1 | Explore<br>`$openspec-explore` | ![HIGH](https://img.shields.io/badge/-HIGH-EF4444?style=flat) | (Optional) Brainstorm possibilities. |
@@ -28,9 +28,9 @@ These artifacts describe the change before implementation begins.
 
 Other schemas may use different artifacts.
 
-| # | Name | Answers | Comment |
+| # | Name | Comment | **Answers?** |
 | --- | --- | --- | --- |
-| 1 | `proposal.md` | **Why** | The problem or opportunity, goals, and scope of the change. |
-| 2 | `specs/<capability-path>/spec.md` | **What** | Requirements and scenarios describing the required behavior; these are changes to the main specs. |
-| 3 | `design.md` | **How** | Technical approach, architecture, and key implementation decisions. |
-| 4 | `tasks.md` | **Steps** | The actionable implementation checklist and progress. |
+| 1 | `proposal.md` | The problem or opportunity, goals, and scope of the change. | **Why** |
+| 2 | `specs/<capability-path>/spec.md` | Requirements and scenarios describing the required behavior; these are changes to the main specs. | **What** |
+| 3 | `design.md` | Technical approach, architecture, and key implementation decisions. | **How** |
+| 4 | `tasks.md` | The actionable implementation checklist and progress. | **Steps** |
