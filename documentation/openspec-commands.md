@@ -2,21 +2,31 @@
 
 ## Workflow
 
-| # | Name | Comment | Model intelligence |
+Here is the order you want to call the commands.
+
+Some commands are optional, depending on your needs.
+
+Use Git Synchronize between phases when you want to share progress.
+
+| # | Name | Recommended Model Intelligence | Comment |
 | --- | --- | --- | --- |
-| - | (Git Synchronize)<br>- | Share progress. |![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) |
-| 1 | Explore<br>`$openspec-explore` | (Optional) Brainstorm possibilities. |![HIGH](https://img.shields.io/badge/-HIGH-EF4444?style=flat) |
-| 2 | Propose<br>`$openspec-propose` | Creates one focused feature change. |![HIGH](https://img.shields.io/badge/-HIGH-EF4444?style=flat) |
-| 3 | Refine<br>`$openspec-grill-me {n}` | (Optional) Clear doubts via {n} multiple-choice questions. |![HIGH](https://img.shields.io/badge/-HIGH-EF4444?style=flat) |
-| - | (Git Synchronize)<br>- | Share progress. |![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) |
-| 4 | Apply<br>`$openspec-apply-change` | Implements and completes one change. |![MED](https://img.shields.io/badge/-MED-F59E0B?style=flat) |
-| 5 | Sync<br>`$openspec-sync-specs` | Updates main specs without archiving. |![MED](https://img.shields.io/badge/-MED-F59E0B?style=flat) |
-| 6 | Archive<br>`$openspec-archive-change` | Finalizes and archives a change. |![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) |
-| - | (Git Synchronize)<br>- | Share progress. |![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) |
+| - | (Git Synchronize)<br>- | ![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) | Share progress. |
+| 1 | Explore<br>`$openspec-explore` | ![HIGH](https://img.shields.io/badge/-HIGH-EF4444?style=flat) | (Optional) Brainstorm possibilities. |
+| 2 | Propose<br>`$openspec-propose` | ![HIGH](https://img.shields.io/badge/-HIGH-EF4444?style=flat) | Creates one focused feature change. |
+| 3 | Refine<br>`$openspec-grill-me {n}` | ![HIGH](https://img.shields.io/badge/-HIGH-EF4444?style=flat) | (Optional) Clear doubts via {n} multiple-choice questions. |
+| - | (Git Synchronize)<br>- | ![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) | Share progress. |
+| 4 | Apply<br>`$openspec-apply-change` | ![MED](https://img.shields.io/badge/-MED-F59E0B?style=flat) | Implements and completes one change. |
+| 5 | Sync<br>`$openspec-sync-specs` | ![MED](https://img.shields.io/badge/-MED-F59E0B?style=flat) | Updates main specs without archiving. |
+| 6 | Archive<br>`$openspec-archive-change` | ![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) | Finalizes and archives a change. |
+| - | (Git Synchronize)<br>- | ![LOW](https://img.shields.io/badge/-LOW-22C55E?style=flat) | Share progress. |
 
 ## Proposal Artifacts
 
-With the default spec-driven schema, `$openspec-propose` creates these files inside `openspec/changes/<change-name>/`. Other schemas may use different artifacts.
+With the default spec-driven schema, `$openspec-propose` creates these files inside `openspec/changes/<change-name>/`.
+
+These artifacts describe the change before implementation begins.
+
+Other schemas may use different artifacts.
 
 | # | Name | Answers | Comment |
 | --- | --- | --- | --- |
