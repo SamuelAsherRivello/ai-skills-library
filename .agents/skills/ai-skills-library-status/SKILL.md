@@ -7,33 +7,6 @@ description: Compare library, Codex user, and current-project skills in one lean
 
 Use this skill when the user wants a compact comparison of the shared library, Codex user skills, and the current project's skills. This command is read-only.
 
-Treat this repository's `.agents/skills` directory as the canonical REPO baseline. Compare it with `$HOME/.agents/skills` (GLOBAL) and the current project's `.agents/skills` (PROJECT). A skill is a directory containing `SKILL.md`; compare complete directory contents recursively, not just `SKILL.md`.
+Run [scripts/status.ps1](scripts/status.ps1), supplying the canonical library checkout as `-LibraryRoot` and the current project root as `-ProjectRoot`. The script uses the library's `.agents/skills` as the REPO baseline, `$HOME/.agents/skills` as GLOBAL, and the project’s `.agents/skills` as PROJECT.
 
-Always print this legend before any status section:
-
-```text
-Legend: + only here; - missing here but present in REPO; ~ differs from REPO
-```
-
-Then print the complete REPO skill-name list. For GLOBAL and PROJECT, print only differences from REPO:
-
-```text
-AI Skills Library Status
-
-Legend: + only here; - missing here but present in REPO; ~ differs from REPO
-
-REPO (17)
-  ai-skills-library-pull
-  ...
-
-GLOBAL  C:\\Users\\srive\\.agents\\skills
-  + herdr
-  ~ openspec-propose
-
-PROJECT  D:\\Projects\\example\\.agents\\skills
-  + project-release-notes
-  - docker-sandbox-codex
-  ~ openspec-apply-change
-```
-
-If GLOBAL or PROJECT has no differences, print `= matches REPO` below that section. If the project has no `.agents/skills` directory, list every REPO skill as missing under PROJECT. Do not copy, move, create, delete, modify, commit, fetch, or push anything.
+Do not recreate the comparison in chat. Return the script output unchanged. It prints the legend before every status section, lists all REPO skills, and shows only `+`, `-`, and `~` differences for GLOBAL and PROJECT. Do not copy, move, create, delete, modify, commit, fetch, or push anything.
