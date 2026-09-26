@@ -8,11 +8,14 @@ They let you grant only the workspace and connections a task needs, so you can e
 
 ## Windows Sandbox for Codex
 
+**Video**
+
 [![Watch the Docker Experience](https://i.ytimg.com/vi/erQnRkMrpls/hqdefault.jpg)](https://www.youtube.com/watch?v=erQnRkMrpls)
 
-[Watch the Docker Experience](https://www.youtube.com/watch?v=erQnRkMrpls).
+**Docs**
 
-See the [official Docker Sandboxes installation guide](https://docs.docker.com/ai/sandboxes/install/) and [official OpenAI Codex page](https://openai.com/codex/).
+* [Docker Sandboxes installation guide](https://docs.docker.com/ai/sandboxes/install/)
+* [OpenAI Codex page](https://openai.com/codex/).
 
 ### Solution
 
@@ -70,7 +73,25 @@ Docker's current Windows instructions do not require Docker Desktop or WSL 2 to 
    cd D:\path\to\your\project
    ```
 
-2. **Review the sandbox dashboard and network policy.** Run `sbx` to open the interactive dashboard. On your first run, select a network preset; Docker recommends **Balanced** as a starting point. You can inspect the active rules later with:
+2. **Choose a startup network policy.** On the first run, `sbx` asks you to select a network preset. Make one of these choices before starting Codex:
+
+   **Start With Strict Policy**
+
+   Choose Docker's **Locked Down** preset to block outbound network traffic until you explicitly allow each destination. This is a good choice when you already know exactly which services the project needs, but expect many tools, package installs, and integrations to fail until you add manual policy rules.
+
+   ```powershell
+   sbx policy init deny-all
+   ```
+
+   **Start With Loose Policy (recommended)**
+
+   Choose Docker's **Open** preset to allow all outbound network traffic. This is recommended for getting a new project working first. After you have confirmed the project works, increase security by replacing the broad access with a more restrictive policy and only the required allow rules.
+
+   ```powershell
+   sbx policy init allow-all
+   ```
+
+   These presets apply to local sandboxes on the machine. Organization-managed policies can still restrict the effective access. You can inspect the active rules later with:
 
    ```powershell
    sbx policy ls
