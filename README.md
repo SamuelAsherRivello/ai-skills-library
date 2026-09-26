@@ -28,7 +28,7 @@ Over time the library may change with new features.
 Run command:
 
 ```
-ai-skills-library-pull all
+$ai-skills-library-pull all
 ```
 
 
