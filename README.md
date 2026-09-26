@@ -15,7 +15,9 @@ Reusable Codex skills for local projects and teams.
 
 > Tell your AI agent:
 >
-> `Add all skills from https://github.com/SamuelAsherRivello/ai-skills-library to my global Codex skills.`
+> ```diff
+> + Add all skills from https://github.com/SamuelAsherRivello/ai-skills-library to my global Codex skills.
+> ```
 
 ## Details
 
