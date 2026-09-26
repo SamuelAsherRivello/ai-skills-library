@@ -8,7 +8,8 @@ Reusable Codex skills for local projects and teams.
 
 1. [Getting Started](#getting-started)
 2. [Details](#details)
-3. [Credits](#credits)
+3. [Resources](#resources)
+4. [Credits](#credits)
 
 ## Getting Started
 
@@ -18,13 +19,19 @@ Reusable Codex skills for local projects and teams.
 
 ## Details
 
-### AI Skills Library Commands
+### 1. AI Skills Library Commands
 
 Copy or move skills between this library, your global Codex skills, and a project's skills without using symbolic links or junctions. See [AI Skills Library Commands](documentation/ai-skills-library-commands.md).
 
-### OpenSpec Commands
+### 2. OpenSpec Commands
 
 Use a structured workflow to explore, propose, apply, validate, and archive changes. See [OpenSpec Commands](documentation/openspec-commands.md).
+
+## Resources
+
+### Windows Sandbox Setup for Codex
+
+Video overview, official documentation, setup, permissions, and usage. See [Windows Sandbox Setup for Codex](https://github.com/SamuelAsherRivello/ai-skills-library/blob/master/documentation/setup-sandbox-windows.md).
 
 ## Credits
 
