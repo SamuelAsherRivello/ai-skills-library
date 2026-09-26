@@ -8,11 +8,11 @@ They let you grant only the workspace and connections a task needs, so you can e
 
 ## Windows Sandbox for Codex
 
-**Video**
+#### Video
 
 [![Watch the Docker Experience](https://i.ytimg.com/vi/erQnRkMrpls/hqdefault.jpg)](https://www.youtube.com/watch?v=erQnRkMrpls)
 
-**Docs**
+#### Links
 
 * [Docker Sandboxes installation guide](https://docs.docker.com/ai/sandboxes/install/)
 * [OpenAI Codex page](https://openai.com/codex/).
