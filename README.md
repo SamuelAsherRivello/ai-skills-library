@@ -27,9 +27,6 @@ Ask your AI to copy this library's `.agents/skills` folder into your chosen repo
 
 Ask your AI explicitly to install this library globally with symlinks. This is not the default installation method. See [Global Symlink Installation](documentation/global-symlink-installation.md).
 
-### 2. Use Commands
-
-Invoke the installed skills in Codex with their `$skill-name` commands.
 
 ## OpenSpec Workflow
 
