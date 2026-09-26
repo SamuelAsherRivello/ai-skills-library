@@ -2,57 +2,92 @@
 
 ## Overview
 
-AI sandboxes give coding agents an isolated environment where files, permissions, network access, and other capabilities can be deliberately scoped. They help you experiment, run tools, and work on code with a clearer boundary between agent activity and your host system.
+AI sandboxes reduce the blast radius of agent work by isolating tools, files, network access, and installed software from the host machine.
+
+They let you grant only the workspace and connections a task needs, so you can experiment and review changes with clearer boundaries.
 
 ## Windows Sandbox for Codex
 
-[Watch the Docker Sandboxes overview](https://www.youtube.com/watch?v=erQnRkMrpls).
+[![Watch the Docker Experience](https://i.ytimg.com/vi/erQnRkMrpls/hqdefault.jpg)](https://www.youtube.com/watch?v=erQnRkMrpls)
+
+[Watch the Docker Experience](https://www.youtube.com/watch?v=erQnRkMrpls).
 
 See the [official Docker Sandboxes installation guide](https://docs.docker.com/ai/sandboxes/install/) and [official OpenAI Codex page](https://openai.com/codex/).
 
 ### Solution
 
-Docker Sandboxes runs Codex inside an isolated microVM with its own filesystem, Docker daemon, and network. Only the workspace you explicitly share is visible to Codex.
+Docker Sandboxes runs Codex inside an isolated microVM with its own filesystem, Docker daemon, and network. The workspace you choose to share is mounted read-write; other host resources remain outside the sandbox.
 
-### Steps — Setup
+### 1. Setup
 
-1. **WSL in PowerShell:**
+Docker's current Windows instructions do not require Docker Desktop or WSL 2 to install or use `sbx`. The optional WSL and Docker Desktop steps below are useful when you also want Docker Desktop's WSL 2 workflow.
+
+1. **Install WSL 2 (optional).** WSL 2 provides a Linux environment on Windows without managing a separate virtual machine.
+
+   1. Open **PowerShell as Administrator**.
+   2. Run:
+
+      ```powershell
+      wsl --install
+      ```
+
+   3. Restart Windows if prompted.
+   4. Open a new PowerShell window and verify the installation:
+
+      ```powershell
+      wsl --version
+      ```
+
+   5. Finish the Linux-distribution setup if Windows prompts you to do so.
+
+2. **Install Docker Desktop (optional).** [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) is separate from Docker Sandboxes; install it only if you need Docker Desktop or its WSL 2 backend for other work.
+
+3. **Enable local-sandbox virtualization.** Local Docker Sandboxes on Windows require Windows 11, a 64-bit Intel or AMD processor, and Windows Hypervisor Platform. In **PowerShell as Administrator**, run:
 
    ```powershell
-   wsl --install
+   Enable-WindowsOptionalFeature -Online -FeatureName HypervisorPlatform -All
    ```
 
-2. **Windows:** Reboot the system when prompted.
-3. **Microsoft Store:** Download and run [Docker Desktop](https://apps.microsoft.com/detail/xp8cb7f8ddkntb).
-4. **Browser:** Follow the [Docker Sandboxes installation guide](https://docs.docker.com/ai/sandboxes/install/).
-5. **Docker account:** If Docker Desktop prompts for credentials, sign in or create a Docker account.
+   Restart Windows if prompted.
 
-### Steps — Usage
+4. **Install Docker Sandboxes.** In PowerShell, install the `sbx` command-line tool for your user:
 
-Open a new PowerShell window and run:
+   ```powershell
+   winget install -h Docker.sbx
+   ```
 
-```powershell
-cd d:/some/working/directory
-sbx policy         # Set the permissions policy as you like
-sbx                 # Opens the TUI
-```
+5. **Sign in to Docker.** Run the following command and complete the browser-based Docker sign-in:
 
-Exit the TUI, then run:
+   ```powershell
+   sbx login
+   ```
 
-```powershell
-sbx run codex
-```
+### 2. Usage
 
-In Codex, authenticate when prompted. You are now in a sandboxed Codex session.
+1. **Choose the project folder.** In a new PowerShell window, move to the repository or folder you want to share with the sandbox:
 
-From the Codex prompt, use:
+   ```powershell
+   cd D:\path\to\your\project
+   ```
 
-```text
-/permissions
-```
+2. **Review the sandbox dashboard and network policy.** Run `sbx` to open the interactive dashboard. On your first run, select a network preset; Docker recommends **Balanced** as a starting point. You can inspect the active rules later with:
 
-Set the permissions policy as you like, then test the boundaries:
+   ```powershell
+   sbx policy ls
+   ```
 
-- Ask Codex to create a new text file in the shared folder. This will work.
-- Ask Codex to create a new text file outside the shared folder. This will not work.
-- Ask Codex to check Google for the latest news. The result depends on the permissions you set.
+3. **Start Codex.** From the project folder, run:
+
+   ```powershell
+   sbx run codex
+   ```
+
+   If needed, complete the OpenAI sign-in on the host. Docker Sandboxes keeps those credentials out of the sandbox.
+
+4. **Start your session.** Codex can now work in the shared project folder while packages, images, containers, and other sandbox resources stay isolated from the rest of your host machine. Review its changes in your ordinary Git diff before committing.
+
+### Test the boundaries
+
+- Ask Codex to create a text file in the shared project folder. This works because that folder is mounted into the sandbox.
+- Ask Codex to create a text file elsewhere on the host. This does not work because it is not shared with the sandbox.
+- Ask Codex to access a website. The result depends on the network policy you selected.
