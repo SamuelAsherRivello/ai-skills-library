@@ -1,11 +1,11 @@
 ---
-name: openspec-finalize-sync-archive-commit-push
-description: After OpenSpec apply is complete, finish exactly one change by verifying readiness, syncing specs, archiving, committing only scoped files, and pushing normally when the remote branch is unchanged. Stop with clear blockers instead of creating release infrastructure, merging divergent branches, or sweeping unrelated work.
+name: openspec-macro-finalize-sync-archive-commit-push
+description: "Run an ordered macro of OpenSpec finalization skills after apply: verify readiness, sync specs, archive, commit scoped files, then push normally when the remote branch is unchanged. Stop with clear blockers instead of creating release infrastructure, merging divergent branches, or sweeping unrelated work."
 ---
 
-# OpenSpec Finalize: Sync, Archive, Commit, Push
+# OpenSpec Macro: Finalize, Sync, Archive, Commit, Push
 
-Use only when the user explicitly asks to finish one completed OpenSpec change through sync, archive, Git commit, and a normal push. This skill is the safe post-apply finalization workflow, not a substitute for implementation, review, release, tagging, pull requests, or remote branch integration.
+Use only when the user explicitly asks to finish one completed OpenSpec change through sync, archive, Git commit, and a normal push. This macro coordinates the applicable finalization skills in that required order: `openspec-sync-specs`, `openspec-archive-change`, and `openspec-commit-inclusive`, followed by a normal push. It is not a substitute for implementation, review, release, tagging, pull requests, or remote branch integration.
 
 The goal is one command after `openspec-apply-change` is done:
 
