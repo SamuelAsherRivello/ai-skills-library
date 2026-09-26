@@ -1,16 +1,20 @@
-# Windows Sandbox Setup for Codex
+# Sandbox Setup
 
 ## Overview
+
+AI sandboxes give coding agents an isolated environment where files, permissions, network access, and other capabilities can be deliberately scoped. They help you experiment, run tools, and work on code with a clearer boundary between agent activity and your host system.
+
+## Windows Sandbox for Codex
 
 [Watch the Docker Sandboxes overview](https://www.youtube.com/watch?v=erQnRkMrpls).
 
 See the [official Docker Sandboxes installation guide](https://docs.docker.com/ai/sandboxes/install/) and [official OpenAI Codex page](https://openai.com/codex/).
 
-## Solution
+### Solution
 
 Docker Sandboxes runs Codex inside an isolated microVM with its own filesystem, Docker daemon, and network. Only the workspace you explicitly share is visible to Codex.
 
-## Steps — Setup
+### Steps — Setup
 
 1. **WSL in PowerShell:**
 
@@ -23,7 +27,7 @@ Docker Sandboxes runs Codex inside an isolated microVM with its own filesystem, 
 4. **Browser:** Follow the [Docker Sandboxes installation guide](https://docs.docker.com/ai/sandboxes/install/).
 5. **Docker account:** If Docker Desktop prompts for credentials, sign in or create a Docker account.
 
-## Steps — Usage
+### Steps — Usage
 
 Open a new PowerShell window and run:
 
@@ -52,4 +56,3 @@ Set the permissions policy as you like, then test the boundaries:
 - Ask Codex to create a new text file in the shared folder. This will work.
 - Ask Codex to create a new text file outside the shared folder. This will not work.
 - Ask Codex to check Google for the latest news. The result depends on the permissions you set.
-

@@ -33,11 +33,11 @@ See [OpenSpec Commands](documentation/openspec-commands.md).
 
 ## Resources
 
-### Windows Sandbox Setup for Codex
+### Sandbox Setup
 
 Video overview, official documentation, setup, permissions, and usage.
 
-See [Windows Sandbox Setup for Codex](https://github.com/SamuelAsherRivello/ai-skills-library/blob/master/documentation/setup-sandbox-windows.md).
+See [Sandbox Setup](https://github.com/SamuelAsherRivello/ai-skills-library/blob/master/documentation/setup-sandbox-windows.md).
 
 ## Credits
 
