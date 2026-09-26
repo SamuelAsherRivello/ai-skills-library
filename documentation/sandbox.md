@@ -1,12 +1,13 @@
 # Sandbox Setup
 
-## Overview
+Set up Docker Sandboxes to run Codex in an isolated microVM while keeping your project folder available for review.
 
-AI sandboxes reduce the blast radius of agent work by isolating tools, files, network access, and installed software from the host machine.
+## Table of Contents
 
-They let you grant only the workspace and connections a task needs, so you can experiment and review changes with clearer boundaries.
+1. [Getting Started](#getting-started)
+2. [Details](#details)
 
-## Windows Sandbox for Codex
+## Getting Started
 
 **Video**
 
@@ -17,7 +18,7 @@ They let you grant only the workspace and connections a task needs, so you can e
 * [Docker Sandboxes installation guide](https://docs.docker.com/ai/sandboxes/install/)
 * [OpenAI Codex page](https://openai.com/codex/).
 
-### Solution
+### Overview
 
 Docker Sandboxes runs Codex inside an isolated microVM with its own filesystem, Docker daemon, and network. The workspace you choose to share is mounted read-write; other host resources remain outside the sandbox.
 
@@ -73,7 +74,22 @@ Docker's current Windows instructions do not require Docker Desktop or WSL 2 to 
    cd D:\path\to\your\project
    ```
 
-2. **Choose a startup network policy.** On the first run, `sbx` asks you to select a network preset. Make one of these choices before starting Codex:
+2. **Choose your skills setup.** Decide whether the sandbox continues your existing workflow or starts with a clean agent setup.
+
+   **Continue with your global skills (recommended)**
+
+   Import the skills already installed for Codex on your host. This copies skills from the global `.agents/skills` directory into Docker Sandboxes' shared skill store, where new Codex sandboxes can read them by default. Preview the import first, then import the skills:
+
+   ```powershell
+   sbx skills import --dry-run
+   sbx skills import
+   ```
+
+   **Start without global skills**
+
+   Start with a clean agent setup when you want to verify behavior without your existing global skills. Use `--skills=off` when you start Codex in step 4.
+
+3. **Choose a startup network policy.** On the first run, `sbx` asks you to select a network preset. Make one of these choices before starting Codex:
 
    **Start With Strict Policy**
 
@@ -97,18 +113,30 @@ Docker's current Windows instructions do not require Docker Desktop or WSL 2 to 
    sbx policy ls
    ```
 
-3. **Start Codex.** From the project folder, run:
+4. **Start Codex.** From the project folder, run one of these commands:
+
+   Continue with the imported global skills:
 
    ```powershell
    sbx run codex
    ```
 
+   Or start with a clean agent setup:
+
+   ```powershell
+   sbx run --skills=off codex
+   ```
+
    If needed, complete the OpenAI sign-in on the host. Docker Sandboxes keeps those credentials out of the sandbox.
 
-4. **Start your session.** Codex can now work in the shared project folder while packages, images, containers, and other sandbox resources stay isolated from the rest of your host machine. Review its changes in your ordinary Git diff before committing.
+5. **Start your session.** Codex can now work in the shared project folder while packages, images, containers, and other sandbox resources stay isolated from the rest of your host machine. Review its changes in your ordinary Git diff before committing.
 
 ### Test the boundaries
 
 - Ask Codex to create a text file in the shared project folder. This works because that folder is mounted into the sandbox.
 - Ask Codex to create a text file elsewhere on the host. This does not work because it is not shared with the sandbox.
 - Ask Codex to access a website. The result depends on the network policy you selected.
+
+## Details
+
+(TBD)
