@@ -141,6 +141,17 @@ Docker's current Windows instructions do not require Docker Desktop or WSL 2 to 
 1. Ask Codex to create a text file in the shared project folder. This works because that folder is mounted into the sandbox.
 2. Ask Codex to create a text file elsewhere on the host. This does not work because it is not shared with the sandbox.
 3. Ask Codex to access a website. The result depends on the network policy you selected.
+4. Open the Docker Sandboxes dashboard to inspect sandbox status, network activity, and filesystem rules:
+
+   ```powershell
+   sbx tui
+   ```
+
+   <a href="images/sandbox-tui.png">
+     <img src="images/sandbox-tui.png" alt="Docker Sandboxes TUI dashboard" width="400">
+   </a>
+
+   Select the image to open the full-size dashboard screenshot.
 
 You are now done.
 
