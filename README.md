@@ -25,13 +25,13 @@ Add all skills from https://github.com/SamuelAsherRivello/ai-skills-library to m
 
 Easily move skills between codex project and codex global.
 
-* See [AI Skills Library Commands](documentation/ai-skills-library-commands.md).
+* See [AI Skills Library Commands](documentation/ai-skills-library-commands.md)
 
 ### 2. OpenSpec
 
 Use a structured workflow to explore, propose, and apply new features in your project.
 
-* See [OpenSpec Commands](documentation/openspec-commands.md).
+* See [OpenSpec Commands](documentation/openspec-commands.md)
 
 ## Resources
 
@@ -39,7 +39,7 @@ Use a structured workflow to explore, propose, and apply new features in your pr
 
 Video overview, official documentation, setup, permissions, and usage.
 
-* See [Sandbox Setup](https://github.com/SamuelAsherRivello/ai-skills-library/blob/master/documentation/setup-sandbox-windows.md).
+* See [Sandbox Setup](https://github.com/SamuelAsherRivello/ai-skills-library/blob/master/documentation/setup-sandbox-windows.md)
 
 ## Credits
 
