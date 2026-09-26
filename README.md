@@ -13,23 +13,25 @@ Reusable Codex skills for local projects and teams.
 
 ## Getting Started
 
-> Tell your AI agent:
->
-> `Add all skills from https://github.com/SamuelAsherRivello/ai-skills-library to my global Codex skills.`
+### 1. Tell your AI agent:
+
+```powershell
+Add all skills from https://github.com/SamuelAsherRivello/ai-skills-library to my global Codex skills.
+```
 
 ## Details
 
-### 1. AI Skills Library Commands
+### 1. AI Skills Library
 
-Copy or move skills between this library, your global Codex skills, and a project's skills without using symbolic links or junctions.
+Easily move skills between codex project and codex global.
 
-See [AI Skills Library Commands](documentation/ai-skills-library-commands.md).
+* See [AI Skills Library Commands](documentation/ai-skills-library-commands.md).
 
-### 2. OpenSpec Commands
+### 2. OpenSpec
 
-Use a structured workflow to explore, propose, apply, validate, and archive changes.
+Use a structured workflow to explore, propose, and apply new features in your project.
 
-See [OpenSpec Commands](documentation/openspec-commands.md).
+* See [OpenSpec Commands](documentation/openspec-commands.md).
 
 ## Resources
 
@@ -37,7 +39,7 @@ See [OpenSpec Commands](documentation/openspec-commands.md).
 
 Video overview, official documentation, setup, permissions, and usage.
 
-See [Sandbox Setup](https://github.com/SamuelAsherRivello/ai-skills-library/blob/master/documentation/setup-sandbox-windows.md).
+* See [Sandbox Setup](https://github.com/SamuelAsherRivello/ai-skills-library/blob/master/documentation/setup-sandbox-windows.md).
 
 ## Credits
 
