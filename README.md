@@ -13,11 +13,24 @@ Reusable Codex skills for local projects and teams.
 
 ## Getting Started
 
-### 1. Tell your AI agent:
+### 1. Install Commands
+
+Tell your AI agent:
 
 ```
 Add all skills from https://github.com/SamuelAsherRivello/ai-skills-library to my global Codex skills.
- ```
+```
+
+### 1. Update Commands
+
+Over time the library may change with new features.
+
+Run command:
+
+```
+$ai-skills-library-pull all
+```
+
 
 ## Details
 
