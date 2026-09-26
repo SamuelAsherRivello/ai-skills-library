@@ -12,7 +12,9 @@ Reusable Codex skills for local projects and teams.
 
 ## Getting Started
 
-Tell your AI agent: “Add all skills from [https://github.com/SamuelAsherRivello/ai-skills-library](https://github.com/SamuelAsherRivello/ai-skills-library) to my global Codex skills.”
+> Tell your AI agent:
+>
+> `Add all skills from https://github.com/SamuelAsherRivello/ai-skills-library to my global Codex skills.`
 
 ## Details
 
