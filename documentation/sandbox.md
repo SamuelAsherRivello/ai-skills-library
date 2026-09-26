@@ -18,6 +18,8 @@ Set up Docker Sandboxes to run Codex in an isolated microVM while keeping your p
 * [Docker Sandboxes installation guide](https://docs.docker.com/ai/sandboxes/install/)
 * [OpenAI Codex page](https://openai.com/codex/).
 
+## Details
+
 ### Overview
 
 Docker Sandboxes runs Codex inside an isolated microVM with its own filesystem, Docker daemon, and network. The workspace you choose to share is mounted read-write; other host resources remain outside the sandbox.
@@ -131,12 +133,8 @@ Docker's current Windows instructions do not require Docker Desktop or WSL 2 to 
 
 5. **Start your session.** Codex can now work in the shared project folder while packages, images, containers, and other sandbox resources stay isolated from the rest of your host machine. Review its changes in your ordinary Git diff before committing.
 
-### Test the boundaries
+### 3. Test Your Results
 
-- Ask Codex to create a text file in the shared project folder. This works because that folder is mounted into the sandbox.
-- Ask Codex to create a text file elsewhere on the host. This does not work because it is not shared with the sandbox.
-- Ask Codex to access a website. The result depends on the network policy you selected.
-
-## Details
-
-(TBD)
+1. Ask Codex to create a text file in the shared project folder. This works because that folder is mounted into the sandbox.
+2. Ask Codex to create a text file elsewhere on the host. This does not work because it is not shared with the sandbox.
+3. Ask Codex to access a website. The result depends on the network policy you selected.
