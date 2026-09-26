@@ -21,7 +21,9 @@ Tell your AI agent:
 Add all skills from https://github.com/SamuelAsherRivello/ai-skills-library to my global Codex skills.
 ```
 
-### 1. Reinstall Latest Commands
+### 1. Update Commands
+
+Over time the library may change with new features.
 
 Run command:
 
