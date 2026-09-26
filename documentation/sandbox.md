@@ -6,6 +6,9 @@ Set up Docker Sandboxes to run Codex in an isolated microVM while keeping your p
 
 1. [Getting Started](#getting-started)
 2. [Details](#details)
+   1. [Setup](#1-setup)
+   2. [Usage](#2-usage)
+   3. [Test Your Results](#3-test-your-results)
 
 ## Getting Started
 
@@ -138,3 +141,7 @@ Docker's current Windows instructions do not require Docker Desktop or WSL 2 to 
 1. Ask Codex to create a text file in the shared project folder. This works because that folder is mounted into the sandbox.
 2. Ask Codex to create a text file elsewhere on the host. This does not work because it is not shared with the sandbox.
 3. Ask Codex to access a website. The result depends on the network policy you selected.
+
+You are now done.
+
+Enjoy!
