@@ -1,0 +1,11 @@
+---
+config:
+  theme: dark
+---
+flowchart LR
+    start((Start)) --> explore
+    explore["Explore (Optional)"] --> propose[Propose]
+    propose --> grill["Grill Me (Optional)"]
+    grill --> apply[Apply]
+    apply --> archive[Archive]
+    archive --> explore

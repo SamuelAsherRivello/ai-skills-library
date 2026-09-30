@@ -1,0 +1,21 @@
+{
+  "repository": "https://github.com/Fission-AI/OpenSpec",
+  "release": "v1.13.2",
+  "revision": "db2309783547a14e150dbcbfc19120e4028446c3",
+  "source": "skills/<name>/SKILL.md",
+  "updated_skills": [
+    "openspec-apply-change",
+    "openspec-archive-change",
+    "openspec-explore",
+    "openspec-propose",
+    "openspec-sync-specs",
+    "openspec-update-change"
+  ],
+  "preserved_custom_skills": [
+    "openspec-commit-inclusive",
+    "openspec-dashboard",
+    "openspec-grill-me",
+    "openspec-macro-finalize-sync-archive-commit-push",
+    "openspec-release-version"
+  ]
+}
