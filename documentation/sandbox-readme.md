@@ -22,11 +22,11 @@ Set up Docker Sandboxes to run Codex in an isolated microVM while keeping your p
 
 #### Links
 
-* [OpenAI Codex page](https://openai.com/codex/).
-* [Docker Sandboxes installation](https://docs.docker.com/ai/sandboxes/install/)
-* [Docker Sandboxes security](https://docs.docker.com/ai/sandboxes/security/defaults/)
-* [Docker Sandboxes network](https://docs.docker.com/ai/sandboxes/security/policy/)
-* [Docker Sandboxes authentication](https://docs.docker.com/ai/sandboxes/agents/codex/)
+* [OpenAI Codex - Overview](https://openai.com/codex/).
+* [Docker Sandboxes - Installation](https://docs.docker.com/ai/sandboxes/install/)
+* [Docker Sandboxes - Security](https://docs.docker.com/ai/sandboxes/security/defaults/)
+* [Docker Sandboxes - Network](https://docs.docker.com/ai/sandboxes/security/policy/)
+* [Docker Sandboxes - Authentication](https://docs.docker.com/ai/sandboxes/agents/codex/)
 
 ## Details
 
