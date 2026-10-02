@@ -2,7 +2,7 @@
 
 ![AI Skills Library preview](documentation/marketing/images/youtube-thumbnail.png)
 
-# AI Skills Library (AISL)
+# AI Skills Library
 
 Reusable skills for Codex, Claude Code, and other coding agents.
 
