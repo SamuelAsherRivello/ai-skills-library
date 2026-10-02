@@ -10,25 +10,101 @@ Docker Sandboxes (`sbx`) with Codex.
 
 ## Start with the right workspace
 
-- For a new project, create a named mountless sandbox:
-  `sbx create --name <name> codex`
-- Reconnect to it with `sbx run --name <name>`.
-- For an existing repository, run `sbx run codex` from that repository. The
-  current directory is mounted read-write, so inspect `git diff` before making
-  commits.
-- Do not mount a broad parent directory containing unrelated repositories when
-  a narrower project path is available.
-- Use clone mode when the agent must work on an isolated copy of an existing
-  repository rather than the host working tree.
+- For a mounted workspace, use the narrowest target folder and start `sbx` from
+  that folder. Do not mount its parent or any unrelated folders. The sandbox
+  can access host files only through explicit mounts.
+- Use `--skills=off` by default to avoid mounting the shared host skill store.
+  Enable shared skills only when the user asks for them.
+- Use clone mode when the agent must work on an isolated copy rather than the
+  host working tree. Explain which workspace mode is being used before launch.
+- Start with Docker's deny-all network preset. Inspect effective network rules,
+  including kit-provided rules, and allow only destinations the chosen model and
+  harness need. Do not allow package registries by default. Deny rules take
+  precedence over kit allows.
+- Local `sbx policy` rules manage network access. Filesystem mount allowlists
+  require Docker organization governance; when available, restrict read/write
+  access to the intended target folder. Without organization governance, limit
+  access by mounting only that folder.
 
-## Installation and authentication
+## Installation and Codex subscription authentication
 
 On Windows, check Windows 11, 64-bit Intel/AMD, and Windows Hypervisor Platform.
 Install the current-user CLI with `winget install -h Docker.sbx`, or use the
 official Docker release MSI when WinGet is unavailable. Then run `sbx login`.
-For Codex/OpenAI authentication, use the host-side flow started by
-`sbx run codex` or configure `sbx secret set openai --oauth`; never request or
-print API keys, tokens, or other credentials.
+
+Before creating or starting a Codex sandbox, check whether a global OpenAI
+credential is already configured. Echo the exact command to the user before
+running it, then execute:
+
+```text
+sbx secret ls --global --service openai --quiet
+```
+
+This lists only the credential name, not its value. If no `openai` entry is
+listed, stop before running `sbx create` or `sbx run`. Tell the human that Codex
+needs host-side OpenAI authentication and ask them to complete this command in
+their own terminal:
+
+```text
+sbx secret set openai --oauth
+```
+
+Wait for the human to confirm the browser sign-in completed, then repeat the
+metadata-only check. OAuth is stored globally on the host and can be reused
+across sessions and sandboxes. The sandbox proxy authenticates model requests;
+the raw OAuth credential stays out of the project and sandbox filesystem.
+
+The listing confirms only that an OpenAI credential entry exists; it does not
+show whether it is OAuth or an API key. If the user specifically wants their
+Codex subscription, ask them to confirm the entry is the OpenAI account OAuth
+credential before proceeding. Never request, print, copy, or inspect credential
+values. Do not use host `~/.codex` files as a substitute for Docker's secret
+store.
+
+## Visible command execution
+
+For every shell command used to set up, inspect, start, or manage a sandbox,
+print the exact command to the user immediately before executing it. Print
+multiline commands line by line in their executed order. Do not hide commands in
+scripts, aliases, or compound invocations. Include read-only checks such as
+`sbx secret ls`, `sbx policy ls`, and `sbx ls`. Never echo secret values or
+commands containing credentials.
+
+Before running `sbx run` or `sbx create`, summarize the workspace path, skills
+mount setting, network policy, and OpenAI credential check result. If
+authentication is missing or subscription OAuth is unconfirmed, do not start
+the sandbox; ask the human to complete or confirm authentication first.
+
+## Locked-down launch procedure
+
+For a project workspace, install required npm dependencies in the target folder
+on the host before launch. Do not give the sandbox npm registry access to install
+packages. Echo and run the following host-side checks in order:
+
+```text
+sbx policy init deny-all
+sbx policy ls --type network --wide
+```
+
+Tell the human that `sbx policy init deny-all` changes the default network
+preset for all local sandboxes on this host. Review the listed rules and remove
+stale broad allows that the selected Codex model and harness do not require.
+Organization policy may further restrict access. Check the sandbox's effective
+kit rules after it starts; add explicit per-sandbox denies for any unnecessary
+destination, since deny rules override kit allows.
+
+For a Windows PowerShell project at `D:\path\to\project`, a typical launch is:
+
+```powershell
+Set-Location -LiteralPath 'D:\path\to\project'
+sbx run --name project-locked --skills=off --deny-network npmjs.org --deny-network '*.npmjs.org' codex .
+```
+
+Echo each line before executing it. Use the actual target path and a sandbox
+name that is not already in use. This mounts only the target folder, turns off
+the shared skills mount, and blocks npm registry domains even if another rule
+would allow them. Keep the sandbox stopped until the OpenAI subscription OAuth
+check above is complete.
 
 ## Shared skills
 
@@ -62,3 +138,6 @@ skills mount mode and may need recreation to change it.
 Prefer current Docker documentation for version-sensitive syntax:
 https://docs.docker.com/ai/sandboxes/agents/codex/
 https://docs.docker.com/ai/sandboxes/workflows/agent-skills/
+https://docs.docker.com/ai/sandboxes/configuration/credentials/
+https://docs.docker.com/ai/sandboxes/security/policy/
+https://docs.docker.com/reference/cli/sbx/secret/ls/

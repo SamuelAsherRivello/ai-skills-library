@@ -20,6 +20,9 @@ Set up Docker Sandboxes to run Codex in an isolated microVM while keeping your p
 
 * [Docker Sandboxes installation guide](https://docs.docker.com/ai/sandboxes/install/)
 * [OpenAI Codex page](https://openai.com/codex/).
+* [Docker Sandboxes security defaults](https://docs.docker.com/ai/sandboxes/security/defaults/)
+* [Docker Sandboxes local network policy](https://docs.docker.com/ai/sandboxes/security/policy/)
+* [Docker Sandboxes Codex authentication](https://docs.docker.com/ai/sandboxes/agents/codex/)
 
 ## Details
 
@@ -79,68 +82,50 @@ Docker's current Windows instructions do not require Docker Desktop or WSL 2 to 
    cd D:\path\to\your\project
    ```
 
-2. **Choose your skills setup.** Decide whether the sandbox continues your existing workflow or starts with a clean agent setup.
+2. **Prepare the target folder.** Install any npm dependencies you need on the host, in this project folder, before starting the sandbox. The workflow intentionally does not give the sandbox access to npm registries. Do not start `sbx` from a parent folder that contains other projects.
 
-   **Continue with your global skills (recommended)**
-
-   Import the skills already installed for Codex on your host. This copies skills from the global `.agents/skills` directory into Docker Sandboxes' shared skill store, where new Codex sandboxes can read them by default. Preview the import first, then import the skills:
-
-   ```powershell
-   sbx skills import --dry-run
-   sbx skills import
-   ```
-
-   **Start without global skills**
-
-   Start with a clean agent setup when you want to verify behavior without your existing global skills. Use `--skills=off` when you start Codex in step 4.
-
-3. **Choose a startup network policy.** On the first run, `sbx` asks you to select a network preset. Make one of these choices before starting Codex:
-
-   **Start With Strict Policy**
-
-   Choose Docker's **Locked Down** preset to block outbound network traffic until you explicitly allow each destination. This is a good choice when you already know exactly which services the project needs, but expect many tools, package installs, and integrations to fail until you add manual policy rules.
+3. **Set the strict network default.** Choose deny-all so outbound network access starts blocked:
 
    ```powershell
    sbx policy init deny-all
    ```
 
-   **Start With Loose Policy (recommended)**
+   Do not add broad network rules. The Codex kit may provide the model/harness endpoints needed for Codex. After starting the sandbox, inspect its kit rules with `sbx policy ls project-locked --source kit --type network --wide` and verify they are needed for the selected model and harness. Do not allow npm registry domains. The start command adds explicit npm registry denies; deny rules take precedence over kit allows. When a destination is blocked, decline an access request unless you have verified that the selected Codex model/harness needs it.
 
-   Choose Docker's **Open** preset to allow all outbound network traffic. This is recommended for getting a new project working first. After you have confirmed the project works, increase security by replacing the broad access with a more restrictive policy and only the required allow rules.
+   Check the effective global network rules with `sbx policy ls --type network --wide` and remove any old broad allow rules that this workflow does not need. The `deny-all` preset blocks destinations without an allow rule, but previously added allow rules can still apply.
 
-   ```powershell
-   sbx policy init allow-all
-   ```
-
-   These presets apply to local sandboxes on the machine. Organization-managed policies can still restrict the effective access. You can inspect the active rules later with:
+4. **Provide Codex authentication through the host CLI.** Set up OpenAI OAuth on the host (or use the API-key prompt if your account uses an API key):
 
    ```powershell
-   sbx policy ls
+   sbx secret set openai --oauth
    ```
 
-4. **Start Codex.** From the project folder, run one of these commands:
+   For API-key authentication, run `sbx secret set openai` and enter the key at its secure prompt. Do not put the key itself in the command arguments.
 
-   Continue with the imported global skills:
+   This stores authentication with Docker Sandboxes on the host. The proxy supplies authenticated requests to the model service; the raw credential is not placed in the project, an environment variable, or the sandbox filesystem. Do not paste a raw API key into a command, project file, or prompt.
+
+5. **Start a sandbox with only the target folder mounted.** From that folder, run:
 
    ```powershell
-   sbx run codex
+   sbx run --name project-locked --skills=off --deny-network npmjs.org --deny-network "*.npmjs.org" codex .
    ```
 
-   Or start with a clean agent setup:
+   `.` mounts only the current folder and its descendants. Docker Sandboxes does not expose other host folders unless you explicitly mount them. `--skills=off` also disables the separate shared skills mount. The sandbox's own VM filesystem remains available to its processes; this restriction concerns host folders. Local filesystem policy controls are not configured with the `sbx policy` CLI; if organization governance is available, set its filesystem read/write allow rules to this target path. Review the effective policy before relying on the boundary:
 
    ```powershell
-   sbx run --skills=off codex
+   sbx policy ls project-locked --wide
    ```
 
-   If needed, complete the OpenAI sign-in on the host. Docker Sandboxes keeps those credentials out of the sandbox.
-
-5. **Start your session.** Codex can now work in the shared project folder while packages, images, containers, and other sandbox resources stay isolated from the rest of your host machine. Review its changes in your ordinary Git diff before committing.
+6. **Work in the sandbox.** Codex can edit the mounted target folder. Any npm dependencies must already be present in that folder (for example, its local `node_modules`) before launch. Do not approve new network destinations unless they are required by the selected Codex model/harness and you have checked what they are.
 
 ### 3. Test Your Results
 
-1. Ask Codex to create a text file in the shared project folder. This works because that folder is mounted into the sandbox.
-2. Ask Codex to create a text file elsewhere on the host. This does not work because it is not shared with the sandbox.
-3. Ask Codex to access a website. The result depends on the network policy you selected.
+Run each check from the Codex prompt inside the sandbox:
+
+1. **Test File Access** — `Try to read a file from a host folder outside the mounted target folder (for example, a sibling folder), then create test.txt in the current folder. Report whether the outside read was blocked and whether the in-folder write succeeded. Do not copy or print outside file contents.`
+2. **Test Network Access** — `Check that the selected Codex model/harness can still make a request, then try to reach https://registry.npmjs.org. Report whether the model request works and the npm registry request is blocked.`
+3. **Test Secrets Access** — `Check whether an OpenAI API key or OAuth token is readable from environment variables, project files, or ~/.codex/auth.json. Report only whether a raw credential is accessible; never print, copy, or transmit any credential value. The expected result is that no raw credential is readable in the sandbox.`
+
 4. Open the Docker Sandboxes dashboard to inspect sandbox status, network activity, and filesystem rules:
 
    ```powershell
