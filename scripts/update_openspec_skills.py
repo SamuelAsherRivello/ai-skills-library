@@ -1,9 +1,13 @@
-"""Refresh existing upstream-owned skills from an official OpenSpec checkout."""
+"""Merge existing upstream-owned OpenSpec skills against their recorded baselines."""
 
 import argparse
 import json
 from pathlib import Path
 import re
+import subprocess
+import tempfile
+
+REPOSITORY_URL = "https://github.com/Fission-AI/OpenSpec"
 
 
 def frontmatter(text):
@@ -18,46 +22,98 @@ def field(metadata, key):
     return match.group(1).strip().strip("\"'") if match else None
 
 
+def git_show(repository, revision, name):
+    path = f"{revision}:skills/{name}/SKILL.md"
+    result = subprocess.run(
+        ["git", "-C", str(repository), "show", path],
+        check=False, capture_output=True,
+    )
+    if result.returncode:
+        raise ValueError(f"Cannot read OpenSpec baseline {revision} for {name}: {result.stderr.decode(errors='replace').strip()}")
+    return result.stdout
+
+
+def merge(base, local, upstream):
+    with tempfile.TemporaryDirectory(prefix="openspec-skill-merge-") as directory:
+        root = Path(directory)
+        local_file, base_file, upstream_file = (root / item for item in ("local", "base", "upstream"))
+        local_file.write_bytes(local)
+        base_file.write_bytes(base)
+        upstream_file.write_bytes(upstream)
+        result = subprocess.run(
+            ["git", "merge-file", "--stdout", str(local_file), str(base_file), str(upstream_file)],
+            check=False, capture_output=True,
+        )
+        if result.returncode > 1:
+            raise RuntimeError(result.stderr.decode(errors="replace").strip() or "git merge-file failed")
+        return result.stdout, result.returncode == 0
+
+
 def refresh(repository, upstream, tag, revision):
     if not re.fullmatch(r"v?\d+\.\d+\.\d+", tag):
         raise ValueError("Expected a stable OpenSpec release tag")
     if not re.fullmatch(r"[0-9a-f]{40}", revision):
         raise ValueError("Expected the full upstream commit SHA")
-    skills = repository / ".agents" / "skills"
-    updates = []
-    preserved = []
-    # Validate every candidate before writing any files. Never create a skill.
-    for target in sorted(skills.glob("openspec-*/SKILL.md")):
+
+    skills_root = repository / ".agents" / "skills" / "openspec"
+    record_path = repository / "documentation" / "openspec-upstream.json"
+    record = json.loads(record_path.read_text(encoding="utf-8")) if record_path.exists() else {}
+    baselines = dict(record.get("skill_revisions", {}))
+    legacy_revision = record.get("revision")
+    pending = []
+    outcomes = {}
+    preserved_custom = []
+
+    # Inspect and merge all candidates before writing any skill files.
+    for target in sorted(skills_root.glob("openspec-*/SKILL.md")):
         if target.is_symlink() or target.parent.is_symlink():
             raise ValueError(f"Refusing linked skill: {target}")
         name = target.parent.name
-        existing = frontmatter(target.read_text(encoding="utf-8"))
-        if field(existing, "author") != "openspec":
-            preserved.append(name)
+        local = target.read_bytes()
+        metadata = frontmatter(local.decode("utf-8"))
+        if field(metadata, "author") != "openspec":
+            preserved_custom.append(name)
+            outcomes[name] = "preserved-custom"
             continue
+
+        base_revision = baselines.get(name) or legacy_revision
+        if not base_revision:
+            raise ValueError(f"No recorded upstream baseline for {name}")
         source = upstream / "skills" / name / "SKILL.md"
         if not source.is_file() or source.is_symlink() or source.parent.is_symlink():
-            raise ValueError(f"Upstream skill is missing or linked: {name}")
-        content = source.read_bytes()
-        metadata = frontmatter(content.decode("utf-8"))
-        if field(metadata, "name") != name or field(metadata, "author") != "openspec":
+            outcomes[name] = "missing-upstream"
+            baselines.setdefault(name, base_revision)
+            continue
+        incoming = source.read_bytes()
+        upstream_metadata = frontmatter(incoming.decode("utf-8"))
+        if field(upstream_metadata, "name") != name or field(upstream_metadata, "author") != "openspec":
             raise ValueError(f"Upstream skill identity mismatch: {name}")
-        if not field(metadata, "description"):
+        if not field(upstream_metadata, "description"):
             raise ValueError(f"Upstream description missing: {name}")
-        updates.append((target, content))
-    if not updates:
-        raise ValueError("No existing upstream-owned OpenSpec skills found")
-    for target, content in updates:
+
+        base = git_show(upstream, base_revision, name)
+        merged, clean = merge(base, local, incoming)
+        if clean:
+            pending.append((target, merged, name))
+            baselines[name] = revision
+            outcomes[name] = "updated" if merged != local else "unchanged"
+        else:
+            baselines.setdefault(name, base_revision)
+            outcomes[name] = "conflict"
+
+    for target, content, _ in pending:
         target.write_bytes(content)
-    record = {
-        "repository": "https://github.com/Fission-AI/OpenSpec",
+
+    record.update({
+        "repository": REPOSITORY_URL,
         "release": tag,
         "revision": revision,
         "source": "skills/<name>/SKILL.md",
-        "updated_skills": [target.parent.name for target, _ in updates],
-        "preserved_custom_skills": preserved,
-    }
-    record_path = repository / "documentation" / "openspec-upstream.json"
+        "skill_revisions": dict(sorted(baselines.items())),
+        "updated_skills": [name for name, result in outcomes.items() if result == "updated"],
+        "preserved_custom_skills": sorted(preserved_custom),
+        "results": dict(sorted(outcomes.items())),
+    })
     record_path.parent.mkdir(parents=True, exist_ok=True)
     record_path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
     return record

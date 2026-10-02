@@ -2,7 +2,7 @@
 
 # AI Skills Library (AISL)
 
-Reusable Codex skills for local projects and teams.
+Reusable skills for Codex, Claude Code, and other coding agents.
 
 ## Table of Contents
 
@@ -13,37 +13,37 @@ Reusable Codex skills for local projects and teams.
 
 ## Getting Started
 
-### 1. Install Commands
+### 1. Get the skills
 
-Keep the library checkout, global Codex skills, and project-local skills as
-separate copies. After adding the skills from this repository to Codex's
-global skills, use the explicit copy commands below to update them.
+From your project directory, run:
 
-**Prompt AI to install from the repository:**
-
-```
-Add these skills to your AI global skills:
-
-- https://github.com/SamuelAsherRivello/ai-skills-library/
+```sh
+npx skills@latest add SamuelAsherRivello/ai-skills-library --copy
 ```
 
-### 2. Update Commands
+Choose the skills you want and the agents to install them for, including Codex and Claude Code. Project-local installation is the recommended default. `--copy` installs ordinary files you can edit.
 
-Copy updated library skills into global Codex skills when you choose:
+To install globally instead, add `--global`:
 
-**Prompt AI:**
-
-```
-$ai-skills-library-pull all
+```sh
+npx skills@latest add SamuelAsherRivello/ai-skills-library --copy --global
 ```
 
-Pull copies files; it does not create filesystem links or perform Git
-operations. Existing destinations with different content are reported as
-conflicts and are left unchanged unless you explicitly authorize replacement.
+### 2. Update the skills
 
-See [AI Skills Library Commands](documentation/ai-skills-commands-readme.md)
-for the full copy lifecycle, including project promotion and demotion.
+For project-local installations:
 
+```sh
+npx skills update --project
+```
+
+For global installations:
+
+```sh
+npx skills update --global
+```
+
+For the manual copy workflow between this repository and Codex user/project skills, see [AI Skills Library Commands](documentation/ai-skills-commands-readme.md).
 
 ## Details
 

@@ -17,5 +17,13 @@
     "openspec-grill-me",
     "openspec-macro-finalize-sync-archive-commit-push",
     "openspec-release-version"
-  ]
+  ],
+  "skill_revisions": {
+    "openspec-explore": "db2309783547a14e150dbcbfc19120e4028446c3",
+    "openspec-apply-change": "db2309783547a14e150dbcbfc19120e4028446c3",
+    "openspec-update-change": "db2309783547a14e150dbcbfc19120e4028446c3",
+    "openspec-sync-specs": "db2309783547a14e150dbcbfc19120e4028446c3",
+    "openspec-archive-change": "db2309783547a14e150dbcbfc19120e4028446c3",
+    "openspec-propose": "db2309783547a14e150dbcbfc19120e4028446c3"
+  }
 }

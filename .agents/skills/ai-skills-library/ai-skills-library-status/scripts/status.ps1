@@ -38,14 +38,24 @@ function Get-SkillSignature {
 }
 
 function Get-SkillSignatures {
-    param([string]$SkillsRoot)
+    param([string]$SkillsRoot, [switch]$Categorized)
 
     $skills = @{}
     if (-not (Test-Path -LiteralPath $SkillsRoot -PathType Container)) {
         return $skills
     }
 
-    Get-ChildItem -LiteralPath $SkillsRoot -Directory -Force | ForEach-Object {
+    $candidates = if ($Categorized) {
+        foreach ($category in @('ai-skills-create', 'ai-skills-library', 'openspec', 'docker-sandbox')) {
+            $categoryPath = Join-Path $SkillsRoot $category
+            if (Test-Path -LiteralPath $categoryPath -PathType Container) {
+                Get-ChildItem -LiteralPath $categoryPath -Directory -Force
+            }
+        }
+    }
+    else { Get-ChildItem -LiteralPath $SkillsRoot -Directory -Force }
+
+    $candidates | ForEach-Object {
         if (Test-Path -LiteralPath (Join-Path $_.FullName 'SKILL.md') -PathType Leaf) {
             $skills[$_.Name] = Get-SkillSignature -SkillPath $_.FullName
         }
@@ -81,7 +91,7 @@ $libraryRootPath = Resolve-ExistingDirectory -Path $LibraryRoot -Label 'Library 
 $projectRootPath = Resolve-ExistingDirectory -Path $ProjectRoot -Label 'Project root'
 $globalSkillsPath = Resolve-ExistingDirectory -Path $GlobalSkillsPath -Label 'Global skills'
 
-$repoSkills = Get-SkillSignatures -SkillsRoot (Join-Path $libraryRootPath '.agents\skills')
+$repoSkills = Get-SkillSignatures -SkillsRoot (Join-Path $libraryRootPath '.agents\skills') -Categorized
 $globalSkills = Get-SkillSignatures -SkillsRoot $globalSkillsPath
 $projectSkills = Get-SkillSignatures -SkillsRoot (Join-Path $projectRootPath '.agents\skills')
 $globalDifferences = @(Get-DifferenceLines -Reference $repoSkills -Candidate $globalSkills)

@@ -27,7 +27,7 @@ not from a Codex session already inside the sandbox.
 Require a sandbox name when more than one sandbox exists. From host PowerShell:
 
 ```powershell
-.\.agents\skills\docker-sandboxes-status\scripts\status.ps1 -Sandbox <name>
+.\.agents\skills\docker-sandbox\docker-sandboxes-status\scripts\status.ps1 -Sandbox <name>
 ```
 
 The script calls only read-only `sbx` commands. It never prints credential
