@@ -1,4 +1,8 @@
-# Sandbox Setup
+## ChatGPT
+
+[ChatGPT app sandbox](https://learn.chatgpt.com/docs/sandboxing)
+
+## Docker
 
 Set up Docker Sandboxes to run Codex in an isolated microVM while keeping your project folder available for review.
 
@@ -82,15 +86,16 @@ Docker's current Windows instructions do not require Docker Desktop or WSL 2 to 
    cd D:\path\to\your\project
    ```
 
-2. **Prepare the target folder.** Install any npm dependencies you need on the host, in this project folder, before starting the sandbox. The workflow intentionally does not give the sandbox access to npm registries. Do not start `sbx` from a parent folder that contains other projects.
+2. **Prepare the target folder.** Install any npm dependencies you need on the host, in this project folder, before starting the sandbox. The default Codex kit may still allow the sandbox to reach npm registries, so this is a workflow preference rather than a network boundary. Do not start `sbx` from a parent folder that contains other projects.
 
-3. **Set the strict network default.** Choose deny-all so outbound network access starts blocked:
+3. **Reset the network policy and choose the strict preset.** This resets local policy rules and stops any running sandboxes. Run:
 
    ```powershell
-   sbx policy init deny-all
+   # Reset Policy Rules - At prompt choose "3. Locked Down"
+   sbx policy reset
    ```
 
-   Do not add broad network rules. The Codex kit may provide the model/harness endpoints needed for Codex. After starting the sandbox, inspect its kit rules with `sbx policy ls project-locked --source kit --type network --wide` and verify they are needed for the selected model and harness. Do not allow npm registry domains. The start command adds explicit npm registry denies; deny rules take precedence over kit allows. When a destination is blocked, decline an access request unless you have verified that the selected Codex model/harness needs it.
+   The Locked Down preset controls the sandbox policy, but the built-in Codex kit also contributes network allows. Docker's Codex kit includes `registry.npmjs.org` and other setup/package-source destinations, so npm access may work even when no Codex command has been run yet. Inspect the kit rules with `sbx policy ls my-locked-project --source kit --type network --wide` and verify actual access in the network log. Do not assume that this preset limits egress to model/harness endpoints alone. If you need a stricter allowlist, add explicit denials for destinations the workflow does not need or use organization governance to enforce a centrally managed policy.
 
    Check the effective global network rules with `sbx policy ls --type network --wide` and remove any old broad allow rules that this workflow does not need. The `deny-all` preset blocks destinations without an allow rule, but previously added allow rules can still apply.
 
@@ -104,39 +109,83 @@ Docker's current Windows instructions do not require Docker Desktop or WSL 2 to 
 
    This stores authentication with Docker Sandboxes on the host. The proxy supplies authenticated requests to the model service; the raw credential is not placed in the project, an environment variable, or the sandbox filesystem. Do not paste a raw API key into a command, project file, or prompt.
 
-5. **Start a sandbox with only the target folder mounted.** From that folder, run:
+5. **Start a sandbox with only the target folder mounted.** From that folder, choose whether to share the host's skills store:
 
    ```powershell
-   sbx run --name project-locked --skills=off --deny-network npmjs.org --deny-network "*.npmjs.org" codex .
+   # Setup with skills
+   sbx run --name my-locked-project --skills=readonly codex .
+   #
+   # Setup without skills
+   sbx run --name my-locked-project --skills=off codex .
    ```
 
-   `.` mounts only the current folder and its descendants. Docker Sandboxes does not expose other host folders unless you explicitly mount them. `--skills=off` also disables the separate shared skills mount. The sandbox's own VM filesystem remains available to its processes; this restriction concerns host folders. Local filesystem policy controls are not configured with the `sbx policy` CLI; if organization governance is available, set its filesystem read/write allow rules to this target path. Review the effective policy before relying on the boundary:
+> **NOTE:** The Codex version in the sandbox image may lag the latest release, so Codex may offer an update. You can continue without updating. To update it, follow [Docker's agent update instructions](https://docs.docker.com/ai/sandboxes/usage/#updating-agents).
+
+   `.` mounts only the current folder and its descendants. Docker Sandboxes does not expose other host folders unless you explicitly mount them. `--skills=readonly` mounts the shared skills store read-only; `--skills=off` leaves it unmounted. The sandbox's own VM filesystem remains available to its processes; this restriction concerns host folders. Local filesystem policy controls are not configured with the `sbx policy` CLI; if organization governance is available, set its filesystem read/write allow rules to this target path.
+
+6. **Inspect the policy from the host (Optional).** Leave the sandboxed Codex session open. Open a **separate PowerShell window on the host**—not the Codex prompt inside the sandbox—and run:
 
    ```powershell
-   sbx policy ls project-locked --wide
+   sbx policy ls my-locked-project --wide
    ```
 
-6. **Work in the sandbox.** Codex can edit the mounted target folder. Any npm dependencies must already be present in that folder (for example, its local `node_modules`) before launch. Do not approve new network destinations unless they are required by the selected Codex model/harness and you have checked what they are.
+   Review the effective rules before giving Codex work. The sandboxed Codex session and this policy check run in separate PowerShell windows.
 
-### 3. Test Your Results
-
-Run each check from the Codex prompt inside the sandbox:
-
-1. **Test File Access** — `Try to read a file from a host folder outside the mounted target folder (for example, a sibling folder), then create test.txt in the current folder. Report whether the outside read was blocked and whether the in-folder write succeeded. Do not copy or print outside file contents.`
-2. **Test Network Access** — `Check that the selected Codex model/harness can still make a request, then try to reach https://registry.npmjs.org. Report whether the model request works and the npm registry request is blocked.`
-3. **Test Secrets Access** — `Check whether an OpenAI API key or OAuth token is readable from environment variables, project files, or ~/.codex/auth.json. Report only whether a raw credential is accessible; never print, copy, or transmit any credential value. The expected result is that no raw credential is readable in the sandbox.`
-
-4. Open the Docker Sandboxes dashboard to inspect sandbox status, network activity, and filesystem rules:
+7. **Inspect all current sandboxes (Optional).** Open the Docker Sandboxes dashboard from a host PowerShell window to inspect current sandbox status, network activity, and filesystem rules:
 
    ```powershell
    sbx tui
    ```
 
-   <a href="images/sandbox-tui.png">
-     <img src="images/sandbox-tui.png" alt="Docker Sandboxes TUI dashboard" width="400">
-   </a>
+8. **Work in the sandbox.** Codex can edit the mounted target folder. Any npm dependencies must already be present in that folder (for example, its local `node_modules`) before launch. Do not approve new network destinations unless they are required by the selected Codex model/harness and you have checked what they are.
 
-   Select the image to open the full-size dashboard screenshot.
+### 3. Test Your Results
+
+Copy each **Prompt AI:** block and paste it into the Codex prompt inside the sandbox.
+
+1. **Test File Access**
+
+Check that Codex can create a file in the mounted target folder and cannot create one in its parent directory.
+
+**Prompt AI:**
+
+   ```powershell
+   Create hello-world.txt in this directory and its parent, with the text "hello world". Leave both files. Report whether each write succeeded.
+   ```
+
+> **NOTE:** The sandbox may report a parent write succeeded because it sees its VM filesystem; that does not mean the host file was written. Verify on the host. [Docker's default security posture](https://docs.docker.com/ai/sandboxes/security/defaults/)
+
+2. **Test Network Access**
+
+Now test network access.
+
+**Prompt AI:**
+
+   ```powershell
+   Request https://example.com. Report whether the call returned an HTTP success status.
+   ```
+
+**Note:** Since we set up the sandbox as a Codex sandbox, some network access—including [registry.npmjs.org](https://registry.npmjs.org)—is allowed.
+
+3. **Test Secrets Access**
+
+Ask Codex to verify no raw credential is readable, without revealing any credential value.
+
+**Prompt AI:**
+
+   ```powershell
+   Run a read-only credential check inside this sandbox. Use Python; make no network requests and do not modify files.
+
+   Check these environment variables: OPENAI_API_KEY, OPENAI_ACCESS_TOKEN, OPENAI_OAUTH_TOKEN, CODEX_API_KEY, and CODEX_ACCESS_TOKEN. Also check credential fields in $HOME/.codex/auth.json and the project's .codex/auth.json, if present.
+
+   For each check, classify the result as MISSING, EMPTY, PROXY_PLACEHOLDER, CREDENTIAL_PRESENT, or ERROR. Treat only the exact value proxy-managed (case-insensitive) as a proxy placeholder. Any other non-empty value in one of those credential variables or fields is CREDENTIAL_PRESENT, even if its validity is unknown.
+
+   Never print, copy, hash, transmit, or log credential values or file contents. Report only the variable or field name and its classification.
+
+   Final result: YES if any check is CREDENTIAL_PRESENT; NO if all checks completed and none are; INCONCLUSIVE if any check is ERROR. Do not turn an error into YES or NO.
+   ```
+
+> **NOTE:** Docker's credential proxy should keep the raw credential on the host. If this check reports a credential present, stop the sandbox and treat it as exposed; revoke any API key and review API usage. Investigate why the auth file is readable. [Docker Codex authentication](https://docs.docker.com/ai/sandboxes/agents/codex/)
 
 You are now done.
 

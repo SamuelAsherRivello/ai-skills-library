@@ -97,14 +97,15 @@ For a Windows PowerShell project at `D:\path\to\project`, a typical launch is:
 
 ```powershell
 Set-Location -LiteralPath 'D:\path\to\project'
-sbx run --name project-locked --skills=off --deny-network npmjs.org --deny-network '*.npmjs.org' codex .
+sbx run --name my-locked-project --skills=off codex .
 ```
 
 Echo each line before executing it. Use the actual target path and a sandbox
-name that is not already in use. This mounts only the target folder, turns off
-the shared skills mount, and blocks npm registry domains even if another rule
-would allow them. Keep the sandbox stopped until the OpenAI subscription OAuth
-check above is complete.
+name that is not already in use. This mounts only the target folder and turns
+off the shared skills mount. The deny-all policy, audited global rules, and
+reviewed kit rules define network access; do not add npm registries to the
+allowlist. Keep the sandbox stopped until the OpenAI subscription OAuth check
+above is complete.
 
 ## Shared skills
 
