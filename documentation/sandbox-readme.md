@@ -174,15 +174,26 @@ Ask Codex to verify no raw credential is readable, without revealing any credent
 **Prompt AI:**
 
    ```powershell
-   Run a read-only credential check inside this sandbox. Use Python; make no network requests and do not modify files.
+  Run a read-only credential check inside this sandbox. Use Python; make no
+  network requests and do not modify files.
 
-   Check these environment variables: OPENAI_API_KEY, OPENAI_ACCESS_TOKEN, OPENAI_OAUTH_TOKEN, CODEX_API_KEY, and CODEX_ACCESS_TOKEN. Also check credential fields in $HOME/.codex/auth.json and the project's .codex/auth.json, if present.
+  Check these environment variables: OPENAI_API_KEY, OPENAI_ACCESS_TOKEN,
+  OPENAI_OAUTH_TOKEN, CODEX_API_KEY, and CODEX_ACCESS_TOKEN. Also check
+  credential fields in $HOME/.codex/auth.json and the project's .codex/
+  auth.json, if present.
 
-   For each check, classify the result as MISSING, EMPTY, PROXY_PLACEHOLDER, CREDENTIAL_PRESENT, or ERROR. Treat only the exact value proxy-managed (case-insensitive) as a proxy placeholder. Any other non-empty value in one of those credential variables or fields is CREDENTIAL_PRESENT, even if its validity is unknown.
+  For each check, classify the result as MISSING, EMPTY, PROXY_PLACEHOLDER,
+  CREDENTIAL_PRESENT, or ERROR. Treat only the exact value proxy-managed
+  (case-insensitive) as a proxy placeholder. Any other non-empty value in
+  one of those credential variables or fields is CREDENTIAL_PRESENT, even
+  if its validity is unknown.
 
-   Never print, copy, hash, transmit, or log credential values or file contents. Report only the variable or field name and its classification.
+  Never print, copy, hash, transmit, or log credential values or file
+  contents. Report only the variable or field name and its classification.
 
-   Final result: YES if any check is CREDENTIAL_PRESENT; NO if all checks completed and none are; INCONCLUSIVE if any check is ERROR. Do not turn an error into YES or NO.
+  Final result: YES if any check is CREDENTIAL_PRESENT; NO if all checks
+  completed and none are; INCONCLUSIVE if any check is ERROR. Do not turn
+  an error into YES or NO.
    ```
 
 > **NOTE:** Docker's credential proxy should keep the raw credential on the host. If this check reports a credential present, stop the sandbox and treat it as exposed; revoke any API key and review API usage. Investigate why the auth file is readable. [Docker Codex authentication](https://docs.docker.com/ai/sandboxes/agents/codex/)
