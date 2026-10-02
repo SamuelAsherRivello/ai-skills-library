@@ -14,3 +14,7 @@ Use this skill only to copy global Codex skills into the local library checkout.
 5. If source and destination contents match, skip that skill. If a destination is absent, plan a physical directory copy. If destination contents differ, report the conflict and ask the user whether to replace it. Do not use `-ReplaceConflicts` unless the user explicitly authorizes replacement; for `all`, show every conflict and get approval before replacing any.
 6. Copy only after every selected skill passes preflight. Verify each destination is a physical directory with `SKILL.md` and content matching its source. If a copy fails, remove only directories newly created by this invocation, leaving sources and pre-existing destinations unchanged.
 7. Report `Changed`, `Skipped`, and `Failed` names separately. Do not create a junction or symbolic link, move/delete a source, fetch/commit/push Git history, or modify unrelated skills. If the helper is unavailable, follow these same steps with filesystem copy operations.
+
+## Library checkout exception
+
+When running from inside the `ai-skills-library` checkout, treat its categorized `.agents/skills/<category>/<skill>` tree as the canonical catalog. `push all` remains the supported operation for importing global skills into that catalog; preserve the category layout and preflight every selected skill before copying. Do not use `demote` for this checkout, because it targets the flat `.agents/skills/<skill>` layout of an ordinary project. For a named global skill, use `push` with the appropriate category.

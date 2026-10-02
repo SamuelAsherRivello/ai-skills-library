@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)]
-    [ValidateSet('push', 'pull', 'promote', 'demote')]
+    [ValidateSet('push', 'pull', 'promote', 'demote', 'move-global', 'move-local')]
     [string] $Action,
 
     [Parameter(Mandatory)]
@@ -114,14 +114,45 @@ function Stop-Preflight([string] $Message, [int] $ExitCode = 2) {
     exit $ExitCode
 }
 
+function Test-PathWithin([string] $Path, [string] $Root) {
+    $fullPath = [System.IO.Path]::GetFullPath($Path).TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar)
+    $fullRoot = [System.IO.Path]::GetFullPath($Root).TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar)
+    return $fullPath.Equals($fullRoot, [StringComparison]::OrdinalIgnoreCase) -or $fullPath.StartsWith($fullRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)
+}
+
 if (-not (Test-SafeSkillName $Skill)) {
     Stop-Preflight "Invalid skill selection '$Skill'. Use one skill folder name or the literal 'all' for push/pull."
 }
-if ($Skill -eq 'all' -and $Action -notin @('push', 'pull')) {
-    Stop-Preflight "The $Action command accepts exactly one skill name; 'all' is supported only by push and pull."
+$inLibraryCheckout = Test-PathWithin $ProjectDirectory $libraryRoot
+$operation = $Action
+$removeSourcesAfterCopy = $false
+$libraryMoveExplanation = $null
+if ($Action -eq 'move-global') {
+    if ($inLibraryCheckout) {
+        $operation = 'pull'
+        $libraryMoveExplanation = 'Library checkout detected: copied skills to global because the checkout keeps the canonical catalog copies.'
+    }
+    else {
+        $operation = 'promote'
+        $removeSourcesAfterCopy = $true
+    }
+}
+elseif ($Action -eq 'move-local') {
+    if ($inLibraryCheckout) {
+        $operation = 'push'
+        $libraryMoveExplanation = 'Library checkout detected: copied skills into the categorized catalog because the checkout keeps the canonical catalog copies.'
+    }
+    else {
+        $operation = 'demote'
+        $removeSourcesAfterCopy = $true
+    }
 }
 
-switch ($Action) {
+if ($Action -in @('promote', 'demote') -and $inLibraryCheckout) {
+    Stop-Preflight "The current project is the ai-skills-library checkout, whose skills use a categorized canonical layout. Use move-global/pull or move-local/push for this checkout; promote/demote target ordinary flat project skill directories. No skills were changed."
+}
+
+switch ($operation) {
     'push'    { $sourceRoot = $globalSkills; $destinationRoot = $librarySkills }
     'pull'    { $sourceRoot = $librarySkills; $destinationRoot = $globalSkills }
     'promote' { $sourceRoot = Resolve-ProjectSkills; $destinationRoot = $globalSkills }
@@ -132,16 +163,17 @@ $changed = [System.Collections.Generic.List[string]]::new()
 $skipped = [System.Collections.Generic.List[string]]::new()
 $failed = [System.Collections.Generic.List[string]]::new()
 $plan = [System.Collections.Generic.List[object]]::new()
+$moveSources = [System.Collections.Generic.List[object]]::new()
 
 if (-not (Test-Path -LiteralPath $sourceRoot -PathType Container)) {
     Stop-Preflight "Source skills directory does not exist: $sourceRoot"
 }
-if (-not (Test-Path -LiteralPath $destinationRoot -PathType Container) -and $Action -eq 'push') {
+if (-not (Test-Path -LiteralPath $destinationRoot -PathType Container) -and $operation -eq 'push') {
         Stop-Preflight "The library checkout is not writable or its skills directory is missing: $destinationRoot. Ask a library maintainer to import the skill, or use promote to copy it only to global skills. No skills were changed."
 }
 
 if ($Skill -eq 'all') {
-    if ($Action -eq 'pull') {
+    if ($operation -eq 'pull') {
         $selections = @(
             foreach ($category in $libraryCategories) {
                 $categoryPath = Join-Path $sourceRoot $category
@@ -151,11 +183,12 @@ if ($Skill -eq 'all') {
             }
         ) | Sort-Object Name
     }
-    else { $selections = @(Get-ChildItem -LiteralPath $sourceRoot -Directory -Force | Sort-Object Name) }
+    elseif ($operation -eq 'push') { $selections = @(Get-ChildItem -LiteralPath $sourceRoot -Directory -Force | Sort-Object Name) }
+    else { $selections = @(Get-ChildItem -LiteralPath $sourceRoot -Directory -Force | Where-Object { Test-Path -LiteralPath (Join-Path $_.FullName 'SKILL.md') } | Sort-Object Name) }
     if ($selections.Count -eq 0) { Stop-Preflight "No skill directories found in $sourceRoot" }
 }
 else {
-    if ($Action -eq 'pull') {
+    if ($operation -eq 'pull') {
         $selections = @(
             foreach ($category in $libraryCategories) {
                 $candidate = Join-Path (Join-Path $sourceRoot $category) $Skill
@@ -171,13 +204,14 @@ foreach ($selection in $selections) {
     $name = $selection.Name
     $source = if ($selection.PSObject.Properties['FullName']) { $selection.FullName } else { Join-Path $sourceRoot $name }
     $category = $null
-    if ($Action -eq 'push') { $category = Resolve-LibraryCategory $name $Category }
-    elseif ($Action -eq 'pull') { $category = Split-Path (Split-Path $source -Parent) -Leaf }
-    $destination = if ($Action -eq 'push') { Join-Path (Join-Path $destinationRoot $category) $name } else { Join-Path $destinationRoot $name }
+    if ($operation -eq 'push') { $category = Resolve-LibraryCategory $name $Category }
+    elseif ($operation -eq 'pull') { $category = Split-Path (Split-Path $source -Parent) -Leaf }
+    $destination = if ($operation -eq 'push') { Join-Path (Join-Path $destinationRoot $category) $name } else { Join-Path $destinationRoot $name }
     if (-not (Test-PhysicalSkill $source)) {
         $failed.Add("$name (missing or invalid source skill)")
         continue
     }
+    if ($removeSourcesAfterCopy) { $moveSources.Add([pscustomobject]@{ Name = $name; Source = $source; Destination = $destination }) }
     if (Test-Path -LiteralPath $destination) {
         if (-not (Test-PhysicalSkill $destination)) {
             $failed.Add("$name (destination is not a valid physical skill directory)")
@@ -197,7 +231,7 @@ foreach ($selection in $selections) {
     $plan.Add([pscustomobject]@{ Name = $name; Source = $source; Destination = $destination; Category = $category; Replace = $false })
 }
 
-if ($Action -eq 'push' -and ($plan.Count -gt 0 -or $failed.Count -gt 0) -and -not (Test-DirectoryWritable $destinationRoot)) {
+if ($operation -eq 'push' -and ($plan.Count -gt 0 -or $failed.Count -gt 0) -and -not (Test-DirectoryWritable $destinationRoot)) {
     $failed.Add("library checkout is not writable: $destinationRoot. Ask a library maintainer to import the skill, or use promote to copy it only to global skills")
 }
 
@@ -274,7 +308,20 @@ finally {
     }
 }
 
+if ($removeSourcesAfterCopy -and $failed.Count -eq 0) {
+    foreach ($item in $moveSources) {
+        try {
+            if (-not (Test-PhysicalSkill $item.Destination) -or (Get-TreeDigest $item.Source) -cne (Get-TreeDigest $item.Destination)) {
+                throw 'Destination verification failed before removing the source.'
+            }
+            Remove-Item -LiteralPath $item.Source -Recurse -Force -ErrorAction Stop
+        }
+        catch { $failed.Add("$($item.Name) (copied, but source removal failed: $($_.Exception.Message))") }
+    }
+}
+
 Write-Outcome 'Changed' $changed
 Write-Outcome 'Skipped' $skipped
 Write-Outcome 'Failed' $failed
 if ($failed.Count -gt 0) { exit 1 }
+if ($libraryMoveExplanation) { Write-Output $libraryMoveExplanation }

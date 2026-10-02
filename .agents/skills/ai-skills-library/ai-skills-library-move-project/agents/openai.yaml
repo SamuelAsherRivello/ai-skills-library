@@ -1,3 +1,3 @@
 interface:
-  display_name: "Legacy: AI Skills Library Move Project"
-  short_description: "Use demote to copy a global skill"
+  display_name: "AI Skills Library Move Local"
+  short_description: "Move global skills to project"
