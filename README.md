@@ -1,5 +1,7 @@
 ![Samuel Asher Rivello](https://raw.githubusercontent.com/SamuelAsherRivello/github-repository-template/main/project-name/documentation/samuel-asher-rivello-banner.png)
 
+![AI Skills Library preview](documentation/marketing/images/youtube-thumbnail.png)
+
 # AI Skills Library (AISL)
 
 Reusable skills for Codex, Claude Code, and other coding agents.
