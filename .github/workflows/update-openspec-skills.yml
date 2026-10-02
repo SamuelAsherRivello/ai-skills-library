@@ -1,0 +1,63 @@
+name: Update OpenSpec Skills
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-openspec-skills
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Test update boundaries
+        run: python -B -m unittest discover -s scripts -p 'test_*.py' -v
+      - name: Fetch latest stable OpenSpec release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag=$(gh api repos/Fission-AI/OpenSpec/releases/latest --jq .tag_name)
+          [[ "$tag" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo 'Unexpected release tag'; exit 1; }
+          git clone --single-branch --branch "$tag" https://github.com/Fission-AI/OpenSpec.git "$RUNNER_TEMP/openspec-upstream"
+          revision=$(git -C "$RUNNER_TEMP/openspec-upstream" rev-parse HEAD)
+          echo "UPSTREAM_TAG=$tag" >> "$GITHUB_ENV"
+          echo "UPSTREAM_REVISION=$revision" >> "$GITHUB_ENV"
+      - name: Refresh existing upstream skills
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/update_openspec_skills.py --upstream "$RUNNER_TEMP/openspec-upstream" --tag "$UPSTREAM_TAG" --revision "$UPSTREAM_REVISION" | tee "$RUNNER_TEMP/openspec-refresh.json"
+          python - "$RUNNER_TEMP/openspec-refresh.json" >> "$GITHUB_STEP_SUMMARY" <<'PY'
+          import json, pathlib, sys
+          record = json.loads(pathlib.Path(sys.argv[1]).read_text())
+          print(f"## OpenSpec skill refresh: {record['release']} ({record['revision']})")
+          for name, result in record['results'].items():
+              print(f"- `{name}`: {result}")
+          PY
+          git diff --check
+      - name: Commit and push update
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- .agents/skills/openspec documentation/openspec-upstream.json
+          if git diff --cached --quiet; then
+            echo "No content or provenance changes to commit for OpenSpec $UPSTREAM_TAG." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "Update existing OpenSpec skills to $UPSTREAM_TAG"
+          git push
+          echo "Updated existing upstream skills to OpenSpec $UPSTREAM_TAG ($UPSTREAM_REVISION). Custom skills preserved; per-skill results are recorded in documentation/openspec-upstream.json." >> "$GITHUB_STEP_SUMMARY"

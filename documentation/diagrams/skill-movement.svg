@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="210" viewBox="0 0 900 210" role="img" aria-labelledby="title desc">
+<title id="title">Skill copy lifecycle</title>
+<desc id="desc">Promote copies project skills to global skills. Demote copies global skills to a project. Push copies global skills to the library checkout. Pull copies library skills to global skills.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#cccccc"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;font-size:16px;fill:#cccccc;text-anchor:middle}rect{fill:#1f2020;stroke:#cccccc;stroke-width:1.5}.edge{fill:none;stroke:#cccccc;stroke-width:2;marker-end:url(#arrow)}.background{fill:#333333;stroke:none}.label{font-size:14px}</style>
+<rect width="900" height="210" class="background"/>
+<rect x="25" y="78" width="210" height="54" rx="10"/><text x="130" y="111">Project Skills</text>
+<rect x="345" y="78" width="210" height="54" rx="10"/><text x="450" y="111">Global Skills</text>
+<rect x="665" y="78" width="210" height="54" rx="10"/><text x="770" y="111">Library Checkout</text>
+<path class="edge" d="M 235 88 C 270 45, 310 45, 345 88"/><text class="label" x="290" y="43">Promote (copy)</text>
+<path class="edge" d="M 345 122 C 310 165, 270 165, 235 122"/><text class="label" x="290" y="190">Demote (copy)</text>
+<path class="edge" d="M 555 88 C 590 45, 630 45, 665 88"/><text class="label" x="610" y="43">Push (copy)</text>
+<path class="edge" d="M 665 122 C 630 165, 590 165, 555 122"/><text class="label" x="610" y="190">Pull (copy)</text>
+</svg>

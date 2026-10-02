@@ -1,0 +1,9 @@
+---
+config:
+  theme: dark
+---
+flowchart LR
+    project[Project Skills] -->|Promote (copy)| global[Global Skills]
+    global -->|Demote (copy)| project
+    global -->|Push (copy)| repo[Library Checkout]
+    repo -->|Pull (copy)| global

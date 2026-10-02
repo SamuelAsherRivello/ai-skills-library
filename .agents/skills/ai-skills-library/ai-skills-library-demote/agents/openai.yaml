@@ -1,0 +1,3 @@
+interface:
+  display_name: "AI Skills Library Demote"
+  short_description: "Copy one global skill into the current project"
