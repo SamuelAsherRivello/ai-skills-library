@@ -1,16 +1,8 @@
 ---
 name: ai-skills-library-move-project
-description: Move one Codex user skill into the current project's skill directory safely.
+description: Legacy alias. Use ai-skills-library-demote to copy a global skill into project-local skills without removing the global source.
 ---
 
-# AI Skills Library Move Project
+# Deprecated: Use Demote
 
-Use this skill when the user wants to transfer one named skill from Codex user skills into the current project's `.agents/skills` directory.
-
-1. Require exactly one skill name. The source is `$HOME/.agents/skills/<skill-name>` and the destination is `<project-root>/.agents/skills/<skill-name>`.
-2. Confirm the source is a real directory and contains `SKILL.md`. Refuse symbolic links and junctions.
-3. Compare source and destination recursively when the destination exists, using the newest file modification time in each directory to determine which is newer. If the destination is older than the source, replace it and move the complete source directory without asking. If the destination is newer, stop and ask the user. If contents differ but neither directory is newer, stop and ask the user. If they are identical, remove the source and retain the destination.
-4. When the destination is absent, move the complete skill directory there. Verify the destination contains `SKILL.md`, is not a link, and the source no longer exists.
-5. Report the exact project-local path.
-
-This command transfers ownership; it does not copy the skill or update the shared library.
+This legacy command no longer moves files. Invoke `$ai-skills-library-demote <skill>` to copy one global skill into the current project's `.agents/skills` directory. The global source remains in place.

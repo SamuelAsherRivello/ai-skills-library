@@ -1,16 +1,16 @@
 ---
 name: ai-skills-library-pull
-description: Copy every shared library skill into Codex user skills without creating links.
+description: Copy one named AI Skills Library skill or all valid library skills into global Codex skills.
 ---
 
 # AI Skills Library Pull
 
-Use this skill when the user wants the complete local AI Skills Library copied into Codex user skills.
+Use this skill only to copy library skills into global Codex skills. It does not modify or publish the library checkout.
 
-1. Treat this repository's `.agents/skills` directory as the source and `$HOME/.agents/skills` as the destination; on this Windows machine the destination is `C:\\Users\\srive\\.agents\\skills`.
-2. Confirm that every library source skill is a real directory, not a symbolic link or junction.
-3. Compare every source/destination pair recursively, using the newest file modification time in each directory to determine which is newer. If contents are identical, report that skill as current and make no content change. If a destination is absent or older than its library source, copy the source without asking. If a destination is newer, stop and ask the user. If contents differ but neither directory is newer, stop and ask the user. An existing link may be removed only when it resolves to the same library skill.
-4. Copy each eligible library skill directory as a physical copy. Do not create symbolic links or junctions. Verify each destination is a real directory with a `SKILL.md` file.
-5. Report copied, skipped, and failed skill names separately, provide the full global directory path, and mention that Codex may need a restart if its skill catalog does not refresh automatically.
-
-Do not modify the library checkout or remote repository as part of this command.
+1. Require exactly one argument: a skill folder name or the literal `all`.
+2. Resolve the library source as this repository's `.agents/skills` and the global destination as `$HOME/.agents/skills`. Show both full paths and the selected scope.
+3. For a named skill, validate the selected source. For `all`, select every valid top-level library skill directory. A valid skill is a real directory containing `SKILL.md`; refuse a symbolic link or junction as the selected directory and refuse linked files or directories within it.
+4. When the library checkout is available, use its `scripts/skill-copy-lifecycle.ps1` helper with `-Action pull -Skill <name|all>`. Preflight the complete selection before copying anything. A missing/invalid source, invalid destination, or unapproved conflict fails the operation without changing any skill.
+5. If source and destination contents match, skip that skill. If a destination is absent, plan a physical directory copy. If destination contents differ, report the conflict and ask the user whether to replace it. Do not use `-ReplaceConflicts` unless the user explicitly authorizes replacement; for `all`, show every conflict and get approval before replacing any.
+6. Copy only after every selected skill passes preflight. Verify each destination is a physical directory with `SKILL.md` and content matching its source. If a copy fails, remove only directories newly created by this invocation, leaving sources and pre-existing destinations unchanged.
+7. Report `Changed`, `Skipped`, and `Failed` names separately. Do not create a junction or symbolic link, move/delete a source, fetch/commit/push Git history, or modify unrelated skills. If the helper is unavailable, follow these same steps with filesystem copy operations.

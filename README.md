@@ -15,7 +15,11 @@ Reusable Codex skills for local projects and teams.
 
 ### 1. Install Commands
 
-**Prompt AI:**
+Keep the library checkout, global Codex skills, and project-local skills as
+separate copies. After adding the skills from this repository to Codex's
+global skills, use the explicit copy commands below to update them.
+
+**Prompt AI to install from the repository:**
 
 ```
 Add these skills to your AI global skills:
@@ -25,13 +29,20 @@ Add these skills to your AI global skills:
 
 ### 2. Update Commands
 
-Over time the library may change with new features.
+Copy updated library skills into global Codex skills when you choose:
 
 **Prompt AI:**
 
 ```
 $ai-skills-library-pull all
 ```
+
+Pull copies files; it does not create filesystem links or perform Git
+operations. Existing destinations with different content are reported as
+conflicts and are left unchanged unless you explicitly authorize replacement.
+
+See [AI Skills Library Commands](documentation/ai-skills-commands-readme.md)
+for the full copy lifecycle, including project promotion and demotion.
 
 
 ## Details
