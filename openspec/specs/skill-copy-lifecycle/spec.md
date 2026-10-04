@@ -31,8 +31,7 @@ changing any file.
 #### Scenario: Push cannot write to the library
 - **WHEN** a user invokes push but cannot write to the local library checkout
 - **THEN** the command SHALL make no file changes and explain that a library
-  maintainer must import the skill or the user can promote it only to global
-  skills
+  maintainer must import the skill
 
 ### Requirement: Pull copies library skills into global skills
 The library SHALL provide `ai-skills-library-pull <skill|all>`. A named
@@ -54,24 +53,6 @@ before changing any file.
   passes preflight
 - **THEN** each selected library skill is copied and the report separates
   changed and skipped skills
-
-### Requirement: Promote and demote transfer one named skill
-The library SHALL provide `ai-skills-library-promote <skill>` to copy one
-valid project-local skill to global Codex skills and
-`ai-skills-library-demote <skill>` to copy one valid global skill to a named
-project's local skills directory. Neither command SHALL accept `all`.
-
-#### Scenario: Promote a project skill
-- **WHEN** a user invokes promote for one valid project-local skill and the
-  global destination passes preflight
-- **THEN** global skills receives a copy while the project-local source remains
-  unchanged
-
-#### Scenario: Demote a global skill
-- **WHEN** a user invokes demote for one valid global skill and the project
-  destination passes preflight
-- **THEN** the project receives a local copy while the global source remains
-  unchanged
 
 ### Requirement: Copy commands protect sources and conflicts
 Every lifecycle command SHALL validate a selected source as a skill before
@@ -98,5 +79,5 @@ junctions or symbolic links.
 
 #### Scenario: User follows installation documentation
 - **WHEN** a user reads the library's global installation guidance
-- **THEN** it directs the user to explicit pull, promote, demote, or normal Git
+- **THEN** it directs the user to explicit pull, push, move, or normal Git
   workflows rather than a filesystem link

@@ -78,17 +78,17 @@ try {
     Assert (Test-Path -LiteralPath (Join-Path $globalSkills 'ai-skills-library-pull-one/SKILL.md')) 'pull did not create the global copy.'
     Assert (Test-Path -LiteralPath (Join-Path $libraryCategory 'ai-skills-library-pull-one/SKILL.md')) 'pull removed its source.'
 
-    New-TestSkill (Join-Path $projectSkills 'promote-one') 'promote-one'
-    $result = Invoke-Copy promote promote-one
-    Assert ($result.ExitCode -eq 0) "promote failed: $($result.Output)"
-    Assert (Test-Path -LiteralPath (Join-Path $globalSkills 'promote-one/SKILL.md')) 'promote did not create the global copy.'
-    Assert (Test-Path -LiteralPath (Join-Path $projectSkills 'promote-one/SKILL.md')) 'promote removed its source.'
+    New-TestSkill (Join-Path $projectSkills 'move-global-one') 'move-global-one'
+    $result = Invoke-Copy move-global move-global-one
+    Assert ($result.ExitCode -eq 0) "move-global failed: $($result.Output)"
+    Assert (Test-Path -LiteralPath (Join-Path $globalSkills 'move-global-one/SKILL.md')) 'move-global did not create the global copy.'
+    Assert (-not (Test-Path -LiteralPath (Join-Path $projectSkills 'move-global-one'))) 'move-global did not remove its source.'
 
-    New-TestSkill (Join-Path $globalSkills 'demote-one') 'demote-one'
-    $result = Invoke-Copy demote demote-one
-    Assert ($result.ExitCode -eq 0) "demote failed: $($result.Output)"
-    Assert (Test-Path -LiteralPath (Join-Path $projectSkills 'demote-one/SKILL.md')) 'demote did not create the project copy.'
-    Assert (Test-Path -LiteralPath (Join-Path $globalSkills 'demote-one/SKILL.md')) 'demote removed its source.'
+    New-TestSkill (Join-Path $globalSkills 'move-local-one') 'move-local-one'
+    $result = Invoke-Copy move-local move-local-one
+    Assert ($result.ExitCode -eq 0) "move-local failed: $($result.Output)"
+    Assert (Test-Path -LiteralPath (Join-Path $projectSkills 'move-local-one/SKILL.md')) 'move-local did not create the project copy.'
+    Assert (-not (Test-Path -LiteralPath (Join-Path $globalSkills 'move-local-one'))) 'move-local did not remove its source.'
 
     $result = Invoke-Copy push ai-skills-library-conflict
     Assert ($result.ExitCode -ne 0) 'a conflict was replaced without authorization.'

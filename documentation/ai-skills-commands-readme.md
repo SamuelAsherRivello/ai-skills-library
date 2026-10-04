@@ -1,6 +1,6 @@
 # AI Skills Library Commands
 
-Use these commands to copy skills between this library checkout, global Codex skills, and a project's `.agents/skills` directory. Each location is a separate copy; editing one does not update the others.
+Use these commands to copy or move skills between this library checkout, global Codex skills, and a project's `.agents/skills` directory. Each location is an independent copy unless a move command removes its verified source.
 
 ## Table of Contents
 
@@ -36,7 +36,7 @@ Use the command list below to copy skills between the library, your global Codex
 ## Details
 
 <p align="center">
-  <img src="diagrams/skill-movement.svg" width="800" alt="Project Skills promote to Global Skills and demote from them. Global Skills push to the Library Checkout and pull from it.">
+  <img src="diagrams/skill-movement.svg" width="800" alt="Project Skills move to Global Skills and back. Global Skills push to the Library Checkout and pull from it.">
 </p>
 
 ### Library Commands
@@ -45,13 +45,14 @@ Use the command list below to copy skills between the library, your global Codex
 | --- | --- | --- |
 | 1 | `$ai-skills-library-push <skill> or all` | Copies one named global skill or every valid global skill into this local library checkout. |
 | 2 | `$ai-skills-library-pull <skill> or all` | Copies one named library skill or every valid library skill into global Codex skills. |
-| 3 | `$ai-skills-library-promote <skill>` | Copies one project skill into global Codex skills for cross-project testing. |
-| 4 | `$ai-skills-library-demote <skill>` | Copies one global skill into the current project's `.agents/skills` for project-scoped editing. |
+| 3 | `$ai-skills-library-move-global <skill> or all` | Moves one project skill or every valid project skill into global Codex skills. |
+| 4 | `$ai-skills-library-move-project <skill> or all` | Moves one global skill or every valid global skill into the current project's `.agents/skills` directory. |
 | 5 | `$ai-skills-library-status` | Lists every library skill and the differences in Codex user and project skills. |
 
-Push and pull accept the literal `all`; promote and demote require one skill
-name. All four commands preserve their source, validate skills before copying,
-report changed, skipped, and failed names separately, and stop before copying
+Push, pull, and both move commands accept the literal `all`. Push and pull
+preserve their source; move commands remove a source only after the destination
+has been verified. All commands validate skills before copying, report changed,
+skipped, and failed names separately, and stop before copying
 when preflight finds a conflict. A matching destination is skipped. A different
 destination is never replaced without your explicit authorization. Bulk
 operations preflight the entire selection before writing.

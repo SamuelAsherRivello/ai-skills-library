@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)]
-    [ValidateSet('push', 'pull', 'promote', 'demote', 'move-global', 'move-local')]
+    [ValidateSet('push', 'pull', 'move-global', 'move-local')]
     [string] $Action,
 
     [Parameter(Mandatory)]
@@ -133,7 +133,6 @@ if ($Action -eq 'move-global') {
         $libraryMoveExplanation = 'Library checkout detected: copied skills to global because the checkout keeps the canonical catalog copies.'
     }
     else {
-        $operation = 'promote'
         $removeSourcesAfterCopy = $true
     }
 }
@@ -143,20 +142,15 @@ elseif ($Action -eq 'move-local') {
         $libraryMoveExplanation = 'Library checkout detected: copied skills into the categorized catalog because the checkout keeps the canonical catalog copies.'
     }
     else {
-        $operation = 'demote'
         $removeSourcesAfterCopy = $true
     }
-}
-
-if ($Action -in @('promote', 'demote') -and $inLibraryCheckout) {
-    Stop-Preflight "The current project is the ai-skills-library checkout, whose skills use a categorized canonical layout. Use move-global/pull or move-local/push for this checkout; promote/demote target ordinary flat project skill directories. No skills were changed."
 }
 
 switch ($operation) {
     'push'    { $sourceRoot = $globalSkills; $destinationRoot = $librarySkills }
     'pull'    { $sourceRoot = $librarySkills; $destinationRoot = $globalSkills }
-    'promote' { $sourceRoot = Resolve-ProjectSkills; $destinationRoot = $globalSkills }
-    'demote'  { $sourceRoot = $globalSkills; $destinationRoot = Resolve-ProjectSkills }
+    'move-global' { $sourceRoot = Resolve-ProjectSkills; $destinationRoot = $globalSkills }
+    'move-local' { $sourceRoot = $globalSkills; $destinationRoot = Resolve-ProjectSkills }
 }
 
 $changed = [System.Collections.Generic.List[string]]::new()
@@ -169,7 +163,7 @@ if (-not (Test-Path -LiteralPath $sourceRoot -PathType Container)) {
     Stop-Preflight "Source skills directory does not exist: $sourceRoot"
 }
 if (-not (Test-Path -LiteralPath $destinationRoot -PathType Container) -and $operation -eq 'push') {
-        Stop-Preflight "The library checkout is not writable or its skills directory is missing: $destinationRoot. Ask a library maintainer to import the skill, or use promote to copy it only to global skills. No skills were changed."
+        Stop-Preflight "The library checkout is not writable or its skills directory is missing: $destinationRoot. Ask a library maintainer to import the skill. No skills were changed."
 }
 
 if ($Skill -eq 'all') {
@@ -232,7 +226,7 @@ foreach ($selection in $selections) {
 }
 
 if ($operation -eq 'push' -and ($plan.Count -gt 0 -or $failed.Count -gt 0) -and -not (Test-DirectoryWritable $destinationRoot)) {
-    $failed.Add("library checkout is not writable: $destinationRoot. Ask a library maintainer to import the skill, or use promote to copy it only to global skills")
+    $failed.Add("library checkout is not writable: $destinationRoot. Ask a library maintainer to import the skill")
 }
 
 if ($failed.Count -gt 0) {

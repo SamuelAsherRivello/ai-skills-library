@@ -17,4 +17,4 @@ Use this skill only to copy library skills into global Codex skills. It does not
 
 ## Library checkout exception
 
-When running from inside the `ai-skills-library` checkout, treat its categorized `.agents/skills/<category>/<skill>` tree as the canonical catalog. `pull all` remains the supported operation for installing catalog skills into global discovery, including the `ai-skills-library` category. Do not use `promote` for this checkout, because it expects a flat project skill directory and can select the wrong source. For one catalog skill, use `pull <skill>`.
+When running from inside the `ai-skills-library` checkout, treat its categorized `.agents/skills/<category>/<skill>` tree as the canonical catalog. `pull all` remains the supported operation for installing catalog skills into global discovery, including the `ai-skills-library` category. For one catalog skill, use `pull <skill>`.
