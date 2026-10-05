@@ -3,7 +3,6 @@ name: openspec-propose
 description: Propose a new OpenSpec change with all artifacts generated in one step. Use when the user wants to quickly describe what they want to build and get a complete proposal with design, specs, and tasks ready for implementation. Also use when the user says "openspec propose" or "opsx propose".
 allowed-tools: Bash(openspec:*)
 license: MIT
-compatibility: Requires openspec CLI.
 metadata:
   author: openspec
   version: "1.0"
@@ -120,6 +119,8 @@ In both branches, never create the root as a side effect: do not run `openspec i
       - **Inspect the relevant project before drafting**: Read `context` and `rules` first, then inspect relevant implementation, nearby tests, configuration, and documentation outside `openspec/`. Keep inspection read-only and proportional to the change; reuse findings for later artifacts and inspect more only as needed.
         - Identify the target project from the request and project context; the planning home may be separate from the code. If the target is unclear, ask. For greenfield or non-code changes, inspect the available structure and relevant documents. If source is unavailable, state the limitation and ask when it materially affects the plan.
         - Ground scope, approach, and tasks in what you find. Distinguish observed behavior from assumptions and proposed additions; surface conflicts with existing specs instead of silently deciding which is correct.
+        - **Check for plan conflicts before writing**: Compare the proposed artifact with completed dependency artifacts, relevant existing specifications, and the implementation facts you inspected. Look for incompatible requirements, scope or non-goal mismatches, designs that cannot deliver a stated behavior, and tasks that would not satisfy the requirements. Do not silently choose between conflicting directions.
+        - **Resolve material conflicts with the user**: State the competing directions and their sources briefly, then ask the one decision needed to resolve them. Use the exact **Mandatory Question Format** and question-budget rules in `$openspec-grill-me`; make the recommended option concrete and explain its tradeoff. End the turn and wait for the answer. Do not write the affected artifact, or finalize dependent artifacts, until the conflict is resolved or the user explicitly defers it. Record a deliberate deferral as an open item rather than inventing a decision.
         - Do this discovery now, rather than leaving generic "explore the codebase" or "make a plan" tasks for implementation. Keep any necessary follow-up investigation specific to an unresolved question.
       - If the `instruction` field delegates creation to a specific skill or command, invoke it to produce the artifact instead of writing the file yourself, then verify the artifact file exists at `resolvedOutputPath`
       - Otherwise create the artifact file using `template` as the structure and write it to `resolvedOutputPath`. If `resolvedOutputPath` is a glob, follow `instruction` to choose the concrete file path
@@ -140,7 +141,11 @@ In both branches, never create the root as a side effect: do not run `openspec i
       - Ask the user to clarify
       - Then continue with creation
 
-7. **Show final status**
+7. **Run a cross-artifact conflict check**
+   - Before calling the change ready, read every completed artifact in the required set together. Check that the proposal's scope and non-goals, requirements, design, and tasks describe one achievable plan, and re-check against relevant existing specifications.
+   - If the review exposes a material contradiction or an unresolved decision that makes the plan non-actionable, use `$openspec-grill-me`'s **Mandatory Question Format** to ask the specific resolving question. Wait for the answer, then reconcile every affected artifact and repeat this check. Do not report the change as implementation-ready while such a conflict remains.
+
+8. **Show final status**
    ```bash
    openspec status --change "<name>"
    ```
@@ -169,5 +174,6 @@ After completing all artifacts, summarize:
 - Create every artifact the apply phase transitively depends on, not just the ids listed in `apply.requires`
 - Always read dependency artifacts before creating a new one - re-read from disk, not from conversation memory (files may have changed since you last saw them)
 - Ask about ambiguities that would materially change scope, externally observable behavior, compatibility, or acceptance criteria; for minor details, make reasonable assumptions and record them
+- Check draft and completed artifacts for contradictions throughout planning and once more before declaring the change ready. Resolve material conflicts through a specific user question in `$openspec-grill-me` format; never silently select one conflicting interpretation
 - If a change with that name already exists, ask if user wants to continue it or create a new one
 - Verify each artifact file exists after writing before proceeding to next

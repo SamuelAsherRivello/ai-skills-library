@@ -78,6 +78,33 @@ Challenge vague requirements by turning them into observable behavior
 or measurable acceptance criteria. Probe contradictions without reopening
 settled decisions unnecessarily.
 
+## Resolve Plan Conflicts
+
+When `$openspec-propose` or `$openspec-update-change` finds a material
+conflict, use this interview to resolve it before the plan is treated as
+coherent. A material conflict includes incompatible requirements, a scope or
+non-goal mismatch, a design that cannot provide a required behavior, tasks
+that cannot satisfy a requirement, or a conflict with verified project facts
+or an existing specification.
+
+1. Verify the apparent conflict from the relevant artifacts and project
+   evidence. Do not ask the user to settle a conflict that is only a reading
+   mistake or can be resolved by evidence.
+2. Name both incompatible directions, cite their artifact or evidence source
+   briefly, and explain the consequence of leaving them unresolved.
+3. Ask the smallest decision that resolves the conflict; do not turn it into a
+   broad request to rewrite the plan. Use the **Mandatory Question Format**
+   below, including a concrete recommended option and its tradeoff.
+4. Wait for the user's reply before treating either direction as chosen. A
+   requested edit, a prior recommendation, or silence is not a resolution.
+5. After a clear answer, re-check every affected conclusion. If the user
+   defers the decision, retain the conflict as an explicit open item and do
+   not call the plan implementation-ready.
+
+For example, ask whether the plan should preserve the requirement or change
+the design that conflicts with it; do not merely ask whether the artifacts are
+"correct."
+
 ## Question Budget
 
 - A single positive integer supplied as the invocation argument is the

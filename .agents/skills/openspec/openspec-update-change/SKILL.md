@@ -3,7 +3,6 @@ name: openspec-update-change
 description: Update an OpenSpec change by revising its existing planning artifacts and keeping them coherent with one another. Use when the user wants to revise a change's plan, fold new decisions into it, or reconcile its artifacts after an edit. Also use when the user says "openspec update change" or "opsx update". If the user means the openspec update CLI command, which refreshes generated files, run that command instead. Never edits code.
 allowed-tools: Bash(openspec:*)
 license: MIT
-compatibility: Requires openspec CLI.
 metadata:
   author: openspec
   version: "1.0"
@@ -68,6 +67,8 @@ This workflow revises artifacts that already exist; `/openspec-continue-change` 
    - Read the artifact(s) the request touches and the change's other existing artifacts.
    - Draft the requested edit in the conversation, not in files. Work out exactly what it changes; step 5 owns every write. Then check every other existing artifact against the drafted edit - in ANY direction: an edit to a later artifact may require revising an earlier one, not only the other way around. Build order is a useful reading order, not a constraint on which artifacts may be revised.
    - Note everything that is now inconsistent, missing, or contradictory.
+   - For each material contradiction, identify the incompatible statements and their source artifacts, verify any relevant project facts, and ask the user the specific decision needed to resolve it. Use the exact **Mandatory Question Format** and question-budget rules in `$openspec-grill-me`, with concrete options and a recommended option that states its tradeoff. End the turn and wait for the answer; do not infer a resolution from the requested edit or silently favor one artifact.
+   - Once the user resolves a conflict, re-check every affected artifact and the requested revision before proposing edits. If the user defers it, preserve it as an explicit open item and do not describe the plan as coherent or implementation-ready.
    - Propose revisions to files that already exist (`existingOutputPaths`). If an artifact has no existing output files and status `ready` or `blocked`, note it and point the user to `/openspec-continue-change` to create them. Leave `skipped` artifacts untouched; do not treat them as missing or defer them to the continue workflow.
    - A glob artifact (e.g. `specs/**/*.md`) is marked `done` after at least one file matches, and the continue workflow only handles `ready` artifacts. When reconciliation identifies a missing file for a glob artifact whose `existingOutputPaths` is non-empty:
      1. Run `openspec instructions "<artifact-id>" --change "<name>" --json` and use its `instruction` and `template`. Treat `context` and `rules` as constraints; do not copy them into the file. If instructions report `skipped: true`, do not create the file. Read current dependency files from disk; if a required non-skipped dependency is missing, stop and ask the user to restore it first.
@@ -105,4 +106,5 @@ After each invocation, show:
 - Edit only the concrete files in `existingOutputPaths`; never write to a glob `resolvedOutputPath`.
 - Do not advance the build frontier: if an artifact has empty `existingOutputPaths` and status `ready` or `blocked`, that is `/openspec-continue-change`'s job. Leave `skipped` artifacts untouched. The only new-file scope is a confirmed concrete path under a glob artifact whose `existingOutputPaths` is non-empty.
 - Confirm every edit with the user before writing.
+- Treat contradictions between artifacts, or between an artifact and verified project facts, as decisions to resolve rather than editorial inconsistencies. Ask the specific resolving question in `$openspec-grill-me` format and wait for the answer before proposing a settled reconciliation.
 - If the request changes the change's *intent* rather than refining it, recommend starting fresh with `/openspec-new-change` (the "Update vs. Start Fresh" heuristic).
