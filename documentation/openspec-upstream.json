@@ -15,8 +15,7 @@
     "openspec-commit-inclusive",
     "openspec-dashboard",
     "openspec-grill-me",
-    "openspec-macro-finalize-sync-archive-commit-push",
-    "openspec-release-version"
+    "openspec-macro-finalize-sync-archive-commit-push"
   ],
   "skill_revisions": {
     "openspec-explore": "db2309783547a14e150dbcbfc19120e4028446c3",

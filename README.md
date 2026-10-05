@@ -53,9 +53,13 @@ For the manual copy workflow between this repository and Codex user/project skil
 
 | # | Name | Link | Comment |
 |---:|---|---|---|
-| 1 | AI Skills Library | [Commands](documentation/ai-skills-commands-readme.md) | Manage library and Codex skills. |
-| 2 | OpenSpec | [Commands](documentation/openspec-commands-readme.md) | Structured change workflow. |
-| 3 | Game Creator | [Commands](documentation/ai-skills-create-game-readme.md) | Create and publish Babylon Lite games. |
+| 1 | Create | [Catalog](.agents/skills/ai-skills-create/README.md) | Create React apps, browser games, repositories, and releases. |
+| 2 | AI Skills Library | [Catalog](.agents/skills/ai-skills-library/README.md) | Manage library, global, and project skill copies. |
+| 3 | Docker Sandbox | [Catalog](.agents/skills/docker-sandbox/README.md) | Configure and inspect isolated Docker Sandbox environments. |
+| 4 | OpenSpec | [Catalog](.agents/skills/openspec/README.md) | Explore, plan, implement, and finalize changes. |
+
+Browse the complete [AI Skills Library catalog](.agents/skills/README.md) for
+the available categories and direct skill links.
 
 ## Resources
 
