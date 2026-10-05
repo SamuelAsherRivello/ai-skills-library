@@ -19,7 +19,7 @@ if ([string]::IsNullOrWhiteSpace($LibraryRoot)) {
 }
 $libraryRoot = [System.IO.Path]::GetFullPath($LibraryRoot)
 $librarySkills = Join-Path $libraryRoot '.agents/skills'
-$libraryCategories = @('ai-skills-create', 'ai-skills-library', 'openspec', 'docker-sandbox', 'tiled-editor')
+$libraryCategories = @('ai-skills-create', 'ai-skills-library', 'openspec', 'docker-sandbox', 'tiled-editor', 'triage')
 $globalSkills = [System.IO.Path]::GetFullPath($GlobalSkillsDirectory)
 
 function Resolve-ProjectSkills {
@@ -102,12 +102,13 @@ function Resolve-LibraryCategory([string] $Name, [string] $SelectedCategory) {
     if ($Name -like 'openspec-*') { return 'openspec' }
     if ($Name -like 'docker-sandbox*' -or $Name -like 'docker-sandboxes-*') { return 'docker-sandbox' }
     if ($Name -like 'tiled-ai-*') { return 'tiled-editor' }
+    if ($Name -like 'triage-*') { return 'triage' }
     Write-Host 'Choose a category for this skill:'
     for ($index = 0; $index -lt $libraryCategories.Count; $index++) { Write-Host ("{0}. {1}" -f ($index + 1), $libraryCategories[$index]) }
     while ($true) {
         $choice = Read-Host "Category number for $Name"
-        if ($choice -match '^[1-5]$') { return $libraryCategories[[int]$choice - 1] }
-        Write-Host 'Enter a number from 1 to 5.'
+        if ($choice -match '^[1-6]$') { return $libraryCategories[[int]$choice - 1] }
+        Write-Host 'Enter a number from 1 to 6.'
     }
 }
 

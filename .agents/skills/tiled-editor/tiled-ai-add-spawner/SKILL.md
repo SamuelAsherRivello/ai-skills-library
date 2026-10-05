@@ -130,3 +130,9 @@ editor workflow is verified solely because JSON parses outside Tiled.
 Finish by giving the exact Tiled project and map paths to reopen, the authored
 type-to-runtime mapping, chosen locations, validation rules, tests/build/runtime
 results, and any optional polish that remains.
+
+## Result Links
+
+Give the exact Tiled project and map as clickable Markdown links, followed by
+links to every changed runtime source file and external tileset. Link only
+verified existing files; do not present a planned path as a completed result.

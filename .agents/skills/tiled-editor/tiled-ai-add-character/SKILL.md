@@ -141,3 +141,9 @@ browser console errors separately from known non-blocking platform warnings.
 Finish by reporting asset mappings, code and Tiled integration points, tests
 and build results, browser findings, and any supplied animation whose gameplay
 trigger remains intentionally deferred.
+
+## Result Links
+
+Include clickable Markdown links to every created or changed character asset,
+runtime source file, map, and external tileset. Link only files that actually
+exist after verification; do not present a planned output path as a result.

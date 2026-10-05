@@ -54,3 +54,8 @@ After writing:
 3. Confirm source bytes did not change and destination identity/image metadata remained unchanged.
 4. Run relevant focused tests. Optionally smoke-test the destination in Tiled or the game when that adds useful confidence.
 5. Inspect the diff and report the copied collider tile count and IDs, any destination colliders replaced or removed, and verification results.
+
+## Result Links
+
+Finish with clickable Markdown links to both the unchanged source tileset and
+the verified changed destination tileset. Link only existing files.

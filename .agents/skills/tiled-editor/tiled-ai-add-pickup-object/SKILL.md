@@ -20,3 +20,9 @@ Use this skill when adding a new pickup that resembles an existing pickup.
 - Preserve origin-relative level coordinates and bottom-centered Tiled object placement.
 - If placeable in Tiled, add tileset/object metadata and loader validation, but do not add it to the spawner catalog.
 - Verify spawning, collection, disposal, renderer attachment, and focused tests/build behavior.
+
+## Result Links
+
+Finish with clickable Markdown links to every created or changed pickup asset,
+runtime source file, map, and external tileset. Link only verified existing
+files; do not present a planned path as a completed result.

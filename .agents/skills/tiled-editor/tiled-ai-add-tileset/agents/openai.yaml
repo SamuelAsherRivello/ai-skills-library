@@ -1,7 +1,7 @@
 interface:
   display_name: "Tiled AI Add Tileset"
-  short_description: "Add compatible Tiled tilesets to a game"
-  default_prompt: "Use $tiled-ai-add-tileset to add this tileset through Tiled AI."
+  short_description: "Convert tile-sheet art into a Tiled TSX"
+  default_prompt: "Use $tiled-ai-add-tileset to convert this tile-sheet image into an external Tiled TSX."
 dependencies:
   tools:
     - type: "mcp"

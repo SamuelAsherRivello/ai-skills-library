@@ -83,3 +83,9 @@ so close and reopen the map or tileset after preview changes.
 Do not claim completion if editor structure, runtime behavior, or required
 verification remains unfinished. Report unrelated pre-existing test failures
 separately and do not repair them without scope.
+
+## Result Links
+
+Finish with clickable Markdown links to each created or changed object asset,
+runtime source file, map, and external tileset. Link only verified existing
+files; do not present a planned path as a completed result.

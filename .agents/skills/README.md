@@ -15,3 +15,5 @@ are a navigation aid; they do not change skill names or installer behavior.
   repository changes through OpenSpec.
 - [Tiled AI](./tiled-editor/README.md): Set up the Tiled AI MCP bridge and
   author maps, tilesets, objects, and autotiled sample levels.
+- [Triage](./triage/README.md): Assess architecture health, standardize a
+  codebase, and plan evidence-backed refactors.

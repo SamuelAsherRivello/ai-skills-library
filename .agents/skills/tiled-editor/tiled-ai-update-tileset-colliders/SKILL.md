@@ -61,3 +61,9 @@ After editing:
 5. Inspect the diff to ensure only the named TSJ and intended collider geometry changed.
 
 Report tile IDs grouped as changed, zero-area objects removed, already canonical, and unresolved. State the exact grid size and edge thickness used.
+
+## Result Links
+
+Finish with a clickable Markdown link to the verified changed external tileset.
+Link only the existing named `.tsj` file; do not present a planned path as a
+completed result.

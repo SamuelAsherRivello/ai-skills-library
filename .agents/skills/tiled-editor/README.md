@@ -9,6 +9,8 @@ live editor connection.
   bridge before map edits.
 - [Tiled AI Add Sample Level](./tiled-ai-add-sample-level/SKILL.md): Create a
   layered floor, walls, and objects sample map from one tileset.
+- [Tiled AI Add Tileset Autotiling](./tiled-ai-add-tileset-autotiling/SKILL.md):
+  Add and visually verify Wang terrain metadata on an existing tileset.
 - [Tiled AI Add Character](./tiled-ai-add-character/SKILL.md): Add an animated
   character with Tiled AI placement data and runtime integration.
 - [Tiled AI Add Object](./tiled-ai-add-object/SKILL.md): Add a tested,
@@ -17,8 +19,8 @@ live editor connection.
   pickup object and its reusable runtime path.
 - [Tiled AI Add Spawner](./tiled-ai-add-spawner/SKILL.md): Add map-authored
   actor spawners through the live editor.
-- [Tiled AI Add Tileset](./tiled-ai-add-tileset/SKILL.md): Add and attach a
-  compatible external tileset.
+- [Tiled AI Add Tileset](./tiled-ai-add-tileset/SKILL.md): Convert tile-sheet
+  art into an inspected external tileset.
 - [Tiled AI Copy Tileset Colliders](./tiled-ai-copy-tileset-colliders/SKILL.md):
   Copy verified collider geometry with the live editor.
 - [Tiled AI Update Tileset Colliders](./tiled-ai-update-tileset-colliders/SKILL.md):
