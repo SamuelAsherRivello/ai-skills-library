@@ -1,6 +1,6 @@
 ---
 name: ai-skills-library-move-project
-description: Move one or all valid global Codex skills into the current project.
+description: Move named or all valid global Codex skills into the current project. Use when localizing globally installed skills for a project.
 ---
 
 # AI Skills Library Move Local

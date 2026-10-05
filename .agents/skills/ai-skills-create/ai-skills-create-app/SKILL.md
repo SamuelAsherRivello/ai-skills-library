@@ -1,6 +1,6 @@
 ---
 name: ai-skills-create-app
-description: Create a non-game React application from the shared repository template and prepare its local checkout.
+description: Create a non-game React application from the shared repository template. Use when starting an application rather than a game.
 ---
 
 # AI Skills Create App

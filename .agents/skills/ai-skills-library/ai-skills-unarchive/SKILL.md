@@ -1,6 +1,6 @@
 ---
 name: ai-skills-unarchive
-description: Find and restore an archived Codex chat when a user cannot locate a past conversation. Use for chat or session recovery, not deleted-chat recovery or sidebar organization.
+description: Find and restore an archived Codex chat. Use when recovering a past chat, not a deleted chat or organizing the sidebar.
 metadata:
   short-description: Recover an archived Codex chat
 ---

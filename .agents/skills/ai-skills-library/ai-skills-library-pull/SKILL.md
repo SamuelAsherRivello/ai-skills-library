@@ -1,6 +1,6 @@
 ---
 name: ai-skills-library-pull
-description: Copy one named AI Skills Library skill or all valid library skills into global Codex skills.
+description: Copy named or all valid AI Skills Library skills into global Codex skills. Use when installing or refreshing global skills from this library.
 ---
 
 # AI Skills Library Pull

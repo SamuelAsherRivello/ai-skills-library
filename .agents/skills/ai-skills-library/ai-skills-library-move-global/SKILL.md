@@ -1,6 +1,6 @@
 ---
 name: ai-skills-library-move-global
-description: Move one or all valid project-local skills into global Codex skills.
+description: Move named or all valid project-local skills into global Codex skills. Use when promoting a project's skills to global discovery.
 ---
 
 # AI Skills Library Move Global

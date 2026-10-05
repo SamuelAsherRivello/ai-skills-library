@@ -1,6 +1,6 @@
 ---
 name: ai-skills-library-status
-description: Compare library, Codex user, and current-project skills in one lean status report.
+description: Compare library, global Codex, and current-project skills in a lean status report. Use when checking differences without changing skills.
 ---
 
 # AI Skills Library Status

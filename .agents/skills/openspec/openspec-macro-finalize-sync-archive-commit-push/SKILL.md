@@ -48,6 +48,13 @@ When stopped, report the exact blockers and the safest next command or decision.
 
    Use JSON fields such as artifact paths when available, but do not assume specific field names across OpenSpec versions. If a field such as `artifactPaths.specs.existingOutputPaths` is absent, inspect the change directory and schema/config instead of inventing paths.
 
+   Also run `openspec instructions apply --change "<name>" --json`. Read every
+   returned `contextFiles` path and use its aggregated `taskTrackingConfigured`,
+   `tasks`, and `progress` fields as the task-tracking evidence. Treat an
+   `all_done` state as a status result, not proof that the proposal behavior was
+   implemented. If tracking files are unavailable or the reported task evidence
+   is incomplete, stop rather than treating an empty list as completion.
+
 5. Read the proposal, design if present, task list, delta specs, and relevant implementation diff. Build a completion candidate:
    - change id/name
    - proposal behavior to satisfy
@@ -63,14 +70,14 @@ When stopped, report the exact blockers and the safest next command or decision.
 
 Before syncing or archiving:
 
-1. Confirm every required task is checked off. If implementation appears complete but task markers are unchecked, stop and list the unchecked tasks. Do not silently mark tasks complete unless the user explicitly requested that and the staged scope is otherwise clear.
+1. Confirm every required task is checked off using the apply instruction's returned task source paths and lines, not an assumed `tasks.md` location. If task tracking is configured but any tracking file is unavailable or progress is incomplete, stop and list the affected tasks. Do not silently mark tasks complete unless the user explicitly requested that and the staged scope is otherwise clear.
 2. Compare the proposal's requested behavior and impact against the scoped implementation diff and verification evidence.
 3. Run or confirm the repository's relevant validation commands. Prefer commands already documented by the project, OpenSpec change, or package scripts. If validation is impractical, report the limitation and stop unless the user explicitly asked to proceed without that validation.
 4. Run strict OpenSpec validation for the active change using the repository-supported command. If the CLI syntax differs, inspect help and use the supported equivalent.
 
 ## Sync Specs
 
-1. Sync every selected delta spec into its owning main spec before archive.
+1. Read `artifactPaths.specs.existingOutputPaths`. If it is empty or the spec artifact is intentionally skipped, record "No delta specs" and make no spec write. Otherwise sync every selected delta spec into its owning main spec before archive.
 2. Read both the delta spec and target main spec before editing.
 3. Preserve main-spec content unrelated to the delta.
 4. Keep added, modified, and removed requirements coherent with the accepted change.

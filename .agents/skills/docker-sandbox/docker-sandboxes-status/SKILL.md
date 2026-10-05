@@ -1,6 +1,6 @@
 ---
 name: docker-sandboxes-status
-description: Inspect a Docker Sandbox's actual workspace exposure, policies, ports, and network activity. Use from host PowerShell; do not use to start or nest sandboxes.
+description: Inspect a Docker Sandbox's workspace exposure, policies, ports, and network activity. Use when checking a sandbox from host PowerShell, not starting or nesting one.
 ---
 
 # Docker Sandboxes Status

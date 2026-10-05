@@ -1,15 +1,11 @@
 {
   "repository": "https://github.com/Fission-AI/OpenSpec",
-  "release": "v1.13.2",
-  "revision": "db2309783547a14e150dbcbfc19120e4028446c3",
+  "release": "v1.14.0",
+  "revision": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
   "source": "skills/<name>/SKILL.md",
   "updated_skills": [
     "openspec-apply-change",
-    "openspec-archive-change",
-    "openspec-explore",
-    "openspec-propose",
-    "openspec-sync-specs",
-    "openspec-update-change"
+    "openspec-archive-change"
   ],
   "preserved_custom_skills": [
     "openspec-commit-inclusive",
@@ -18,11 +14,23 @@
     "openspec-macro-finalize-sync-archive-commit-push"
   ],
   "skill_revisions": {
-    "openspec-explore": "db2309783547a14e150dbcbfc19120e4028446c3",
-    "openspec-apply-change": "db2309783547a14e150dbcbfc19120e4028446c3",
-    "openspec-update-change": "db2309783547a14e150dbcbfc19120e4028446c3",
-    "openspec-sync-specs": "db2309783547a14e150dbcbfc19120e4028446c3",
-    "openspec-archive-change": "db2309783547a14e150dbcbfc19120e4028446c3",
-    "openspec-propose": "db2309783547a14e150dbcbfc19120e4028446c3"
+    "openspec-explore": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
+    "openspec-apply-change": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
+    "openspec-update-change": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
+    "openspec-sync-specs": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
+    "openspec-archive-change": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
+    "openspec-propose": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5"
+  },
+  "results": {
+    "openspec-apply-change": "updated",
+    "openspec-archive-change": "updated",
+    "openspec-commit-inclusive": "preserved-custom",
+    "openspec-dashboard": "preserved-custom",
+    "openspec-explore": "unchanged",
+    "openspec-grill-me": "preserved-custom",
+    "openspec-macro-finalize-sync-archive-commit-push": "preserved-custom",
+    "openspec-propose": "unchanged",
+    "openspec-sync-specs": "unchanged",
+    "openspec-update-change": "unchanged"
   }
 }

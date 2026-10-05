@@ -14,7 +14,7 @@ This skill is a local dashboard launcher and inspector. It does not call an AI s
 Before launching the dashboard, check the current project and required CLIs.
 
 1. Resolve the project path from the user's request or the current working directory.
-2. Confirm the project has an OpenSpec root. Prefer repository instructions for canonical paths. Common roots are `.openspec/` or `openspec/`.
+2. Resolve the OpenSpec root with `openspec context --json` (or `openspec list --json` when that is the supported compatibility path). Use the returned `root.path` as canonical rather than inferring a `.openspec/` or `openspec/` folder. A null root means initialization would be a planning write: explain that and wait for explicit approval. If a declared store cannot be resolved, stop and report the CLI's concrete error instead of treating the project as uninitialized.
 3. Check CLI availability with read-only commands:
    - `openspec --version`
    - `openspecui --help`

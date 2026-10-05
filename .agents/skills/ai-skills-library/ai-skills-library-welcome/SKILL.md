@@ -1,6 +1,6 @@
 ---
 name: ai-skills-library-welcome
-description: Confirm that the shared ai-skills-library Codex skills are installed and available in the current project.
+description: Confirm that shared ai-skills-library Codex skills are installed and available. Use when verifying skill discovery in the current project or machine.
 metadata:
   short-description: Smoke test shared skill availability
 ---

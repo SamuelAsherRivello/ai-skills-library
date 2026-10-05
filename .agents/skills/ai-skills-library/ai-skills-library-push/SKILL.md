@@ -1,6 +1,6 @@
 ---
 name: ai-skills-library-push
-description: Copy one named global Codex skill or all valid global skills into the local AI Skills Library checkout.
+description: Copy named or all valid global Codex skills into this AI Skills Library checkout. Use when importing global skills into the library.
 ---
 
 # AI Skills Library Push

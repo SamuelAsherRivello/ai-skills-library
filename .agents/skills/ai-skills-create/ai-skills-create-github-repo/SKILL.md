@@ -1,6 +1,6 @@
 ---
 name: ai-skills-create-github-repo
-description: Create a GitHub repository from the shared repository template and prepare its local checkout.
+description: Create a GitHub repository from the shared repository template and prepare its local checkout. Use when starting a new template-based repository.
 ---
 
 # AI Skills Create GitHub Repo

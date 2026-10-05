@@ -7,6 +7,7 @@ $projectRoot = Join-Path $tempRoot 'project'
 $librarySkills = Join-Path $libraryRoot '.agents/skills'
 $libraryCategory = Join-Path $librarySkills 'ai-skills-library'
 $creationCategory = Join-Path $librarySkills 'ai-skills-create'
+$tiledCategory = Join-Path $librarySkills 'tiled-editor'
 $globalSkills = $globalRoot
 $projectSkills = Join-Path $projectRoot '.agents/skills'
 $engine = (Get-Command pwsh.exe, powershell.exe -ErrorAction SilentlyContinue | Select-Object -First 1).Source
@@ -43,12 +44,17 @@ function Assert([bool] $Condition, [string] $Message) {
 }
 
 try {
-    New-Item -ItemType Directory -Path $libraryCategory, $creationCategory, $globalSkills, $projectSkills -Force | Out-Null
+    New-Item -ItemType Directory -Path $libraryCategory, $creationCategory, $tiledCategory, $globalSkills, $projectSkills -Force | Out-Null
 
     New-TestSkill (Join-Path $globalSkills 'ai-skills-create-app-sample') 'create-app'
     $result = Invoke-Copy push ai-skills-create-app-sample
     Assert ($result.ExitCode -eq 0) "create-category push failed: $($result.Output)"
     Assert (Test-Path -LiteralPath (Join-Path $creationCategory 'ai-skills-create-app-sample/SKILL.md')) 'push did not map an ai-skills-create skill to its category.'
+
+    New-TestSkill (Join-Path $globalSkills 'tiled-ai-sample') 'tiled-ai-sample'
+    $result = Invoke-Copy push tiled-ai-sample
+    Assert ($result.ExitCode -eq 0) "tiled-editor push failed: $($result.Output)"
+    Assert (Test-Path -LiteralPath (Join-Path $tiledCategory 'tiled-ai-sample/SKILL.md')) 'push did not map a tiled-ai skill to its category.'
 
     New-TestSkill (Join-Path $globalSkills 'ai-skills-library-push-one') 'push-one'
     $result = Invoke-Copy push ai-skills-library-push-one
@@ -64,6 +70,7 @@ try {
     $result = Invoke-Copy pull all -GlobalDirectory $newGlobalRoot
     Assert ($result.ExitCode -eq 0) "pull could not create a missing destination root: $($result.Output)"
     Assert (Test-Path -LiteralPath (Join-Path $newGlobalRoot 'ai-skills-library-push-one/SKILL.md')) 'pull did not create the missing global skills directory.'
+    Assert (Test-Path -LiteralPath (Join-Path $newGlobalRoot 'tiled-ai-sample/SKILL.md')) 'pull all did not include a tiled-editor skill.'
     Assert ($result.Output -match 'Changed: .*ai-skills-library-push-one') 'pull all did not report its changed skill.'
     $result = Invoke-Copy pull all -GlobalDirectory $newGlobalRoot
     Assert ($result.ExitCode -eq 0 -and $result.Output -match 'Skipped: .*ai-skills-library-push-one') 'pull all did not report an identical skill as skipped.'

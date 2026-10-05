@@ -1,6 +1,6 @@
 ---
 name: ai-skills-release-version
-description: Release a template-compatible repository through its checked-in GitHub Actions workflow and version.txt source.
+description: Release a template-compatible repository through its checked-in GitHub Actions workflow and version.txt source. Use when publishing a versioned release.
 ---
 
 # AI Skills Release Version
