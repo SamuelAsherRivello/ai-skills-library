@@ -14,6 +14,11 @@ global Codex installation, and the current project.
 - [ai-skills-library-push](./ai-skills-library-push/SKILL.md): Copy global
   skills into the local library checkout.
 
+## Chat Recovery
+
+- [ai-skills-unarchive](./ai-skills-unarchive/SKILL.md): Find and restore an
+  archived Codex chat.
+
 ## Read-Only Helpers
 
 - [ai-skills-library-status](./ai-skills-library-status/SKILL.md): Compare
