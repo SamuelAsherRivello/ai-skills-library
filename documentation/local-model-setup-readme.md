@@ -87,7 +87,7 @@ Pull either model if it is absent:
 
 ```powershell
 docker model pull ai/smollm2:135M-Q4_K_M
-docker model pull ai/qwen2.5-coder
+docker model pull huggingface.co/apto-as/qwen2.5-coder-14b-instruct-q5_k_m-gguf:latest
 ```
 
 ##### 2. Create the local gateway configuration
@@ -104,9 +104,9 @@ Set-Content -NoNewline -Path (Join-Path $codexHome 'docker-model-gateway.key') -
 
 @"
 model_list:
-  - model_name: local-qwen2.5-coder
+  - model_name: local-qwen2.5-coder-14b
     litellm_params:
-      model: openai/chat_completions/ai/qwen2.5-coder
+      model: openai/chat_completions/huggingface.co/apto-as/qwen2.5-coder-14b-instruct-q5_k_m-gguf:latest
       api_base: http://host.docker.internal:12434/engines/v1
       api_key: local-not-needed
       max_tokens: 4096
@@ -185,7 +185,7 @@ const template = catalog.models.find((model) => model.slug === 'gpt-6-luna') ?? 
 if (!template) throw new Error('The downloaded catalog contains no model template.');
 
 catalog.models = [
-  localModel(template, 'local-qwen2.5-coder', 'Qwen 2.5 Coder (Docker local)', 32768, 24576, 4096, 1),
+  localModel(template, 'local-qwen2.5-coder-14b', 'Qwen 2.5 Coder 14B (Docker local)', 32768, 24576, 4096, 1),
   localModel(template, 'local-smollm2-135m', 'SmolLM2 135M (Docker local)', 8192, 6144, 1024, 2),
 ];
 await writeFile('/work/docker-local-models.json', `${JSON.stringify(catalog, null, 2)}\n`);
@@ -265,7 +265,7 @@ $gatewayKey = (Get-Content -Raw (Join-Path $codexHome 'docker-model-gateway.key'
 $catalogPath = Join-Path $codexHome 'docker-local-models.json'
 
 @"
-model = "local-qwen2.5-coder"
+model = "local-qwen2.5-coder-14b"
 model_provider = "docker-local"
 model_catalog_json = '$catalogPath'
 model_context_window = 32768
@@ -312,7 +312,7 @@ Invoke-RestMethod http://127.0.0.1:4001/v1/models -Headers $headers
 
 The final command must report these aliases:
 
-- `local-qwen2.5-coder`
+- `local-qwen2.5-coder-14b`
 - `local-smollm2-135m`
 
 ##### 6. Start Codex and change models
@@ -323,12 +323,12 @@ Close any already-running Codex session, then start a new one:
 codex --profile docker-local
 ```
 
-Enter `/model` and choose **Qwen 2.5 Coder (Docker local)** or **SmolLM2
+Enter `/model` and choose **Qwen 2.5 Coder 14B (Docker local)** or **SmolLM2
 135M (Docker local)**. The default is Qwen. To test a selection without opening
 the interactive UI:
 
 ```powershell
-codex --profile docker-local --model local-qwen2.5-coder exec "Reply with exactly: QWEN READY"
+codex --profile docker-local --model local-qwen2.5-coder-14b exec "Reply with exactly: QWEN READY"
 codex --profile docker-local --model local-smollm2-135m exec "Reply with exactly: SMOLLM READY"
 ```
 
@@ -343,5 +343,5 @@ You can choose any [_Docker Model_](https://hub.docker.com/u/ai), but here are 2
 | # | Name | Link | Comment |
 |---:|---|---|---|
 | 1 | Fastest response | [`ai/smollm2:135M-Q4_K_M`](https://hub.docker.com/u/ai) | Very small (~135M) CPU-friendly model. Use it for connectivity tests, short drafts, and very low-latency replies; it is not reliable for coding tasks. |
-| 2 | Balanced local coding results | [`ai/qwen2.5-coder`](https://hub.docker.com/u/ai) | The recommended default for this Codex setup: a coding-oriented model with much stronger code and instruction-following quality. A GPU is recommended for usable latency. |
+| 2 | Balanced local coding results | [`apto-as/qwen2.5-coder-14b-instruct-q5_k_m-gguf`](https://huggingface.co/apto-as/qwen2.5-coder-14b-instruct-q5_k_m-gguf) | The recommended default for this Codex setup: a 14B coding model with much stronger code and instruction-following quality. Its Q5 GGUF needs about 10 GiB of model storage; a GPU is recommended for usable latency. |
 
