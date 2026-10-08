@@ -17,3 +17,5 @@ are a navigation aid; they do not change skill names or installer behavior.
   author maps, tilesets, objects, and autotiled sample levels.
 - [Triage](./triage/README.md): Assess architecture health, standardize a
   codebase, and plan evidence-backed refactors.
+- [Slidev](./slidev/README.md): Run, review, resynchronize, and refine Slidev
+  documentation decks.

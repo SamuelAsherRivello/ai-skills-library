@@ -1,5 +1,5 @@
 interface:
-  display_name: "Tiled AI Add Tileset Autotiling"
+  display_name: "Tiled Ai Add Tileset Autotiling"
   short_description: "Author and verify tileset Wang metadata"
   default_prompt: "Use $tiled-ai-add-tileset-autotiling to configure and test autotiling for this open tileset."
 dependencies:

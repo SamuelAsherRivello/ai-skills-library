@@ -11,6 +11,8 @@ live editor connection.
   layered floor, walls, and objects sample map from one tileset.
 - [Tiled AI Add Tileset Autotiling](./tiled-ai-add-tileset-autotiling/SKILL.md):
   Add and visually verify Wang terrain metadata on an existing tileset.
+- [Tiled AI Add Tileset Automapping](./tiled-ai-add-tileset-automapping/SKILL.md):
+  Author and verify map-scoped Automapping rules for an existing tileset.
 - [Tiled AI Add Character](./tiled-ai-add-character/SKILL.md): Add an animated
   character with Tiled AI placement data and runtime integration.
 - [Tiled AI Add Object](./tiled-ai-add-object/SKILL.md): Add a tested,

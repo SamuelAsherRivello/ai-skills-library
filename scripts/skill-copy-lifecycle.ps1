@@ -19,7 +19,7 @@ if ([string]::IsNullOrWhiteSpace($LibraryRoot)) {
 }
 $libraryRoot = [System.IO.Path]::GetFullPath($LibraryRoot)
 $librarySkills = Join-Path $libraryRoot '.agents/skills'
-$libraryCategories = @('ai-skills-create', 'ai-skills-library', 'openspec', 'docker-sandbox', 'tiled-editor', 'triage')
+$libraryCategories = @('ai-skills-create', 'ai-skills-library', 'openspec', 'docker-sandbox', 'tiled-editor', 'triage', 'slidev')
 $globalSkills = [System.IO.Path]::GetFullPath($GlobalSkillsDirectory)
 
 function Resolve-ProjectSkills {
@@ -103,12 +103,13 @@ function Resolve-LibraryCategory([string] $Name, [string] $SelectedCategory) {
     if ($Name -like 'docker-sandbox*' -or $Name -like 'docker-sandboxes-*') { return 'docker-sandbox' }
     if ($Name -like 'tiled-ai-*') { return 'tiled-editor' }
     if ($Name -like 'triage-*') { return 'triage' }
+    if ($Name -like 'slidev-*') { return 'slidev' }
     Write-Host 'Choose a category for this skill:'
     for ($index = 0; $index -lt $libraryCategories.Count; $index++) { Write-Host ("{0}. {1}" -f ($index + 1), $libraryCategories[$index]) }
     while ($true) {
         $choice = Read-Host "Category number for $Name"
-        if ($choice -match '^[1-6]$') { return $libraryCategories[[int]$choice - 1] }
-        Write-Host 'Enter a number from 1 to 6.'
+        if ($choice -match '^\d+$' -and [int]$choice -ge 1 -and [int]$choice -le $libraryCategories.Count) { return $libraryCategories[[int]$choice - 1] }
+        Write-Host ("Enter a number from 1 to {0}." -f $libraryCategories.Count)
     }
 }
 
@@ -202,10 +203,10 @@ else {
 foreach ($selection in $selections) {
     $name = $selection.Name
     $source = if ($selection.PSObject.Properties['FullName']) { $selection.FullName } else { Join-Path $sourceRoot $name }
-    $category = $null
-    if ($operation -eq 'push') { $category = Resolve-LibraryCategory $name $Category }
-    elseif ($operation -eq 'pull') { $category = Split-Path (Split-Path $source -Parent) -Leaf }
-    $destination = if ($operation -eq 'push') { Join-Path (Join-Path $destinationRoot $category) $name } else { Join-Path $destinationRoot $name }
+    $resolvedCategory = $null
+    if ($operation -eq 'push') { $resolvedCategory = Resolve-LibraryCategory $name $Category }
+    elseif ($operation -eq 'pull') { $resolvedCategory = Split-Path (Split-Path $source -Parent) -Leaf }
+    $destination = if ($operation -eq 'push') { Join-Path (Join-Path $destinationRoot $resolvedCategory) $name } else { Join-Path $destinationRoot $name }
     if (-not (Test-PhysicalSkill $source)) {
         $failed.Add("$name (missing or invalid source skill)")
         continue
@@ -224,10 +225,10 @@ foreach ($selection in $selections) {
             $failed.Add("$name (destination conflict; ask the user for explicit replacement authorization, then rerun with -ReplaceConflicts)")
             continue
         }
-        $plan.Add([pscustomobject]@{ Name = $name; Source = $source; Destination = $destination; Category = $category; Replace = $true })
+        $plan.Add([pscustomobject]@{ Name = $name; Source = $source; Destination = $destination; Category = $resolvedCategory; Replace = $true })
         continue
     }
-    $plan.Add([pscustomobject]@{ Name = $name; Source = $source; Destination = $destination; Category = $category; Replace = $false })
+    $plan.Add([pscustomobject]@{ Name = $name; Source = $source; Destination = $destination; Category = $resolvedCategory; Replace = $false })
 }
 
 if ($operation -eq 'push' -and ($plan.Count -gt 0 -or $failed.Count -gt 0) -and -not (Test-DirectoryWritable $destinationRoot)) {

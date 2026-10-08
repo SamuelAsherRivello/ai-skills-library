@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $skillsRoot = Join-Path $repoRoot '.agents\skills'
-$categories = @('ai-skills-create', 'ai-skills-library', 'docker-sandbox', 'openspec')
+$categories = @('ai-skills-create', 'ai-skills-library', 'docker-sandbox', 'openspec', 'tiled-editor', 'triage', 'slidev')
 
 function Assert([bool] $Condition, [string] $Message) {
     if (-not $Condition) { throw $Message }

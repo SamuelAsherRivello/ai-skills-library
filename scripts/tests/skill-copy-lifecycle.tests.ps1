@@ -8,6 +8,7 @@ $librarySkills = Join-Path $libraryRoot '.agents/skills'
 $libraryCategory = Join-Path $librarySkills 'ai-skills-library'
 $creationCategory = Join-Path $librarySkills 'ai-skills-create'
 $tiledCategory = Join-Path $librarySkills 'tiled-editor'
+$slidevCategory = Join-Path $librarySkills 'slidev'
 $globalSkills = $globalRoot
 $projectSkills = Join-Path $projectRoot '.agents/skills'
 $engine = (Get-Command pwsh.exe, powershell.exe -ErrorAction SilentlyContinue | Select-Object -First 1).Source
@@ -20,23 +21,16 @@ function New-TestSkill([string] $Path, [string] $Contents) {
 }
 
 function Invoke-Copy([string] $Action, [string] $Skill, [string] $GlobalDirectory = $globalSkills, [switch] $ReplaceConflicts, [string] $CategoryInput) {
-    $outPath = Join-Path $tempRoot ('out-' + [Guid]::NewGuid().ToString('N') + '.txt')
-    $errPath = Join-Path $tempRoot ('err-' + [Guid]::NewGuid().ToString('N') + '.txt')
     $argsList = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $copyScript,
         '-Action', $Action, '-Skill', $Skill, '-LibraryRoot', $libraryRoot,
         '-GlobalSkillsDirectory', $GlobalDirectory, '-ProjectDirectory', $projectRoot)
     if ($ReplaceConflicts) { $argsList += '-ReplaceConflicts' }
     if ($CategoryInput) { $argsList += @('-Category', $CategoryInput) }
-    $quotedArgs = $argsList | ForEach-Object { '"' + ([string]$_).Replace('"', '\"') + '"' }
-    $process = Start-Process -FilePath $engine -ArgumentList ($quotedArgs -join ' ') -Wait -PassThru `
-        -RedirectStandardOutput $outPath -RedirectStandardError $errPath
-    $result = [pscustomobject]@{
-        ExitCode = $process.ExitCode
-        Output = ((Get-Content -LiteralPath $outPath -ErrorAction SilentlyContinue) -join "`n") + "`n" +
-            ((Get-Content -LiteralPath $errPath -ErrorAction SilentlyContinue) -join "`n")
+    $output = @(& $engine @argsList 2>&1)
+    return [pscustomobject]@{
+        ExitCode = $LASTEXITCODE
+        Output = ($output | Out-String)
     }
-    Remove-Item -LiteralPath $outPath, $errPath -Force -ErrorAction SilentlyContinue
-    return $result
 }
 
 function Assert([bool] $Condition, [string] $Message) {
@@ -44,7 +38,7 @@ function Assert([bool] $Condition, [string] $Message) {
 }
 
 try {
-    New-Item -ItemType Directory -Path $libraryCategory, $creationCategory, $tiledCategory, $globalSkills, $projectSkills -Force | Out-Null
+    New-Item -ItemType Directory -Path $libraryCategory, $creationCategory, $tiledCategory, $slidevCategory, $globalSkills, $projectSkills -Force | Out-Null
 
     New-TestSkill (Join-Path $globalSkills 'ai-skills-create-app-sample') 'create-app'
     $result = Invoke-Copy push ai-skills-create-app-sample
@@ -55,6 +49,11 @@ try {
     $result = Invoke-Copy push tiled-ai-sample
     Assert ($result.ExitCode -eq 0) "tiled-editor push failed: $($result.Output)"
     Assert (Test-Path -LiteralPath (Join-Path $tiledCategory 'tiled-ai-sample/SKILL.md')) 'push did not map a tiled-ai skill to its category.'
+
+    New-TestSkill (Join-Path $globalSkills 'slidev-sample') 'slidev-sample'
+    $result = Invoke-Copy push slidev-sample -CategoryInput slidev
+    Assert ($result.ExitCode -eq 0) "slidev-category push failed: $($result.Output)"
+    Assert (Test-Path -LiteralPath (Join-Path $slidevCategory 'slidev-sample/SKILL.md')) 'push did not create the selected Slidev category copy.'
 
     New-TestSkill (Join-Path $globalSkills 'ai-skills-library-push-one') 'push-one'
     $result = Invoke-Copy push ai-skills-library-push-one

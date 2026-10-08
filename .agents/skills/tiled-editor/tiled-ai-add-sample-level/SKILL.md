@@ -40,7 +40,19 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
    tileset's Wang set for Walls. Do not attach, mix, or infer a second tileset.
    Do not choose a decorative, collision, or terrain-edge tile as the floor
    without confirmation.
-4. Run `$tiled-ai-add-tileset-autotiling` when the selected tileset has not
+4. Treat Automapping as a companion **rule bundle**, not a property of the
+   TSX. When the caller supplies a compatible, execution-verified rule map and
+   `rules.txt` that target this map's layers, preserve their target-layer
+   contract and use the bundle after building its inputs. Otherwise continue
+   with the Wang-only flow below; a tileset without rules remains fully
+   supported. The current live `tiled-ai` MCP does not expose Map > AutoMap.
+   Never invoke an external process against the new map while Tiled has it
+   open. If the caller needs Automapping output now, save and return the input
+   map plus the verified bundle with a clear execution handoff, rather than
+   claiming the rule output was generated. Use
+   `$tiled-ai-add-tileset-automapping` to author or independently verify a
+   rule bundle on a disposable, unopened fixture.
+5. Run `$tiled-ai-add-tileset-autotiling` when the selected tileset has not
    already been classified. A default **Figure 8** must use one of its
    verified outcomes; never produce a floor-only substitute:
    - For a **Wang-ready** tileset, inspect `list_wang_sets` against the map
@@ -66,11 +78,11 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
    wrong-facing, or broken join, return to
    `$tiled-ai-add-tileset-autotiling`; do not fake the result by manually
    picking edge tiles.
-5. Verify the floor, empty Objects layer, Walls result, and layer order with
+6. Verify the floor, empty Objects layer, Walls result, and layer order with
    `read_region`, `list_layers`, and `get_region_image`. `read_region` pages
    at 256 cells, and images are bounded to 1024 pixels per dimension; paginate
    cell reads and split a 50×50, 32-pixel visual inspection into bounded views.
-6. Re-read revisions after every mutation. Save the map with `save_map` and
+7. Re-read revisions after every mutation. Save the map with `save_map` and
    save the external tileset separately with `save_tileset` only if it changed.
 
 Follow the shared [MCP editing contract](../references/tiled-ai-mcp.md).
