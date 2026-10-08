@@ -19,7 +19,7 @@ if ([string]::IsNullOrWhiteSpace($LibraryRoot)) {
 }
 $libraryRoot = [System.IO.Path]::GetFullPath($LibraryRoot)
 $librarySkills = Join-Path $libraryRoot '.agents/skills'
-$libraryCategories = @('ai-skills-create', 'ai-skills-library', 'openspec', 'docker-sandbox', 'tiled-editor', 'triage', 'slidev')
+$libraryCategories = @('ai-skills-create', 'ai-skills-library', 'openspec', 'docker-sandbox', 'triage', 'slidev')
 $globalSkills = [System.IO.Path]::GetFullPath($GlobalSkillsDirectory)
 
 function Resolve-ProjectSkills {
@@ -101,7 +101,6 @@ function Resolve-LibraryCategory([string] $Name, [string] $SelectedCategory) {
     if ($Name -like 'ai-skills-library-*') { return 'ai-skills-library' }
     if ($Name -like 'openspec-*') { return 'openspec' }
     if ($Name -like 'docker-sandbox*' -or $Name -like 'docker-sandboxes-*') { return 'docker-sandbox' }
-    if ($Name -like 'tiled-ai-*') { return 'tiled-editor' }
     if ($Name -like 'triage-*') { return 'triage' }
     if ($Name -like 'slidev-*') { return 'slidev' }
     Write-Host 'Choose a category for this skill:'
@@ -204,6 +203,10 @@ foreach ($selection in $selections) {
     $name = $selection.Name
     $source = if ($selection.PSObject.Properties['FullName']) { $selection.FullName } else { Join-Path $sourceRoot $name }
     $resolvedCategory = $null
+    if ($operation -eq 'push' -and $name -like 'tiled-ai-*') {
+        $skipped.Add("$name (managed in ai-skills-tiled)")
+        continue
+    }
     if ($operation -eq 'push') { $resolvedCategory = Resolve-LibraryCategory $name $Category }
     elseif ($operation -eq 'pull') { $resolvedCategory = Split-Path (Split-Path $source -Parent) -Leaf }
     $destination = if ($operation -eq 'push') { Join-Path (Join-Path $destinationRoot $resolvedCategory) $name } else { Join-Path $destinationRoot $name }
