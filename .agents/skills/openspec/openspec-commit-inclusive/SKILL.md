@@ -9,6 +9,14 @@ metadata:
 
 Use this skill only when the user explicitly invokes it to commit one completed OpenSpec proposal. It favors frequent POC commits at whole-file granularity: every related file is committed completely, while wholly unrelated files are excluded.
 
+## Branch policy
+
+Prefer the repository's default branch, `main`, for the commit and normal push
+when the user has not requested a branch, pull request, worktree, or isolated
+Git workflow. Do not create or switch to a feature branch by default. If the
+checkout is not already on `main`, report that fact and ask whether to continue
+on the current branch or move the work to `main` safely before committing.
+
 ## Workflow
 
 1. Consider exactly one active proposal in scope: the proposal identified by the user or the immediately preceding conversation. If zero or more than one proposal could be in scope, stop and ask for clarification. Do not broaden scope to every dirty file or every nearby OpenSpec change.
