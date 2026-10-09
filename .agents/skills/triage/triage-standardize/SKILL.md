@@ -46,7 +46,7 @@ When Standardize writes more than one Markdown document in one run directory, de
 3. Present an exact change plan: affected paths, before/after intent, expected behavior preservation, verification commands or manual scenarios, test limitations, and exclusions. Every approved row must name the smallest check that can detect its intended regression; documentation-only changes should include a local-link or rendering check when available.
 4. Apply only user-approved `safe standardization` items. Keep edits narrow and preserve behavior. Examples include approved naming, folder placement, documentation, class member ordering, explicit contract placement, consistent configuration, and AI-facing repository guidance.
 5. Verify the changed scope with the planned focused checks, then run broader checks only when the change's risk or repository instructions justify them. Inspect the diff for unintended behavior, generated artifacts, or link changes. Report commands not run and why; never describe a static/build check as behavioral proof.
-6. Update the relevant triage packet or write a new focused packet under `output/reports/triage-standardize/<run-id>/`; record each applied row's verification evidence without rewriting historical analysis as if it were current.
+6. Update the relevant triage packet or write a new focused packet under `.agents/artifacts/triage-standardize/<project-or-scope>/<run-id>/`; record each applied row's verification evidence without rewriting historical analysis as if it were current. Use the repository name for `<project-or-scope>` by default; for a focused run, use a concise, filesystem-safe scope identifier.
 
 ## Assess AI readiness
 
