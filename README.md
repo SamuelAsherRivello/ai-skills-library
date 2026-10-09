@@ -59,6 +59,7 @@ For the manual copy workflow between this repository and Codex user/project skil
 | 4 | OpenSpec | [Catalog](.agents/skills/openspec/README.md) | Explore, plan, implement, and finalize changes. |
 | 5 | Triage | [Catalog](.agents/skills/triage/README.md) | Assess architecture health, standardize codebases, and plan refactors. |
 | 6 | Slidev | [Catalog](.agents/skills/slidev/README.md) | Run, review, resynchronize, and refine Slidev documentation decks. |
+| 7 | Run | [Catalog](.agents/skills/ai-skills-run/README.md) | Start local project development servers with collision-safe ports. |
 
 Browse the complete [AI Skills Library catalog](.agents/skills/README.md) for
 the available categories and direct skill links.

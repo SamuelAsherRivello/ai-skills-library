@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Skills Run Project"
+  short_description: "Run a project on a stable local port"
+  default_prompt: "Use $ai-skills-run-project to start this project without conflicting with other local Vite servers."
