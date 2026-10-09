@@ -27,7 +27,7 @@ For every Markdown table created in a report packet, make `#` its first column. 
 
 1. Read repository instructions (including `AGENTS.md`) and identify the project root before inspecting source.
 2. Locate and read `.aiignore` and `.triageignore` before any broad source scan. Honor `.aiignore` as an access rule and `.triageignore` as a triage-only scope exclusion. You may report safe aggregate metadata when it is genuinely available without reading an `.aiignore`-matched path.
-3. Write artifacts only under `.agents/artifacts/triage-analyze/<project-or-scope>/<run-id>/`. Use the repository name for `<project-or-scope>` by default; for a focused run, use a concise, filesystem-safe scope identifier. If `.aiignore` or repository instructions make that destination unavailable, stop and ask the user for an allowed destination.
+3. Write artifacts only under `.agents/artifacts/triage-analyze/<run-id>/`. Use a readable run ID in `YYYY-MM-DD-NN` form, such as `2026-10-09-01`; increment `NN` for each run created in the repository on that date and choose the next unused ID. If `.aiignore` or repository instructions make that destination unavailable, stop and ask the user for an allowed destination.
 4. Do not edit production code, configuration, tests, `.aiignore`, or the shipped standards document. This skill may create only its Markdown packet and routine diagnostic output under the run directory.
 5. Never treat a prior finding as resolved merely because it is absent from a later report.
 
@@ -35,7 +35,7 @@ For every Markdown table created in a report packet, make `#` its first column. 
 
 1. Establish the baseline: inspect repository structure, source boundaries, build/test/lint command discovery, documentation, contribution guidance, and recent relevant history when available. Record commands as discovered; do not claim they passed unless you ran them and captured the result.
 2. Read the shipped Standardize [standards document](../triage-standardize/references/standards-document.md) as the active baseline. If its `Baseline status` remains `Shipped default`, identify existing conventions and label the report: **`standards-document.md` has not been customized by user. Using defaults.** Link that filename to the shipped source. If the status records a customization, treat the edited document as the active baseline rather than looking for a second copy elsewhere.
-3. Find prior packets under `.agents/artifacts/triage-analyze/<project-or-scope>/` only when they are accessible and relevant. Revalidate their findings against the current source, current commit, and current standards document. Classify each prior item as `resolved with evidence`, `still present`, `worsened`, `not re-observed`, or `deferred`; include the supporting evidence.
+3. Find prior packets under `.agents/artifacts/triage-analyze/` only when they are accessible and relevant. Revalidate their findings against the current source, current commit, and current standards document. Classify each prior item as `resolved with evidence`, `still present`, `worsened`, `not re-observed`, or `deferred`; include the supporting evidence.
 4. In **standardization** analysis, compare project structure, naming, class/interface organization, configuration, documentation, and AI-readiness material with the approved baseline where one exists. Assess AI readiness as `nailed`, `partial`, `missing`, or `N/A` for canonical agent instructions, command discovery, orientation, definition of done, maintenance relationships, and safety boundaries. When `.aiignore` is absent, recommend a project-specific `.aiignore` as an optional `$triage-standardize` follow-up only when evidence shows that it would protect AI-assisted work beyond existing repository instructions and `.gitignore`; absence alone is not a defect, does not lower the score by itself, and does not justify drafting or creating the file.
 5. Establish a **verification baseline**. Discover unit, integration, end-to-end, static, build, and manual checks from manifests, CI, scripts, and durable documentation. For each relevant check, record its source, intended scope, command or procedure, whether it was run, its actual result when run, and environmental limitations. Discovery is not proof that a check passes.
 6. Assess whether the affected boundaries have meaningful test seams: public contracts, injected collaborators, error paths, state transitions, and high-risk integrations. Report missing or weak coverage as evidence-backed risk, not as an invented test requirement. Do not count a passing build or typecheck as behavioral coverage.
@@ -62,7 +62,7 @@ Score refactor urgency separately from repository health. Urgency combines impac
 Read [the report-packet reference](references/report-packet.md) before writing. Create this packet:
 
 ```text
-.agents/artifacts/triage-analyze/<project-or-scope>/<run-id>/
+.agents/artifacts/triage-analyze/<run-id>/
 |-- overview.md
 |-- standardization-analysis.md
 |-- architecture-analysis.md

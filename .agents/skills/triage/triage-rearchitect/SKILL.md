@@ -89,10 +89,10 @@ For each role, record its central thoughts, the concrete actions it championed, 
 Read [the refactor-plan reference](references/refactor-plan.md) and create a plan at:
 
 ```text
-.agents/artifacts/triage-rearchitect/<project-or-scope>/<run-id>/refactor-plan.md
+.agents/artifacts/triage-rearchitect/<run-id>/refactor-plan.md
 ```
 
-Use the repository name for `<project-or-scope>` by default; for a focused run, use a concise, filesystem-safe scope identifier.
+Use a readable run ID in `YYYY-MM-DD-NN` form, such as `2026-10-09-01`; increment `NN` for each run created in the repository on that date and choose the next unused ID.
 
 The plan must describe the current and desired module model, contract changes, state/data ownership, dependency-direction changes, migration steps, compatibility strategy, failure behavior, tests, rollout/rollback considerations, and excluded work. Include the **Orchestrator thoughts** and the per-role deliberation summary described above. Before implementation, identify existing characterization, contract, integration, and manual tests that protect the affected behavior. For each implementation stage, name the smallest check that proves the intended behavior and the larger check required before completion. Use ASCII diagrams when a relationship is materially easier to understand visually.
 
