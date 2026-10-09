@@ -57,9 +57,8 @@ For the manual copy workflow between this repository and Codex user/project skil
 | 2 | AI Skills Library | [Catalog](.agents/skills/ai-skills-library/README.md) | Manage library, global, and project skill copies. |
 | 3 | Docker Sandbox | [Catalog](.agents/skills/docker-sandbox/README.md) | Configure and inspect isolated Docker Sandbox environments. |
 | 4 | OpenSpec | [Catalog](.agents/skills/openspec/README.md) | Explore, plan, implement, and finalize changes. |
-| 5 | Tiled AI | [Catalog](.agents/skills/tiled-editor/README.md) | Set up the Tiled AI MCP and author Tiled maps and tilesets. |
-| 6 | Triage | [Catalog](.agents/skills/triage/README.md) | Assess architecture health, standardize codebases, and plan refactors. |
-| 7 | Slidev | [Catalog](.agents/skills/slidev/README.md) | Run, review, resynchronize, and refine Slidev documentation decks. |
+| 5 | Triage | [Catalog](.agents/skills/triage/README.md) | Assess architecture health, standardize codebases, and plan refactors. |
+| 6 | Slidev | [Catalog](.agents/skills/slidev/README.md) | Run, review, resynchronize, and refine Slidev documentation decks. |
 
 Browse the complete [AI Skills Library catalog](.agents/skills/README.md) for
 the available categories and direct skill links.
