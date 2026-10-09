@@ -7,6 +7,14 @@ description: "Run an ordered macro of OpenSpec finalization skills after apply: 
 
 Use only when the user explicitly asks to finish one completed OpenSpec change through sync, archive, Git commit, and a normal push. This macro coordinates the applicable finalization skills in that required order: `openspec-sync-specs`, `openspec-archive-change`, and `openspec-commit-inclusive`, followed by a normal push. It is not a substitute for implementation, review, release, tagging, pull requests, or remote branch integration.
 
+## Branch policy
+
+When the user does not explicitly request a branch, pull request, worktree, or
+isolated Git workflow, target the repository's default branch, `main`. Do not
+create or switch to a feature branch as part of this macro. If the checkout is
+not already on `main`, stop before committing and ask whether to continue on
+the current branch or move the work to `main` safely.
+
 The goal is one command after `openspec-apply-change` is done:
 
 ```text
