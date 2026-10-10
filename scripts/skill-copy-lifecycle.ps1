@@ -19,7 +19,7 @@ if ([string]::IsNullOrWhiteSpace($LibraryRoot)) {
 }
 $libraryRoot = [System.IO.Path]::GetFullPath($LibraryRoot)
 $librarySkills = Join-Path $libraryRoot '.agents/skills'
-$libraryCategories = @('ai-skills-create', 'ai-skills-library', 'openspec', 'docker-sandbox', 'triage', 'slidev')
+$libraryCategories = @('ai-skills-create', 'ai-skills-library', 'ai-skills-run', 'openspec', 'docker-sandbox', 'triage', 'slidev')
 $globalSkills = [System.IO.Path]::GetFullPath($GlobalSkillsDirectory)
 
 function Resolve-ProjectSkills {
@@ -99,6 +99,7 @@ function Resolve-LibraryCategory([string] $Name, [string] $SelectedCategory) {
     }
     if ($Name -like 'ai-skills-create-*') { return 'ai-skills-create' }
     if ($Name -like 'ai-skills-library-*') { return 'ai-skills-library' }
+    if ($Name -like 'ai-skills-project-run-*') { return 'ai-skills-run' }
     if ($Name -like 'openspec-*') { return 'openspec' }
     if ($Name -like 'docker-sandbox*' -or $Name -like 'docker-sandboxes-*') { return 'docker-sandbox' }
     if ($Name -like 'triage-*') { return 'triage' }

@@ -36,7 +36,7 @@ When Standardize writes more than one Markdown document in one run directory, de
 
 1. Read [the complete standards document](references/standards-document.md) first. It already includes the Project Template, Class Template, AI-readiness expectations, score weights, verification guidance, and exception/deferred-decision sections.
 2. Treat this shipped document as the active baseline immediately. A beginner need not create, copy, or approve a setup file before receiving a useful standardization delta.
-3. A user may edit the shipped document directly to add repository-specific decisions. Its `Baseline status` section identifies whether it remains the default or has been customized. Do not create or require `docs/triage/standards.md`.
+3. A user may edit the shipped document directly to add repository-specific decisions. Its `Baseline status` section identifies whether it remains the default or has been customized. Keep repository-wide standards and triage documentation in the repository-root `docs/` folder rather than inside a project-specific directory. Do not create or require `docs/triage/standards.md` as a copy of the shipped baseline.
 4. Discover existing repository conventions and constraints. Preserve intentional conventions; do not impose a generic framework layout merely because it differs from a default illustration.
 
 ## Apply an approved baseline
@@ -46,7 +46,7 @@ When Standardize writes more than one Markdown document in one run directory, de
 3. Present an exact change plan: affected paths, before/after intent, expected behavior preservation, verification commands or manual scenarios, test limitations, and exclusions. Every approved row must name the smallest check that can detect its intended regression; documentation-only changes should include a local-link or rendering check when available.
 4. Apply only user-approved `safe standardization` items. Keep edits narrow and preserve behavior. Examples include approved naming, folder placement, documentation, class member ordering, explicit contract placement, consistent configuration, and AI-facing repository guidance.
 5. Verify the changed scope with the planned focused checks, then run broader checks only when the change's risk or repository instructions justify them. Inspect the diff for unintended behavior, generated artifacts, or link changes. Report commands not run and why; never describe a static/build check as behavioral proof.
-6. Update the relevant triage packet or write a new focused packet under `.agents/artifacts/triage-standardize/<run-id>/`; record each applied row's verification evidence without rewriting historical analysis as if it were current. Use a readable run ID in `YYYY-MM-DD-NN` form, such as `2026-10-09-01`; increment `NN` for each run created in the repository on that date and choose the next unused ID.
+6. Update the relevant triage packet or write a new focused packet under the repository-root `docs/triage/standardize/<run-id>/`, not inside a project-specific directory; record each applied row's verification evidence without rewriting historical analysis as if it were current. Use a readable run ID in `YYYY-MM-DD-NN` form, such as `2026-10-09-01`; increment `NN` for each run created in the repository on that date and choose the next unused ID.
 
 ## Assess AI readiness
 

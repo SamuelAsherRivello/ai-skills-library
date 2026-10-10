@@ -60,6 +60,7 @@ For the manual copy workflow between this repository and Codex user/project skil
 | 5 | Triage | [Catalog](.agents/skills/triage/README.md) | Assess architecture health, standardize codebases, and plan refactors. |
 | 6 | Slidev | [Catalog](.agents/skills/slidev/README.md) | Run, review, resynchronize, and refine Slidev documentation decks. |
 | 7 | Run | [Catalog](.agents/skills/ai-skills-run/README.md) | Start local project development servers with collision-safe ports. |
+| 8 | Unslop | [Skill](.agents/skills/unslop/SKILL.md) | Remove common AI writing patterns from text. |
 
 Browse the complete [AI Skills Library catalog](.agents/skills/README.md) for
 the available categories and direct skill links.

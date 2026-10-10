@@ -59,6 +59,7 @@ REPOSITORY/
 - A `project-name` represents a real technology, runtime, deployable, or ownership boundary—not merely a folder preference.
 - When a project is exceptionally organized into packages, place the package tier between `project-name` and `feature-or-service`. This is uncommon and must represent a real boundary, not a folder preference.
 - Keep source, tests, configuration, and documentation close to the boundary they serve when that makes ownership clearer.
+- Keep repository-wide documentation, including triage packets, in the repository-root `docs/` folder rather than inside a project-specific directory. Documentation that is specific to one runtime or deployable may remain near that boundary when ownership requires it.
 - Use `client`, `server`, and `shared` only where those concepts exist. `shared` must not become an unowned dumping ground.
 - Document public entry points and supported commands near the durable boundary they serve.
 - Preserve valid framework/tooling layouts and document intentional deviations here.

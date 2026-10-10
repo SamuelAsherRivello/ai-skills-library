@@ -86,10 +86,10 @@ For each role, record its central thoughts, the concrete actions it championed, 
 
 ## Plan before changing code
 
-Read [the refactor-plan reference](references/refactor-plan.md) and create a plan at:
+Read [the refactor-plan reference](references/refactor-plan.md) and create a plan at the repository root under `docs/triage/rearchitect/`, not inside a project-specific directory:
 
 ```text
-.agents/artifacts/triage-rearchitect/<run-id>/refactor-plan.md
+docs/triage/rearchitect/<run-id>/refactor-plan.md
 ```
 
 Use a readable run ID in `YYYY-MM-DD-NN` form, such as `2026-10-09-01`; increment `NN` for each run created in the repository on that date and choose the next unused ID.
