@@ -77,6 +77,26 @@ Use a real browser with WebGPU to play a meaningful full loop. Exercise keyboard
 
 Document setup, controls, gameplay, supported browser requirements, screenshots, asset sources, and known limits. In the root README, include an "Original AI Prompt" section using a collapsible details block and fenced text, following Pixel Walker's presentation. Preserve the actual game request, including supplied fields and consequential follow-up requirements; label follow-ups separately. Keep interpreted assumptions outside the quoted prompt, and do not present an invented or expanded brief as the original prompt. Redact credentials or private information before publication. Preserve useful template credits. Include timing or model metadata only when actually recorded.
 
+Before release, run the creation triage quality gate:
+
+- Run `$triage-analyze` against the generated game repository and create its
+  required packet.
+- Check that canonical instructions, verified commands, a project/module map,
+  definition of done, maintenance relationships, and safety boundaries are
+  discoverable.
+- Apply only bounded, behavior-preserving conformity gaps through
+  `$triage-standardize`, verify them, and run Analyze again.
+- Keep game rules, scoring, progression, and state transitions independently
+  testable from Babylon rendering, browser input, and network transport where
+  those boundaries are meaningful. Preserve the existing single-player and
+  multiplayer delivery paths.
+- Treat module ownership, contracts, dependency direction, state ownership,
+  and communication findings as deferred candidates for
+  `$triage-rearchitect`; do not apply structural refactors automatically.
+- Report the final triage packet, Standardization score, Architecture score,
+  verification evidence, and deferred architecture candidates alongside the
+  game, repository, and release links.
+
 ## Release and deliver
 
 Finish the template's delivery checklist. Verify that production asset paths work under the repository's GitHub Pages subpath. Keep version data consistent with the template's source of truth.
