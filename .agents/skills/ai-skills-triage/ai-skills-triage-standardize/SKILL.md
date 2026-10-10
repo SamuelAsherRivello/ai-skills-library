@@ -1,5 +1,5 @@
 ---
-name: triage-standardize
+name: ai-skills-triage-standardize
 description: Align a codebase with its approved project, class, and AI-readiness standards through bounded, low-risk changes. Use after triage analysis or when the user wants to establish and apply a standards baseline without rearchitecting.
 ---
 
@@ -28,8 +28,8 @@ When Standardize writes more than one Markdown document in one run directory, de
 ## Boundaries and preparation
 
 1. Read repository instructions, `.aiignore`, and `.triageignore` before source inspection. Honor `.aiignore` fully and `.triageignore` for triage scope; do not inspect, quote, infer from, or modify an excluded path.
-2. Locate a current `triage-analyze` packet. If it is missing, stale, or not focused on Standardization, invoke `$triage-analyze` in focused `standardization` mode before proposing work. Revalidate relevant findings against the current commit and standards baseline.
-3. Do not change module ownership, dependency direction, public contracts, state ownership, or inter-module communication. Escalate those observations to `$triage-rearchitect`.
+2. Locate a current `ai-skills-triage-analyze` packet. If it is missing, stale, or not focused on Standardization, invoke `$ai-skills-triage-analyze` in focused `standardization` mode before proposing work. Revalidate relevant findings against the current commit and standards baseline.
+3. Do not change module ownership, dependency direction, public contracts, state ownership, or inter-module communication. Escalate those observations to `$ai-skills-triage-rearchitect`.
 4. Do not create or change `.aiignore` or `.triageignore` merely because either is absent. When a focused Analyze packet recommends a project-specific `.aiignore`, show the proposed patterns, the concrete risk each addresses, and why repository instructions or `.gitignore` do not already provide that boundary; wait for explicit approval before drafting or changing it.
 
 ## Active shipped baseline

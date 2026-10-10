@@ -27,7 +27,7 @@ boundaries before final delivery.
 
 ### Requirement: Creation workflows SHALL run an evidence-backed final analysis
 
-The workflows SHALL run `triage-analyze` after implementation and applicable
+The workflows SHALL run `ai-skills-triage-analyze` after implementation and applicable
 safe conformity work, preserve its packet in the repository's required triage
 location, and report the resulting Standardization and Architecture scores.
 
@@ -40,7 +40,7 @@ location, and report the resulting Standardization and Architecture scores.
 - **WHEN** final analysis identifies a material module, contract, dependency,
   ownership, state, or communication issue
 - **THEN** the workflow records it as a deferred follow-up and points to
-  `triage-rearchitect` without applying an unapproved structural refactor
+  `ai-skills-triage-rearchitect` without applying an unapproved structural refactor
 
 ### Requirement: Creation workflows SHALL preserve product-specific architecture seams
 
@@ -60,7 +60,7 @@ application or game behavior they invoke.
 
 ### Requirement: Safe standardization SHALL be separated from rearchitecture
 
-The creation workflows SHALL use `triage-standardize` only for bounded,
+The creation workflows SHALL use `ai-skills-triage-standardize` only for bounded,
 behavior-preserving conformity work and SHALL not use it to change module
 ownership, public contracts, dependency direction, state ownership, or
 inter-module communication.

@@ -23,7 +23,7 @@ those workflows without changing the product-specific creation boundaries.
 **Non-Goals:**
 
 - Do not force one universal source tree onto React apps or Babylon games.
-- Do not run `triage-rearchitect` automatically.
+- Do not run `ai-skills-triage-rearchitect` automatically.
 - Do not require `.aiignore` when repository-specific evidence does not justify
   it.
 - Do not replace existing build, browser, release, or OpenSpec verification.

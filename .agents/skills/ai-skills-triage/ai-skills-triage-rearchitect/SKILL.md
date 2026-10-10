@@ -1,5 +1,5 @@
 ---
-name: triage-rearchitect
+name: ai-skills-triage-rearchitect
 description: Plan and apply one selected, evidence-backed architecture refactor involving modules, contracts, ownership, dependencies, or communication. Use after triage analysis or when the user wants a bounded structural improvement rather than formatting or project-standard changes.
 ---
 
@@ -28,9 +28,9 @@ When Rearchitect writes more than one Markdown document in one run directory, de
 ## Establish the evidence
 
 1. Read repository instructions, `.aiignore`, and `.triageignore` before broad source inspection. Treat `.aiignore`-matched paths as unavailable and `.triageignore`-matched paths as out of triage scope: do not read, quote, infer from, or modify them.
-2. Locate a current architecture section from a `triage-analyze` packet. If none is current for the selected scope, invoke `$triage-analyze` in focused `architecture` mode and use its packet as evidence.
+2. Locate a current architecture section from a `ai-skills-triage-analyze` packet. If none is current for the selected scope, invoke `$ai-skills-triage-analyze` in focused `architecture` mode and use its packet as evidence.
 3. Revalidate the selected finding against the current commit, source, public contracts, tests, and standards baseline. Mark any unsupported assumption as a question.
-4. Distinguish architecture from standardization. Naming, file ordering, documentation, and project-tree conformity belong to `$triage-standardize`; ownership, module boundaries, contracts, dependency direction, state, and communication belong here.
+4. Distinguish architecture from standardization. Naming, file ordering, documentation, and project-tree conformity belong to `$ai-skills-triage-standardize`; ownership, module boundaries, contracts, dependency direction, state, and communication belong here.
 
 ## Select one candidate
 

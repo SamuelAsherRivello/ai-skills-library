@@ -53,16 +53,16 @@ the user explicitly supplies another template.
    checkout, validation result, and any requested delivery outcome.
 
 6. Run the creation triage quality gate before reporting completion:
-   - Run `$triage-analyze` against the generated repository and create its
+   - Run `$ai-skills-triage-analyze` against the generated repository and create its
      required packet.
    - Check that the repository has canonical agent instructions, discoverable
      build/test/lint/type-check commands, a project/module map, a definition
      of done, maintenance relationships, and safety boundaries.
    - Apply only bounded, behavior-preserving conformity gaps through
-     `$triage-standardize`, then verify those changes and run Analyze again.
+     `$ai-skills-triage-standardize`, then verify those changes and run Analyze again.
    - Treat module ownership, public contracts, dependency direction, state
      ownership, and inter-module communication findings as deferred candidates
-     for `$triage-rearchitect`; do not refactor them automatically.
+     for `$ai-skills-triage-rearchitect`; do not refactor them automatically.
    - Keep application behavior independently testable from React presentation
      and external adapters where the feature has meaningful domain or
      application logic. Preserve valid template conventions rather than

@@ -13,16 +13,16 @@ relationships are undocumented or inconsistent.
 
 - Add a creation-time triage quality gate shared by `ai-skills-create-app` and
   `ai-skills-create-game`.
-- Require a post-implementation `triage-analyze` packet and a final score for
+- Require a post-implementation `ai-skills-triage-analyze` packet and a final score for
   each generated repository.
 - Apply safe, approved-by-workflow conformity improvements through
-  `triage-standardize` before the final analysis.
+  `ai-skills-triage-standardize` before the final analysis.
 - Require creation workflows to establish AI-readiness evidence: canonical
   instructions, command discovery, project orientation, definition of done,
   maintenance relationships, and safety boundaries.
 - Require explicit architecture seams appropriate to each product type,
   including independently testable application or game rules where applicable.
-- Treat `triage-rearchitect` as a conditional, deferred workflow for material
+- Treat `ai-skills-triage-rearchitect` as a conditional, deferred workflow for material
   ownership, contract, dependency-direction, state, or communication findings;
   do not run structural refactors automatically.
 - Preserve existing delivery boundaries: app creation remains non-game and
@@ -50,5 +50,5 @@ relationships are undocumented or inconsistent.
 - Generated repositories will contain additional orientation, verification,
   and architecture evidence and may include focused tests or documentation
   needed to satisfy the triage baseline.
-- No new runtime dependency is required. `triage-rearchitect` remains an
+- No new runtime dependency is required. `ai-skills-triage-rearchitect` remains an
   explicitly triggered follow-up rather than an automatic mutation step.

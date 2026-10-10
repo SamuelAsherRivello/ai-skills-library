@@ -1,6 +1,6 @@
 # Triage Standards
 
-This is the complete, active standards baseline shipped with `triage-standardize`. It is intentionally language-agnostic and can be used immediately. A user may edit this file in place to make project-specific decisions; no copy to `docs/` or setup-generated standards file is required.
+This is the complete, active standards baseline shipped with `ai-skills-triage-standardize`. It is intentionally language-agnostic and can be used immediately. A user may edit this file in place to make project-specific decisions; no copy to `docs/` or setup-generated standards file is required.
 
 ## Baseline status
 

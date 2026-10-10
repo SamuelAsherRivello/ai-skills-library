@@ -13,7 +13,7 @@ are a navigation aid; they do not change skill names or installer behavior.
   Docker Sandbox environments.
 - [OpenSpec](./openspec/README.md): Explore, plan, implement, and finalize
   repository changes through OpenSpec.
-- [Triage](./triage/README.md): Assess architecture health, standardize a
+- [Triage](./ai-skills-triage/README.md): Assess architecture health, standardize a
   codebase, and plan evidence-backed refactors.
 - [Slidev](./slidev/README.md): Run, review, resynchronize, and refine Slidev
   documentation decks.

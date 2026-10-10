@@ -14,7 +14,7 @@ Overview · [Standardization analysis](standardization-analysis.md) · [Architec
 | META01 | Run | [run id] |
 | META02 | Scope | [repository or named scope] |
 | META03 | Evidence window | [commit, dates, and exclusions] |
-| META04 | Standards baseline | [`standards-document.md`](../../../../.agents/skills/triage/triage-standardize/references/standards-document.md) has not been customized by user. Using defaults. |
+| META04 | Standards baseline | [`standards-document.md`](../../../../.agents/skills/ai-skills-triage/ai-skills-triage-standardize/references/standards-document.md) has not been customized by user. Using defaults. |
 
 ## Overall Repository Health
 
@@ -53,7 +53,7 @@ The score is [final/provisional]. [Explain weights, unavailable inputs, and mate
 1. [Highest-value evidence-backed action and its owner skill.]
 2. [Second action or deliberate deferral.]
 
-Optional follow-up: invoke `$triage-standardize` for approved conformity and AI-readiness work, `$triage-rearchitect` for one selected structural candidate, or `$openspec-propose` to turn this evidence into a tracked change proposal.
+Optional follow-up: invoke `$ai-skills-triage-standardize` for approved conformity and AI-readiness work, `$ai-skills-triage-rearchitect` for one selected structural candidate, or `$openspec-propose` to turn this evidence into a tracked change proposal.
 
 ## Optional: OpenSpec handoff
 

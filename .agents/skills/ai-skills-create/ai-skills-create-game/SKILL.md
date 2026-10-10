@@ -79,20 +79,20 @@ Document setup, controls, gameplay, supported browser requirements, screenshots,
 
 Before release, run the creation triage quality gate:
 
-- Run `$triage-analyze` against the generated game repository and create its
+- Run `$ai-skills-triage-analyze` against the generated game repository and create its
   required packet.
 - Check that canonical instructions, verified commands, a project/module map,
   definition of done, maintenance relationships, and safety boundaries are
   discoverable.
 - Apply only bounded, behavior-preserving conformity gaps through
-  `$triage-standardize`, verify them, and run Analyze again.
+  `$ai-skills-triage-standardize`, verify them, and run Analyze again.
 - Keep game rules, scoring, progression, and state transitions independently
   testable from Babylon rendering, browser input, and network transport where
   those boundaries are meaningful. Preserve the existing single-player and
   multiplayer delivery paths.
 - Treat module ownership, contracts, dependency direction, state ownership,
   and communication findings as deferred candidates for
-  `$triage-rearchitect`; do not apply structural refactors automatically.
+  `$ai-skills-triage-rearchitect`; do not apply structural refactors automatically.
 - Report the final triage packet, Standardization score, Architecture score,
   verification evidence, and deferred architecture candidates alongside the
   game, repository, and release links.
