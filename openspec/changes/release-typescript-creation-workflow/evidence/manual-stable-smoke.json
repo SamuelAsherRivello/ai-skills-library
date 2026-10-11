@@ -1,0 +1,33 @@
+{
+  "endpoint": "https://rmc-colyseus-multiplayer-server.vercel.app",
+  "runtimeCommit": "72aea673a1c7531a000e04ce69ff344ee8a1aa55",
+  "workflowRun": 38142336920,
+  "workflowConclusion": "failure",
+  "manualVerification": [
+    {
+      "command": "npm run probe",
+      "exitCode": 0,
+      "results": [
+        "two-client feasibility relay PASS",
+        "two-client music relay PASS"
+      ]
+    },
+    {
+      "command": "node --import tsx --test multiplayer-server/test/combat-integration.ts",
+      "exitCode": 0,
+      "tests": 1,
+      "passed": 1
+    },
+    {
+      "command": "LONG_SESSION_SECONDS=8 node --import tsx scripts/asteroids-live-session.ts",
+      "exitCode": 0,
+      "durationSeconds": 8,
+      "frames": 212,
+      "guestRecovery": true,
+      "hostLossTerminal": true
+    }
+  ],
+  "workflowOnlyFixCommit": "ecd7e348f68671aa1227faaee39e5c8ec58b9046",
+  "correctedRollbackPublicExecution": "not exercised",
+  "clientPublication": "not performed"
+}

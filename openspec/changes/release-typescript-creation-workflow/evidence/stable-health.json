@@ -1,0 +1,24 @@
+{
+  "status": "ok",
+  "version": "0.9.13",
+  "instance": "fd327556-1327-4e12-a089-9e44b2dc83f4",
+  "games": [
+    "asteroids-coop",
+    "music-maker",
+    "space-invaders",
+    "combat",
+    "bomberman",
+    "gungeon",
+    "multiplayer-draw",
+    "sumo-battle",
+    "garden-chat",
+    "gauntlet-2d",
+    "gauntlet-3d",
+    "dust-circuit-rally",
+    "neon-breaker-duo",
+    "ring-rivals",
+    "tetris-duel",
+    "street-fighter-ii",
+    "just-like-rabbits"
+  ]
+}

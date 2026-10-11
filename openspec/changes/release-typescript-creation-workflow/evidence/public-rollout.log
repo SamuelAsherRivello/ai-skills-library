@@ -1,0 +1,119 @@
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	﻿2026-10-11T13:35:35.5408911Z ##[group]Run npm run verify:long-session
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.5409495Z ^[[36;1mnpm run verify:long-session^[[0m
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.5450812Z shell: /usr/bin/bash -e {0}
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.5451117Z env:
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.5451577Z   VERCEL_TOKEN: ***
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.5451862Z   VERCEL_ORG_ID: ***
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.5452244Z   VERCEL_PROJECT_ID: ***
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.5452819Z   SERVER_URL: https://rmc-colyseus-multiplayer-server-rkvamoz5k.vercel.app
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.5453401Z   LONG_SESSION_SECONDS: 240
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.5453796Z ##[endgroup]
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.6377507Z
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.6378444Z > rmc-colyseus-multiplayer-server@0.9.13 verify:long-session
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.6378946Z > tsx scripts/long-lived-session.ts
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:35:35.6379281Z
+deploy	Verify a Vercel Hobby-compatible four-minute relay session	2026-10-11T13:39:36.7846791Z {"result":"PASS","clients":2,"room":"3ZvFJ71EE","seconds":241}
+deploy	Verify the four-minute Space Invaders session and host migration	﻿2026-10-11T13:39:46.8802641Z ##[group]Run node --import tsx scripts/space-invaders-session.ts
+deploy	Verify the four-minute Space Invaders session and host migration	2026-10-11T13:39:46.8803146Z ^[[36;1mnode --import tsx scripts/space-invaders-session.ts^[[0m
+deploy	Verify the four-minute Space Invaders session and host migration	2026-10-11T13:39:46.8843259Z shell: /usr/bin/bash -e {0}
+deploy	Verify the four-minute Space Invaders session and host migration	2026-10-11T13:39:46.8843572Z env:
+deploy	Verify the four-minute Space Invaders session and host migration	2026-10-11T13:39:46.8844020Z   VERCEL_TOKEN: ***
+deploy	Verify the four-minute Space Invaders session and host migration	2026-10-11T13:39:46.8844307Z   VERCEL_ORG_ID: ***
+deploy	Verify the four-minute Space Invaders session and host migration	2026-10-11T13:39:46.8844595Z   VERCEL_PROJECT_ID: ***
+deploy	Verify the four-minute Space Invaders session and host migration	2026-10-11T13:39:46.8844997Z   SERVER_URL: https://rmc-colyseus-multiplayer-server-rkvamoz5k.vercel.app
+deploy	Verify the four-minute Space Invaders session and host migration	2026-10-11T13:39:46.8845425Z   LONG_SESSION_SECONDS: 240
+deploy	Verify the four-minute Space Invaders session and host migration	2026-10-11T13:39:46.8845668Z ##[endgroup]
+deploy	Verify the four-minute Space Invaders session and host migration	2026-10-11T13:43:48.1428675Z {"result":"PASS","game":"space-invaders","seconds":240,"checkpointTick":240,"migration":true}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	﻿2026-10-11T13:43:58.2250952Z ##[group]Run node --import tsx scripts/asteroids-live-session.ts
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:58.2251488Z ^[[36;1mnode --import tsx scripts/asteroids-live-session.ts^[[0m
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:58.2292254Z shell: /usr/bin/bash -e {0}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:58.2292564Z env:
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:58.2293000Z   VERCEL_TOKEN: ***
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:58.2293272Z   VERCEL_ORG_ID: ***
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:58.2293561Z   VERCEL_PROJECT_ID: ***
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:58.2293957Z   SERVER_URL: https://rmc-colyseus-multiplayer-server-rkvamoz5k.vercel.app
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:58.2294364Z   LONG_SESSION_SECONDS: 600
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:58.2294612Z ##[endgroup]
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:58.4190848Z Asteroids live probe: create host
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:59.2865819Z Asteroids live probe: connect host
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:43:59.8002613Z Asteroids live probe: connect guest
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:44:01.9143302Z Asteroids live probe: connect extra participant 3
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:44:02.4286519Z Asteroids live probe: connect extra participant 4
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:44:35.2288012Z {"asteroids":"continuity","elapsedSeconds":30,"tick":708,"frames":649,"renewals":0}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:45:05.2404474Z {"asteroids":"continuity","elapsedSeconds":60,"tick":1306,"frames":1244,"renewals":0}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:45:35.2507837Z {"asteroids":"continuity","elapsedSeconds":90,"tick":1904,"frames":1823,"renewals":0}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:46:05.2604103Z {"asteroids":"continuity","elapsedSeconds":120,"tick":2501,"frames":2404,"renewals":0}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:46:35.2838978Z {"asteroids":"continuity","elapsedSeconds":150,"tick":3099,"frames":2993,"renewals":0}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:47:05.3014082Z {"asteroids":"continuity","elapsedSeconds":180,"tick":3696,"frames":3572,"renewals":0}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:47:35.3260713Z {"asteroids":"continuity","elapsedSeconds":210,"tick":4293,"frames":4149,"renewals":2}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:48:05.3340568Z {"asteroids":"continuity","elapsedSeconds":240,"tick":4892,"frames":4728,"renewals":2}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:48:35.3453327Z {"asteroids":"continuity","elapsedSeconds":270,"tick":5489,"frames":5322,"renewals":2}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:49:05.3611843Z {"asteroids":"continuity","elapsedSeconds":300,"tick":6088,"frames":5906,"renewals":2}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:49:35.3777649Z {"asteroids":"continuity","elapsedSeconds":330,"tick":6685,"frames":6484,"renewals":2}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:50:05.3896894Z {"asteroids":"continuity","elapsedSeconds":360,"tick":7282,"frames":7070,"renewals":2}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:50:35.4084478Z {"asteroids":"continuity","elapsedSeconds":390,"tick":7880,"frames":7649,"renewals":2}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:51:05.4208982Z {"asteroids":"continuity","elapsedSeconds":420,"tick":8477,"frames":8214,"renewals":4}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:51:35.4283543Z {"asteroids":"continuity","elapsedSeconds":450,"tick":9076,"frames":8812,"renewals":4}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:52:05.4386101Z {"asteroids":"continuity","elapsedSeconds":480,"tick":9674,"frames":9404,"renewals":4}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:52:35.4495158Z {"asteroids":"continuity","elapsedSeconds":510,"tick":10271,"frames":9973,"renewals":4}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:53:05.4658682Z {"asteroids":"continuity","elapsedSeconds":540,"tick":10868,"frames":10543,"renewals":4}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:53:35.4687841Z {"asteroids":"continuity","elapsedSeconds":570,"tick":11467,"frames":11136,"renewals":4}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:54:05.4774130Z {"asteroids":"continuity","elapsedSeconds":600,"tick":12064,"frames":11697,"renewals":4}
+deploy	Verify ten-minute Asteroids continuity and fixed host renewal	2026-10-11T13:54:06.2402899Z {"asteroids":"passed","endpoint":"https://rmc-colyseus-multiplayer-server-rkvamoz5k.vercel.app","durationSeconds":600,"frames":11699,"renewals":4,"guestRecovery":true,"hostLossTerminal":true}
+deploy	Promote the verified deployment to the stable production URL	﻿2026-10-11T13:54:11.0401871Z ##[group]Run vercel promote "$DEPLOYMENT_URL" --yes --token="$VERCEL_TOKEN"
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:11.0402415Z ^[[36;1mvercel promote "$DEPLOYMENT_URL" --yes --token="$VERCEL_TOKEN"^[[0m
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:11.0442660Z shell: /usr/bin/bash -e {0}
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:11.0442971Z env:
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:11.0443409Z   VERCEL_TOKEN: ***
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:11.0443678Z   VERCEL_ORG_ID: ***
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:11.0443983Z   VERCEL_PROJECT_ID: ***
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:11.0444394Z   DEPLOYMENT_URL: https://rmc-colyseus-multiplayer-server-rkvamoz5k.vercel.app
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:11.0444988Z ##[endgroup]
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:11.1836812Z Vercel CLI 62.2.0 (Node.js 24.21.0)
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:11.9200987Z Fetching deployment "https://rmc-colyseus-multiplayer-server-rkvamoz5k.vercel.app" in ashers-projects-d3be6036…
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:12.2459043Z > Fetching deployment "https://rmc-colyseus-multiplayer-server-rkvamoz5k.vercel.app" in ashers-projects-d3be6036…
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:12.7269130Z Promote in progress…
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:12.8442829Z Promote in progress…
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:13.1947898Z Promote in progress…
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:13.5436849Z Promote in progress…
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:13.9055974Z > Promote in progress…
+deploy	Promote the verified deployment to the stable production URL	2026-10-11T13:54:14.1734456Z > Success! rmc-colyseus-multiplayer-server was promoted to rmc-colyseus-multiplayer-server-rkvamoz5k.vercel.app (dpl_AdDCjVdhrPEP1LRfWycFnFLSbfJy) [2s]
+deploy	Verify the stable production URL serves the selected version	﻿2026-10-11T13:54:14.1972877Z ##[group]Run node --import tsx scripts/verify-release-health.ts
+deploy	Verify the stable production URL serves the selected version	2026-10-11T13:54:14.1973381Z ^[[36;1mnode --import tsx scripts/verify-release-health.ts^[[0m
+deploy	Verify the stable production URL serves the selected version	2026-10-11T13:54:14.2015955Z shell: /usr/bin/bash -e {0}
+deploy	Verify the stable production URL serves the selected version	2026-10-11T13:54:14.2016269Z env:
+deploy	Verify the stable production URL serves the selected version	2026-10-11T13:54:14.2016702Z   VERCEL_TOKEN: ***
+deploy	Verify the stable production URL serves the selected version	2026-10-11T13:54:14.2016976Z   VERCEL_ORG_ID: ***
+deploy	Verify the stable production URL serves the selected version	2026-10-11T13:54:14.2017265Z   VERCEL_PROJECT_ID: ***
+deploy	Verify the stable production URL serves the selected version	2026-10-11T13:54:14.2017615Z   SERVER_URL: https://rmc-colyseus-multiplayer-server.vercel.app
+deploy	Verify the stable production URL serves the selected version	2026-10-11T13:54:14.2017980Z ##[endgroup]
+deploy	Verify the stable production URL serves the selected version	2026-10-11T13:54:20.7629484Z {"result":"PASS","endpoint":"https://rmc-colyseus-multiplayer-server.vercel.app","version":"0.9.13","games":["asteroids-coop","music-maker","space-invaders","combat","bomberman","gungeon","multiplayer-draw","sumo-battle","garden-chat","gauntlet-2d","gauntlet-3d","dust-circuit-rally","neon-breaker-duo","ring-rivals","tetris-duel","street-fighter-ii","just-like-rabbits"]}
+deploy	Verify two clients relay through the stable production URL	﻿2026-10-11T13:54:20.7726747Z ##[group]Run npm run probe
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.7727126Z ^[[36;1mnpm run probe^[[0m
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.7767554Z shell: /usr/bin/bash -e {0}
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.7767879Z env:
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.7768315Z   VERCEL_TOKEN: ***
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.7768587Z   VERCEL_ORG_ID: ***
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.7768871Z   VERCEL_PROJECT_ID: ***
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.7769377Z   SERVER_URL: https://rmc-colyseus-multiplayer-server.vercel.app
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.7769745Z ##[endgroup]
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.8740787Z
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.8741670Z > rmc-colyseus-multiplayer-server@0.9.13 probe
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.8742184Z > tsx scripts/probe.ts
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:20.8742348Z
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:21.5556712Z FAIL: seat reservation expired.
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:31.5937677Z Room connection was closed unexpectedly (4002):
+deploy	Verify two clients relay through the stable production URL	2026-10-11T13:54:31.6130006Z ##[error]Process completed with exit code 1.
+deploy	Restore the previous production deployment if public verification fails	﻿2026-10-11T13:54:31.6177460Z ##[group]Run vercel rollback --token="$VERCEL_TOKEN"
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:31.6177905Z ^[[36;1mvercel rollback --token="$VERCEL_TOKEN"^[[0m
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:31.6217995Z shell: /usr/bin/bash -e {0}
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:31.6218300Z env:
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:31.6218765Z   VERCEL_TOKEN: ***
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:31.6219059Z   VERCEL_ORG_ID: ***
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:31.6219623Z   VERCEL_PROJECT_ID: ***
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:31.6219866Z ##[endgroup]
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:31.7684952Z Vercel CLI 62.2.0 (Node.js 24.21.0)
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:32.0239109Z Retrieving project…
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:32.2724872Z Checking rollback status of rmc-colyseus-multiplayer-server…
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:32.3894665Z > Checking rollback status of rmc-colyseus-multiplayer-server…
+deploy	Restore the previous production deployment if public verification fails	2026-10-11T13:54:32.8177442Z > Success! rmc-colyseus-multiplayer-server was rolled back to rmc-colyseus-multiplayer-server-rkvamoz5k.vercel.app (dpl_AdDCjVdhrPEP1LRfWycFnFLSbfJy)
