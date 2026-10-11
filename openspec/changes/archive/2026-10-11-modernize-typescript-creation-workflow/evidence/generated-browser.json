@@ -1,0 +1,22 @@
+[
+  {
+    "name": "verification-app",
+    "result": "PASS",
+    "viewports": [
+      "16:9 desktop",
+      "390x844 touch"
+    ],
+    "renderer": "React, Babylon removed",
+    "pageErrors": []
+  },
+  {
+    "name": "verification-game",
+    "result": "PASS",
+    "viewports": [
+      "16:9 desktop",
+      "390x844 touch"
+    ],
+    "renderer": "headless Edge WebGPU",
+    "pageErrors": []
+  }
+]

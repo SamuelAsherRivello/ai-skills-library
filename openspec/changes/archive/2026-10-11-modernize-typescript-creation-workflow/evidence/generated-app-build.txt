@@ -1,0 +1,45 @@
+
+> build
+> npm run check:typescript-source && npm run typecheck && npm test && vite build
+
+
+> check:typescript-source
+> tsx scripts/check-typescript-source.ts
+
+TypeScript source coverage passed (14 first-party compiler files).
+
+> typecheck
+> tsc -p tsconfig.app.json && tsc -p tsconfig.node.json
+
+
+> test
+> node --import tsx --test --test-isolation=none verification-app/test/page.test.ts verification-app/test/fixture.test.ts
+
+✔ progress, terminal outcome and replay are deterministic (1.3345ms)
+✔ pause prevents actions and resume preserves progress (0.1094ms)
+✔ keeps npm/application and GitHub Pages roots (0.0958ms)
+✔ fits orientations and project-defined ratios in CSS pixels (0.3893ms)
+✔ invalid dimensions and orientation give actionable errors (0.5328ms)
+✔ renderer settings patch the shared config without dropping shell preferences (0.2577ms)
+✔ preserves corner contracts and engine-neutral content-layer guidance (12.6062ms)
+✔ keeps the UI and content source boundaries discoverable (0.7006ms)
+✔ renders the shell without a presentation and with a stub presentation (211.5987ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 939.6006
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 24 modules transformed.
+rendering chunks...
+computing gzip size...
+verification-app/dist/index.html                             0.63 kB │ gzip:  0.38 kB
+verification-app/dist/assets/gutter-pattern-D1_j6B8n.webp   23.05 kB
+verification-app/dist/assets/index-BPXgaMeD.css              5.01 kB │ gzip:  1.41 kB
+verification-app/dist/assets/index-M7m2wfJX.js             230.95 kB │ gzip: 72.16 kB
+
+✓ built in 175ms

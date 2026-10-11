@@ -1,0 +1,44 @@
+[
+  {
+    "case": "scripts/compiler-negative.fixture.ts",
+    "rejected": true,
+    "output": [
+      "scripts/compiler-negative.fixture.ts(1,7): error TS2322: Type 'string' is not assignable to type 'number'."
+    ]
+  },
+  {
+    "case": "multiplayer-server/test/compiler-negative.fixture.ts",
+    "rejected": true,
+    "output": [
+      "multiplayer-server/test/compiler-negative.fixture.ts(1,7): error TS2322: Type 'string' is not assignable to type 'number'."
+    ]
+  },
+  {
+    "case": "authored JS",
+    "rejected": true,
+    "output": [
+      "Authored JavaScript: authored-negative.fixture.js"
+    ]
+  },
+  {
+    "case": "untracked orphan TS",
+    "rejected": true,
+    "output": [
+      "TypeScript outside compiler coverage: orphan-negative.fixture.ts"
+    ]
+  },
+  {
+    "case": "tracked orphan TS (isolated Git index)",
+    "rejected": true,
+    "output": [
+      "TypeScript outside compiler coverage: orphan-negative.fixture.ts"
+    ]
+  },
+  {
+    "case": "clean source coverage",
+    "passed": true,
+    "output": [
+      "TypeScript source coverage passed (132 first-party compiler files)."
+    ]
+  }
+]

@@ -1,0 +1,210 @@
+
+> build
+> npm run check:typescript-source && npm run typecheck && npm test && vite build
+
+
+> check:typescript-source
+> tsx scripts/check-typescript-source.ts
+
+TypeScript source coverage passed (23 first-party compiler files).
+
+> typecheck
+> tsc -p tsconfig.app.json && tsc -p tsconfig.node.json
+
+
+> test
+> node --import tsx --test --test-isolation=none verification-game/test/page.test.ts verification-game/test/content.test.ts verification-game/test/fixture.test.ts
+
+✔ defaults to Babylon Lite 2D and does not apply the pixel preset to 3D (1.3464ms)
+✔ derives four relative render resolutions from native backing dimensions and caps double by the WebGPU limit (0.3314ms)
+✔ snaps Babylon Lite sprite anchors after the layer view and preserves the grid on round trip (1.0184ms)
+✔ snaps correctly through a zoomed and rotated Babylon Lite layer view (0.1928ms)
+✔ requires explicit mode setup and resnaps a layer after view changes (0.5039ms)
+✔ rejects Babylon Lite sprite mutations outside the pixel-grid entry module (7.5356ms)
+✔ keeps the logical camera focus and spinning title at world origin across target sizes (0.5778ms)
+✔ adapts Babylon Lite sprite projection dimensions while sharing the engine surface registry (0.1552ms)
+✔ formats the active internal render scale independently of the CSS viewport (0.187ms)
+✔ keeps the Babylon Lite world HUD at the existing CSS-pixel position across DPRs (0.3715ms)
+✔ draws the live Babylon Lite readout and clears a hidden HUD (0.5393ms)
+✔ keeps the shell renderer-neutral and wires Babylon presentation through optional slots (0.8342ms)
+✔ reports WebGPU-only initialization and allocation failures and uses the engine-owned frame lifecycle (1.0074ms)
+✔ imports an original 32x32 hard-edged PNG with only black and gray pixels (1.2237ms)
+✔ progress, terminal outcome and replay are deterministic (0.1059ms)
+✔ pause prevents actions and resume preserves progress (0.0515ms)
+✔ keeps npm/application and GitHub Pages roots (0.0379ms)
+✔ fits orientations and project-defined ratios in CSS pixels (0.2836ms)
+✔ invalid dimensions and orientation give actionable errors (0.3009ms)
+✔ renderer settings patch the shared config without dropping shell preferences (0.1872ms)
+✔ preserves corner contracts and engine-neutral content-layer guidance (0.6776ms)
+✔ keeps the UI and content source boundaries discoverable (0.4305ms)
+✔ renders the shell without a presentation and with a stub presentation (222.7904ms)
+2:46:42 PM [vite] (client) [optimizer] bundling dependencies...
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2856.1121
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 1186 modules transformed.
+rendering chunks...
+computing gzip size...
+verification-game/dist/index.html                                           0.64 kB │ gzip:  0.38 kB
+verification-game/dist/assets/gutter-pattern-D1_j6B8n.webp                 23.05 kB
+verification-game/dist/assets/index-ChyBKBoP.css                            5.74 kB │ gzip:  1.59 kB
+verification-game/dist/assets/havok-BZX47koC.js                             0.09 kB │ gzip:  0.11 kB
+verification-game/dist/assets/_mat4-storage-f64-C8HfJXJT.js                 0.13 kB │ gzip:  0.15 kB
+verification-game/dist/assets/constant-e-DvKB8KvI.js                        0.18 kB │ gzip:  0.17 kB
+verification-game/dist/assets/constant-inf-B_CxAHSb.js                      0.18 kB │ gzip:  0.17 kB
+verification-game/dist/assets/constant-nan-J_GBazdN.js                      0.18 kB │ gzip:  0.17 kB
+verification-game/dist/assets/constant-pi-pxCrYLR6.js                       0.18 kB │ gzip:  0.17 kB
+verification-game/dist/assets/constant-tau-x7irwZj2.js                      0.19 kB │ gzip:  0.17 kB
+verification-game/dist/assets/constant-8ba2LFkz.js                          0.21 kB │ gzip:  0.18 kB
+verification-game/dist/assets/get-variable-C_H9hfuO.js                      0.23 kB │ gzip:  0.19 kB
+verification-game/dist/assets/float-to-boolean-DYEmT3lC.js                  0.26 kB │ gzip:  0.21 kB
+verification-game/dist/assets/boolean-to-float-CnxDyz0e.js                  0.26 kB │ gzip:  0.21 kB
+verification-game/dist/assets/abs-tVrKpF2H.js                               0.26 kB │ gzip:  0.22 kB
+verification-game/dist/assets/boolean-to-int-BL9zYZ58.js                    0.27 kB │ gzip:  0.21 kB
+verification-game/dist/assets/floor-D0MXyEKX.js                             0.27 kB │ gzip:  0.22 kB
+verification-game/dist/assets/int-to-float-DqrTcNWJ.js                      0.27 kB │ gzip:  0.22 kB
+verification-game/dist/assets/cos-BijXeaGW.js                               0.27 kB │ gzip:  0.22 kB
+verification-game/dist/assets/log-DwotDAeV.js                               0.27 kB │ gzip:  0.23 kB
+verification-game/dist/assets/sin-CHR8KmCu.js                               0.27 kB │ gzip:  0.22 kB
+verification-game/dist/assets/tan-l2ri2z8x.js                               0.27 kB │ gzip:  0.22 kB
+verification-game/dist/assets/acos-Av0wgGDf.js                              0.27 kB │ gzip:  0.22 kB
+verification-game/dist/assets/asin-DcG_Qjnm.js                              0.27 kB │ gzip:  0.22 kB
+verification-game/dist/assets/atan-bd2I9IFD.js                              0.27 kB │ gzip:  0.22 kB
+verification-game/dist/assets/ceil-C0NcZV0U.js                              0.27 kB │ gzip:  0.22 kB
+verification-game/dist/assets/cosh-DgfZglC3.js                              0.27 kB │ gzip:  0.22 kB
+verification-game/dist/assets/log2-BgQ1HAd1.js                              0.27 kB │ gzip:  0.23 kB
+verification-game/dist/assets/sign-Dqe6Dfyh.js                              0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/sinh-BM6NeYe5.js                              0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/tanh-CcSeql1T.js                              0.28 kB │ gzip:  0.22 kB
+verification-game/dist/assets/acosh-QcEtQwWV.js                             0.28 kB │ gzip:  0.22 kB
+verification-game/dist/assets/asinh-CzMcWvJD.js                             0.28 kB │ gzip:  0.22 kB
+verification-game/dist/assets/atanh-w0looVpY.js                             0.28 kB │ gzip:  0.22 kB
+verification-game/dist/assets/log10-DkqWWqV_.js                             0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/round-Cqk4W4i6.js                             0.28 kB │ gzip:  0.22 kB
+verification-game/dist/assets/trunc-iVreBHyz.js                             0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/int-to-boolean-BJjfx9c3.js                    0.28 kB │ gzip:  0.22 kB
+verification-game/dist/assets/is-nan-Cn3LPUA9.js                            0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/length-BH1187VM.js                            0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/cube-root-yiACQ37s.js                         0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/deg-to-rad-z5-apbae.js                        0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/fraction-CTCWwUS9.js                          0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/negation-H8ukTt33.js                          0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/rad-to-deg-C3VGXjA9.js                        0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/saturate-bWlTr5qw.js                          0.28 kB │ gzip:  0.23 kB
+verification-game/dist/assets/normalize-CaT4fda4.js                         0.29 kB │ gzip:  0.23 kB
+verification-game/dist/assets/transpose-B7LK576O.js                         0.29 kB │ gzip:  0.23 kB
+verification-game/dist/assets/bitwise-not-VULxcSr2.js                       0.29 kB │ gzip:  0.23 kB
+verification-game/dist/assets/square-root-CnFiNhIe.js                       0.29 kB │ gzip:  0.23 kB
+verification-game/dist/assets/exponential-BGxFWCz8.js                       0.29 kB │ gzip:  0.23 kB
+verification-game/dist/assets/invert-matrix-CcmP6pL6.js                     0.29 kB │ gzip:  0.23 kB
+verification-game/dist/assets/is-infinity-B-N668e-.js                       0.29 kB │ gzip:  0.24 kB
+verification-game/dist/assets/leading-zeros-D7IYcfAo.js                     0.29 kB │ gzip:  0.23 kB
+verification-game/dist/assets/determinant-BF8ROHPX.js                       0.29 kB │ gzip:  0.23 kB
+verification-game/dist/assets/trailing-zeros-B848xWMj.js                    0.29 kB │ gzip:  0.23 kB
+verification-game/dist/assets/one-bits-counter-BaM7MdMA.js                  0.30 kB │ gzip:  0.23 kB
+verification-game/dist/assets/sequence-BfzSWnoI.js                          0.30 kB │ gzip:  0.25 kB
+verification-game/dist/assets/add-C9skuWV2.js                               0.30 kB │ gzip:  0.23 kB
+verification-game/dist/assets/quat-conjugate-CybgJrEv.js                    0.30 kB │ gzip:  0.24 kB
+verification-game/dist/assets/max-gRdhXDnG.js                               0.30 kB │ gzip:  0.23 kB
+verification-game/dist/assets/min-zOLiNLlG.js                               0.30 kB │ gzip:  0.23 kB
+verification-game/dist/assets/branch-DSdvaYtp.js                            0.31 kB │ gzip:  0.23 kB
+verification-game/dist/assets/dot-BHOmXVkk.js                               0.31 kB │ gzip:  0.24 kB
+verification-game/dist/assets/atan2-Vg9Wlobd.js                             0.31 kB │ gzip:  0.24 kB
+verification-game/dist/assets/power-CBwahYcj.js                             0.31 kB │ gzip:  0.24 kB
+verification-game/dist/assets/divide-qaLuTgbz.js                            0.31 kB │ gzip:  0.24 kB
+verification-game/dist/assets/modulo-BhFtKdSH.js                            0.31 kB │ gzip:  0.24 kB
+verification-game/dist/assets/cross-5ZPnm2I3.js                             0.31 kB │ gzip:  0.24 kB
+verification-game/dist/assets/multiply-Bke7pRad.js                          0.31 kB │ gzip:  0.24 kB
+verification-game/dist/assets/subtract-BClVZqr2.js                          0.31 kB │ gzip:  0.24 kB
+verification-game/dist/assets/bitwise-or-BbACkakV.js                        0.32 kB │ gzip:  0.24 kB
+verification-game/dist/assets/bitwise-and-B6GGQVlg.js                       0.32 kB │ gzip:  0.24 kB
+verification-game/dist/assets/equality-vmhmoBFO.js                          0.32 kB │ gzip:  0.25 kB
+verification-game/dist/assets/bitwise-xor-DhzlmhRv.js                       0.32 kB │ gzip:  0.24 kB
+verification-game/dist/assets/less-than-CL7TOoTL.js                         0.32 kB │ gzip:  0.24 kB
+verification-game/dist/assets/extract2-DqQzrnva.js                          0.32 kB │ gzip:  0.25 kB
+verification-game/dist/assets/greater-than-DETl8mex.js                      0.32 kB │ gzip:  0.25 kB
+verification-game/dist/assets/rotate2d-C3vDjV4g.js                          0.32 kB │ gzip:  0.25 kB
+verification-game/dist/assets/transform-vector-S9I8sAzz.js                  0.33 kB │ gzip:  0.25 kB
+verification-game/dist/assets/bitwise-left-shift-Cnvbr0fs.js                0.33 kB │ gzip:  0.25 kB
+verification-game/dist/assets/combine2-CGpBNrFz.js                          0.33 kB │ gzip:  0.25 kB
+verification-game/dist/assets/rotate3d-Em339x8U.js                          0.33 kB │ gzip:  0.25 kB
+verification-game/dist/assets/bitwise-right-shift-CanisBIc.js               0.33 kB │ gzip:  0.25 kB
+verification-game/dist/assets/less-than-or-equal-dRHrhwar.js                0.33 kB │ gzip:  0.25 kB
+verification-game/dist/assets/random-CuJoV1T1.js                            0.33 kB │ gzip:  0.25 kB
+verification-game/dist/assets/smooth-step-C9-6eY6O.js                       0.33 kB │ gzip:  0.24 kB
+verification-game/dist/assets/clamp-COA8M7IW.js                             0.34 kB │ gzip:  0.24 kB
+verification-game/dist/assets/greater-than-or-equal-DYJ0yOcH.js             0.34 kB │ gzip:  0.25 kB
+verification-game/dist/assets/vector-slerp-BpCmOZu3.js                      0.34 kB │ gzip:  0.25 kB
+verification-game/dist/assets/angle-between-DanU3_QY.js                     0.34 kB │ gzip:  0.25 kB
+verification-game/dist/assets/matrix-multiplication-CrEZWgjL.js             0.34 kB │ gzip:  0.25 kB
+verification-game/dist/assets/conditional-BRMHx06t.js                       0.35 kB │ gzip:  0.24 kB
+verification-game/dist/assets/quaternion-from-up-forward-CY-QMHc0.js        0.35 kB │ gzip:  0.25 kB
+verification-game/dist/assets/extract3-DMkv8fUi.js                          0.35 kB │ gzip:  0.26 kB
+verification-game/dist/assets/quaternion-multiplication-D_tQuXWJ.js         0.35 kB │ gzip:  0.25 kB
+verification-game/dist/assets/quaternion-slerp-8iKwrgAf.js                  0.35 kB │ gzip:  0.25 kB
+verification-game/dist/assets/quaternion-from-axis-angle-CanYFUud.js        0.36 kB │ gzip:  0.26 kB
+verification-game/dist/assets/quaternion-from-directions-CXmcdMR_.js        0.36 kB │ gzip:  0.26 kB
+verification-game/dist/assets/combine3-BS1RbjBE.js                          0.36 kB │ gzip:  0.26 kB
+verification-game/dist/assets/mix-D63j27n-.js                               0.36 kB │ gzip:  0.26 kB
+verification-game/dist/assets/extract-matrix-qhdyEc8L.js                    0.37 kB │ gzip:  0.28 kB
+verification-game/dist/assets/extract-matrix2d-D6lj_9sq.js                  0.38 kB │ gzip:  0.28 kB
+verification-game/dist/assets/extract-matrix3d-D1d2WgaR.js                  0.38 kB │ gzip:  0.28 kB
+verification-game/dist/assets/scene-start-CP78_HDX.js                       0.38 kB │ gzip:  0.27 kB
+verification-game/dist/assets/float-to-int-CqHASVhb.js                      0.38 kB │ gzip:  0.27 kB
+verification-game/dist/assets/extract4-B2x8ZLWR.js                          0.38 kB │ gzip:  0.27 kB
+verification-game/dist/assets/quaternion-from-angles-JqNbmk2k.js            0.38 kB │ gzip:  0.26 kB
+verification-game/dist/assets/combine4-Qcd4qOAM.js                          0.39 kB │ gzip:  0.27 kB
+verification-game/dist/assets/rgb-to-oklch-pixubWIf.js                      0.41 kB │ gzip:  0.27 kB
+verification-game/dist/assets/rgb-from-oklch-rKxLvpp1.js                    0.41 kB │ gzip:  0.27 kB
+verification-game/dist/assets/combine-matrix-CMge9dY9.js                    0.41 kB │ gzip:  0.30 kB
+verification-game/dist/assets/while-loop-D4zxWlkm.js                        0.41 kB │ gzip:  0.29 kB
+verification-game/dist/assets/combine-matrix2d-6pzwoC3b.js                  0.42 kB │ gzip:  0.30 kB
+verification-game/dist/assets/combine-matrix3d-BiouzWgi.js                  0.42 kB │ gzip:  0.30 kB
+verification-game/dist/assets/stop-event-propagation-Detxasfi.js            0.42 kB │ gzip:  0.29 kB
+verification-game/dist/assets/axis-angle-from-quaternion-BwZsRSdi.js        0.42 kB │ gzip:  0.29 kB
+verification-game/dist/assets/no-op-B6yEVs_u.js                             0.43 kB │ gzip:  0.29 kB
+verification-game/dist/assets/matrix-compose-Q-P9sRuC.js                    0.43 kB │ gzip:  0.28 kB
+verification-game/dist/assets/create-quat-from-rotation-mat4-PcdXSPCR.js    0.46 kB │ gzip:  0.27 kB
+verification-game/dist/assets/compose-mat4-BeX8mU-6.js                      0.46 kB │ gzip:  0.28 kB
+verification-game/dist/assets/data-switch-D5mShwuu.js                       0.46 kB │ gzip:  0.32 kB
+verification-game/dist/assets/pack-mat4-with-offset-gfPe3zZb.js             0.47 kB │ gzip:  0.27 kB
+verification-game/dist/assets/switch-D5lFDC_A.js                            0.47 kB │ gzip:  0.34 kB
+verification-game/dist/assets/cancel-delay-DwgYrFgH.js                      0.48 kB │ gzip:  0.32 kB
+verification-game/dist/assets/matrix-decompose-Yn7KVHGI.js                  0.52 kB │ gzip:  0.31 kB
+verification-game/dist/assets/send-custom-event-3XHH7MVC.js                 0.54 kB │ gzip:  0.36 kB
+verification-game/dist/assets/receive-custom-event-CipTiFWq.js              0.57 kB │ gzip:  0.37 kB
+verification-game/dist/assets/on-select-B0Oss0Re.js                         0.58 kB │ gzip:  0.36 kB
+verification-game/dist/assets/set-variable-DVIIYe6R.js                      0.62 kB │ gzip:  0.39 kB
+verification-game/dist/assets/floating-origin-B-mrkELf.js                   0.64 kB │ gzip:  0.38 kB
+verification-game/dist/assets/do-n-sadE0Gn2.js                              0.66 kB │ gzip:  0.38 kB
+verification-game/dist/assets/editor-property-CJ21UUlY.js                   0.67 kB │ gzip:  0.34 kB
+verification-game/dist/assets/scene-tick-yhFdQY2W.js                        0.70 kB │ gzip:  0.37 kB
+verification-game/dist/assets/get-property-Tqh3-PDW.js                      0.73 kB │ gzip:  0.43 kB
+verification-game/dist/assets/for-loop-r9mAQtLw.js                          0.83 kB │ gzip:  0.46 kB
+verification-game/dist/assets/set-property-Gv1RWbDa.js                      0.84 kB │ gzip:  0.48 kB
+verification-game/dist/assets/console-log-_LQ3zELS.js                       0.92 kB │ gzip:  0.55 kB
+verification-game/dist/assets/multi-gate-dx4XUDgp.js                        0.94 kB │ gzip:  0.54 kB
+verification-game/dist/assets/throttle-CEiOsDLU.js                          0.98 kB │ gzip:  0.46 kB
+verification-game/dist/assets/wait-all-CsYJq09I.js                          1.02 kB │ gzip:  0.55 kB
+verification-game/dist/assets/stop-animation-g7_berl8.js                    1.04 kB │ gzip:  0.57 kB
+verification-game/dist/assets/play-animation-Z5M9Y0fn.js                    1.07 kB │ gzip:  0.59 kB
+verification-game/dist/assets/set-delay-l0qGj_Dc.js                         1.24 kB │ gzip:  0.62 kB
+verification-game/dist/assets/generate-mipmaps-BjkLOSFK.js                  1.79 kB │ gzip:  0.95 kB
+verification-game/dist/assets/pointer-template-CO_5w9eI.js                  2.24 kB │ gzip:  1.10 kB
+verification-game/dist/assets/havok-floating-origin-B3DTHsth.js             3.12 kB │ gzip:  1.26 kB
+verification-game/dist/assets/value-interpolation-KCW219ZA.js               3.85 kB │ gzip:  1.68 kB
+verification-game/dist/assets/scene-rebuild-DCP4sBpM.js                     4.50 kB │ gzip:  1.74 kB
+verification-game/dist/assets/havok-thin-instances-BobVaiDM.js              6.37 kB │ gzip:  2.67 kB
+verification-game/dist/assets/scene-runtime-mesh-build-DzFdO2mS.js          6.53 kB │ gzip:  2.41 kB
+verification-game/dist/assets/sockets-COAzZyAw.js                           8.19 kB │ gzip:  2.98 kB
+verification-game/dist/assets/fg-math-BF4RhA-m.js                          16.10 kB │ gzip:  5.75 kB
+verification-game/dist/assets/index-C9XY_DmD.js                           271.47 kB │ gzip: 88.16 kB
+
+✓ built in 791ms

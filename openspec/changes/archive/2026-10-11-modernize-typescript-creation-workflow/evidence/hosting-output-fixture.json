@@ -1,0 +1,8 @@
+{
+  "result": "PASS",
+  "handlerCount": 6,
+  "networkCalls": 0,
+  "deployed": false,
+  "generatedFrom": "checked TypeScript compiler output",
+  "dependencies": "empty fixture directories; syntax/output construction only"
+}

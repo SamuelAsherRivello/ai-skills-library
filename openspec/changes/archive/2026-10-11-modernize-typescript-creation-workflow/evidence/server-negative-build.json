@@ -1,0 +1,4 @@
+{
+  "buildTypeError": "TS2322 blocks before tests/output",
+  "result": "PASS"
+}

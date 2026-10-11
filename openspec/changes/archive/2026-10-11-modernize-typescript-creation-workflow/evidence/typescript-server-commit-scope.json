@@ -1,0 +1,1192 @@
+[
+  {
+    "path": ".github/workflows/asteroids-hosting-probe.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/asteroids-preview.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/asteroids-project-setup.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/asteroids-storage-setup.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/asteroids-store-probe.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/deploy-asteroids.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/deploy-music.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/deploy-tetris.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/deploy.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/deployment-check.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/drawing-cross-host.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/feasibility.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/hosting-diagnostics.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/music-project-setup.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/music-release.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/pull-request.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/release.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".github/workflows/verify-hobby.yml",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": ".gitignore",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "AGENTS.md",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "README.md",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/documentation/asteroids.md",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/documentation/combat.md",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/documentation/feasibility.md",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/documentation/sumo-plan.md",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/documentation/tetris-duel.md",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/README.md",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/asteroids-connection.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/asteroids-connection.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/asteroids-rules.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/asteroids-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/asteroids-shared-connection.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/asteroids-shared-connection.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/asteroids-types.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/bomberman-cpu.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/bomberman-cpu.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/bomberman-rules.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/bomberman-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/combat-rules.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/combat-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/index.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/index.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/package.json",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/racing-simulation.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/racing-simulation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/racing-track.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/racing-track.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/seat-reservation.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/seat-reservation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/street-fighter-combat.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/street-fighter-combat.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/street-fighter-fighters.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/street-fighter-fighters.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/street-fighter-simulation.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/street-fighter-simulation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/tetris-duel-rules.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/packages/client/tetris-duel-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/asteroids-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/asteroids-shared-socket.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/bomberman-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/bomberman-simulation.d.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/bomberman-simulation.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/bomberman-simulation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/combat-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/combat-simulation.d.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/combat-simulation.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/combat-simulation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/drawing-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/garden-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/gauntlet-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/gauntlet-simulation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/gauntlet2d-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/gauntlet2d-simulation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/gungeon-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/gungeon-simulation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/just-like-rabbits-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/music-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/neon-breaker-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/neon-breaker-simulation.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/neon-breaker-simulation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/private-code-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/racing-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/ring-rivals-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/ring-rivals-simulation.js",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/ring-rivals-simulation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/server.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/space-invaders-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/street-fighter-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/sumo-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/sumo-simulation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/src/tetris-duel-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/asteroids-continuity.test.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/asteroids-continuity.test.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/asteroids-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/asteroids-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/asteroids-isolation.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/asteroids-isolation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/asteroids-rules.test.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/asteroids-rules.test.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/asteroids-shared-socket.test.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/asteroids-shared-socket.test.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/bomberman-arena.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/bomberman-arena.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/bomberman-feedback.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/bomberman-feedback.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/bomberman-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/bomberman-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/bomberman-match.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/bomberman-match.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/bomberman-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/bomberman-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/combat-client-lifecycle.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/combat-client-lifecycle.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/combat-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/combat-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/combat-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/combat-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/feasibility/cross-instance-baseline.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/feasibility/cross-instance-baseline.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/garden.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/garden.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gauntlet-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gauntlet-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gauntlet-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gauntlet-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gauntlet2d-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gauntlet2d-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gauntlet2d-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gauntlet2d-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gungeon-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gungeon-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gungeon-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/gungeon-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/just-like-rabbits.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/just-like-rabbits.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/music-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/music-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/neon-breaker-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/neon-breaker-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/neon-breaker-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/neon-breaker-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/private-relay-retry.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/private-relay-retry.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/private-room-admission-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/private-room-admission-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/private-room-codes.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/private-room-codes.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/private-room-links.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/private-room-links.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/racing-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/racing-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/racing-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/racing-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/ring-rivals-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/ring-rivals-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/ring-rivals-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/ring-rivals-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/seat-reservation.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/seat-reservation.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/space-invaders-client.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/space-invaders-client.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/space-invaders.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/space-invaders.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/street-fighter-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/street-fighter-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/street-fighter-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/street-fighter-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/sumo-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/sumo-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/sumo-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/sumo-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/tcp-port.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/tetris-duel-integration.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/tetris-duel-integration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/tetris-duel-room.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/tetris-duel-room.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/tetris-duel-rules.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "multiplayer-server/test/tetris-duel-rules.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "package.json",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/asteroids-live-session.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/asteroids-live-session.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/asteroids-store-probe-handler.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/asteroids-store-probe-handler.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/build-client.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/check-credentials.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/check-credentials.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/check-docs.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/check-docs.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/check-game-registration.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/check-typescript-source.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/create-probe-secret.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/cross-host.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/cross-host.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/drawing-cross-host.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/drawing-cross-host.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/fixtures/cache-probe-handler.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/fixtures/tool-fetch.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/long-lived-session.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/long-lived-session.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/music-probe.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/music-probe.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/previous-deployment.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/previous-deployment.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/print-version.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/probe.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/probe.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/set-version.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/set-version.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/space-invaders-session.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/space-invaders-session.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/verify-client-package.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/verify-release-health.mjs",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/verify-release-health.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/verify-tools.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/asteroids-hosting-probe-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/asteroids-hosting-probe-2.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/asteroids-hosting-probe-3.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/asteroids-project-setup-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/asteroids-storage-setup-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/asteroids-store-probe-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/asteroids-store-probe-2.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/deploy-asteroids-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/deploy-music-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/deploy-tetris-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/environment.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/hosting-diagnostics-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/music-project-setup-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/music-release-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/release-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "scripts/workflows/verify-hobby-1.ts",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "tsconfig.base.json",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "tsconfig.client-build.json",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "tsconfig.client.json",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "tsconfig.json",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "tsconfig.probes-build.json",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  },
+  {
+    "path": "tsconfig.tools.json",
+    "include": "YES",
+    "reason": "TypeScript implementation, compiler, regression, packaging, workflow or policy"
+  }
+]

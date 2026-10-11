@@ -1,0 +1,417 @@
+[
+  {
+    "path": ".agents/skills/ai-skills-create/ai-skills-create-app/SKILL.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": ".agents/skills/ai-skills-create/ai-skills-create-app/references/quality-gate.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": ".agents/skills/ai-skills-create/ai-skills-create-game/SKILL.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": ".agents/skills/ai-skills-create/ai-skills-create-game/references/delivery.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": ".agents/skills/ai-skills-create/ai-skills-create-game/references/multiplayer.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": ".agents/skills/ai-skills-create/ai-skills-create-playtest/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-create/ai-skills-create-playtest/agents/openai.yaml",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-create/ai-skills-create-playtest/references/output.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-library/ai-skills-library-move-global/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-library/ai-skills-library-push/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-library/ai-skills-project-run-start/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-library/ai-skills-project-run-start/run-project.ps1",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-library/ai-skills-project-status/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-library/ai-skills-project-status/agents/openai.yaml",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/ai-skills-project-run-start/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/ai-skills-project-run-start/run-project.ps1",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/ai-skills-project-run-status/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/ai-skills-project-run-stop/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/references/element-attributes.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/references/playwright-tests.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/references/pr-attachments.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/references/request-mocking.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/references/running-code.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/references/session-management.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/references/storage-state.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/references/test-generation.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/references/tracing.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/ai-skills-run/playwright-cli/references/video-recording.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/inbox/ai-skills-library-push/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/inbox/ai-skills-library-push/agents/openai.yaml",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/inbox/explain-dont-fix/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/README.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-apply-change/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-archive-change/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-commit-inclusive/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-dashboard/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-explore/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-footer.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-grill-me/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-macro-finalize-sync-archive-commit-push/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-propose/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-sync-specs/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": ".agents/skills/openspec/openspec-update-change/SKILL.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": "openspec/changes/add-ai-skills-project-status/.openspec.yaml",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": "openspec/changes/add-ai-skills-project-status/design.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": "openspec/changes/add-ai-skills-project-status/proposal.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": "openspec/changes/add-ai-skills-project-status/specs/project-chat-status/spec.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": "openspec/changes/add-ai-skills-project-status/tasks.md",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/.openspec.yaml",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/design.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/generated-app-build.txt",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/generated-browser.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/generated-game-build.txt",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/hosting-output-fixture.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/packed-client-local-tests.txt",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/packed-client-local.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/packed-client.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/server-clean-build.txt",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/server-negative-build.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/server-negative-coverage.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/server-tool-fixtures.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/server-workflows.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/source-inventories.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/template-final-node24-build.txt",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/typescript-server-commit-scope.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/typescript-template-commit-scope.json",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/verification-app-1280.png",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/evidence/verification-game-390.png",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/proposal.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/specs/creation-quality-gates/spec.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/specs/typescript-project-baselines/spec.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/tasks.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/archive/2026-10-11-modernize-typescript-creation-workflow/verification.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/release-typescript-creation-workflow/.openspec.yaml",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/release-typescript-creation-workflow/design.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/release-typescript-creation-workflow/proposal.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/release-typescript-creation-workflow/tasks.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/changes/release-typescript-creation-workflow/verification.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/specs/creation-quality-gates/spec.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "openspec/specs/typescript-project-baselines/spec.md",
+    "include": "YES",
+    "reason": "Scoped TypeScript creation implementation, synced contract, archive or approved release follow-up"
+  },
+  {
+    "path": "scripts/skill-copy-lifecycle.ps1",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  },
+  {
+    "path": "scripts/tests/skill-copy-lifecycle.tests.ps1",
+    "include": "NO",
+    "reason": "Unrelated work; preserve outside commit"
+  }
+]

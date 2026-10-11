@@ -1,0 +1,297 @@
+[
+  {
+    "path": ".github/workflows/deploy-pages.yml",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": ".github/workflows/release.yml",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "AGENTS.md",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "AGENTS_TEMPLATE_USAGE_CHECKLIST.md",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "README.md",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "docs/ai-overview.md",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "docs/coding-standards.md",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "docs/deep-dive-overview.md",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "docs/layout-and-game-integration.md",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "package-lock.json",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "package.json",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/index.html",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/babylon-presentation.css",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/babylon-presentation.jsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/babylon-presentation.tsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/config.js",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/config.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/images/babylon-logo-256x256.png",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/images/babylon-logo-32x32.png",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/initialization.js",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/initialization.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/pixel-grid-entry.js",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/pixel-grid-entry.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/pixel-perfect.js",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/pixel-perfect.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/render-resolution.js",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/render-resolution.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/showcase-overlay.js",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/showcase-overlay.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/world-hud.js",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/babylon/world-hud.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/content.jsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/content/content.tsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/main.jsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/main.tsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/shared/content-shell-context.jsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/shared/content-shell-context.tsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/shared/project-config-storage.js",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/shared/project-config-storage.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/ui/app.jsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/ui/app.tsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/ui/browser-surface.jsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/ui/browser-surface.tsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/ui/dialog.jsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/ui/dialog.tsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/ui/layout.js",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/ui/layout.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/ui/template.jsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/src/ui/template.tsx",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/test/content.test.mjs",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/test/content.test.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/test/page.test.mjs",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "project-name/test/page.test.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "scripts/check-typescript-source.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "tsconfig.app.json",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "tsconfig.base.json",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "tsconfig.node.json",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "vite.config.js",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  },
+  {
+    "path": "vite.config.ts",
+    "include": "YES",
+    "reason": "TypeScript migration or user-approved naming/import/documentation work"
+  }
+]

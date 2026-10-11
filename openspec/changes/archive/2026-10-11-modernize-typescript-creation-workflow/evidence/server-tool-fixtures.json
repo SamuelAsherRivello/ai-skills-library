@@ -1,0 +1,6 @@
+{
+  "network": "mocked GET only",
+  "credentialValues": "redacted",
+  "versionWrites": "temporary manifests only",
+  "result": "PASS"
+}

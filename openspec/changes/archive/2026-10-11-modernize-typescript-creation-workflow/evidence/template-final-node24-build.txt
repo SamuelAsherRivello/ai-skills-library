@@ -1,0 +1,208 @@
+
+> build
+> npm run check:typescript-source && npm run typecheck && npm test && vite build
+
+
+> check:typescript-source
+> tsx scripts/check-typescript-source.ts
+
+TypeScript source coverage passed (21 first-party compiler files).
+
+> typecheck
+> tsc -p tsconfig.app.json && tsc -p tsconfig.node.json
+
+
+> test
+> node --import tsx --test --test-isolation=none project-name/test/page.test.ts project-name/test/content.test.ts
+
+✔ defaults to Babylon Lite 2D and does not apply the pixel preset to 3D (1.9007ms)
+✔ derives four relative render resolutions from native backing dimensions and caps double by the WebGPU limit (0.4501ms)
+✔ snaps Babylon Lite sprite anchors after the layer view and preserves the grid on round trip (1.474ms)
+✔ snaps correctly through a zoomed and rotated Babylon Lite layer view (0.2587ms)
+✔ requires explicit mode setup and resnaps a layer after view changes (0.6724ms)
+✔ rejects Babylon Lite sprite mutations outside the pixel-grid entry module (11.8545ms)
+✔ keeps the logical camera focus and spinning title at world origin across target sizes (0.9591ms)
+✔ adapts Babylon Lite sprite projection dimensions while sharing the engine surface registry (0.2219ms)
+✔ formats the active internal render scale independently of the CSS viewport (0.2521ms)
+✔ keeps the Babylon Lite world HUD at the existing CSS-pixel position across DPRs (0.5311ms)
+✔ draws the live Babylon Lite readout and clears a hidden HUD (0.7235ms)
+✔ keeps the shell renderer-neutral and wires Babylon presentation through optional slots (1.4457ms)
+✔ reports WebGPU-only initialization and allocation failures and uses the engine-owned frame lifecycle (1.3159ms)
+✔ imports an original 32x32 hard-edged PNG with only black and gray pixels (1.9604ms)
+✔ keeps npm/application and GitHub Pages roots (0.0924ms)
+✔ fits orientations and project-defined ratios in CSS pixels (0.4044ms)
+✔ invalid dimensions and orientation give actionable errors (0.3548ms)
+✔ renderer settings patch the shared config without dropping shell preferences (0.2576ms)
+✔ preserves corner contracts and engine-neutral content-layer guidance (1.4172ms)
+✔ keeps the UI and content source boundaries discoverable (1.0868ms)
+WebSocket server error: Port 24678 is already in use
+✔ renders the shell without a presentation and with a stub presentation (309.5903ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4481.922
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 1185 modules transformed.
+rendering chunks...
+computing gzip size...
+project-name/dist/index.html                                           0.66 kB │ gzip:  0.38 kB
+project-name/dist/assets/gutter-pattern-D1_j6B8n.webp                 23.05 kB
+project-name/dist/assets/index-DozOAj4y.css                            5.75 kB │ gzip:  1.59 kB
+project-name/dist/assets/havok-BZX47koC.js                             0.09 kB │ gzip:  0.11 kB
+project-name/dist/assets/_mat4-storage-f64-L9Rb9pFE.js                 0.13 kB │ gzip:  0.15 kB
+project-name/dist/assets/constant-e-DvKB8KvI.js                        0.18 kB │ gzip:  0.17 kB
+project-name/dist/assets/constant-inf-B_CxAHSb.js                      0.18 kB │ gzip:  0.17 kB
+project-name/dist/assets/constant-nan-J_GBazdN.js                      0.18 kB │ gzip:  0.17 kB
+project-name/dist/assets/constant-pi-pxCrYLR6.js                       0.18 kB │ gzip:  0.17 kB
+project-name/dist/assets/constant-tau-x7irwZj2.js                      0.19 kB │ gzip:  0.17 kB
+project-name/dist/assets/constant-8ba2LFkz.js                          0.21 kB │ gzip:  0.18 kB
+project-name/dist/assets/get-variable-C_H9hfuO.js                      0.23 kB │ gzip:  0.19 kB
+project-name/dist/assets/float-to-boolean-DYEmT3lC.js                  0.26 kB │ gzip:  0.21 kB
+project-name/dist/assets/boolean-to-float-CnxDyz0e.js                  0.26 kB │ gzip:  0.21 kB
+project-name/dist/assets/abs-kqh4a6ei.js                               0.26 kB │ gzip:  0.22 kB
+project-name/dist/assets/boolean-to-int-BL9zYZ58.js                    0.27 kB │ gzip:  0.21 kB
+project-name/dist/assets/floor-C9USNpxG.js                             0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/int-to-float-DqrTcNWJ.js                      0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/cos-CSyOvZ9W.js                               0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/log-BtoafGjP.js                               0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/sin-BqTOD4wx.js                               0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/tan-CNJmhNTN.js                               0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/acos-CyM2MbM8.js                              0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/asin-CB9TdInp.js                              0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/atan-CpZrKSvw.js                              0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/ceil-BI8wZqwu.js                              0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/cosh-XNOMQZrm.js                              0.27 kB │ gzip:  0.22 kB
+project-name/dist/assets/log2-D-sSynFO.js                              0.27 kB │ gzip:  0.23 kB
+project-name/dist/assets/sign-Dhumw_zJ.js                              0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/sinh-D5xzk4Bb.js                              0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/tanh-CGVXnZfj.js                              0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/acosh-DLRpDEJ9.js                             0.28 kB │ gzip:  0.22 kB
+project-name/dist/assets/asinh-B4qjG0HG.js                             0.28 kB │ gzip:  0.22 kB
+project-name/dist/assets/atanh-879TlqUG.js                             0.28 kB │ gzip:  0.22 kB
+project-name/dist/assets/log10-C3PRjeTO.js                             0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/round-CieLiznj.js                             0.28 kB │ gzip:  0.22 kB
+project-name/dist/assets/trunc-Dm2AQXPb.js                             0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/int-to-boolean-BJjfx9c3.js                    0.28 kB │ gzip:  0.22 kB
+project-name/dist/assets/is-nan-awqkR2eU.js                            0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/length-DySISJvV.js                            0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/cube-root-Cu1LArzy.js                         0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/deg-to-rad-y5ZWXTbd.js                        0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/fraction-BXBRek-B.js                          0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/negation-BpwB7Hms.js                          0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/rad-to-deg-B_NKcTO7.js                        0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/saturate-6L-m9deP.js                          0.28 kB │ gzip:  0.23 kB
+project-name/dist/assets/normalize-DqllQOgf.js                         0.29 kB │ gzip:  0.23 kB
+project-name/dist/assets/transpose-B6P201bW.js                         0.29 kB │ gzip:  0.23 kB
+project-name/dist/assets/bitwise-not-CV6Sbnkr.js                       0.29 kB │ gzip:  0.23 kB
+project-name/dist/assets/square-root-QLewa0sr.js                       0.29 kB │ gzip:  0.23 kB
+project-name/dist/assets/exponential-DMR9mJf3.js                       0.29 kB │ gzip:  0.23 kB
+project-name/dist/assets/invert-matrix-DgrzT9tU.js                     0.29 kB │ gzip:  0.23 kB
+project-name/dist/assets/is-infinity-Dmz7gmSQ.js                       0.29 kB │ gzip:  0.23 kB
+project-name/dist/assets/leading-zeros-NpfHziO2.js                     0.29 kB │ gzip:  0.23 kB
+project-name/dist/assets/determinant-BWlNndcz.js                       0.29 kB │ gzip:  0.23 kB
+project-name/dist/assets/trailing-zeros-DM8ZiLHC.js                    0.29 kB │ gzip:  0.23 kB
+project-name/dist/assets/one-bits-counter-BKmYPZKx.js                  0.30 kB │ gzip:  0.23 kB
+project-name/dist/assets/sequence-BfzSWnoI.js                          0.30 kB │ gzip:  0.25 kB
+project-name/dist/assets/add-Cp83d_jr.js                               0.30 kB │ gzip:  0.23 kB
+project-name/dist/assets/quat-conjugate-BbpMQzgV.js                    0.30 kB │ gzip:  0.24 kB
+project-name/dist/assets/max-D8G7BZQ-.js                               0.30 kB │ gzip:  0.23 kB
+project-name/dist/assets/min-BAHmfxDC.js                               0.30 kB │ gzip:  0.23 kB
+project-name/dist/assets/branch-DSdvaYtp.js                            0.31 kB │ gzip:  0.23 kB
+project-name/dist/assets/dot-Drfx-U5N.js                               0.31 kB │ gzip:  0.24 kB
+project-name/dist/assets/atan2-nprDXxMt.js                             0.31 kB │ gzip:  0.24 kB
+project-name/dist/assets/power-CD6LtPXq.js                             0.31 kB │ gzip:  0.24 kB
+project-name/dist/assets/divide-y-XuPTNs.js                            0.31 kB │ gzip:  0.24 kB
+project-name/dist/assets/modulo-BFRobcXK.js                            0.31 kB │ gzip:  0.24 kB
+project-name/dist/assets/cross-81opHs95.js                             0.31 kB │ gzip:  0.24 kB
+project-name/dist/assets/multiply-DycEUOSp.js                          0.31 kB │ gzip:  0.24 kB
+project-name/dist/assets/subtract-DcUiyMDD.js                          0.31 kB │ gzip:  0.24 kB
+project-name/dist/assets/bitwise-or-BttkM4_U.js                        0.32 kB │ gzip:  0.24 kB
+project-name/dist/assets/bitwise-and-DxdVfpv4.js                       0.32 kB │ gzip:  0.24 kB
+project-name/dist/assets/equality-COeb2DW8.js                          0.32 kB │ gzip:  0.24 kB
+project-name/dist/assets/bitwise-xor-CBKjpF4z.js                       0.32 kB │ gzip:  0.24 kB
+project-name/dist/assets/less-than-C8602m-l.js                         0.32 kB │ gzip:  0.24 kB
+project-name/dist/assets/extract2-5OjvxMzB.js                          0.32 kB │ gzip:  0.25 kB
+project-name/dist/assets/greater-than-hxOzqMl9.js                      0.32 kB │ gzip:  0.25 kB
+project-name/dist/assets/rotate2d-EYzUIQJv.js                          0.32 kB │ gzip:  0.25 kB
+project-name/dist/assets/transform-vector-DWmu8hjg.js                  0.33 kB │ gzip:  0.24 kB
+project-name/dist/assets/bitwise-left-shift-ChJUBbik.js                0.33 kB │ gzip:  0.25 kB
+project-name/dist/assets/combine2-CgLGFmhm.js                          0.33 kB │ gzip:  0.25 kB
+project-name/dist/assets/rotate3d-cPdLTZei.js                          0.33 kB │ gzip:  0.25 kB
+project-name/dist/assets/bitwise-right-shift-BvBDhRv4.js               0.33 kB │ gzip:  0.25 kB
+project-name/dist/assets/less-than-or-equal-irJQZ79K.js                0.33 kB │ gzip:  0.25 kB
+project-name/dist/assets/random-FHgWHFf2.js                            0.33 kB │ gzip:  0.25 kB
+project-name/dist/assets/smooth-step-BMvFw0zB.js                       0.33 kB │ gzip:  0.24 kB
+project-name/dist/assets/clamp-BgBNgo9Q.js                             0.34 kB │ gzip:  0.25 kB
+project-name/dist/assets/greater-than-or-equal-DlK-pfDY.js             0.34 kB │ gzip:  0.25 kB
+project-name/dist/assets/vector-slerp-DOfQBNAs.js                      0.34 kB │ gzip:  0.25 kB
+project-name/dist/assets/angle-between-mSak0bnr.js                     0.34 kB │ gzip:  0.25 kB
+project-name/dist/assets/matrix-multiplication-DzawxJjP.js             0.34 kB │ gzip:  0.25 kB
+project-name/dist/assets/conditional-BRMHx06t.js                       0.35 kB │ gzip:  0.24 kB
+project-name/dist/assets/quaternion-from-up-forward-CJe3gh5Z.js        0.35 kB │ gzip:  0.25 kB
+project-name/dist/assets/extract3-oxk0-BYM.js                          0.35 kB │ gzip:  0.26 kB
+project-name/dist/assets/quaternion-multiplication-6vUbVHuR.js         0.35 kB │ gzip:  0.25 kB
+project-name/dist/assets/quaternion-slerp-DGke8Hlj.js                  0.35 kB │ gzip:  0.25 kB
+project-name/dist/assets/quaternion-from-axis-angle-CFQ1SIt_.js        0.36 kB │ gzip:  0.26 kB
+project-name/dist/assets/quaternion-from-directions-B8ETl7yj.js        0.36 kB │ gzip:  0.26 kB
+project-name/dist/assets/combine3-Bgu8cOSD.js                          0.36 kB │ gzip:  0.26 kB
+project-name/dist/assets/mix-DNdt0-Mk.js                               0.36 kB │ gzip:  0.26 kB
+project-name/dist/assets/extract-matrix-DIQ2VPcn.js                    0.37 kB │ gzip:  0.28 kB
+project-name/dist/assets/extract-matrix2d-y44sYYR0.js                  0.38 kB │ gzip:  0.28 kB
+project-name/dist/assets/extract-matrix3d-CqJLqs5I.js                  0.38 kB │ gzip:  0.28 kB
+project-name/dist/assets/scene-start-CP78_HDX.js                       0.38 kB │ gzip:  0.27 kB
+project-name/dist/assets/float-to-int-CqHASVhb.js                      0.38 kB │ gzip:  0.27 kB
+project-name/dist/assets/extract4-BzxTfKEc.js                          0.38 kB │ gzip:  0.27 kB
+project-name/dist/assets/quaternion-from-angles-DLb-R0hi.js            0.38 kB │ gzip:  0.26 kB
+project-name/dist/assets/combine4-CpsbWJ2K.js                          0.39 kB │ gzip:  0.27 kB
+project-name/dist/assets/rgb-to-oklch-DZWIKJ-V.js                      0.41 kB │ gzip:  0.27 kB
+project-name/dist/assets/rgb-from-oklch-CteK4R0S.js                    0.41 kB │ gzip:  0.27 kB
+project-name/dist/assets/combine-matrix-C2Tbs5xw.js                    0.41 kB │ gzip:  0.30 kB
+project-name/dist/assets/while-loop-D4zxWlkm.js                        0.41 kB │ gzip:  0.29 kB
+project-name/dist/assets/combine-matrix2d-Cc_rcV2N.js                  0.42 kB │ gzip:  0.30 kB
+project-name/dist/assets/combine-matrix3d-D1vVjJXU.js                  0.42 kB │ gzip:  0.30 kB
+project-name/dist/assets/stop-event-propagation-Detxasfi.js            0.42 kB │ gzip:  0.29 kB
+project-name/dist/assets/axis-angle-from-quaternion-Bc7beZ1l.js        0.42 kB │ gzip:  0.29 kB
+project-name/dist/assets/no-op-B6yEVs_u.js                             0.43 kB │ gzip:  0.29 kB
+project-name/dist/assets/matrix-compose-BaF48_V7.js                    0.43 kB │ gzip:  0.28 kB
+project-name/dist/assets/create-quat-from-rotation-mat4-PcdXSPCR.js    0.46 kB │ gzip:  0.27 kB
+project-name/dist/assets/compose-mat4-3LmEnDdR.js                      0.46 kB │ gzip:  0.28 kB
+project-name/dist/assets/data-switch-D5mShwuu.js                       0.46 kB │ gzip:  0.32 kB
+project-name/dist/assets/pack-mat4-with-offset-gfPe3zZb.js             0.47 kB │ gzip:  0.27 kB
+project-name/dist/assets/switch-D5lFDC_A.js                            0.47 kB │ gzip:  0.34 kB
+project-name/dist/assets/cancel-delay-DwgYrFgH.js                      0.48 kB │ gzip:  0.32 kB
+project-name/dist/assets/matrix-decompose-CEFsr9e8.js                  0.52 kB │ gzip:  0.31 kB
+project-name/dist/assets/send-custom-event-3XHH7MVC.js                 0.54 kB │ gzip:  0.36 kB
+project-name/dist/assets/receive-custom-event-CipTiFWq.js              0.57 kB │ gzip:  0.37 kB
+project-name/dist/assets/on-select-B0Oss0Re.js                         0.58 kB │ gzip:  0.36 kB
+project-name/dist/assets/set-variable-DVIIYe6R.js                      0.62 kB │ gzip:  0.39 kB
+project-name/dist/assets/floating-origin-B-mrkELf.js                   0.64 kB │ gzip:  0.38 kB
+project-name/dist/assets/do-n-sadE0Gn2.js                              0.66 kB │ gzip:  0.38 kB
+project-name/dist/assets/editor-property-CJ21UUlY.js                   0.67 kB │ gzip:  0.34 kB
+project-name/dist/assets/scene-tick-yhFdQY2W.js                        0.70 kB │ gzip:  0.37 kB
+project-name/dist/assets/get-property-BWyAU9KL.js                      0.73 kB │ gzip:  0.43 kB
+project-name/dist/assets/for-loop-r9mAQtLw.js                          0.83 kB │ gzip:  0.46 kB
+project-name/dist/assets/set-property-ClWKz-Re.js                      0.84 kB │ gzip:  0.48 kB
+project-name/dist/assets/console-log-_LQ3zELS.js                       0.92 kB │ gzip:  0.55 kB
+project-name/dist/assets/multi-gate-dx4XUDgp.js                        0.94 kB │ gzip:  0.54 kB
+project-name/dist/assets/throttle-CEiOsDLU.js                          0.98 kB │ gzip:  0.46 kB
+project-name/dist/assets/wait-all-CsYJq09I.js                          1.02 kB │ gzip:  0.55 kB
+project-name/dist/assets/stop-animation-g7_berl8.js                    1.04 kB │ gzip:  0.57 kB
+project-name/dist/assets/play-animation-Z5M9Y0fn.js                    1.07 kB │ gzip:  0.59 kB
+project-name/dist/assets/set-delay-l0qGj_Dc.js                         1.24 kB │ gzip:  0.62 kB
+project-name/dist/assets/generate-mipmaps-CJPZ5nBg.js                  1.79 kB │ gzip:  0.94 kB
+project-name/dist/assets/pointer-template-C_Io4ljy.js                  2.24 kB │ gzip:  1.10 kB
+project-name/dist/assets/havok-floating-origin-B3DTHsth.js             3.12 kB │ gzip:  1.26 kB
+project-name/dist/assets/value-interpolation-DHwST16U.js               3.85 kB │ gzip:  1.68 kB
+project-name/dist/assets/scene-rebuild-CDQ7wSpf.js                     4.50 kB │ gzip:  1.74 kB
+project-name/dist/assets/havok-thin-instances-DPJg5eK9.js              6.37 kB │ gzip:  2.67 kB
+project-name/dist/assets/scene-runtime-mesh-build-BiAHq_eA.js          6.53 kB │ gzip:  2.41 kB
+project-name/dist/assets/sockets-COAzZyAw.js                           8.19 kB │ gzip:  2.98 kB
+project-name/dist/assets/fg-math-CaJZNoXS.js                          16.10 kB │ gzip:  5.75 kB
+project-name/dist/assets/index-gVb5mmRg.js                           271.33 kB │ gzip: 88.05 kB
+
+✓ built in 501ms
