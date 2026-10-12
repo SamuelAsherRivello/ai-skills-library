@@ -3,7 +3,6 @@ name: openspec-archive-change
 description: Archive a completed OpenSpec change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete. Also use when the user says "openspec archive" or "opsx archive".
 allowed-tools: Bash(openspec:*)
 license: MIT
-compatibility: Requires openspec CLI.
 metadata:
   author: openspec
   version: "1.0"
@@ -12,6 +11,11 @@ metadata:
 Archive a completed change in the experimental workflow.
 
 ## Required response footer
+
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-arc: {change}`.
 
 Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
 

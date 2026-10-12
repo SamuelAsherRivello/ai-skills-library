@@ -109,8 +109,8 @@ function Get-OwnedProcesses($inventory) {
   })
 }
 
-function Stop-ProcessTree([int] $pid) {
-  if ($pid -gt 0) { & taskkill.exe /PID $pid /T /F 2>$null | Out-Null }
+function Stop-ProcessTree([int] $processId) {
+  if ($processId -gt 0) { & taskkill.exe /PID $processId /T /F 2>$null | Out-Null }
 }
 
 function Test-RouteHealth([int] $port) {

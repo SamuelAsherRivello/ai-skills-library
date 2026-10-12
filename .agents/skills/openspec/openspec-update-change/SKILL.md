@@ -10,6 +10,11 @@ metadata:
 
 Revise a change's existing planning artifacts and keep them coherent. Never edit code.
 
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-rev: {change}` and renders the shared footer.
+
 ## Required response footer
 
 Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.

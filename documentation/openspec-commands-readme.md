@@ -73,7 +73,7 @@ Here are commands and the recommended AI intelligence level to use.
 | 10 | `$openspec-macro-finalize-sync-archive-commit-push` | Run the full close-out sequence after implementation. | ![High](https://img.shields.io/badge/High-green?style=flat-square) |
 
 For a repository version release after a remote commit exists, use
-[`$ai-skills-release-version`](../.agents/skills/ai-skills-create/ai-skills-release-version/SKILL.md).
+[`$ai-skills-create-github-release`](../.agents/skills/ai-skills-create/ai-skills-create-github-release/SKILL.md).
 
 ### Proposal Artifacts
 

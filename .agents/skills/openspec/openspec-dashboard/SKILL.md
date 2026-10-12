@@ -5,6 +5,11 @@ description: Open, set up, or inspect the local OpenSpecUI dashboard for an Open
 
 # OpenSpec Dashboard
 
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-dsh: {change}` and renders the shared footer.
+
 Use this skill when the user asks to open, inspect, repair, or use the local OpenSpecUI dashboard for an OpenSpec project.
 
 This skill is a local dashboard launcher and inspector. It does not call an AI service, delegate work to another agent, or invent a separate dashboard. When invoked for a dashboard request, use the terminal before replying; do not only print commands for the user to run.

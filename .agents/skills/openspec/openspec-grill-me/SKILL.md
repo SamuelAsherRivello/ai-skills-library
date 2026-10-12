@@ -5,6 +5,11 @@ description: Interview the user about an OpenSpec exploration, proposal, or stan
 
 # OpenSpec Grill Me
 
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-dec: {change}` and renders the shared footer.
+
 This is a custom OpenSpec companion skill for structured planning interviews. It is intentionally optional and is not part of OpenSpec's core profile.
 
 ## Required response footer

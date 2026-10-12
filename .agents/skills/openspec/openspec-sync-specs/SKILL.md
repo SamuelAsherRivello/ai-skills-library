@@ -3,7 +3,6 @@ name: openspec-sync-specs
 description: Sync delta specs from an OpenSpec change to main specs. Use when the user wants to update main specs with changes from a delta spec, without archiving the change. Also use when the user says "openspec sync" or "opsx sync".
 allowed-tools: Bash(openspec:*)
 license: MIT
-compatibility: Requires openspec CLI.
 metadata:
   author: openspec
   version: "1.0"
@@ -14,6 +13,11 @@ Sync delta specs from a change to main specs.
 This is an **agent-driven** operation - you will read delta specs and directly edit main specs to apply the changes. This allows intelligent merging (e.g., adding a scenario without copying the entire requirement).
 
 ## Required response footer
+
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-syn: {change}`.
 
 Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
 

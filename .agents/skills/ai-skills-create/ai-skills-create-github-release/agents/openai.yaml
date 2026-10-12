@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Release"
+  short_description: "Release from version.txt through GitHub Actions"
+  default_prompt: "Use $ai-skills-create-github-release to publish this repository's next version through its checked-in GitHub workflow."

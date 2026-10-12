@@ -248,16 +248,8 @@ foreach ($selection in $selections) {
         }
         $sourceTime = Get-TreeLastWriteTimeUtc $source
         $destinationTime = Get-TreeLastWriteTimeUtc $destination
-        if ($sourceTime -gt $destinationTime) {
-            $plan.Add([pscustomobject]@{ Name = $name; Source = $source; Destination = $destination; Category = $resolvedCategory; Replace = $true })
-            continue
-        }
-        if ($destinationTime -gt $sourceTime) {
-            $skipped.Add("$name (destination newer)")
-            continue
-        }
         if (-not $ReplaceConflicts) {
-            $failed.Add("$name (conflict with equal modification times; ask the user for explicit replacement authorization, then rerun with -ReplaceConflicts)")
+            $failed.Add("$name (destination differs; inspect quality and modification times, then rerun with -ReplaceConflicts only if the selected source is clearly better or the user authorizes replacement)")
             continue
         }
         $plan.Add([pscustomobject]@{ Name = $name; Source = $source; Destination = $destination; Category = $resolvedCategory; Replace = $true })

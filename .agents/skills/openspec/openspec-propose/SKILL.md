@@ -10,6 +10,11 @@ metadata:
 
 Propose a new change - create the change and generate all artifacts in one step.
 
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-prp: {change}` and renders the shared footer.
+
 ## Required response footer
 
 Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.

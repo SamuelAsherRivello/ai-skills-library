@@ -3,13 +3,18 @@ name: openspec-apply-change
 description: Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks. Also use when the user says "openspec apply", "opsx apply", or "openspec implement".
 allowed-tools: Bash(openspec:*)
 license: MIT
-compatibility: Requires openspec CLI.
 metadata:
   author: openspec
   version: "1.0"
 ---
 
 Implement tasks from an OpenSpec change.
+
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-app: {change} ({complete:02d}/{total:02d})`, with counts
+confirmed from the OpenSpec CLI, and renders the shared footer.
 
 ## Required response footer
 

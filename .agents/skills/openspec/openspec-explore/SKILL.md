@@ -3,7 +3,6 @@ name: openspec-explore
 description: Enter OpenSpec explore mode - a thinking partner for exploring ideas, investigating problems, and clarifying requirements in a project that uses OpenSpec. Use when the user wants to think through something before or during an OpenSpec change. Also use when the user says "openspec explore" or "opsx explore".
 allowed-tools: Bash(openspec:*)
 license: MIT
-compatibility: Requires openspec CLI.
 metadata:
   author: openspec
   version: "1.0"
@@ -12,6 +11,11 @@ metadata:
 Enter explore mode. Think deeply. Visualize freely. Follow the conversation wherever it goes.
 
 ## Required response footer
+
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-exp: {topic}`.
 
 Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
 

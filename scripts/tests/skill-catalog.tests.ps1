@@ -33,15 +33,50 @@ foreach ($category in $categories) {
 }
 
 $oldRelease = Join-Path $skillsRoot 'openspec\openspec-release-version\SKILL.md'
-$newRelease = Join-Path $skillsRoot 'ai-skills-create\ai-skills-release-version\SKILL.md'
+$newRelease = Join-Path $skillsRoot 'ai-skills-create\ai-skills-create-github-release\SKILL.md'
 Assert (-not (Test-Path -LiteralPath $oldRelease -PathType Leaf)) 'Old OpenSpec release skill remains.'
 Assert (Test-Path -LiteralPath $newRelease -PathType Leaf) 'Relocated release skill is missing.'
-Assert ((Get-Content -LiteralPath $newRelease -Raw) -match '(?m)^name: ai-skills-release-version$') 'Relocated release skill has the wrong name.'
+Assert ((Get-Content -LiteralPath $newRelease -Raw) -match '(?m)^name: ai-skills-create-github-release$') 'Relocated release skill has the wrong name.'
 
 $disallowedName = 'po' + 'cock'
 $disallowed = Get-ChildItem -LiteralPath $skillsRoot -Recurse -File |
     Where-Object { $_.Extension -in '.md', '.yaml' } |
     Select-String -Pattern $disallowedName -CaseSensitive:$false -List
 Assert ($null -eq $disallowed) 'Catalog or skill content includes a prohibited external repository reference.'
+
+$openSpecRoot = Join-Path $skillsRoot 'openspec'
+$titleContract = Join-Path $openSpecRoot 'openspec-title-management.md'
+$footer = Join-Path $openSpecRoot 'openspec-footer.md'
+Assert (Test-Path -LiteralPath $titleContract -PathType Leaf) 'OpenSpec title contract is missing.'
+Assert ((Get-Content -LiteralPath $footer -Raw).Contains('Coordination: Standalone')) 'OpenSpec footer lacks standalone coordination context.'
+
+$titleSlots = @{
+    'openspec-explore' = 'OS-exp:'
+    'openspec-grill-me' = 'OS-dec:'
+    'openspec-dashboard' = 'OS-dsh:'
+    'openspec-propose' = 'OS-prp:'
+    'openspec-update-change' = 'OS-rev:'
+    'openspec-apply-change' = 'OS-app:'
+    'openspec-apply-change-with-playwright' = 'OS-apw:'
+    'openspec-sync-specs' = 'OS-syn:'
+    'openspec-archive-change' = 'OS-arc:'
+    'openspec-commit-inclusive' = 'OS-cmt:'
+    'openspec-macro-finalize-sync-archive-commit-push' = 'OS-fin:'
+    'openspec-orchestrate' = 'OS-orc:'
+}
+foreach ($entry in $titleSlots.GetEnumerator()) {
+    $content = Get-Content -LiteralPath (Join-Path (Join-Path $openSpecRoot $entry.Key) 'SKILL.md') -Raw
+    Assert ($content.Contains('../openspec-title-management.md')) "OpenSpec skill lacks title contract: $($entry.Key)"
+    Assert ($content.Contains($entry.Value)) "OpenSpec skill has the wrong title slot: $($entry.Key)"
+}
+
+$orchestrationConfig = Get-Content -LiteralPath (Join-Path $openSpecRoot 'openspec-orchestrate\references\openspec-orchestrate-config.md') -Raw
+Assert ($orchestrationConfig.Contains('[OS-orc: {change}]')) 'Orchestrator title format is missing.'
+Assert ($orchestrationConfig.Contains('[{prev-name}]')) 'Managed agent bracket format is missing.'
+
+foreach ($skillName in @('ai-skills-library-push', 'ai-skills-library-pull', 'ai-skills-library-move-global', 'ai-skills-library-move-project')) {
+    $content = Get-Content -LiteralPath (Join-Path (Join-Path $skillsRoot 'ai-skills-library') "$skillName\SKILL.md") -Raw
+    Assert ($content.Contains('clearly better')) "Lifecycle skill lacks quality conflict guidance: $skillName"
+}
 
 Write-Output 'All skill catalog scenarios passed.'

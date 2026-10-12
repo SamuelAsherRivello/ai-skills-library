@@ -5,6 +5,11 @@ description: "Run an ordered macro of OpenSpec finalization skills after apply: 
 
 # OpenSpec Macro: Finalize, Sync, Archive, Commit, Push
 
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-fin: {change}` and renders the shared footer.
+
 Use only when the user explicitly asks to finish one completed OpenSpec change through sync, archive, Git commit, and a normal push. This macro coordinates the applicable finalization skills in that required order: `openspec-sync-specs`, `openspec-archive-change`, and `openspec-commit-inclusive`, followed by a normal push. It is not a substitute for implementation, review, release, tagging, pull requests, or remote branch integration.
 
 ## Branch policy

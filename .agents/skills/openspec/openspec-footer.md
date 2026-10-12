@@ -5,7 +5,7 @@ content in the response: do not put a sign-off, links, explanation, or other
 text after it.
 
 Render it as a compact Markdown block with a bold title on the same line as
-solid em dashes, followed by exactly three bullets. Do not put the title above
+solid em dashes, followed by exactly four bullets. Do not put the title above
 a separate horizontal rule or use box-drawing characters for the line:
 
 ```markdown
@@ -13,6 +13,7 @@ a separate horizontal rule or use box-drawing characters for the line:
 
 - Status: <phase>
 - Tasks: N/A
+- Coordination: Standalone
 - Next: <action>
 ```
 
@@ -35,6 +36,9 @@ Formatting rules:
 - For a blocked, failed, or clarification response, keep the current phase in
   `Status` and use `Continue` unless a concrete phase-advancing command is
   genuinely the next action.
+- Use `Coordination: Standalone` unless the chat is under active orchestration.
+  The lead uses `Coordination: Orchestrator`; an enrolled chat uses
+  `Coordination: Managed by orchestration`.
 
 Examples:
 
@@ -43,6 +47,7 @@ Examples:
 
 - Status: Apply
 - Tasks: 3 of 7
+- Coordination: Standalone
 - Next: Continue
 ```
 
@@ -51,5 +56,6 @@ Examples:
 
 - Status: Explore
 - Tasks: N/A
+- Coordination: Standalone
 - Next: Call `/openspec-propose`
 ```

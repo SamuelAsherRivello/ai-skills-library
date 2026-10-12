@@ -10,6 +10,12 @@ metadata:
 
 # Apply OpenSpec Change With Playwright
 
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-apw: {change} ({complete:02d}/{total:02d})`, with counts
+confirmed by the wrapped apply workflow, and renders the shared footer.
+
 This skill is a wrapper around `$openspec-apply-change`. It adds browser
 validation without changing the behavior or instructions of that skill.
 

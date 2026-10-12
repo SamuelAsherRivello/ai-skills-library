@@ -25,7 +25,7 @@ the user explicitly changes the requested scope.
   creation workflow rather than silently creating a game as an application
 
 ### Requirement: Users can release without an OpenSpec project
-The library SHALL provide `ai-skills-release-version` in the
+The library SHALL provide `ai-skills-create-github-release` in the
 `ai-skills-create` category. It SHALL release a repository without requiring
 an OpenSpec root, change, or archived artifact.
 
@@ -41,3 +41,9 @@ an OpenSpec root, change, or archived artifact.
   usable `version.txt` release source
 - **THEN** the skill reports the missing prerequisite and makes no release
   infrastructure, tag, or GitHub release
+
+#### Scenario: GitHub access is unavailable
+- **WHEN** GitHub authentication cannot read the repository or lacks permission
+  to push and dispatch the release workflow
+- **THEN** the skill makes no repository changes and asks the user to grant or
+  refresh the required GitHub authorization

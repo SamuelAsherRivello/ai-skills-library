@@ -7,6 +7,11 @@ metadata:
 
 # OpenSpec Inclusive Commit
 
+## Chat title
+
+Follow the shared [chat title contract](../openspec-title-management.md). This
+workflow uses `OS-cmt: {change}` and renders the shared footer.
+
 Use this skill only when the user explicitly invokes it to commit one completed OpenSpec proposal. It favors frequent POC commits at whole-file granularity: every related file is committed completely, while wholly unrelated files are excluded.
 
 ## Required response footer
