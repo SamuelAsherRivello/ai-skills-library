@@ -51,25 +51,27 @@ For the manual copy workflow between this repository and Codex user/project skil
 
 ### Skills
 
-| # | Name | Link | Comment |
-|---:|---|---|---|
-| 1 | Create | [Catalog](.agents/skills/ai-skills-create/README.md) | Create React apps, browser games, repositories, and releases. |
-| 2 | AI Skills Library | [Catalog](.agents/skills/ai-skills-library/README.md) | Manage library, global, and project skill copies. |
-| 3 | Docker Sandbox | [Catalog](.agents/skills/docker-sandbox/README.md) | Configure and inspect isolated Docker Sandbox environments. |
-| 4 | OpenSpec | [Catalog](.agents/skills/openspec/README.md) | Explore, plan, implement, and finalize changes. |
-| 5 | Triage | [Catalog](.agents/skills/ai-skills-triage/README.md) | Assess architecture health, standardize codebases, and plan refactors. |
-| 6 | Slidev | [Catalog](.agents/skills/slidev/README.md) | Run, review, resynchronize, and refine Slidev documentation decks. |
-| 7 | Run | [Catalog](.agents/skills/ai-skills-run/README.md) | Start local project development servers with collision-safe ports. |
-Browse the complete [AI Skills Library catalog](.agents/skills/README.md) for
-the available categories and direct skill links.
+Stick to the number, name, comment format unless the user asks for an explicit change.
+
+| # | Name | Comment |
+|---:|---|---|
+| 1 | [Create](.agents/skills/ai-skills-create/README.md) | Create React apps, browser games, repositories, and releases. |
+| 2 | [AI Skills Library](.agents/skills/ai-skills-library/README.md) | Manage library, global, and project skill copies. |
+| 3 | [Docker Sandbox](.agents/skills/docker-sandbox/README.md) | Configure and inspect isolated Docker Sandbox environments. |
+| 4 | [OpenSpec](.agents/skills/openspec/README.md) | Explore, plan, implement, and finalize changes. |
+| 5 | [Triage](.agents/skills/ai-skills-triage/README.md) | Assess architecture health, standardize codebases, and plan refactors. |
+| 6 | [Slidev](.agents/skills/slidev/README.md) | Run, review, resynchronize, and refine Slidev documentation decks. |
+| 7 | [Run](.agents/skills/ai-skills-run/README.md) | Start local project development servers with collision-safe ports. |
 
 ## Resources
 
-| # | Name | Link | Comment |
-|---:|---|---|---|
-| 1 | Sandbox Setup | [Sandbox Setup](documentation/sandbox-readme.md) | Docker sandbox setup and usage. |
-| 2 | Local Model Setup | [Local Model Setup](documentation/local-model-setup-readme.md) | Run local models with Docker. |
-| 3 | Workflows | [Workflows](documentation/workflows-readme.md) | Reusable workflow guidance. |
+Stick to the number, name, comment format unless the user asks for an explicit change.
+
+| # | Name | Comment |
+|---:|---|---|
+| 1 | [Sandbox Setup](documentation/sandbox-readme.md) | Docker sandbox setup and usage. |
+| 2 | [Local Model Setup](documentation/local-model-setup-readme.md) | Run local models with Docker. |
+| 3 | [Workflows](documentation/workflows-readme.md) | Reusable workflow guidance. |
 
 ## Credits
 
