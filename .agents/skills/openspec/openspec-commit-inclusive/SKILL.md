@@ -9,6 +9,10 @@ metadata:
 
 Use this skill only when the user explicitly invokes it to commit one completed OpenSpec proposal. It favors frequent POC commits at whole-file granularity: every related file is committed completely, while wholly unrelated files are excluded.
 
+## Required response footer
+
+Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
+
 ## Branch policy
 
 Prefer the repository's default branch, `main`, for the commit and normal push

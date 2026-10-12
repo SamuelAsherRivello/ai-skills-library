@@ -2,7 +2,10 @@
 param(
   [Parameter(Mandatory)] [string] $ProjectRoot,
   [Parameter(Mandatory)] [int] $Port,
-  [Parameter(Mandatory)] [string] $RoutesJson
+  [Parameter(Mandatory)] [string] $RoutesJson,
+  [switch] $DisableHmr,
+  [int] $PortCount = 20,
+  [int] $StartupTimeoutSeconds = 15
 )
 
 $ErrorActionPreference = 'Stop'
@@ -15,6 +18,12 @@ function Get-OwnedProcesses {
     $_.CommandLine -like "*$root*"
   }
 }
+function Get-LogText([string] $path) {
+  if (-not (Test-Path -LiteralPath $path)) { return '' }
+  $text = Get-Content -Raw -LiteralPath $path -ErrorAction SilentlyContinue
+  if ($null -eq $text) { return '' }
+  return $text.Trim()
+}
 
 $canInspectProcesses = $true
 try { $owned = @(Get-OwnedProcesses) } catch { $canInspectProcesses = $false; $owned = @() }
@@ -22,7 +31,6 @@ if ($canInspectProcesses) {
   foreach ($process in $owned) { & taskkill.exe /PID $process.ProcessId /T /F | Out-Null }
 }
 
-$clock = [Diagnostics.Stopwatch]::StartNew()
 $candidate = $Port
 $reuse = $false
 do {
@@ -38,18 +46,39 @@ do {
   }
   $candidate++
   Start-Sleep -Milliseconds 25
-} while ($clock.ElapsedMilliseconds -lt 700 -and $candidate -lt ($Port + 5))
-if ($listener -and $candidate -ge ($Port + 5)) { throw "No free project port found from $Port through $($Port + 4)." }
+} while ($candidate -lt ($Port + $PortCount))
+if ($listener -and $candidate -ge ($Port + $PortCount)) { throw "No free project port found from $Port through $($Port + $PortCount - 1)." }
 
 if (-not $reuse) {
-  $child = Start-Process cmd.exe -ArgumentList "/d /c npm run dev -- --port $candidate" -WorkingDirectory $root -WindowStyle Hidden -PassThru
-  do { $listener = @(Get-NetTCPConnection -LocalPort $candidate -State Listen -ErrorAction SilentlyContinue); if ($listener) { break }; if ($child.HasExited) { throw "Vite launcher exited with code $($child.ExitCode)." }; Start-Sleep -Milliseconds 50 } while ($clock.ElapsedMilliseconds -lt 6000)
-  if (-not $listener) { throw "Vite did not listen on $candidate within 6 seconds." }
+  # Use strictPort so Vite cannot silently move to a different port than the
+  # one selected by this helper. This also works when listener inspection is
+  # restricted but the port is occupied by another process.
+  $launchSucceeded = $false
+  while ($candidate -lt ($Port + $PortCount)) {
+    $logPath = Join-Path ([IO.Path]::GetTempPath()) ("codex-vite-" + [guid]::NewGuid().ToString('N') + '.log')
+    $hmrArgument = if ($DisableHmr) { ' --no-hmr' } else { '' }
+    $child = Start-Process cmd.exe -ArgumentList "/d /c cd /d `"$root`" && npm run dev -- --host 127.0.0.1 --port $candidate --strictPort$hmrArgument > `"$logPath`" 2>&1" -WorkingDirectory $root -WindowStyle Hidden -PassThru
+    $startupDeadline = [DateTime]::UtcNow.AddSeconds($StartupTimeoutSeconds)
+    do {
+      $listener = @(Get-NetTCPConnection -LocalPort $candidate -State Listen -ErrorAction SilentlyContinue)
+      $diagnostics = Get-LogText $logPath
+      if ($listener -or $diagnostics -match 'Local:\s+http://127\.0\.0\.1:' -or $diagnostics -match 'ready in') { $launchSucceeded = $true; break }
+      if ($child.HasExited) { break }
+      Start-Sleep -Milliseconds 50
+    } while ([DateTime]::UtcNow -lt $startupDeadline)
+    if ($launchSucceeded) { break }
+    if (-not $child.HasExited) { & taskkill.exe /PID $child.ProcessId /T /F | Out-Null }
+    $diagnostics = Get-LogText $logPath
+    if ($diagnostics -match 'Port .* is in use|EADDRINUSE|strictPort') { $candidate++; continue }
+    throw "Vite launcher failed on $candidate with code $($child.ExitCode). $diagnostics"
+  }
+  if (-not $launchSucceeded) { throw "No available project port found from $Port through $($Port + $PortCount - 1)." }
 }
 
 $checks = foreach ($route in $routes) {
   $response = Invoke-WebRequest "http://127.0.0.1:$candidate$($route.route)" -UseBasicParsing -TimeoutSec 1
-  [pscustomobject]@{ Label=$route.label; Route=$route.route; Status=$response.StatusCode; Url="http://127.0.0.1:$candidate$($route.route)" }
+  $title = if ($response.Content -match '<title[^>]*>\s*([^<]+?)\s*</title>') { $matches[1].Trim() } else { '' }
+  [pscustomobject]@{ Label=$route.label; Route=$route.route; Status=$response.StatusCode; Title=$title; Url="http://127.0.0.1:$candidate$($route.route)" }
 }
 if (@($checks | Where-Object Status -ne 200).Count) { throw 'One or more routes did not return HTTP 200.' }
 $checks | ConvertTo-Json -Compress

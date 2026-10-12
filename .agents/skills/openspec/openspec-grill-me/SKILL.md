@@ -7,6 +7,10 @@ description: Interview the user about an OpenSpec exploration, proposal, or stan
 
 This is a custom OpenSpec companion skill for structured planning interviews. It is intentionally optional and is not part of OpenSpec's core profile.
 
+## Required response footer
+
+Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
+
 Resolve material ambiguity through an adaptive, one-question-at-a-time
 interview. Turn confirmed decisions into coherent planning artifacts when
 authorized. Never edit implementation code or start implementation.

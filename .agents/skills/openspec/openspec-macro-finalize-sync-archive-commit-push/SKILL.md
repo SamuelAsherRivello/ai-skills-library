@@ -37,6 +37,16 @@ Stop before editing, staging, committing, archiving, or pushing when any of thes
 
 When stopped, report the exact blockers and the safest next command or decision. Do not auto-create missing workflow, release, branch-integration, or project infrastructure.
 
+## Human-required verification
+
+If readiness depends on a human playtest or manual browser verification, use
+the project's `ai-skills-create-playtest` skill before stopping. Verify or
+restart the project-owned server through that skill, provide its verified URL,
+and give exact executable steps and pass/fail criteria. Do not ask the human to
+playtest through an ad hoc checklist, and do not claim the human-observed
+result passed. Resume this macro only after the human reports the result or the
+required browser evidence is otherwise available.
+
 ## Preflight
 
 1. Resolve exactly one OpenSpec change from the user's request or current conversation.

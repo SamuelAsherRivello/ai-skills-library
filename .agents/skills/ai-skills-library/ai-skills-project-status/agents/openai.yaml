@@ -1,0 +1,3 @@
+interface:
+  display_name: "AI Skills Project Status"
+  short_description: "Summarize current-project chats"

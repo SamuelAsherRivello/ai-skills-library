@@ -73,6 +73,16 @@ function Get-TreeDigest([string] $Path) {
     finally { $sha.Dispose() }
 }
 
+function Get-TreeLastWriteTimeUtc([string] $Path) {
+    $latest = [DateTime]::MinValue
+    $files = @(Get-ChildItem -LiteralPath $Path -Recurse -File -Force -ErrorAction Stop)
+    if ($files.Count -eq 0) { return (Get-Item -LiteralPath $Path -Force).LastWriteTimeUtc }
+    foreach ($file in $files) {
+        if ($file.LastWriteTimeUtc -gt $latest) { $latest = $file.LastWriteTimeUtc }
+    }
+    return $latest
+}
+
 function Test-DirectoryWritable([string] $Path) {
     $probe = Join-Path $Path ('.skill-copy-probe-' + [Guid]::NewGuid().ToString('N'))
     try {
@@ -174,12 +184,17 @@ if (-not (Test-Path -LiteralPath $destinationRoot -PathType Container) -and $ope
 
 if ($Skill -eq 'all') {
     if ($operation -eq 'pull') {
-        $selections = @(
+        $candidates = @(
             foreach ($category in $libraryCategories) {
                 $categoryPath = Join-Path $sourceRoot $category
                 if (Test-Path -LiteralPath $categoryPath -PathType Container) {
                     Get-ChildItem -LiteralPath $categoryPath -Directory -Force | Where-Object { Test-Path -LiteralPath (Join-Path $_.FullName 'SKILL.md') }
                 }
+            }
+        )
+        $selections = @(
+            foreach ($group in ($candidates | Group-Object Name)) {
+                $group.Group | Sort-Object @{ Expression = { Get-TreeLastWriteTimeUtc $_.FullName }; Descending = $true } | Select-Object -First 1
             }
         ) | Sort-Object Name
     }
@@ -195,7 +210,13 @@ else {
                 if (Test-Path -LiteralPath $candidate -PathType Container) { Get-Item -LiteralPath $candidate }
             }
         )
-        if ($selections.Count -gt 1) { Stop-Preflight "Skill name '$Skill' appears in more than one category." }
+        if ($selections.Count -gt 1) {
+            $digests = @($selections | ForEach-Object { Get-TreeDigest $_.FullName } | Select-Object -Unique)
+            if ($digests.Count -gt 1) {
+                Stop-Preflight "Skill name '$Skill' appears in more than one category with different contents."
+            }
+            $selections = @($selections | Select-Object -First 1)
+        }
     }
     else { $selections = @([pscustomobject]@{ Name = $Skill; FullName = (Join-Path $sourceRoot $Skill) }) }
 }
@@ -225,8 +246,18 @@ foreach ($selection in $selections) {
             $skipped.Add($name)
             continue
         }
+        $sourceTime = Get-TreeLastWriteTimeUtc $source
+        $destinationTime = Get-TreeLastWriteTimeUtc $destination
+        if ($sourceTime -gt $destinationTime) {
+            $plan.Add([pscustomobject]@{ Name = $name; Source = $source; Destination = $destination; Category = $resolvedCategory; Replace = $true })
+            continue
+        }
+        if ($destinationTime -gt $sourceTime) {
+            $skipped.Add("$name (destination newer)")
+            continue
+        }
         if (-not $ReplaceConflicts) {
-            $failed.Add("$name (destination conflict; ask the user for explicit replacement authorization, then rerun with -ReplaceConflicts)")
+            $failed.Add("$name (conflict with equal modification times; ask the user for explicit replacement authorization, then rerun with -ReplaceConflicts)")
             continue
         }
         $plan.Add([pscustomobject]@{ Name = $name; Source = $source; Destination = $destination; Category = $resolvedCategory; Replace = $true })

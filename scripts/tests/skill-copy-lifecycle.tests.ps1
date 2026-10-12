@@ -19,6 +19,10 @@ function New-TestSkill([string] $Path, [string] $Contents) {
     Set-Content -LiteralPath (Join-Path $Path 'nested.txt') -Value 'nested' -NoNewline
 }
 
+function Set-TestSkillTime([string] $Path, [DateTime] $Time) {
+    Get-ChildItem -LiteralPath $Path -Recurse -File -Force | ForEach-Object { $_.LastWriteTimeUtc = $Time.ToUniversalTime() }
+}
+
 function Invoke-Copy([string] $Action, [string] $Skill, [string] $GlobalDirectory = $globalSkills, [switch] $ReplaceConflicts, [string] $CategoryInput) {
     $argsList = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $copyScript,
         '-Action', $Action, '-Skill', $Skill, '-LibraryRoot', $libraryRoot,
@@ -77,6 +81,9 @@ try {
     New-Item -ItemType Directory -Path (Join-Path $globalSkills 'ai-skills-create-invalid-source') | Out-Null
     New-TestSkill (Join-Path $libraryCategory 'ai-skills-library-conflict') 'library-version'
     New-TestSkill (Join-Path $globalSkills 'ai-skills-library-conflict') 'global-version'
+    $equalTime = [DateTime]::UtcNow.AddMinutes(-5)
+    Set-TestSkillTime (Join-Path $libraryCategory 'ai-skills-library-conflict') $equalTime
+    Set-TestSkillTime (Join-Path $globalSkills 'ai-skills-library-conflict') $equalTime
     $result = Invoke-Copy push all
     Assert ($result.ExitCode -ne 0) "push all should reject an unapproved conflict: $($result.Output)"
     Assert (-not (Test-Path -LiteralPath (Join-Path $libraryCategory 'ai-skills-library-all-good'))) 'push all copied files despite a preflight conflict.'

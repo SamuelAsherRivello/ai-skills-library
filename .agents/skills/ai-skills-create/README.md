@@ -11,5 +11,7 @@ game from the shared template, or release a prepared repository.
   publish a single-player or requested multiplayer browser game.
 - [ai-skills-create-github-repo](./ai-skills-create-github-repo/SKILL.md):
   Create a repository from the shared template and prepare its checkout.
+- [ai-skills-create-playtest](./ai-skills-create-playtest/SKILL.md): Guide a
+  human through verifying a web application before release.
 - [ai-skills-release-version](./ai-skills-release-version/SKILL.md): Release
   a template-compatible repository through its checked-in version workflow.

@@ -1,5 +1,7 @@
 # OpenSpec
 
+All OpenSpec workflow responses end with the shared [OpenSpec footer](./openspec-footer.md).
+
 Use these workflows to shape, implement, and close a focused repository
 change. The sequence below is a common path, not a required gate.
 
@@ -32,6 +34,8 @@ only after a releasable remote commit exists.
   existing change's planning artifacts.
 - [openspec-apply-change](./openspec-apply-change/SKILL.md): Implement a
   planned change task by task.
+- [openspec-apply-change-with-playwright](./openspec-apply-change-with-playwright/SKILL.md):
+  Implement a planned change and validate it in a browser.
 - [openspec-sync-specs](./openspec-sync-specs/SKILL.md): Sync accepted delta
   specifications into the main specifications.
 - [openspec-archive-change](./openspec-archive-change/SKILL.md): Archive a

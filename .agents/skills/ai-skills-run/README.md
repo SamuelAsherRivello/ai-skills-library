@@ -1,7 +1,13 @@
 # Run
 
-Reusable workflows for starting existing local projects without development
-port collisions or unnecessary terminal windows.
+Reusable workflows for starting, inspecting, and stopping existing local
+projects without development-port collisions or unnecessary terminal windows.
 
-- [AI Skills Run Project](./ai-skills-run-project/SKILL.md): Start a project's
-  `npm run dev` command on a stable, collision-safe local port.
+- [Start](./ai-skills-project-run-start/SKILL.md): Start one project-owned
+  development server on a verified, range-bounded local port.
+- [Status](./ai-skills-project-run-status/SKILL.md): Inspect ownership, route
+  health, active ports, and optional cross-project overlaps.
+- [Stop](./ai-skills-project-run-stop/SKILL.md): Stop only the confirmed
+  project-owned server tree.
+- [Run configuration](./references/run-configuration.md): Shared declaration
+  and reconciliation policy for agent-agnostic project port ranges.

@@ -1,85 +1,62 @@
 ---
 name: ai-skills-project-run-start
-description: Restart exactly one Vite development server for the current project, verify it without opening browser windows, and report application-named links.
+description: Restart one owned development server for the current project, prove it is stable, and report only verified application routes.
 ---
 
 # Project Run Start
 
 Use this skill when the user asks to run, start, host, or preview the current
-local web project.
+web project.
 
-## Invariant
+## Non-negotiable contract
 
-There must be exactly zero or one development Vite server for the project
-directory. A start request means restart: identify every Vite/npm/node process
-owned by this project, stop those project-owned process trees, verify they are
-gone, and then launch exactly one fresh server. Never stop another project's
-server and never run a second Vite for the same project.
+- The project has zero or one project-owned development server after startup.
+- Ownership is established from project-root command context or the persisted
+  run record, never from a port number alone.
+- A startup banner, a process, or a listening socket is not success. Success
+  requires the listener, every configured route, and the expected HTML identity
+  to remain healthy across repeated checks.
+- If process inspection or browser access is unavailable, keep a live candidate
+  when possible and report it as unverified. Never turn missing evidence into a
+  claim that a URL works.
 
-## Start
+## Workflow
 
-For the fast path, after reading the repository config, invoke the sibling
-`run-project.ps1` helper once with `-ProjectRoot`, `-Port`, and the routes JSON.
-When the user requests a stable manual-testing session, pass the optional
-`-DisableHmr` switch; the repo launcher must receive `--no-hmr` and serve the
-same routes without Vite hot-module replacement or automatic full-page reload.
-It performs scoped process cleanup, scans the declared dedicated port range,
-launches `npm run dev -- --host 127.0.0.1 --port` on the first available port,
-waits with 50 ms polling for a cold start, and verifies every route in one
-host-level operation. It returns compact JSON including the selected port,
-HTTP status, and HTML title. If the helper fails, report its captured launcher
-diagnostics precisely; do not launch a second server manually.
+1. Read `AGENTS.md`, `package.json`, the reusable Run reference at
+   `references/run-configuration.md`, and `BIS/scripts/project-run-config.mjs`.
+   Read `.agents/project-run-configuration.md` when present. Treat the current
+   run config and effective declaration as authoritative for the command,
+   topology, preferred port, routes, and bounded port range. Do not invent one
+   server per package.
+2. Inspect the persisted record at `output/run-state/project-run.json`, process
+   command lines/parents, working-directory evidence when available, and every
+   candidate in the effective range. Reconcile only processes proven to belong
+   to this project. Preserve unrelated listeners.
+3. Invoke the sibling `run-project.ps1` once with `-ProjectRoot`, `-Port`, and
+   the config routes JSON. Pass `-DisableHmr` only when the user requests a
+   stable manual-testing session. The helper resolves the optional declaration,
+   owns cleanup, race-safe range-bounded fallback selection, strict-port launch,
+   optional sidecar fallback, stable route checks, and the run record. Do not
+   run a second Vite command around it.
+4. Treat the helper as successful only when it returns route JSON and writes a
+   fresh run record containing the selected port, effective range,
+   configuration provenance, launcher/listener PIDs, route titles, and start
+   time. If it fails, inspect its log and preserve any unrelated listener; do
+   not advertise a guessed port.
+5. After helper success, re-read the run record and re-scan processes/listener
+   ownership. A duplicate project server is a reconciliation failure: stop only
+   the extra confirmed project tree and re-verify the retained one.
+6. Verify every configured route over HTTP against the selected port, checking
+   successful status plus the expected title/marker. Then verify every reported
+   URL in the available real browser context. Browser verification is required
+   for the word "verified"; if unavailable, label the route host-verified or
+   browser-unverified instead.
+7. Keep the server running. Report the actual selected port and one line per
+   route using its configured application label and URL. Include sidecar state
+   separately; an optional faucet conflict does not invalidate the main Vite
+   server when the configured routes are healthy.
 
-1. Read the repository `AGENTS.md`, confirm the package manager and `dev`
-   script, and determine the routes the launcher exposes. If
-   `BIS/scripts/project-run-config.mjs` exists, read and validate its
-   `serverMode`, `preferredPort`, and `routes`; otherwise infer the single
-   entry point or routes from the current launcher output and HTTP responses.
-   A customized project script/config is valid and authoritative for that
-   project.
-2. Inspect process command lines, parent/child relationships, working
-   directories, and listeners to find all existing Vite servers owned by this
-   project. Ownership must be established from the project root or command
-   context, never from a port number alone.
-3. If any owned server exists, stop only those exact process trees. On Windows,
-   use scoped process control such as `taskkill /PID <PID> /T /F` only after
-   confirming each PID belongs to this project. Wait and re-scan until no
-   project-owned Vite process or listener remains. If a process cannot be
-   stopped, do not launch a replacement; report the blocker.
-4. Choose the project's declared/preferred port and probe it plus at least 20
-   subsequent dedicated local ports. A listening port owned by another project
-   is unavailable; do not take it over. The helper must return the actual
-   selected port; never assume the preferred port was available.
-5. Immediately before launch, re-scan the project one final time. If another
-   invocation has started a project-owned Vite server, stop/reconcile it first
-   rather than launching another.
-6. Execute the real command from the project root in a live Windows PTY:
-   `cmd.exe /d /c "npm run dev -- --host 127.0.0.1 --port <PORT>"`. Bind to the
-   same loopback interface used for HTTP verification. Keep its returned session or
-   process identity. The command must be executed before opening a terminal
-   panel; `open_in_codex` only displays a session and does not type commands.
-7. Enforce one server after launch: confirm the new process tree is the only
-   Vite process associated with this project. If duplicates appear, stop the
-   extra project-owned trees before continuing.
-8. Verify the listener and HTTP response for every exposed route declared by
-   the current run configuration or launcher. In `shared` mode this is one
-   Vite server serving multiple package routes; in `single` mode verify the one
-   entry point. Never start one Vite per package unless the project explicitly
-   declares that topology.
-9. Verify the expected application identity, not only Vite's startup banner.
-   Use the returned HTML title and, when necessary, a distinctive application
-   marker in the response. Use the host-level/local runtime when sandbox
-   loopback access prevents verification.
-10. Do not open browser windows or tabs as part of verification. Report each
-    verified route using its application identity/title from the HTTP response:
-    `<application name> — <verified URL>`.
-    Use the route label when it is explicitly configured; otherwise use the
-    verified HTML title. Do not substitute unrelated application names.
-11. Keep the one server running. If the terminal panel cannot attach, report that
-   limitation honestly while retaining the live process and its identity.
-
-Never claim a URL is working without listener and HTTP verification. Do not
-install dependencies or change project configuration as part of start. All
-commands in this workflow must preserve the one-Vite-per-project invariant;
-never batch-launch multiple Vite servers for the same project or reuse a
-project-owned process after a restart request.
+Never use `taskkill` globally, never kill by port alone, never trust the Vite
+startup log as readiness, and never claim a URL is working without listener and
+route evidence. Preserve unrelated listeners. Do not install dependencies or
+change project configuration.

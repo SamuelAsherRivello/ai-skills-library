@@ -23,5 +23,9 @@ global Codex installation, and the current project.
 
 - [ai-skills-library-status](./ai-skills-library-status/SKILL.md): Compare
   library, global, and project skill copies.
+- [ai-skills-project-status](./ai-skills-project-status/SKILL.md): Summarize
+  current-project chats and their OpenSpec completion state.
+- [ai-skills-project-run-start](./ai-skills-project-run-start/SKILL.md):
+  Compatibility entry point for starting a project server.
 - [ai-skills-library-welcome](./ai-skills-library-welcome/SKILL.md): Confirm
   that the shared skills are available in the current scope.

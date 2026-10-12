@@ -9,6 +9,22 @@ Use this skill when the user asks to open, inspect, repair, or use the local Ope
 
 This skill is a local dashboard launcher and inspector. It does not call an AI service, delegate work to another agent, or invent a separate dashboard. When invoked for a dashboard request, use the terminal before replying; do not only print commands for the user to run.
 
+When the request also concerns the project's Vite preview server, use the
+project lifecycle skills as needed:
+
+- `ai-skills-project-run-start` for starting or restarting the project's Vite
+  server and verifying its application routes.
+- `ai-skills-project-run-status` for read-only project-server/process/route
+  status.
+- `ai-skills-project-run-stop` for stopping only the current project's Vite
+  server.
+
+Resolve these skills from the current project's `.agents/skills/` first, then
+from the installed global skills. Do not use the Vite lifecycle skills to
+start, stop, or inspect the OpenSpecUI server itself. Keep the dashboard and
+project preview as separate servers, and preserve each skill's ownership and
+one-server invariants.
+
 ## Dependency And Project Setup
 
 Before launching the dashboard, check the current project and required CLIs.
@@ -44,6 +60,17 @@ http://localhost:6001
 ```
 
 Leave the server running for the preview session. If browser control is available, open or focus the dashboard and inspect the visible page before reporting completion.
+
+If the user asks to run the project preview alongside the dashboard, invoke
+`ai-skills-project-run-start` for the Vite server after the dashboard is
+available, then report both URLs and clearly label which server each URL uses.
+Do not open project routes merely because the dashboard was launched.
+
+If the user asks whether the project is running while using the dashboard,
+invoke `ai-skills-project-run-status` and report its read-only findings. If the
+user asks to stop the project preview, invoke `ai-skills-project-run-stop`.
+Stopping the project preview must not stop OpenSpecUI unless the user
+explicitly asks to stop the dashboard too.
 
 For the native application surface, use only when the user asks for it:
 
