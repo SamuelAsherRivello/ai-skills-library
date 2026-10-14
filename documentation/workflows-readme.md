@@ -55,11 +55,17 @@ $ai-skills-create-github-repo
   - Fun Project
 - Visibility:
   - Public
+- Repository owner:
+  - Resolve and verify the AI organization (default; replace only when you explicitly want another owner)
+- Required automation identity:
+  - ai-rmc-com, the existing AI user (must be authenticated and have creation permission for the owner)
 ```
 
 ### Workflow 3: Create Game 
 
 Use a **template** below as inspiration for your own game.
+
+Before using any game prompt, be ready to answer the intake questions: 2D or 3D, single-player or multiplayer, the art source (user-supplied, AI-generated, or online assets with provenance and rights), and needed services or credentials. The skill checks GitHub, the shared template, GitHub Pages, the in-scope global OpenSpec skills, and Playwright CLI by default before implementation. Multiplayer also requires the selected server repository and Vercel project/credentials. A delivery request creates a public template-based GitHub repository and publishes a playable GitHub Pages game; multiplayer additionally deploys and verifies the Vercel backend. Missing required access pauses the work rather than falling back to local-only delivery.
 
 #### Single player (2D)
 

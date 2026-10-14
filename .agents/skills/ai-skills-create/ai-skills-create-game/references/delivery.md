@@ -1,6 +1,6 @@
 # Quality gate and delivery
 
-Read before release or local handoff. Planning-only work stops at the requested artifacts; local-only work completes applicable verification and documentation without publishing.
+Read after the mandatory intake/access gate and before release. A game-delivery request must publish a playable public GitHub Pages game; single-player has no backend, while multiplayer also deploys and verifies its Vercel backend. Planning-only work stops at the requested artifacts and must state that it was not published. Do not offer a local-only handoff as a substitute for blocked access.
 
 ## Quality gate
 
@@ -8,7 +8,7 @@ Require a pinned compatible TypeScript toolchain and lockfile. Use `strict`, `no
 
 Provide `npm run typecheck` that checks every authored TypeScript file and `npm run check:typescript-source` that rejects authored JS/JSX/MJS/CJS and uncovered TS/TSX. Check both tracked and untracked non-ignored first-party files, excluding only generated output, dependencies, and identified external fixtures. Convert executable JavaScript embedded in workflows to checked TypeScript scripts. Keep shell orchestration in its native language. Verify the commands reject a temporary type error and an orphan source file in disposable fixtures, then remove those fixtures.
 
-Run source coverage, typecheck, meaningful tests, and production build before local handoff or release; make applicable CI/build/delivery workflows block on failures. Vite builds and TypeScript runners alone do not typecheck. Update HTML entries, imports, npm scripts, workflow paths, and documentation when migrating a copied starter. Record commands, compiler coverage, and outcomes alongside existing verification evidence.
+Run source coverage, typecheck, meaningful tests, and production build before release; make applicable CI/build/delivery workflows block on failures. Vite builds and TypeScript runners alone do not typecheck. Update HTML entries, imports, npm scripts, workflow paths, and documentation when migrating a copied starter. Record commands, compiler coverage, and outcomes alongside existing verification evidence.
 
 Run `$ai-skills-triage-analyze` and create its required packet. Check discoverable canonical instructions, verified commands, project/module map, definition of done, maintenance relationships, and safety boundaries.
 
@@ -30,4 +30,4 @@ Run and monitor release; verify tag, release, and intended revision. If the rele
 
 Fetch and fast-forward release-generated commits without discarding local changes. Recheck local/remote revision alignment and Git status. For authentication, workflow, permission, or remote-conflict failures, preserve work and identify the unfinished step; never force-push or claim publication.
 
-Return playable, repository, release, and local checkout links with quality-gate results, completed checks, and unverified criteria/blockers. State OpenSpec completion accurately and use the applicable finalization workflow within the request's authorization. For local-only work, report local deliverables without implying publication.
+Return playable GitHub Pages, public repository, release, and local checkout links with quality-gate results, completed checks, and unverified criteria/blockers. For multiplayer, separately include the verified Vercel backend deployment. State OpenSpec completion accurately and use the applicable finalization workflow within the request's authorization. If publication is blocked, report the blocker rather than implying delivery is complete.
