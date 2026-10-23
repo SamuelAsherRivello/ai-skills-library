@@ -5,11 +5,11 @@ description: Execute a named program of OpenSpec proposals through coordinated c
 
 # OpenSpec orchestrate program
 
-Input is a program ID or artifact path. Resolve IDs against the confirmed project's program convention, normally openspec/programs/<program-id>/program.md. Ask if selection is ambiguous. Do not start unrelated changes.
+Resolve the input program ID or path using the project's convention, normally openspec/programs/<program-id>/program.md. Ask if ambiguous.
 
 ## Load and assess
 
-Read the entire program and relevant child planning artifacts. Read the current global openspec-apply-change skill completely and follow its root/store selection rules. Inspect actual child status through the CLI. Child task state is authoritative; the program is a coordination index, not proof that work is done.
+Read the program, child planning artifacts and current global openspec-apply-change skill. Follow its root/store rules. CLI child task state is authoritative; the program is only a coordination index.
 
 Read repository instructions, current branch and working-tree state, and existing project threads. Establish the permitted source folders, existing owners, shared test server, and user-authorized actions. This skill invocation authorizes creating proposal threads, relevant coordination messages to enrolled threads, and naming those threads. It does not authorize unrelated chat changes, paid usage, publication, branch/worktree creation, or deployments.
 
@@ -29,7 +29,7 @@ Use readable titles such as "WGD: Directory research" or "Bull Run: Charts". Inc
 
 Each assignment must give the program and proposal paths, exact change ID/store, outcome, file and interface ownership, prerequisites, required verification, and allowed external actions. Direct the owner to use openspec-apply-change and continue until its CLI reports all_done or a genuine blocker requires a decision. Tell owners where to record evidence. Reports do not authorize messages back to other chats; the coordinator can poll them.
 
-Announce each successful dispatch with the human-readable target and assigned outcome. Do not claim a thread exists until creation succeeds. If thread tools are unavailable, report that limitation and offer sequential execution or a manual dispatch list.
+Announce successful dispatches with the target title and outcome. If thread tools are unavailable, offer sequential execution or a manual dispatch list.
 
 ## Schedule and maintain progress
 
@@ -49,4 +49,4 @@ Run the program's integrated acceptance checks after dependent work lands. The p
 
 Stop at Apply completion. Do not automatically sync specifications, archive, commit, push, release, or deploy. Perform those only under separate explicit authorization and the corresponding workflows. Leave unrelated threads and files untouched.
 
-Finish with completed proposals, integrated evidence, unresolved limitations, and the program artifact location. If execution must pause, record exact resume actions instead of claiming the program is complete.
+Finish with completed proposals, evidence, limitations and the program location. Record exact resume actions on a pause.
