@@ -15,6 +15,8 @@ Read the available global openspec-orchestrate-program and openspec-apply-change
 
 Distinguish incomplete planning, unresolved decisions, unmet implementation dependencies and editing conflicts. Do not dispatch a child with missing or contradictory artifacts. Explain which children can proceed independently and which are blocked. If the program requires all proposals to be planned before Apply, honor that gate. A scope change requires the user's decision, not a convenient reduction of acceptance criteria.
 
+Every blocking investigation must have its own research proposal with a deliverable and explicit dependent IDs. Use the planning workflows to extract missing ones before dispatch. Apply ready research proposals first, concurrently where independent, while their implementation proposals remain blocked. Research completion unblocks a dependent only after its recorded evidence and decision approvals are satisfied. Do not interpret a global planning gate as permission to guess research results; surface any circular gate to the user.
+
 An explicit operational invocation requests implementation of the selected program within its recorded scope. It authorizes proposal-thread creation, enrollment messages and readable title updates needed for that execution. It does not authorize unrelated messages, paid services, new branches/worktrees, publication or deployment. Automatic skill selection must follow the human's actual implementation request; discovering a program is not authorization.
 
 ## Execute through the orchestrator

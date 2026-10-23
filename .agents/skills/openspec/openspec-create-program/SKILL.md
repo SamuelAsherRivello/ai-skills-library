@@ -19,6 +19,10 @@ Front-load blocking questions before generating affected proposals. Follow the u
 
 Choose proposal boundaries by independently verifiable outcomes and ownership, not an arbitrary thread count. Identify hard prerequisites, research decisions, shared interfaces, overlapping files, integration gates, and operations that must run serially. Keep a single owner for each shared editing scope. A logical dependency and an editing conflict are different constraints; record both.
 
+Extract every blocking research question into a dedicated research proposal before its dependent implementation. Reuse a suitable existing research proposal; combine questions only when they share an investigation and deliverable. Record the question, owner, evidence deliverable, completion criteria, decision approver, dependent proposal IDs and exact unblock conditions. Pure research may skip runtime specs only through the selected schema's supported mechanism.
+
+Front-load all ready research dependencies, concurrently where independent. Do not bury research inside implementation tasks or require research-dependent implementation plans to be complete before research can start. Mark those plans provisional and blocked. Research findings and any required user approval must precede implementation readiness; an inconclusive result is not an automatic unblock.
+
 Explain the proposed split and any material tradeoffs. Preserve the user's requested scope. Do not silently omit requirements or expand deployment, billing, repository, or messaging authority.
 
 ## Write the program

@@ -21,6 +21,8 @@ Combine or divide proposals only when the outcome and accepted requirements rema
 
 Ask the user about material scope changes, removed acceptance criteria, or decisions outside existing authority. Keep independent work moving when a question blocks only part of the program. After any split or combination, recheck requirement coverage, unresolved decisions, missing dependency references, cycles, and editing conflicts before dispatch.
 
+When research blocks work, read [research dependency rules](references/research-dependencies.md) before planning or dispatch.
+
 ## Enroll proposal threads
 
 Keep this thread as the coordinator. Reuse a suitable existing owner thread when appropriate; otherwise create one thread per assignable proposal through supported app tools. Use project discovery for the exact repository. Do not create worktrees or feature branches without explicit authorization.
@@ -35,7 +37,8 @@ Announce successful dispatches with the target title and outcome. If thread tool
 
 Start ready proposals whose prerequisites and editing constraints permit concurrency, within the program's concurrency limit. Run research and disjoint edits concurrently. Serialize shared files, lockfile changes, fixture changes, test-server lifecycle, integrated gates, commits, and deployment operations. Coordinate existing dirty work; never assume it belongs to an enrolled proposal.
 
-Use supported thread waits and selective reads to check progress and respond to blockers. Read original evidence before accepting completion reports. Do not repeatedly send identical continuation messages to working threads or manufacture extra workers to duplicate slow work. Keep the durable ledger current after meaningful transitions so another coordinator can resume without redispatching tasks. On resume, reconcile recorded owners with actual thread state before sending work. On a user pause or cancellation, stop assigning work and use authorized coordination messages to ask active owners to pause safely, preserving their changes.
+
+Use thread waits and selective reads to check progress and blockers. Verify original evidence before accepting reports. Do not repeat continuation messages or duplicate slow workers. Update the ledger after meaningful transitions; on resume, reconcile recorded owners with actual thread state before dispatch. On user pause or cancellation, stop assigning work and ask active owners to pause safely, preserving changes.
 
 Continue coordinating while executable work remains. A progress update or completed child is not a reason to stop. At a genuine blocker, request the smallest needed user decision and identify which work is affected. Distinguish blocked children from independent ready children.
 
