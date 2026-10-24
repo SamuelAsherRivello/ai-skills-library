@@ -30,8 +30,8 @@ current title, retains a normalized user-edited subject, restores the active
 owner's prefix, and renders any verified applicable progress. Owners do not
 write thread titles themselves.
 
-Use `{prefix}: {subject} ({completed}/{total})` with unpadded integers, for
-example `OS-APP: add-auth (3/7)` or `OS-ORP: site-expansion (0/5)`.
+Use `{marker}{prefix}: {subject} ({completed}/{total})` with unpadded integers, for
+example `OS-APP: add-auth (3/7)` or `* OS-ORP: site-expansion (0/5)`.
 When no trustworthy count exists, omit the whole suffix. Missing or unavailable
 tracking is not zero tasks. Interview question counts and planned artifacts
 are not implementation task counts.
@@ -43,6 +43,44 @@ superseded, cancelled and optional unenrolled children. Count a child complete
 only after current CLI `all_done` and coordinator acceptance of its evidence.
 Reconcile totals after scope changes, reopenings and resume. Never equate a
 complete proposal count with passing the program's integrated gates.
+
+## Shared orchestration marker
+
+The literal leading `* ` is a first-class orchestration marker, separate from
+both the workflow prefix and the user subject. Use exactly one asterisk and
+one space for a coordinator and every chat enrolled under it, including
+research, non-OpenSpec subtasks, paused owners and nested coordinators.
+Examples: `* OS-ORC: add-auth (3/7)`, `* OS-APP: add-auth (2/4)`,
+`* OS-ORP: site-expansion (0/5)`, and `* Investigate browser support`.
+Standalone chats receive no marker. A marker identifies orchestration
+participation, not a unique orchestrator; use the ledger to distinguish groups.
+
+Record the coordinator thread ID, root coordinator ID for nested orchestration,
+exact enrolled thread IDs, marker ownership and observed titles in the existing
+coordination ledger. Pass this identity and enrollment context in assignments,
+workflow handoffs and resumes. Never infer enrollment or authority from `*`
+alone, a shared project, a title match, or a historical ledger entry.
+
+Keep the marker before every `OS-...:` prefix through user subject edits,
+phase/progress changes, interviews, wrappers and finalization. Normalize repeated
+leading markers to one; preserve asterisks inside the subject. If the title is
+already marked but membership cannot be checked, preserve the marker without
+claiming enrollment or enrolling other chats. Verified membership restores a
+missing marker. Unknown progress does not prevent marker reconciliation.
+
+The title manager remains the sole title writer. A coordinator may delegate a
+marker-only update for an explicit set of verified enrolled chat IDs, including
+idle owners. This narrow exception changes only the leading marker, preserving
+the rest of each title exactly. Child owners still own their phase, subject and
+progress. Do not perform a project-wide naming pass or guess another owner's
+prefix/count. New enrolled chats may receive a marked temporary creation title.
+
+Pause, completion and archive retain the marker for continuity. On explicit
+detachment or transfer, reconcile the ledger first. Remove only a marker recorded
+as orchestration-owned when no coordinator role or other enrollment remains;
+transferred and nested owners retain one marker. Do not restore an old title or
+strip an unowned asterisk. Reconcile at enrollment, resume and meaningful
+membership changes, never by repeatedly writing an unchanged title.
 
 ## Wrappers and macros
 
@@ -73,5 +111,6 @@ is one ownership handoff, not permission for competing title updates.
 Call the manager once when a state begins and after a verified subject, phase,
 or count change. It never writes an unchanged canonical title and must not
 block workflow work when title tools or progress evidence are unavailable.
-Owners never rename unrelated or child chats; they ask the child's owner to
-invoke the manager for its own title.
+Owners never rename unrelated chats. For child phase/subject/progress updates,
+ask the child's owner to invoke the manager. Coordinators may delegate only the
+scoped marker-only updates defined above.

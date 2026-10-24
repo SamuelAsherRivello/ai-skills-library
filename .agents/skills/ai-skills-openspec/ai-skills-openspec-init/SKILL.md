@@ -6,6 +6,9 @@ allowed-tools: Bash(openspec:*)
 
 ## Workflow presentation
 
+Preserve the leading `* ` orchestration marker and pass coordinator identity
+and enrollment context to the active child under the shared title contract.
+
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-INI` and footer
 phase `Initialize`. There is no task count until a change exists. Delegate every

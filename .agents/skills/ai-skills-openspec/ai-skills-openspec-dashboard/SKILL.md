@@ -5,6 +5,9 @@ description: Open, set up, or inspect the local OpenSpecUI dashboard for an Open
 
 ## Workflow presentation
 
+Preserve the leading `* ` orchestration marker and pass coordinator identity
+and enrollment context to the active child under the shared title contract.
+
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-DSH`
 and footer phase `Dashboard`. Add verified task progress when applicable;

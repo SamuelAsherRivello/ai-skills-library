@@ -7,6 +7,12 @@ silent; a wrapper delegates its title and footer to its active child.
 Use these workflows to shape, implement, and close a focused repository
 change. The sequence below is a common path, not a required gate.
 
+Coordinators and their enrolled chats share one leading `* `, for example
+`* OS-ORC: add-auth (3/7)` and `* OS-APP: add-auth (2/4)`. Every workflow preserves
+this marker across phase changes. The [title contract](./openspec-title-management.md)
+defines membership, nested coordination and marker-only updates; the ledger
+identifies which coordinator owns each chat.
+
 ## Suggested Flow
 
 ```text

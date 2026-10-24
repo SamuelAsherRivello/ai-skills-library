@@ -5,6 +5,9 @@ description: Execute a named program of OpenSpec proposals through coordinated c
 
 ## Workflow presentation
 
+Preserve the leading `* ` orchestration marker and pass coordinator identity
+and enrollment context to the active child under the shared title contract.
+
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-ORP`
 and footer phase `Orchestrate program`. Add verified task progress when applicable;
@@ -42,7 +45,17 @@ When research blocks work, read [research dependency rules](references/research-
 
 Keep this thread as the coordinator. Reuse a suitable existing owner thread when appropriate; otherwise create one thread per assignable proposal through supported app tools. Use project discovery for the exact repository. Do not create worktrees or feature branches without explicit authorization.
 
-Child OpenSpec workflows exclusively own their chat titles under the shared [chat title contract](../openspec-title-management.md). A readable creation title is temporary until the child starts its workflow. Do not overwrite, wrap, prefix, restore, or directly rename child titles, including phase and progress changes. Record thread handles and observed titles in the ledger. Tell each child to invoke `$ai-skills-openspec-title-management` for its own title; if naming is missing, diagnose or notify its owner instead of renaming it. These rules also apply when invoked through ai-skills-openspec-apply-program.
+Use `* OS-ORP:` for this coordinator and the shared leading `* ` for all enrolled
+proposal, research and subtask chats under the [title contract](../openspec-title-management.md).
+Record coordinator/root thread IDs, exact enrolled IDs, marker ownership and
+observed titles in the ledger. New enrolled chats may start with marked temporary
+titles. Delegate scoped marker-only updates for enrolled chats, including idle
+owners, to `$ai-skills-openspec-title-management`. Child owners exclusively rebuild
+their own phase, subject and progress. Do not overwrite or restore those fields.
+Pass coordinator identity and membership through assignments and nested proposal
+coordinators; nested owners retain one marker. Reconcile on enrollment/resume and
+membership changes. Pause/completion retain markers; detachment follows the shared
+contract. These rules also apply through ai-skills-openspec-apply-program.
 
 Each assignment must give the program and proposal paths, exact change ID/store, outcome, file and interface ownership, prerequisites, required verification, and allowed external actions. Direct the owner to use ai-skills-openspec-apply-change and continue until its CLI reports all_done or a genuine blocker requires a decision. Tell owners where to record evidence. Reports do not authorize messages back to other chats; the coordinator can poll them.
 

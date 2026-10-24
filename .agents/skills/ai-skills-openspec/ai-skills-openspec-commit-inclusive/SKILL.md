@@ -7,6 +7,9 @@ metadata:
 
 ## Workflow presentation
 
+Preserve the leading `* ` orchestration marker and pass coordinator identity
+and enrollment context to the active child under the shared title contract.
+
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-CMT`
 and footer phase `Commit`. Add verified task progress when applicable;

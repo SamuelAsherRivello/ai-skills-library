@@ -5,6 +5,9 @@ description: Implement an existing OpenSpec program through its child proposals 
 
 ## Delegated workflow presentation
 
+Preserve the leading `* ` orchestration marker and pass coordinator identity
+and enrollment context to the active child under the shared title contract.
+
 This is a wrapper/macro, not an independent thread state. Follow the shared
 [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). Delegate title, verified progress and

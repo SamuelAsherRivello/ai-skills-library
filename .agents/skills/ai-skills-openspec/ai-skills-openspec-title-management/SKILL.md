@@ -1,69 +1,100 @@
 ---
 name: ai-skills-openspec-title-management
-description: Rebuild the active OpenSpec workflow chat title from its current user-edited subject and verified progress. Use only when an OpenSpec title owner delegates its own current chat.
+description: Rebuild an active OpenSpec chat title with verified progress and its orchestration marker, or apply marker-only updates to explicitly enrolled chats on a coordinator's delegation.
 ---
 
-# OpenSpec Title Management
+# OpenSpec title management
 
-This is the sole OpenSpec title writer. It manages only the invoking workflow's
-current chat; it never renames a child, another project chat, or a thread found
-by searching. It does not implement, plan, archive, sync, commit, push, or
-change OpenSpec artifacts.
+This is the sole OpenSpec title writer. Rebuild only the invoking workflow's
+current-chat title. The only cross-chat exception is a coordinator's scoped
+marker-only delegation below; never rebuild another owner's phase or subject.
+It does not implement, plan, archive, sync, commit, push, or change OpenSpec artifacts.
 
-The caller supplies its active owner prefix from the shared
-[title contract](../openspec-title-management.md), its resolved subject context,
-and its selected store or program context when applicable. Do not invent a
-prefix or infer ownership from a pre-existing title.
+Read the shared [title contract](../openspec-title-management.md). The caller
+supplies its active prefix, resolved subject, selected store/program context,
+and coordinator identity/enrollment evidence where applicable. Never infer a
+prefix, enrollment or authority from a pre-existing title or an asterisk alone.
+
+## Orchestration membership and marker-only updates
+
+Treat the leading `* ` as a separate, first-class title field. A coordinator and
+all enrolled chats use exactly one marker, including non-OpenSpec subtasks and
+nested coordinators. Standalone titles remain unmarked. Resolve membership from
+the current assignment and coordination ledger, carrying coordinator thread ID,
+root coordinator ID, enrolled thread IDs and marker ownership across handoffs.
+An existing marker with unavailable membership evidence is preserved without
+claiming enrollment. Preserve asterisks inside the subject.
+
+For marker-only delegation, require the invoking coordinator's current ledger
+and an explicit list of current or explicitly detached thread IDs, membership
+records and requested add/remove actions.
+Read each current title, apply only the leading marker, and preserve its phase,
+subject, spacing and progress exactly. Do not rebuild from an old ledger title.
+This works for idle and non-OpenSpec owners without sending messages or starting
+their workflows. Never touch a chat discovered only by project or title search.
+
+Remove a marker only after explicit detachment/transfer is recorded, its marker
+is recorded as orchestration-owned, and the chat has no remaining enrollment or
+coordinator role. Transfer and nested membership retain one marker. Pause,
+completion and archive retain the marker. Unknown ownership never permits removal.
+
+Use [scripts/format-orchestration-marker.ps1](scripts/format-orchestration-marker.ps1)
+with `-Title <current-title> -Action Add|Preserve|Remove` to format the marker.
+The helper formats text only; verify enrollment and removal authority before
+choosing an action. It never reads chats or grants permission to change them.
 
 ## When to reconcile
 
-Read the current thread title at the start of an owner state and after every
-verified subject, phase, task, or proposal-progress change. Reconcile before a
-meaningful owner response when the current title was externally changed since
-the last read. Do not write on an unchanged poll or merely because time passed.
+Read the current title at owner-state start and after verified subject, phase,
+progress or membership changes. Reconcile before a meaningful owner response
+when the user has edited the title since the last read. Do not write unchanged
+titles or poll merely because time passed.
 
-If title tools are unavailable, the title cannot be read, or verified tracking
-cannot be obtained, continue the caller's authorized work. Report the narrow
-limitation only when useful; never fabricate a count or make naming failure a
-blocker.
+If title tools or current titles are unavailable, continue the caller's work
+and report the narrow limitation when useful. Missing tracking omits the
+progress suffix; it does not block marker updates or justify invented counts.
 
-## Subject reconstruction
+## Subject reconstruction for the current chat
 
 Treat the current title as a user-provided replacement subject, not a permanent
 opt-out. Before rendering, conservatively normalize it:
 
-1. Remove every repeated OpenSpec prefix fragment matching `OS-<slug>:`.
-2. Remove a terminal system-owned progress suffix of the form `(N/M)` before
+1. Set aside the leading orchestration marker before parsing the subject. Use
+   the formatter's Remove action on this temporary string only; preserve the
+   remembered marker state. This is not a live marker-removal authorization.
+2. Remove every repeated OpenSpec prefix fragment matching `OS-<slug>:`.
+3. Remove a terminal system-owned progress suffix of the form `(N/M)` before
    deriving the current suffix.
-3. Trim and collapse whitespace, then collapse only exact adjacent repeated
+4. Trim and collapse whitespace, then collapse only exact adjacent repeated
    text, including a clearly repeated final word or phrase such as
-   `coolcool` → `cool`.
-4. Preserve spelling, punctuation, capitalization, and all other wording. Do
-   not rewrite a subjective title, correct a typo, or guess a different topic.
+   `coolcool` -> `cool`.
+5. Preserve spelling, punctuation, capitalization, internal asterisks and all
+   other wording. Do not correct a typo or guess a different topic.
 
-If normalization leaves no usable subject, use the caller's resolved subject
-context. If that is also unavailable, leave the title unchanged and report why
-only when actionable.
+If the input contains only markers, skip subject parsing and use the caller's
+resolved subject before invoking the formatter. If no usable subject remains
+after normalization, also use the caller's resolved subject. If both are
+unavailable, leave the title unchanged and report why only when actionable.
 
-Render `{active-prefix}: {normalized-subject}`. The active caller's prefix
-always wins: an Explore owner renders `OS-EXP`, even when the user supplied an
-`OS-PRP:` fragment. Never stack prefixes.
+Render `{active-prefix}: {normalized-subject}` with verified progress as below,
+then apply the remembered/verified marker using the formatter. The final form is
+`{marker}{active-prefix}: {normalized-subject} ({completed}/{total})`, where
+`{marker}` is `* ` for coordinators/enrolled chats or a preserved existing marker,
+and empty otherwise. The active caller's prefix always wins. Never stack prefixes
+or move the asterisk into the subject when phases change.
 
-## Verified progress
+## Verified progress and writes
 
 For a change-backed owner, obtain current task progress from the selected
-OpenSpec context and `openspec status --change "<change>" --json`. For a
-program coordinator, obtain its verified distinct child-proposal count from
-the current program ledger and coordinator evidence. Use a retained archived
-count only when it is trustworthy.
+OpenSpec context and `openspec status --change "<change>" --json`, including
+`--store <id>` when selected. For a program coordinator, use verified distinct
+child-proposal counts from the current ledger and evidence. Use retained archived
+counts only when trustworthy.
 
-When a count is applicable and verified, append ` ({completed}/{total})` using
-unpadded integers. Replace any old system suffix and refresh it immediately
-after a verified progress change. When tracking is inapplicable or unavailable,
-omit the suffix; never render `0/0` or derive progress from interview questions
-or planned artifacts.
+Append ` ({completed}/{total})` using unpadded integers when applicable and verified.
+Replace the old system suffix after verified progress changes. Otherwise omit
+it; never render `0/0` or count interview questions or planned artifacts as tasks.
 
-Read immediately before a write, render the canonical title once, and verify
-the result. If the user edits the title during that race, use the newer title as
-the next subject and reconcile once; do not retry blindly or repeatedly write
-an unchanged value.
+Read immediately before a write, render once, skip an unchanged result, and
+verify the result. If a concurrent user edit changes the title, use the newer
+title and reconcile once. Do not retry blindly or overwrite it from stale state.

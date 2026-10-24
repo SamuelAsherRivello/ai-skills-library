@@ -6,6 +6,9 @@ allowed-tools: Bash(openspec:*) Bash(git:*)
 
 ## Workflow presentation
 
+Preserve the leading `* ` orchestration marker and pass coordinator identity
+and enrollment context to the active child under the shared title contract.
+
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-AUD` and footer
 phase `Audit`. Show verified task progress only for a selected change. Delegate
