@@ -47,7 +47,7 @@ when tracking is not applicable or unavailable; do not invent zero or turn
 an interview budget into tasks. Preserve unfinished counts in blocked states.
 
 Allowed phase labels match the owning workflow:
-`Dashboard`, `Initialize`, `Explore`, `Grill`, `Propose`, `Update`, `Apply`, `Sync`,
+`Dashboard`, `Initialize`, `Audit`, `Explore`, `Grill`, `Propose`, `Update`, `Apply`, `Sync`,
 `Archived`, `Commit`, `Orchestrate proposal`, `Orchestrate program`.
 Status names the current phase, not the recommended next one. Explain
 completion, failure or a blocker briefly in the response, not by relabeling
@@ -67,6 +67,7 @@ A suggestion never invokes it or grants authority.
 | --- | --- |
 | Dashboard inspection complete | Inspect the selected change, or `$openspec-explore <topic>` when discovery is requested |
 | Initialization complete | Resume the explicitly requested custom OpenSpec workflow |
+| Audit complete | Use the smallest applicable custom workflow named by the audit finding |
 | Explore settled | `$openspec-propose <change>` |
 | Grill waiting | Reply to Question N |
 | Grill complete | Resume the actual planning phase; propose only if no change exists |

@@ -10,6 +10,7 @@ Read the shared [footer contract](openspec-footer.md) for response checkpoints.
 | --- | --- | --- | --- |
 | openspec-dashboard | OS-DSH | selected change, otherwise project | tasks when a change is selected |
 | openspec-init | OS-INI | project | no task count before a change exists |
+| openspec-audit | OS-AUD | selected change, otherwise project | tasks when a change is selected |
 | openspec-explore | OS-EXP | topic or change | tasks only for an existing change |
 | openspec-grill-me | OS-GRL | plan or change | tasks only for an existing change |
 | openspec-propose | OS-PRP | change | tasks once tracking exists |
