@@ -1,7 +1,7 @@
 # Proposal coordinator naming
 
-- Coordinator: `* OS-ORC: {subject} ({completed}/{total})`. Omit unverified progress.
-- Shared marker: exactly one literal leading `* ` on the coordinator and all
+- Coordinator: `*OS-ORC: {subject} ({completed}/{total})`. Omit unverified progress.
+- Shared marker: exactly one literal leading `*` on the coordinator and all
   enrolled chats. Preserve child subjects, workflow prefixes and progress.
 - Scope: verified membership in this proposal's ledger, never every project chat.
   Record coordinator/root thread IDs, enrolled IDs and marker ownership.

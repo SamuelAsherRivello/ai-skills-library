@@ -5,9 +5,9 @@ description: Execute a named program of OpenSpec proposals through coordinated c
 
 ## Workflow presentation
 
-Preserve the leading `* ` orchestration marker and pass coordinator identity
+Preserve the leading `*` orchestration marker, directly adjacent to the title, and pass coordinator identity
 and enrollment context to the active child under the shared title contract.
-Use the title manager's escaped write form so Markdown rendering keeps the marker visible.
+Use the title manager's no-space write form so repeated Markdown rendering keeps the marker visible.
 
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-ORP`
@@ -46,7 +46,7 @@ When research blocks work, read [research dependency rules](references/research-
 
 Keep this thread as the coordinator. Reuse a suitable existing owner thread when appropriate; otherwise create one thread per assignable proposal through supported app tools. Use project discovery for the exact repository. Do not create worktrees or feature branches without explicit authorization.
 
-Use `* OS-ORP:` for this coordinator and the shared leading `* ` for all enrolled
+Use `*OS-ORP:` for this coordinator and the shared leading `*` for all enrolled
 proposal, research and subtask chats under the [title contract](../openspec-title-management.md).
 Record coordinator/root thread IDs, exact enrolled IDs, marker ownership and
 observed titles in the ledger. New enrolled chats may start with marked temporary

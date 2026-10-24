@@ -56,7 +56,7 @@ the active phase as another phase.
 Roles are `Standalone`, `Orchestrator` or `Managed by orchestration`.
 Use Orchestrator for a coordinating owner and Managed by orchestration for
 an enrolled child. Never infer enrollment from a title alone, including the
-leading `* ` orchestration marker. Resolve the exact coordinator from the ledger;
+leading `*` orchestration marker. Resolve the exact coordinator from the ledger;
 the marker survives phase handoffs and is shared across orchestration groups.
 
 ## Next action

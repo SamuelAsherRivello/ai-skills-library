@@ -6,9 +6,9 @@ allowed-tools: Bash(openspec:*) Bash(git:*)
 
 ## Workflow presentation
 
-Preserve the leading `* ` orchestration marker and pass coordinator identity
+Preserve the leading `*` orchestration marker, directly adjacent to the title, and pass coordinator identity
 and enrollment context to the active child under the shared title contract.
-Use the title manager's escaped write form so Markdown rendering keeps the marker visible.
+Use the title manager's no-space write form so repeated Markdown rendering keeps the marker visible.
 
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-AUD` and footer

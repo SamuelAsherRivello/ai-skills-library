@@ -5,9 +5,9 @@ description: Coordinate owners and subtasks for one existing OpenSpec proposal t
 
 ## Workflow presentation
 
-Preserve the leading `* ` orchestration marker and pass coordinator identity
+Preserve the leading `*` orchestration marker, directly adjacent to the title, and pass coordinator identity
 and enrollment context to the active child under the shared title contract.
-Use the title manager's escaped write form so Markdown rendering keeps the marker visible.
+Use the title manager's no-space write form so repeated Markdown rendering keeps the marker visible.
 
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-ORC`
@@ -39,13 +39,13 @@ Keep a durable ledger under the project's permitted generated-output directory. 
 ## Coordinator naming
 
 Read [the naming configuration](references/openspec-orchestrate-proposal-config.md).
-Delegate this coordinator's `* OS-ORC:` title to `$ai-skills-openspec-title-management`.
+Delegate this coordinator's `*OS-ORC:` title to `$ai-skills-openspec-title-management`.
 Record this coordinator's thread ID, root coordinator ID when nested, exact
 enrolled chat IDs and marker ownership in the existing ledger. Delegate scoped
 marker-only updates to the manager for every enrolled owner, including idle,
 research and non-OpenSpec subtask chats. Preserve the rest of child titles;
 child owners still manage phase/progress. Include coordinator identity and the
-`* ` marker contract in assignments and resumes. Reconcile membership and missing
+`*` marker contract in assignments and resumes. Reconcile membership and missing
 markers on enrollment, resume and handoff. Retain one marker across nesting,
 pause and completion; remove only under the shared contract's detachment rules.
 Do not run a project-wide naming pass. Naming failure must not block coordination.

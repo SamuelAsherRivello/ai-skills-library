@@ -31,13 +31,13 @@ foreach ($entry in $owners.GetEnumerator()) {
     $content = Get-Content -LiteralPath (Join-Path (Join-Path $openSpecRoot $entry.Key) 'SKILL.md') -Raw
     Assert ($content.Contains('`$ai-skills-openspec-title-management`')) "Title owner does not delegate: $($entry.Key)"
     Assert ($content.Contains($entry.Value)) "Title owner has wrong prefix: $($entry.Key)"
-    Assert ($content.Contains('leading `* ` orchestration marker')) "Title owner drops orchestration context: $($entry.Key)"
+    Assert ($content.Contains('leading `*` orchestration marker')) "Title owner drops orchestration context: $($entry.Key)"
     Assert (-not $content.Contains('preserve human overrides')) "Retired permanent override behavior remains: $($entry.Key)"
 }
 
 foreach ($wrapper in @('ai-skills-openspec-apply-change-with-playwright', 'ai-skills-openspec-apply-program', 'ai-skills-openspec-create-program', 'ai-skills-openspec-macro-finalize-sync-archive-commit-push')) {
     $content = Get-Content -LiteralPath (Join-Path (Join-Path $openSpecRoot $wrapper) 'SKILL.md') -Raw
-    Assert ($content.Contains('leading `* ` orchestration marker')) "Wrapper drops orchestration context: $wrapper"
+    Assert ($content.Contains('leading `*` orchestration marker')) "Wrapper drops orchestration context: $wrapper"
     Assert ($content.Contains('active child invokes `$ai-skills-openspec-title-management`')) "Wrapper does not leave title management to its child: $wrapper"
 }
 
@@ -48,25 +48,25 @@ Assert ($contract.Contains('wrappers and macros do not invoke it')) 'Title contr
 # Exercise the actual formatter used by the title manager without mutating chats.
 $formatter = Join-Path $openSpecRoot 'ai-skills-openspec-title-management\scripts\format-orchestration-marker.ps1'
 $cases = @(
-    @('OS-ORC: add-auth (3/7)', 'Add', '\* OS-ORC: add-auth (3/7)'),
-    @('OS-APP: add-auth (2/4)', 'Add', '\* OS-APP: add-auth (2/4)'),
-    @('OS-ORP: program (0/5)', 'Add', '\* OS-ORP: program (0/5)'),
-    @('Investigate browser support', 'Add', '\* Investigate browser support'),
-    @('* OS-APP: add-auth (2/4)', 'Add', '\* OS-APP: add-auth (2/4)'),
-    @('** * OS-APP: add-auth (2/4)', 'Add', '\* OS-APP: add-auth (2/4)'),
-    @('* OS-GRL: renamed subject', 'Preserve', '\* OS-GRL: renamed subject'),
-    @('* OS-ARC: add-auth (4/4)', 'Preserve', '\* OS-ARC: add-auth (4/4)'),
-    @('* OS-CMT: add-auth (4/4)', 'Preserve', '\* OS-CMT: add-auth (4/4)'),
+    @('OS-ORC: add-auth (3/7)', 'Add', '*OS-ORC: add-auth (3/7)'),
+    @('OS-APP: add-auth (2/4)', 'Add', '*OS-APP: add-auth (2/4)'),
+    @('OS-ORP: program (0/5)', 'Add', '*OS-ORP: program (0/5)'),
+    @('Investigate browser support', 'Add', '*Investigate browser support'),
+    @('* OS-APP: add-auth (2/4)', 'Add', '*OS-APP: add-auth (2/4)'),
+    @('** * OS-APP: add-auth (2/4)', 'Add', '*OS-APP: add-auth (2/4)'),
+    @('* OS-GRL: renamed subject', 'Preserve', '*OS-GRL: renamed subject'),
+    @('* OS-ARC: add-auth (4/4)', 'Preserve', '*OS-ARC: add-auth (4/4)'),
+    @('* OS-CMT: add-auth (4/4)', 'Preserve', '*OS-CMT: add-auth (4/4)'),
     @('OS-EXP: standalone', 'Preserve', 'OS-EXP: standalone'),
-    @('A* search', 'Add', '\* A* search'),
+    @('A* search', 'Add', '*A* search'),
     @('* A* search', 'Remove', 'A* search'),
     @('OS-APP: standalone', 'Remove', 'OS-APP: standalone'),
-    @('* OS-APP:  Keep MY wording! (2/4)', 'Preserve', '\* OS-APP:  Keep MY wording! (2/4)'),
+    @('* OS-APP:  Keep MY wording! (2/4)', 'Preserve', '*OS-APP:  Keep MY wording! (2/4)'),
     @('  ordinary  title  ', 'Preserve', '  ordinary  title  '),
-    @('\* OS-APP: escaped (2/4)', 'Add', '\* OS-APP: escaped (2/4)'),
-    @('\* OS-APP: escaped (2/4)', 'Preserve', '\* OS-APP: escaped (2/4)'),
+    @('\* OS-APP: escaped (2/4)', 'Add', '*OS-APP: escaped (2/4)'),
+    @('\* OS-APP: escaped (2/4)', 'Preserve', '*OS-APP: escaped (2/4)'),
     @('\* OS-APP: escaped (2/4)', 'Remove', 'OS-APP: escaped (2/4)'),
-    @('* \* ** OS-APP: mixed (2/4)', 'Add', '\* OS-APP: mixed (2/4)'),
+    @('* \* ** OS-APP: mixed (2/4)', 'Add', '*OS-APP: mixed (2/4)'),
     @('\* A* search', 'Remove', 'A* search')
 )
 foreach ($case in $cases) {
@@ -78,7 +78,7 @@ foreach ($case in $cases) {
 }
 foreach ($prefix in $owners.Values) {
     $title = "${prefix}: subject with A* (1/3)"
-    Assert ((& $formatter -Title $title -Action Add) -ceq "\* $title") "Marker breaks phase $prefix."
+    Assert ((& $formatter -Title $title -Action Add) -ceq "*$title") "Marker breaks phase $prefix."
 }
 $rejected = $false
 try { & $formatter -Title '** * ' -Action Add | Out-Null } catch { $rejected = $true }

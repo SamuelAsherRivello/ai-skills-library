@@ -31,7 +31,7 @@ owner's prefix, and renders any verified applicable progress. Owners do not
 write thread titles themselves.
 
 Use `{marker}{prefix}: {subject} ({completed}/{total})` with unpadded integers, for
-example `OS-APP: add-auth (3/7)` or `* OS-ORP: site-expansion (0/5)`.
+example `OS-APP: add-auth (3/7)` or `*OS-ORP: site-expansion (0/5)`.
 When no trustworthy count exists, omit the whole suffix. Missing or unavailable
 tracking is not zero tasks. Interview question counts and planned artifacts
 are not implementation task counts.
@@ -46,18 +46,18 @@ complete proposal count with passing the program's integrated gates.
 
 ## Shared orchestration marker
 
-The literal leading `* ` is a first-class orchestration marker, separate from
-both the workflow prefix and the user subject. Use exactly one asterisk and
-one space for a coordinator and every chat enrolled under it, including
+The literal leading `*` is a first-class orchestration marker, separate from
+both the workflow prefix and the user subject. Use exactly one asterisk with
+no following space for a coordinator and every chat enrolled under it, including
 research, non-OpenSpec subtasks, paused owners and nested coordinators.
-Examples: `* OS-ORC: add-auth (3/7)`, `* OS-APP: add-auth (2/4)`,
-`* OS-ORP: site-expansion (0/5)`, and `* Investigate browser support`.
-The visible marker and stored write value differ. Codex parses titles as
-Markdown: an unescaped leading `* ` is a list bullet and is removed from the
-displayed text. Pass `\* `, one literal backslash followed by the asterisk and
-space, to title-write and chat-creation tools so the sidebar displays `* `.
-The formatter accepts legacy `* ` and stored `\* `, and always writes exactly
-one escaped marker. Do not double-escape it or treat its backslash as subject text.
+Examples: `*OS-ORC: add-auth (3/7)`, `*OS-APP: add-auth (2/4)`,
+`*OS-ORP: site-expansion (0/5)`, and `*Investigate browser support`.
+Use the same no-space form for storage and display, for example `*OS-ORC:`
+and `*DreamHost email follow-up`. Codex normalizes Markdown titles repeatedly.
+A raw `* ` becomes a list bullet, and `\* ` only survives the first parse before
+becoming that same bullet on the next. Neither is a stable visible marker.
+The formatter accepts legacy spaced/escaped markers and always emits one
+literal `*` directly adjacent to the name. Never add a space after it.
 
 Standalone chats receive no marker. A marker identifies orchestration
 participation, not a unique orchestrator; use the ledger to distinguish groups.
@@ -123,7 +123,7 @@ stored update as verified and the visible result as unverified.
 
 When a screenshot contradicts a title read, investigate title parsing or stale
 presentation state. Never dismiss the screenshot because the same backend value
-can be read again. Reconcile at most once using the escaped formatter, then report
+can be read again. Reconcile at most once using the no-space formatter, then report
 any remaining display limitation. Do not edit app databases/configuration, force
 an app restart or repeatedly rewrite titles to manufacture visible confirmation.
 
