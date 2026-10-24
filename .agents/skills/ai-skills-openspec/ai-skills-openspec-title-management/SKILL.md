@@ -25,6 +25,13 @@ root coordinator ID, enrolled thread IDs and marker ownership across handoffs.
 An existing marker with unavailable membership evidence is preserved without
 claiming enrollment. Preserve asterisks inside the subject.
 
+Codex renders titles as Markdown. An unescaped leading `* ` becomes a list
+bullet and disappears. The visible marker is `* `, but the title-write value
+must start with `\* `, one literal backslash followed by asterisk and space.
+The formatter accepts either spelling and emits the escaped write value once.
+Use that value for title-write and new-chat creation tools; never prepend an
+unescaped marker afterward. Set aside either spelling before subject parsing.
+
 For marker-only delegation, require the invoking coordinator's current ledger
 and an explicit list of current or explicitly detached thread IDs, membership
 records and requested add/remove actions.
@@ -77,10 +84,11 @@ after normalization, also use the caller's resolved subject. If both are
 unavailable, leave the title unchanged and report why only when actionable.
 
 Render `{active-prefix}: {normalized-subject}` with verified progress as below,
-then apply the remembered/verified marker using the formatter. The final form is
+then apply the remembered/verified marker using the formatter. The displayed form is
 `{marker}{active-prefix}: {normalized-subject} ({completed}/{total})`, where
 `{marker}` is `* ` for coordinators/enrolled chats or a preserved existing marker,
-and empty otherwise. The active caller's prefix always wins. Never stack prefixes
+and empty otherwise. The stored form uses `\* ` for that visible marker.
+The active caller's prefix always wins. Never stack prefixes
 or move the asterisk into the subject when phases change.
 
 ## Verified progress and writes
@@ -98,3 +106,15 @@ it; never render `0/0` or count interview questions or planned artifacts as task
 Read immediately before a write, render once, skip an unchanged result, and
 verify the result. If a concurrent user edit changes the title, use the newer
 title and reconcile once. Do not retry blindly or overwrite it from stale state.
+
+## Verify storage and display separately
+
+A matching title-write response and subsequent list/read confirm persistence,
+not the sidebar's rendered text. Check an available supported UI snapshot or a
+user-supplied screenshot before claiming visual success. If unavailable, say the
+stored update is verified and visible confirmation is still pending.
+
+A screenshot with a missing marker overrides an earlier visual-success claim.
+Check Markdown escaping and the exact chat first, without re-enrolling unrelated
+chats. Try one supported repair with the formatter, then stop rewriting unchanged
+titles. Do not edit app databases/configuration or force a restart as a shortcut.

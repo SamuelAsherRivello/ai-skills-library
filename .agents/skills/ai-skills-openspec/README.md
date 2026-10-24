@@ -9,7 +9,8 @@ change. The sequence below is a common path, not a required gate.
 
 Coordinators and their enrolled chats share one leading `* `, for example
 `* OS-ORC: add-auth (3/7)` and `* OS-APP: add-auth (2/4)`. Every workflow preserves
-this marker across phase changes. The [title contract](./openspec-title-management.md)
+this marker across phase changes. Title tools receive `\* ` so the app's Markdown
+renderer shows the literal asterisk instead of consuming a list bullet. The [title contract](./openspec-title-management.md)
 defines membership, nested coordination and marker-only updates; the ledger
 identifies which coordinator owns each chat.
 

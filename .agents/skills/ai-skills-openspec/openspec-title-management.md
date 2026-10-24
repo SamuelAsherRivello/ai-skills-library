@@ -52,6 +52,13 @@ one space for a coordinator and every chat enrolled under it, including
 research, non-OpenSpec subtasks, paused owners and nested coordinators.
 Examples: `* OS-ORC: add-auth (3/7)`, `* OS-APP: add-auth (2/4)`,
 `* OS-ORP: site-expansion (0/5)`, and `* Investigate browser support`.
+The visible marker and stored write value differ. Codex parses titles as
+Markdown: an unescaped leading `* ` is a list bullet and is removed from the
+displayed text. Pass `\* `, one literal backslash followed by the asterisk and
+space, to title-write and chat-creation tools so the sidebar displays `* `.
+The formatter accepts legacy `* ` and stored `\* `, and always writes exactly
+one escaped marker. Do not double-escape it or treat its backslash as subject text.
+
 Standalone chats receive no marker. A marker identifies orchestration
 participation, not a unique orchestrator; use the ledger to distinguish groups.
 
@@ -105,6 +112,20 @@ it invokes `$ai-skills-openspec-title-management` with OS-ORP in its chat, while
 own their titles in their own chats.
 An inline interview temporarily owns OS-GRL; returning to a real parent phase
 is one ownership handoff, not permission for competing title updates.
+
+## Visible result verification
+
+Distinguish persisted title verification from visible sidebar verification.
+A successful title-write response or matching list/read result verifies stored
+text only. Inspect an available supported UI snapshot or user-supplied screenshot
+before claiming the marker is visible. If rendering is unavailable, report the
+stored update as verified and the visible result as unverified.
+
+When a screenshot contradicts a title read, investigate title parsing or stale
+presentation state. Never dismiss the screenshot because the same backend value
+can be read again. Reconcile at most once using the escaped formatter, then report
+any remaining display limitation. Do not edit app databases/configuration, force
+an app restart or repeatedly rewrite titles to manufacture visible confirmation.
 
 ## Safe updates
 

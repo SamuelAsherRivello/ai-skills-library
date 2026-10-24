@@ -10,10 +10,11 @@ param(
 )
 
 # Formatting only. The caller verifies membership and live removal authority.
-$leadingMarkers = '^(?:\s*\*)+\s*'
+$leadingMarkers = '^(?:\s*\\?\*)+\s*'
 $hasMarker = $Title -match $leadingMarkers
 if ($Action -eq 'Preserve' -and -not $hasMarker) { return $Title }
 $subject = [regex]::Replace($Title, $leadingMarkers, '')
 if ([string]::IsNullOrWhiteSpace($subject)) { throw 'A marker needs a nonempty title.' }
 if ($Action -eq 'Remove') { return $subject }
-return '* ' + $subject
+# Codex displays titles as Markdown; escape the bullet marker in stored text.
+return '\* ' + $subject

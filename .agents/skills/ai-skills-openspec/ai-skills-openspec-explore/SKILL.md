@@ -12,6 +12,7 @@ metadata:
 
 Preserve the leading `* ` orchestration marker and pass coordinator identity
 and enrollment context to the active child under the shared title contract.
+Use the title manager's escaped write form so Markdown rendering keeps the marker visible.
 
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-EXP`
