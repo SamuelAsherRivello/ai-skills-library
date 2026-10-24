@@ -1,4 +1,4 @@
 interface:
-  display_name: "OpenSpec Propose"
+  display_name: "AI Skills OpenSpec Propose"
   short_description: "Create a complete OpenSpec proposal"
   default_prompt: "Use $ai-skills-openspec-propose to create a complete OpenSpec change proposal."

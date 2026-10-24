@@ -43,7 +43,7 @@ Never hand-create `openspec/` files or use `--tools codex`, `--profile custom`, 
 
 **Input**: Optionally specify a change name. If omitted, check if it can be inferred from conversation context. If vague or ambiguous you MUST prompt for available changes.
 
-This workflow revises artifacts that already exist; `/openspec-continue-change` is what creates the ones that do not.
+This workflow revises artifacts that already exist. Creating missing artifacts requires a separate planning request.
 
 **Steps**
 
@@ -87,7 +87,7 @@ This workflow revises artifacts that already exist; `/openspec-continue-change` 
    - Note everything that is now inconsistent, missing, or contradictory.
    - For each material contradiction, identify the incompatible statements and their source artifacts, verify any relevant project facts, and ask the user the specific decision needed to resolve it. Use the exact **Mandatory Question Format** and question-budget rules in `$ai-skills-openspec-grill-me`, with concrete options and a recommended option that states its tradeoff. End the turn and wait for the answer; do not infer a resolution from the requested edit or silently favor one artifact.
    - Once the user resolves a conflict, re-check every affected artifact and the requested revision before proposing edits. If the user defers it, preserve it as an explicit open item and do not describe the plan as coherent or implementation-ready.
-   - Propose revisions to files that already exist (`existingOutputPaths`). If an artifact has no existing output files and status `ready` or `blocked`, note it and point the user to `/openspec-continue-change` to create them. Leave `skipped` artifacts untouched; do not treat them as missing or defer them to the continue workflow.
+   - Propose revisions to files that already exist (`existingOutputPaths`). If an artifact has no existing output files and status `ready` or `blocked`, note it and defer its creation to a separate planning request. Leave `skipped` artifacts untouched; do not treat them as missing or defer them to the continue workflow.
    - A glob artifact (e.g. `specs/**/*.md`) is marked `done` after at least one file matches, and the continue workflow only handles `ready` artifacts. When reconciliation identifies a missing file for a glob artifact whose `existingOutputPaths` is non-empty:
      1. Run `openspec instructions "<artifact-id>" --change "<name>" --json` and use its `instruction` and `template`. Treat `context` and `rules` as constraints; do not copy them into the file. If instructions report `skipped: true`, do not create the file. Read current dependency files from disk; if a required non-skipped dependency is missing, stop and ask the user to restore it first.
      2. Choose a concrete path inside `changeRoot` that matches `artifactPaths.<id>.outputPath` and does not already exist. Verify it remains inside `changeRoot` after resolving any symlinked parent directories. The glob `resolvedOutputPath` is not a valid target.
@@ -106,7 +106,7 @@ This workflow revises artifacts that already exist; `/openspec-continue-change` 
      ```
 
 6. **Point to the next step (guidance only - NEVER act on it)**
-   - Artifacts with empty `existingOutputPaths` and status `ready` or `blocked` -> suggest `/openspec-continue-change` to create them.
+   - Artifacts with empty `existingOutputPaths` and status `ready` or `blocked` -> suggest a separate planning request to create them.
    - Change already implemented (tasks checked off / already applied) -> the code may no longer match the revised plan; suggest `/ai-skills-openspec-apply-change` to carry the delta into code.
    - Everything done and implemented -> suggest `/ai-skills-openspec-archive-change`.
 
@@ -115,14 +115,14 @@ This workflow revises artifacts that already exist; `/openspec-continue-change` 
 After each invocation, show:
 - Which artifacts were revised (and which proposed revisions were rejected)
 - Any file created under a glob artifact that was already partially populated
-- Anything deferred to `/openspec-continue-change` (artifacts with no files yet and status `ready` or `blocked`, never `skipped` artifacts)
+- Anything deferred to a separate planning request (artifacts with no files yet and status `ready` or `blocked`, never `skipped` artifacts)
 - Where the change stands and the recommended next command
 
 **Guardrails**
 - Planning artifacts only - NEVER edit implementation code. If the revised plan implies code changes, stop and point to `/ai-skills-openspec-apply-change`.
 - Use the artifact ids and paths reported by `openspec status`; never branch on hardcoded artifact names.
 - Edit only the concrete files in `existingOutputPaths`; never write to a glob `resolvedOutputPath`.
-- Do not advance the build frontier: if an artifact has empty `existingOutputPaths` and status `ready` or `blocked`, that is `/openspec-continue-change`'s job. Leave `skipped` artifacts untouched. The only new-file scope is a confirmed concrete path under a glob artifact whose `existingOutputPaths` is non-empty.
+- Do not advance the build frontier: if an artifact has empty `existingOutputPaths` and status `ready` or `blocked`, defer its creation to a separate planning request. Leave `skipped` artifacts untouched. The only new-file scope is a confirmed concrete path under a glob artifact whose `existingOutputPaths` is non-empty.
 - Confirm every edit with the user before writing.
 - Treat contradictions between artifacts, or between an artifact and verified project facts, as decisions to resolve rather than editorial inconsistencies. Ask the specific resolving question in `$ai-skills-openspec-grill-me` format and wait for the answer before proposing a settled reconciliation.
-- If the request changes the change's *intent* rather than refining it, recommend starting fresh with `/openspec-new-change` (the "Update vs. Start Fresh" heuristic).
+- If the request changes the change's *intent* rather than refining it, recommend starting fresh with `$ai-skills-openspec-propose` (the "Update vs. Start Fresh" heuristic).

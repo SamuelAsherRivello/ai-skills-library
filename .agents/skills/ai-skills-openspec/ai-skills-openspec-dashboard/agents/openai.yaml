@@ -1,4 +1,4 @@
 interface:
-  display_name: "OpenSpec Dashboard"
+  display_name: "AI Skills OpenSpec Dashboard"
   short_description: "Open and inspect the local OpenSpecUI dashboard"
   default_prompt: "Use $ai-skills-openspec-dashboard to open or inspect the local OpenSpecUI dashboard, checking and setting up dependencies if needed."

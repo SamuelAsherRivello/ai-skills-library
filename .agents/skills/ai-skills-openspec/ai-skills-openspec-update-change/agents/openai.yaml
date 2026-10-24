@@ -1,4 +1,4 @@
 interface:
-  display_name: "OpenSpec Update Change"
+  display_name: "AI Skills OpenSpec Update Change"
   short_description: "Revise an existing OpenSpec change"
   default_prompt: "Use $ai-skills-openspec-update-change to revise one existing OpenSpec change."

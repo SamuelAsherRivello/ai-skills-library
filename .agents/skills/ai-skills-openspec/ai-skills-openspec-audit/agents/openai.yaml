@@ -1,4 +1,4 @@
 interface:
-  display_name: "OpenSpec Audit"
+  display_name: "AI Skills OpenSpec Audit"
   short_description: "Diagnose OpenSpec readiness without changing it"
   default_prompt: "Use $ai-skills-openspec-audit to diagnose this project's OpenSpec state."

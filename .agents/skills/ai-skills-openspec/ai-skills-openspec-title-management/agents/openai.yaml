@@ -1,4 +1,4 @@
 interface:
-  display_name: "OpenSpec Title Manager"
+  display_name: "AI Skills OpenSpec Title Manager"
   short_description: "Rebuild active OpenSpec chat titles safely"
   default_prompt: "Use $ai-skills-openspec-title-management to reconcile this active OpenSpec chat title."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Skills OpenSpec Release Version"
+  short_description: "Release via GitHub Actions version workflows"
+  default_prompt: "Use $ai-skills-create-github-release to inspect and perform the repository release workflow."

@@ -1,5 +1,5 @@
 interface:
-  display_name: "OpenSpec Initialize"
+  display_name: "AI Skills OpenSpec Initialize"
   short_description: "Safely create an OpenSpec planning root"
   default_prompt: "Use $ai-skills-openspec-init to initialize this project for custom OpenSpec planning without creating local skills."
 policy:

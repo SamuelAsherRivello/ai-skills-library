@@ -1,4 +1,4 @@
 interface:
-  display_name: "OpenSpec Sync Specs"
+  display_name: "AI Skills OpenSpec Sync Specs"
   short_description: "Sync delta specs into main specs"
   default_prompt: "Use $ai-skills-openspec-sync-specs to sync one OpenSpec change into the main specs."

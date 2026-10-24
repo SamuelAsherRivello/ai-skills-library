@@ -1,4 +1,4 @@
 interface:
-  display_name: "OpenSpec Archive Change"
+  display_name: "AI Skills OpenSpec Archive Change"
   short_description: "Archive a completed OpenSpec change"
   default_prompt: "Use $ai-skills-openspec-archive-change to archive one completed OpenSpec change."

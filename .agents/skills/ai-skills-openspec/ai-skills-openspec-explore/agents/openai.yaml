@@ -1,4 +1,4 @@
 interface:
-  display_name: "OpenSpec Explore"
+  display_name: "AI Skills OpenSpec Explore"
   short_description: "Explore and clarify OpenSpec changes"
   default_prompt: "Use $ai-skills-openspec-explore to investigate an OpenSpec change before implementation."

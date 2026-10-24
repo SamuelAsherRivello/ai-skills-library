@@ -69,6 +69,6 @@ Custom skills remain excluded from upstream merges by their author metadata.
 
 ## Legacy metadata
 
-`openspec-release-version` currently contains only `agents/openai.yaml`, not a
+`ai-skills-openspec-release-version` currently contains only `agents/openai.yaml`, not a
 `SKILL.md`. It is metadata, not an executable OpenSpec workflow; do not invent
 or list it as one until an actual workflow is supplied.

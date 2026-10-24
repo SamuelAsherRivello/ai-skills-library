@@ -169,6 +169,8 @@ class RepositoryNamespaceTests(unittest.TestCase):
         root = repo / ".agents/skills/ai-skills-openspec"
         skills = sorted(root.glob("ai-skills-openspec-*/SKILL.md"))
         self.assertEqual(len(skills), 18)
+        self.assertTrue(all(path.name.startswith("ai-skills-openspec-")
+                            for path in root.iterdir() if path.is_dir()))
         self.assertFalse(list(root.glob("openspec-*/SKILL.md")))
         self.assertFalse((repo / ".agents/skills/openspec").exists())
         record = json.loads((repo / "documentation/openspec-upstream.json").read_text(encoding="utf-8"))
@@ -180,9 +182,12 @@ class RepositoryNamespaceTests(unittest.TestCase):
                 self.assertLess(len(name), 64)
                 self.assertEqual(module.field(module.frontmatter(path.read_text(encoding="utf-8")), "name"), name)
                 self.assertEqual(record["upstream_names"][name], name.removeprefix("ai-skills-"))
+                self.assertNotRegex(path.read_text(encoding="utf-8"),
+                                    r"[$/]openspec-[a-z0-9-]+(?![a-z0-9-]|\.md)")
                 ui = path.parent / "agents/openai.yaml"
                 if ui.exists():
                     self.assertIn("$" + name, ui.read_text(encoding="utf-8"))
+                    self.assertIn('display_name: "AI Skills OpenSpec', ui.read_text(encoding="utf-8"))
         catalog = (root / "README.md").read_text(encoding="utf-8")
         links = re.findall(r"\]\(\./([a-z0-9-]+)/SKILL\.md\)", catalog)
         self.assertEqual(len(links), 18)
