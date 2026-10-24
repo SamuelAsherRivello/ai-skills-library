@@ -1,6 +1,0 @@
-interface:
-  display_name: "OpenSpec Initialize"
-  short_description: "Safely create an OpenSpec planning root"
-  default_prompt: "Use $openspec-init to initialize this project for custom OpenSpec planning without creating local skills."
-policy:
-  allow_implicit_invocation: false

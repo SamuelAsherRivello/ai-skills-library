@@ -110,7 +110,7 @@ function Resolve-LibraryCategory([string] $Name, [string] $SelectedCategory) {
     if ($Name -like 'ai-skills-create-*') { return 'ai-skills-create' }
     if ($Name -like 'ai-skills-library-*') { return 'ai-skills-library' }
     if ($Name -like 'ai-skills-project-run-*') { return 'ai-skills-run' }
-    if ($Name -like 'openspec-*') { return 'ai-skills-openspec' }
+    if ($Name -like 'ai-skills-openspec-*') { return 'ai-skills-openspec' }
     if ($Name -like 'docker-sandbox*' -or $Name -like 'docker-sandboxes-*') { return 'docker-sandbox' }
     if ($Name -like 'ai-skills-triage-*') { return 'ai-skills-triage' }
     if ($Name -in @('ai-skills-explain-dont-fix', 'ai-skills-teach', 'ai-skills-unslop')) { return 'ai-skills-productivity' }

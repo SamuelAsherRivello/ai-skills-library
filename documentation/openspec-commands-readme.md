@@ -19,10 +19,10 @@ gate.
 **Prompt AI:**
 
 ```
-$openspec-propose
+$ai-skills-openspec-propose
 ```
 
-Optionally use `$openspec-explore` or `$openspec-grill-me` first. Then create
+Optionally use `$ai-skills-openspec-explore` or `$ai-skills-openspec-grill-me` first. Then create
 the proposal, specifications, design, and tasks for the change.
 
 ### 2. Apply
@@ -30,7 +30,7 @@ the proposal, specifications, design, and tasks for the change.
 **Prompt AI:**
 
 ```
-$openspec-apply-change
+$ai-skills-openspec-apply-change
 ```
 
 Implement the approved change and complete its tasks.
@@ -40,11 +40,11 @@ Implement the approved change and complete its tasks.
 **Prompt AI:**
 
 ```
-$openspec-sync-specs
+$ai-skills-openspec-sync-specs
 ```
 
 Sync accepted delta specifications, archive the completed change, then use
-`$openspec-commit-inclusive` to commit and push the scoped work. The
+`$ai-skills-openspec-commit-inclusive` to commit and push the scoped work. The
 finalization macro combines those close-out steps when appropriate.
 
 ## Details
@@ -61,23 +61,23 @@ Here are commands and the recommended AI intelligence level to use.
 
 | # | Command | Purpose | Rec. Intelligence |
 | --- | --- | --- | --- |
-| 1 | `$openspec-dashboard` | Inspect the local dashboard at any stage. | ![Low](https://img.shields.io/badge/Low-red?style=flat-square) |
-| 2 | `$openspec-explore` | Brainstorm or investigate a possible change without implementation. | ![Low](https://img.shields.io/badge/Low-red?style=flat-square) |
-| 3 | `$openspec-grill-me {n}` | Settle planning decisions with focused questions. | ![High](https://img.shields.io/badge/High-green?style=flat-square) |
-| 4 | `$openspec-propose` | Create one focused change proposal. | ![Med](https://img.shields.io/badge/Med-yellow?style=flat-square) |
-| 5 | `$openspec-update-change` | Revise planning artifacts as decisions evolve. | ![Med](https://img.shields.io/badge/Med-yellow?style=flat-square) |
-| 6 | `$openspec-apply-change` | Implement the current change. | ![High](https://img.shields.io/badge/High-green?style=flat-square) |
-| 7 | `$openspec-sync-specs` | Apply accepted delta specifications to the main specifications. | ![Med](https://img.shields.io/badge/Med-yellow?style=flat-square) |
-| 8 | `$openspec-archive-change` | Finalize and archive a completed change. | ![Low](https://img.shields.io/badge/Low-red?style=flat-square) |
-| 9 | `$openspec-commit-inclusive` | Commit and push files related to one archived change. | ![High](https://img.shields.io/badge/High-green?style=flat-square) |
-| 10 | `$openspec-macro-finalize-sync-archive-commit-push` | Run the full close-out sequence after implementation. | ![High](https://img.shields.io/badge/High-green?style=flat-square) |
+| 1 | `$ai-skills-openspec-dashboard` | Inspect the local dashboard at any stage. | ![Low](https://img.shields.io/badge/Low-red?style=flat-square) |
+| 2 | `$ai-skills-openspec-explore` | Brainstorm or investigate a possible change without implementation. | ![Low](https://img.shields.io/badge/Low-red?style=flat-square) |
+| 3 | `$ai-skills-openspec-grill-me {n}` | Settle planning decisions with focused questions. | ![High](https://img.shields.io/badge/High-green?style=flat-square) |
+| 4 | `$ai-skills-openspec-propose` | Create one focused change proposal. | ![Med](https://img.shields.io/badge/Med-yellow?style=flat-square) |
+| 5 | `$ai-skills-openspec-update-change` | Revise planning artifacts as decisions evolve. | ![Med](https://img.shields.io/badge/Med-yellow?style=flat-square) |
+| 6 | `$ai-skills-openspec-apply-change` | Implement the current change. | ![High](https://img.shields.io/badge/High-green?style=flat-square) |
+| 7 | `$ai-skills-openspec-sync-specs` | Apply accepted delta specifications to the main specifications. | ![Med](https://img.shields.io/badge/Med-yellow?style=flat-square) |
+| 8 | `$ai-skills-openspec-archive-change` | Finalize and archive a completed change. | ![Low](https://img.shields.io/badge/Low-red?style=flat-square) |
+| 9 | `$ai-skills-openspec-commit-inclusive` | Commit and push files related to one archived change. | ![High](https://img.shields.io/badge/High-green?style=flat-square) |
+| 10 | `$ai-skills-openspec-macro-finalize-sync-archive-commit-push` | Run the full close-out sequence after implementation. | ![High](https://img.shields.io/badge/High-green?style=flat-square) |
 
 For a repository version release after a remote commit exists, use
 [`$ai-skills-create-github-release`](../.agents/skills/ai-skills-create/ai-skills-create-github-release/SKILL.md).
 
 ### Proposal Artifacts
 
-With the default spec-driven schema, `$openspec-propose` creates these files inside
+With the default spec-driven schema, `$ai-skills-openspec-propose` creates these files inside
 `openspec/changes/<change-name>/`. Other schemas may use different artifacts.
 
 | File | Purpose | Answers? |

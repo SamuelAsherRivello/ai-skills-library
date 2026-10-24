@@ -1,4 +1,0 @@
-interface:
-  display_name: "OpenSpec Audit"
-  short_description: "Diagnose OpenSpec readiness without changing it"
-  default_prompt: "Use $openspec-audit to diagnose this project's OpenSpec state."

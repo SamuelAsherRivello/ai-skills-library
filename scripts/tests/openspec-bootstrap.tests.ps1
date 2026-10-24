@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-$bootstrap = Join-Path $repoRoot '.agents\skills\ai-skills-openspec\openspec-init\scripts\bootstrap.ps1'
+$bootstrap = Join-Path $repoRoot '.agents\skills\ai-skills-openspec\ai-skills-openspec-init\scripts\bootstrap.ps1'
 $sourceRoot = Join-Path $repoRoot '.agents\skills\ai-skills-openspec'
 $tempRoot = Join-Path ([IO.Path]::GetTempPath()) ('openspec-bootstrap-' + [Guid]::NewGuid().ToString('N'))
 
@@ -62,14 +62,14 @@ try {
     $forkProject = Join-Path $tempRoot 'fork-project'
     $forkLocal = Join-Path $forkProject '.agents\skills'
     Copy-Suite $forkLocal
-    Add-Content -LiteralPath (Join-Path $forkLocal 'openspec-propose\SKILL.md') -Value "`n<!-- private fork -->"
+    Add-Content -LiteralPath (Join-Path $forkLocal 'ai-skills-openspec-propose\SKILL.md') -Value "`n<!-- private fork -->"
     $result = Invoke-Bootstrap $forkProject $global $legacy
     Assert ($result.state -eq 'ProjectPrivateFork') "Expected project private fork, got $($result.state)."
 
     $partialProject = Join-Path $tempRoot 'partial-project'
     $partialLocal = Join-Path $partialProject '.agents\skills'
     New-Item -ItemType Directory -Path $partialLocal -Force | Out-Null
-    Copy-Item -LiteralPath (Join-Path $sourceRoot 'openspec-propose') -Destination (Join-Path $partialLocal 'openspec-propose') -Recurse
+    Copy-Item -LiteralPath (Join-Path $sourceRoot 'ai-skills-openspec-propose') -Destination (Join-Path $partialLocal 'ai-skills-openspec-propose') -Recurse
     $result = Invoke-Bootstrap $partialProject $global $legacy
     Assert ($result.state -eq 'ProjectLocalPartial') "Expected partial local suite, got $($result.state)."
 

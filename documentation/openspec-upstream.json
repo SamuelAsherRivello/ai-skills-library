@@ -2,35 +2,55 @@
   "repository": "https://github.com/Fission-AI/OpenSpec",
   "release": "v1.14.0",
   "revision": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
-  "source": "skills/<name>/SKILL.md",
+  "source": "skills/<upstream_name>/SKILL.md",
   "updated_skills": [
-    "openspec-apply-change",
-    "openspec-archive-change"
+    "ai-skills-openspec-apply-change",
+    "ai-skills-openspec-archive-change"
   ],
   "preserved_custom_skills": [
-    "openspec-commit-inclusive",
-    "openspec-dashboard",
-    "openspec-grill-me",
-    "openspec-macro-finalize-sync-archive-commit-push"
+    "ai-skills-openspec-commit-inclusive",
+    "ai-skills-openspec-dashboard",
+    "ai-skills-openspec-grill-me",
+    "ai-skills-openspec-macro-finalize-sync-archive-commit-push"
   ],
   "skill_revisions": {
-    "openspec-explore": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
-    "openspec-apply-change": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
-    "openspec-update-change": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
-    "openspec-sync-specs": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
-    "openspec-archive-change": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
-    "openspec-propose": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5"
+    "ai-skills-openspec-explore": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
+    "ai-skills-openspec-apply-change": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
+    "ai-skills-openspec-update-change": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
+    "ai-skills-openspec-sync-specs": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
+    "ai-skills-openspec-archive-change": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5",
+    "ai-skills-openspec-propose": "94ca9c1eb15d1b49c06c988419b75c3d95f8b2b5"
   },
   "results": {
-    "openspec-apply-change": "updated",
-    "openspec-archive-change": "updated",
-    "openspec-commit-inclusive": "preserved-custom",
-    "openspec-dashboard": "preserved-custom",
-    "openspec-explore": "unchanged",
-    "openspec-grill-me": "preserved-custom",
-    "openspec-macro-finalize-sync-archive-commit-push": "preserved-custom",
-    "openspec-propose": "unchanged",
-    "openspec-sync-specs": "unchanged",
-    "openspec-update-change": "unchanged"
+    "ai-skills-openspec-apply-change": "updated",
+    "ai-skills-openspec-archive-change": "updated",
+    "ai-skills-openspec-commit-inclusive": "preserved-custom",
+    "ai-skills-openspec-dashboard": "preserved-custom",
+    "ai-skills-openspec-explore": "unchanged",
+    "ai-skills-openspec-grill-me": "preserved-custom",
+    "ai-skills-openspec-macro-finalize-sync-archive-commit-push": "preserved-custom",
+    "ai-skills-openspec-propose": "unchanged",
+    "ai-skills-openspec-sync-specs": "unchanged",
+    "ai-skills-openspec-update-change": "unchanged"
+  },
+  "upstream_names": {
+    "ai-skills-openspec-apply-change": "openspec-apply-change",
+    "ai-skills-openspec-apply-change-with-playwright": "openspec-apply-change-with-playwright",
+    "ai-skills-openspec-apply-program": "openspec-apply-program",
+    "ai-skills-openspec-archive-change": "openspec-archive-change",
+    "ai-skills-openspec-audit": "openspec-audit",
+    "ai-skills-openspec-commit-inclusive": "openspec-commit-inclusive",
+    "ai-skills-openspec-create-program": "openspec-create-program",
+    "ai-skills-openspec-dashboard": "openspec-dashboard",
+    "ai-skills-openspec-explore": "openspec-explore",
+    "ai-skills-openspec-grill-me": "openspec-grill-me",
+    "ai-skills-openspec-init": "openspec-init",
+    "ai-skills-openspec-macro-finalize-sync-archive-commit-push": "openspec-macro-finalize-sync-archive-commit-push",
+    "ai-skills-openspec-orchestrate-program": "openspec-orchestrate-program",
+    "ai-skills-openspec-orchestrate-proposal": "openspec-orchestrate-proposal",
+    "ai-skills-openspec-propose": "openspec-propose",
+    "ai-skills-openspec-sync-specs": "openspec-sync-specs",
+    "ai-skills-openspec-title-management": "openspec-title-management",
+    "ai-skills-openspec-update-change": "openspec-update-change"
   }
 }

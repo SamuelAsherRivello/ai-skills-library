@@ -49,6 +49,17 @@ def merge(base, local, upstream):
         return result.stdout, result.returncode == 0
 
 
+def localize(content, upstream_names):
+    """Apply the local namespace to upstream identities and known skill references."""
+    names = {upstream: local for local, upstream in upstream_names.items()}
+    pattern = re.compile(
+        r"(?<![A-Za-z0-9_-])(" + "|".join(
+            re.escape(name) for name in sorted(names, key=len, reverse=True)
+        ) + r")(?![A-Za-z0-9_-]|\.md)"
+    )
+    return pattern.sub(lambda match: names[match[0]], content.decode("utf-8")).encode("utf-8")
+
+
 def refresh(repository, upstream, tag, revision):
     if not re.fullmatch(r"v?\d+\.\d+\.\d+", tag):
         raise ValueError("Expected a stable OpenSpec release tag")
@@ -56,21 +67,39 @@ def refresh(repository, upstream, tag, revision):
         raise ValueError("Expected the full upstream commit SHA")
 
     skills_root = repository / ".agents" / "skills" / "ai-skills-openspec"
+    targets = sorted(skills_root.glob("ai-skills-openspec-*/SKILL.md"))
+    if not targets:
+        raise ValueError(f"No namespaced OpenSpec skills found in {skills_root}")
     record_path = repository / "documentation" / "openspec-upstream.json"
     record = json.loads(record_path.read_text(encoding="utf-8")) if record_path.exists() else {}
-    baselines = dict(record.get("skill_revisions", {}))
+    upstream_names = dict(record.get("upstream_names", {}))
+    for target in targets:
+        name = target.parent.name
+        upstream_names.setdefault(name, name.removeprefix("ai-skills-"))
+    for name, upstream_name in upstream_names.items():
+        if not re.fullmatch(r"ai-skills-openspec-[a-z0-9-]+", name) or not re.fullmatch(r"openspec-[a-z0-9-]+", upstream_name):
+            raise ValueError(f"Invalid OpenSpec skill mapping: {name} -> {upstream_name}")
+    if len(set(upstream_names.values())) != len(upstream_names):
+        raise ValueError("Duplicate upstream OpenSpec skill mapping")
+    upstream_to_local = {value: key for key, value in upstream_names.items()}
+    old_baselines = record.get("skill_revisions", {})
+    baselines = {upstream_to_local.get(name, name): value for name, value in old_baselines.items()}
+    # Prefer already-migrated baselines if a record contains both spellings.
+    baselines.update({name: value for name, value in old_baselines.items() if name in upstream_names})
     legacy_revision = record.get("revision")
     pending = []
     outcomes = {}
     preserved_custom = []
 
     # Inspect and merge all candidates before writing any skill files.
-    for target in sorted(skills_root.glob("openspec-*/SKILL.md")):
+    for target in targets:
         if target.is_symlink() or target.parent.is_symlink():
             raise ValueError(f"Refusing linked skill: {target}")
         name = target.parent.name
         local = target.read_bytes()
         metadata = frontmatter(local.decode("utf-8"))
+        if field(metadata, "name") != name:
+            raise ValueError(f"Local skill identity mismatch: {name}")
         if field(metadata, "author") != "openspec":
             preserved_custom.append(name)
             outcomes[name] = "preserved-custom"
@@ -79,20 +108,21 @@ def refresh(repository, upstream, tag, revision):
         base_revision = baselines.get(name) or legacy_revision
         if not base_revision:
             raise ValueError(f"No recorded upstream baseline for {name}")
-        source = upstream / "skills" / name / "SKILL.md"
+        upstream_name = upstream_names[name]
+        source = upstream / "skills" / upstream_name / "SKILL.md"
         if not source.is_file() or source.is_symlink() or source.parent.is_symlink():
             outcomes[name] = "missing-upstream"
             baselines.setdefault(name, base_revision)
             continue
         incoming = source.read_bytes()
         upstream_metadata = frontmatter(incoming.decode("utf-8"))
-        if field(upstream_metadata, "name") != name or field(upstream_metadata, "author") != "openspec":
+        if field(upstream_metadata, "name") != upstream_name or field(upstream_metadata, "author") != "openspec":
             raise ValueError(f"Upstream skill identity mismatch: {name}")
         if not field(upstream_metadata, "description"):
             raise ValueError(f"Upstream description missing: {name}")
 
-        base = git_show(upstream, base_revision, name)
-        merged, clean = merge(base, local, incoming)
+        base = git_show(upstream, base_revision, upstream_name)
+        merged, clean = merge(localize(base, upstream_names), local, localize(incoming, upstream_names))
         if clean:
             pending.append((target, merged, name))
             baselines[name] = revision
@@ -108,7 +138,8 @@ def refresh(repository, upstream, tag, revision):
         "repository": REPOSITORY_URL,
         "release": tag,
         "revision": revision,
-        "source": "skills/<name>/SKILL.md",
+        "source": "skills/<upstream_name>/SKILL.md",
+        "upstream_names": dict(sorted(upstream_names.items())),
         "skill_revisions": dict(sorted(baselines.items())),
         "updated_skills": [name for name, result in outcomes.items() if result == "updated"],
         "preserved_custom_skills": sorted(preserved_custom),

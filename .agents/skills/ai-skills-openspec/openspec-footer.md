@@ -65,19 +65,19 @@ A suggestion never invokes it or grants authority.
 
 | Checkpoint | Typical next action |
 | --- | --- |
-| Dashboard inspection complete | Inspect the selected change, or `$openspec-explore <topic>` when discovery is requested |
+| Dashboard inspection complete | Inspect the selected change, or `$ai-skills-openspec-explore <topic>` when discovery is requested |
 | Initialization complete | Resume the explicitly requested custom OpenSpec workflow |
 | Audit complete | Use the smallest applicable custom workflow named by the audit finding |
-| Explore settled | `$openspec-propose <change>` |
+| Explore settled | `$ai-skills-openspec-propose <change>` |
 | Grill waiting | Reply to Question N |
 | Grill complete | Resume the actual planning phase; propose only if no change exists |
-| Proposal ready | `$openspec-apply-change <change>` |
-| Updated plan ready | `$openspec-apply-change <change>` |
-| Apply verified complete | `$openspec-sync-specs <change>` when delta specs need syncing; otherwise `$openspec-archive-change <change>` |
-| Sync verified complete | `$openspec-archive-change <change>` after implementation is complete |
-| Archive complete | `$openspec-commit-inclusive <change>` if a commit is wanted |
+| Proposal ready | `$ai-skills-openspec-apply-change <change>` |
+| Updated plan ready | `$ai-skills-openspec-apply-change <change>` |
+| Apply verified complete | `$ai-skills-openspec-sync-specs <change>` when delta specs need syncing; otherwise `$ai-skills-openspec-archive-change <change>` |
+| Sync verified complete | `$ai-skills-openspec-archive-change <change>` after implementation is complete |
+| Archive complete | `$ai-skills-openspec-commit-inclusive <change>` if a commit is wanted |
 | Commit/push verified complete | Done, or a separately requested and available release/deploy workflow |
-| Program plan ready | `$openspec-orchestrate-program <program-id>` |
+| Program plan ready | `$ai-skills-openspec-orchestrate-program <program-id>` |
 | Program Apply complete | Report integrated acceptance; suggest finalizing a specific eligible child only when appropriate |
 | Blocked or awaiting approval | Name the smallest answer, access or approval needed |
 
@@ -122,5 +122,5 @@ A finished exploration ends with:
 - Status: Explore
 - Tasks: N/A
 - Coordination: Standalone
-- Next: `$openspec-propose add-auth`
+- Next: `$ai-skills-openspec-propose add-auth`
 ```

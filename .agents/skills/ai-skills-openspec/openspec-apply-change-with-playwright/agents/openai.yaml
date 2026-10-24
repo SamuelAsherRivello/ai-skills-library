@@ -1,4 +1,0 @@
-interface:
-  display_name: "OpenSpec Apply Change With Playwright"
-  short_description: "Apply an OpenSpec change and test it in a browser"
-  default_prompt: "Use $openspec-apply-change-with-playwright to implement the OpenSpec change and validate it with Playwright."
