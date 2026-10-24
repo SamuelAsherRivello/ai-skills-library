@@ -1,5 +1,5 @@
 ---
-name: explain-dont-fix
+name: ai-skills-explain-dont-fix
 description: Diagnose bugs, errors, stack traces, or optimization concerns by explaining the underlying mechanics without changing or generating production code.
 ---
 

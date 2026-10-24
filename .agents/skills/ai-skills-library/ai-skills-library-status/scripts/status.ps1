@@ -46,7 +46,7 @@ function Get-SkillSignatures {
     }
 
     $candidates = if ($Categorized) {
-        foreach ($category in @('ai-skills-create', 'ai-skills-library', 'openspec', 'docker-sandbox')) {
+        foreach ($category in @('ai-skills-create', 'ai-skills-library', 'ai-skills-openspec', 'ai-skills-productivity', 'docker-sandbox')) {
             $categoryPath = Join-Path $SkillsRoot $category
             if (Test-Path -LiteralPath $categoryPath -PathType Container) {
                 Get-ChildItem -LiteralPath $categoryPath -Directory -Force

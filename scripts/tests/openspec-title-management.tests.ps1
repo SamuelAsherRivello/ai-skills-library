@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-$openSpecRoot = Join-Path $repoRoot '.agents\skills\openspec'
+$openSpecRoot = Join-Path $repoRoot '.agents\skills\ai-skills-openspec'
 
 function Assert([bool] $Condition, [string] $Message) {
     if (-not $Condition) { throw $Message }

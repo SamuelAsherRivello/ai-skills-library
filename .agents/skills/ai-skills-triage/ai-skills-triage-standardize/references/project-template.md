@@ -7,6 +7,7 @@ REPOSITORY/
 |-- AGENTS.md                         # canonical collaboration and safety guidance
 |-- README.md                          # entry point, architecture summary, verified commands
 |-- .aiignore                          # optional protected paths for AI-assisted work
+|-- .triageignore                      # optional triage-only scope exclusions
 |-- docs/
 |   |-- architecture/                  # durable diagrams/decisions when warranted
 |   `-- operations/                    # deployment, support, or runbook material
@@ -26,6 +27,8 @@ REPOSITORY/
 ```
 
 ## Adaptation rules
+
+- `.triageignore` is an optional triage-only scope configuration file. Its nonblank, non-comment repository-relative patterns exclude paths from triage discovery, analysis, integrity findings, scoring evidence, recommendations, and retention decisions. It does not override repository instructions or `.aiignore`.
 
 - A `project-name` is a technology, runtime, deployable, or ownership boundary - not merely a folder preference.
 - When a project is exceptionally organized into packages, put the package tier between `project-name` and `feature-or-service`. This is rare and must represent a real boundary, not merely a folder preference.

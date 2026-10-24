@@ -11,11 +11,13 @@ are a navigation aid; they do not change skill names or installer behavior.
   skills between the library, global installation, and projects.
 - [Docker Sandbox](./docker-sandbox/README.md): Configure and inspect isolated
   Docker Sandbox environments.
-- [OpenSpec](./openspec/README.md): Explore, plan, implement, and finalize
+- [OpenSpec](./ai-skills-openspec/README.md): Explore, plan, implement, and finalize
   repository changes through OpenSpec.
-- [Triage](./triage/README.md): Assess architecture health, standardize a
+- [Triage](./ai-skills-triage/README.md): Assess architecture health, standardize a
   codebase, and plan evidence-backed refactors.
 - [Slidev](./slidev/README.md): Run, review, resynchronize, and refine Slidev
   documentation decks.
 - [Run](./ai-skills-run/README.md): Start local project development servers
   with collision-safe ports.
+- [Productivity](./ai-skills-productivity/README.md): Explain proposed changes,
+  teach concepts, and edit writing.

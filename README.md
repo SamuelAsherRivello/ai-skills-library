@@ -58,10 +58,11 @@ Stick to the number, name, comment format unless the user asks for an explicit c
 | 1 | [Create](.agents/skills/ai-skills-create/README.md) | Create React apps, browser games, repositories, and releases. |
 | 2 | [AI Skills Library](.agents/skills/ai-skills-library/README.md) | Manage library, global, and project skill copies. |
 | 3 | [Docker Sandbox](.agents/skills/docker-sandbox/README.md) | Configure and inspect isolated Docker Sandbox environments. |
-| 4 | [OpenSpec](.agents/skills/openspec/README.md) | Explore, plan, implement, and finalize changes. |
+| 4 | [OpenSpec](.agents/skills/ai-skills-openspec/README.md) | Explore, plan, implement, and finalize changes. |
 | 5 | [Triage](.agents/skills/ai-skills-triage/README.md) | Assess architecture health, standardize codebases, and plan refactors. |
 | 6 | [Slidev](.agents/skills/slidev/README.md) | Run, review, resynchronize, and refine Slidev documentation decks. |
 | 7 | [Run](.agents/skills/ai-skills-run/README.md) | Start local project development servers with collision-safe ports. |
+| 8 | [Productivity](.agents/skills/ai-skills-productivity/README.md) | Explain proposed changes, teach concepts, and edit writing. |
 
 ## Resources
 

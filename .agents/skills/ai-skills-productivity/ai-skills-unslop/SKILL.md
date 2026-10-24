@@ -1,5 +1,5 @@
 ---
-name: unslop
+name: ai-skills-unslop
 description: Cut AI tells from any writing. Must always apply.
 disable-model-invocation: true
 ---

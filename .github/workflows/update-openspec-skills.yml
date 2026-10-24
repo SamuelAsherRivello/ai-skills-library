@@ -51,7 +51,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git add -- .agents/skills/openspec documentation/openspec-upstream.json
+          git add -- .agents/skills/ai-skills-openspec documentation/openspec-upstream.json
           if git diff --cached --quiet; then
             echo "No content or provenance changes to commit for OpenSpec $UPSTREAM_TAG." >> "$GITHUB_STEP_SUMMARY"
             exit 0

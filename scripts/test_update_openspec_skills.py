@@ -23,7 +23,7 @@ class RefreshTests(unittest.TestCase):
         self.upstream = self.root / "upstream"
         self.repo.mkdir()
         self.upstream.mkdir()
-        self.skills = self.repo / ".agents/skills/openspec"
+        self.skills = self.repo / ".agents/skills/ai-skills-openspec"
         self.skills.mkdir(parents=True)
         (self.repo / "documentation").mkdir()
         self.run_git(self.upstream, "init", "-q")
@@ -67,7 +67,7 @@ class RefreshTests(unittest.TestCase):
         local = skill("openspec-one", "line one\nline two\nline three\n\nLocal guidance.\n")
         new = skill("openspec-one", "line one upstream\nline two\nline three\n")
         new_revision = self.commit_upstream({"openspec-one": new}, "upstream update")
-        self.write(self.repo, ".agents/skills/openspec/openspec-one/SKILL.md", local)
+        self.write(self.repo, ".agents/skills/ai-skills-openspec/openspec-one/SKILL.md", local)
         self.record(old, per_skill=False)
 
         result = module.refresh(self.repo, self.upstream, "v1.1.0", new_revision)
@@ -86,8 +86,8 @@ class RefreshTests(unittest.TestCase):
         new_revision = self.commit_upstream({"openspec-one": new_one, "openspec-two": new_two}, "upstream update")
         local_one = skill("openspec-one", "local line\nkeep\n")
         local_two = skill("openspec-two", "first\nsecond\nthird\n\nLocal note.\n")
-        self.write(self.repo, ".agents/skills/openspec/openspec-one/SKILL.md", local_one)
-        self.write(self.repo, ".agents/skills/openspec/openspec-two/SKILL.md", local_two)
+        self.write(self.repo, ".agents/skills/ai-skills-openspec/openspec-one/SKILL.md", local_one)
+        self.write(self.repo, ".agents/skills/ai-skills-openspec/openspec-two/SKILL.md", local_two)
         self.record(old)
 
         result = module.refresh(self.repo, self.upstream, "v1.1.0", new_revision)
@@ -103,8 +103,8 @@ class RefreshTests(unittest.TestCase):
         old = self.commit_upstream({"openspec-one": base}, "baseline")
         new_revision = self.commit_upstream({"openspec-one": skill("openspec-one", "new body\n"), "openspec-added": skill("openspec-added", "new")}, "update")
         custom = skill("openspec-custom", "mine\n", author="local")
-        self.write(self.repo, ".agents/skills/openspec/openspec-one/SKILL.md", base)
-        self.write(self.repo, ".agents/skills/openspec/openspec-custom/SKILL.md", custom)
+        self.write(self.repo, ".agents/skills/ai-skills-openspec/openspec-one/SKILL.md", base)
+        self.write(self.repo, ".agents/skills/ai-skills-openspec/openspec-custom/SKILL.md", custom)
         self.record(old)
 
         result = module.refresh(self.repo, self.upstream, "v1.1.0", new_revision)

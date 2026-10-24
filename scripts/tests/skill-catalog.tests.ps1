@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $skillsRoot = Join-Path $repoRoot '.agents\skills'
-$categories = @('ai-skills-create', 'ai-skills-library', 'docker-sandbox', 'openspec', 'triage', 'slidev')
+$categories = @('ai-skills-create', 'ai-skills-library', 'docker-sandbox', 'ai-skills-openspec', 'ai-skills-triage', 'ai-skills-productivity', 'slidev')
 
 function Assert([bool] $Condition, [string] $Message) {
     if (-not $Condition) { throw $Message }
@@ -32,11 +32,11 @@ foreach ($category in $categories) {
     Assert ($rootContent.Contains("./$category/README.md")) "Root catalog does not link category: $category"
 }
 
-$oldRelease = Join-Path $skillsRoot 'openspec\openspec-release-version\SKILL.md'
+$oldRelease = Join-Path $skillsRoot 'ai-skills-openspec\openspec-release-version\SKILL.md'
 $newRelease = Join-Path $skillsRoot 'ai-skills-create\ai-skills-create-github-release\SKILL.md'
 Assert (-not (Test-Path -LiteralPath $oldRelease -PathType Leaf)) 'Old OpenSpec release skill remains.'
 Assert (Test-Path -LiteralPath $newRelease -PathType Leaf) 'Relocated release skill is missing.'
-Assert ((Get-Content -LiteralPath $newRelease -Raw) -match '(?m)^name: ai-skills-create-github-release$') 'Relocated release skill has the wrong name.'
+Assert ((Get-Content -LiteralPath $newRelease -Raw) -match '(?m)^name: ai-skills-create-github-release\r?$') 'Relocated release skill has the wrong name.'
 
 $disallowedName = 'po' + 'cock'
 $disallowed = Get-ChildItem -LiteralPath $skillsRoot -Recurse -File |
@@ -44,7 +44,7 @@ $disallowed = Get-ChildItem -LiteralPath $skillsRoot -Recurse -File |
     Select-String -Pattern $disallowedName -CaseSensitive:$false -List
 Assert ($null -eq $disallowed) 'Catalog or skill content includes a prohibited external repository reference.'
 
-$openSpecRoot = Join-Path $skillsRoot 'openspec'
+$openSpecRoot = Join-Path $skillsRoot 'ai-skills-openspec'
 $titleContract = Join-Path $openSpecRoot 'openspec-title-management.md'
 $footer = Join-Path $openSpecRoot 'openspec-footer.md'
 Assert (Test-Path -LiteralPath $titleContract -PathType Leaf) 'OpenSpec title contract is missing.'

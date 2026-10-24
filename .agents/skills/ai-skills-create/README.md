@@ -16,3 +16,4 @@ authenticated and can create repositories for the resolved owner.
 | 3 | [ai-skills-create-github-release](./ai-skills-create-github-release/SKILL.md) | Release a repository through its checked-in GitHub Actions version workflow. |
 | 4 | [ai-skills-create-github-repo](./ai-skills-create-github-repo/SKILL.md) | Create a repository from the shared template and prepare its checkout. |
 | 5 | [ai-skills-create-playtest](./ai-skills-create-playtest/SKILL.md) | Guide a human through verifying a web application before release. |
+| 6 | [ai-skills-create-dreamhost-deployment](./ai-skills-create-dreamhost-deployment/SKILL.md) | Deploy an approved immutable release build to a configured DreamHost production target. |

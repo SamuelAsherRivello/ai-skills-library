@@ -55,7 +55,7 @@ def refresh(repository, upstream, tag, revision):
     if not re.fullmatch(r"[0-9a-f]{40}", revision):
         raise ValueError("Expected the full upstream commit SHA")
 
-    skills_root = repository / ".agents" / "skills" / "openspec"
+    skills_root = repository / ".agents" / "skills" / "ai-skills-openspec"
     record_path = repository / "documentation" / "openspec-upstream.json"
     record = json.loads(record_path.read_text(encoding="utf-8")) if record_path.exists() else {}
     baselines = dict(record.get("skill_revisions", {}))

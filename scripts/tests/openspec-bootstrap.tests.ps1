@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-$bootstrap = Join-Path $repoRoot '.agents\skills\openspec\openspec-init\scripts\bootstrap.ps1'
-$sourceRoot = Join-Path $repoRoot '.agents\skills\openspec'
+$bootstrap = Join-Path $repoRoot '.agents\skills\ai-skills-openspec\openspec-init\scripts\bootstrap.ps1'
+$sourceRoot = Join-Path $repoRoot '.agents\skills\ai-skills-openspec'
 $tempRoot = Join-Path ([IO.Path]::GetTempPath()) ('openspec-bootstrap-' + [Guid]::NewGuid().ToString('N'))
 
 function Assert([bool] $Condition, [string] $Message) {

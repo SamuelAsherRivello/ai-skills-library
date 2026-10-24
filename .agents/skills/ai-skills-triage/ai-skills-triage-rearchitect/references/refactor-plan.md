@@ -7,9 +7,9 @@ Create one plan per selected candidate. Replace this guidance with repository-sp
 
 Refactor plan · Back
 
-**Run:** [run id]  
-**Scope:** [modules and paths]  
-**Evidence:** [links to focused triage findings]  
+**Run:** [run id]
+**Scope:** [modules and paths]
+**Evidence:** [links to focused triage findings]
 **Decision required:** [the approval requested]
 
 ## Problem and non-goals
