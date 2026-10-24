@@ -1,6 +1,6 @@
 ---
 name: openspec-macro-finalize-sync-archive-commit-push
-description: "Run an ordered macro of OpenSpec finalization skills after apply: verify readiness, sync specs, archive, commit scoped files, then push normally when the remote branch is unchanged. Stop with clear blockers instead of creating release infrastructure, merging divergent branches, or sweeping unrelated work."
+description: "Advance one completed OpenSpec change through each safe finalization phase: verify, sync, archive, commit scoped files, then push. Use when finalization should make the greatest safe progress rather than stop early for a later commit or push blocker."
 ---
 
 ## Delegated workflow presentation
@@ -34,21 +34,51 @@ The goal is one command after `openspec-apply-change` is done:
 verify done -> sync specs -> archive change -> commit scoped files -> push
 ```
 
-Leave a verifiable remote commit, or stop with explicit blockers. Never report success from a local commit alone.
+Advance as far as the current state safely permits. A completed earlier phase is
+durable progress even when a later phase cannot run. Never roll it back, redo
+it merely to make the run look atomic, or report the whole macro as complete
+until the remote commit is verified.
+
+## Progressive execution invariant
+
+Treat this as an ordered, resumable sequence, not an atomic transaction:
+
+```text
+readiness -> sync -> archive -> commit -> push
+```
+
+After a phase succeeds, or inspection proves it was completed by an earlier
+run, immediately assess the next phase. Do not stop for a child footer, a
+progress report, unrelated dirty files, an upstream change, or another blocker
+that applies only to a later phase. A Sync failure blocks Archive; an Archive
+failure blocks Commit; a Commit failure blocks Push. A Push failure never
+changes the completed Sync, Archive, or local Commit result.
+
+On a retry, preserve and verify prior work: recognize already-synced specs,
+an already-archived change, an already-created scoped local commit, and an
+already-pushed remote commit. Perform only the first unfinished safe phase.
 
 ## Hard Stops
 
-Stop before editing, staging, committing, archiving, or pushing when any of these are true:
+Stop before **Sync** when any of these are true:
 
 - More than one active change plausibly matches and the user did not name one.
 - The OpenSpec change artifacts are missing, invalid, or ambiguous.
 - Required tasks are unchecked or the proposal's requested behavior is not satisfied by the implementation evidence.
 - Verification has not been run, failed, or is too incomplete to support completion.
-- The relevant dirty files include unrelated work that cannot be separated safely.
-- The target remote branch has advanced or diverged from the local branch.
-- The repository has no configured remote branch for the current branch.
 
-When stopped, report the exact blockers and the safest next command or decision. Do not auto-create missing workflow, release, branch-integration, or project infrastructure.
+The following are phase-specific blockers, not preflight stops:
+
+| Condition | Earliest phase it blocks | Required behavior |
+| --- | --- | --- |
+| Checkout is not on the authorized branch | Commit | Finish Sync and Archive, then stop before staging or committing. |
+| Unrelated dirty files cannot be attributed or safely separated | Commit | Finish Sync and Archive. Attempt a file-level scope table; stop only if no safe scoped commit can be selected. |
+| No upstream or remote branch is unavailable | Push | Finish a safe local scoped commit, then report the exact push setup needed. |
+| Upstream advanced or diverged | Push | Finish a safe local scoped commit. Do not merge, rebase, reset, or force-push; report local and remote SHAs. |
+
+When any phase stops, report completed phases, the phase that stopped, and the
+smallest safe next decision. Do not auto-create missing workflow, release,
+branch-integration, or project infrastructure.
 
 ## Human-required verification
 
@@ -69,7 +99,10 @@ required browser evidence is otherwise available.
 
 2. Confirm the repository root, OpenSpec root, current branch, upstream branch, remote URL, dirty files, and current `HEAD`.
 
-3. Fetch the current upstream branch before any file edits or commit decisions. If the remote branch has advanced, stop before committing. Do not reset, restore, rebase, force-push, or attempt an automatic merge/API merge in this workflow.
+3. Fetch the current upstream branch when one exists and record its SHA. This
+   is evidence for the later Push gate, not a reason to stop Sync or Archive.
+   Do not reset, restore, rebase, force-push, or attempt an automatic
+   merge/API merge in this workflow.
 
 4. Inspect OpenSpec state using the installed CLI and repository conventions:
    - `openspec list --json`
@@ -95,7 +128,9 @@ required browser evidence is otherwise available.
    - verification evidence found
    - target branch and upstream branch
 
-6. Stop if the completion candidate is ambiguous, incomplete, or includes unrelated work.
+6. Stop only if the completion candidate itself is ambiguous or incomplete.
+   Record unrelated dirty files separately from the change's candidate file
+   list; they are assessed at Commit, after safe planning finalization has run.
 
 ## Readiness Verification
 
@@ -108,12 +143,16 @@ Before syncing or archiving:
 
 ## Sync Specs
 
-1. Read `artifactPaths.specs.existingOutputPaths`. If it is empty or the spec artifact is intentionally skipped, record "No delta specs" and make no spec write. Otherwise sync every selected delta spec into its owning main spec before archive.
+1. Read `artifactPaths.specs.existingOutputPaths`. If it is empty or the spec artifact is intentionally skipped, record "No delta specs" as a successful no-op. If selected deltas already match their main specs, record "Already synced" as a successful no-op. Otherwise sync every selected delta spec into its owning main spec before archive.
 2. Read both the delta spec and target main spec before editing.
 3. Preserve main-spec content unrelated to the delta.
 4. Keep added, modified, and removed requirements coherent with the accepted change.
 5. Validate the synced specs using the repository-supported OpenSpec command, such as `openspec validate --specs` or the current equivalent.
 6. Re-read the synced main specs and selected deltas to confirm they match the intended change.
+
+If Sync succeeds or is a verified no-op, immediately continue to Archive. If
+it cannot establish a valid sync state, stop before Archive and preserve the
+unarchived change for the next run.
 
 ## Archive
 
@@ -121,38 +160,56 @@ Archive only after:
 
 - implementation readiness is confirmed,
 - sync verification passes,
-- strict validation for the active change passes,
-- and the remote branch preflight still shows the target branch has not advanced.
+- and strict validation for the active change passes.
 
 Archive through the repository's OpenSpec workflow or CLI. Do not manually move files unless the project's workflow requires it and the file operations are clearly scoped.
 
+If the resolved archive already contains this change and its required
+validation passes, record "Already archived" and continue. If Archive cannot
+complete, stop before Commit; do not stage implementation files around an
+active change merely to bypass the archive gate.
+
 ## Stage, Commit, Push
 
-1. Inspect `git status` after archive.
+1. Inspect `git status` after Archive. Unrelated dirty files are expected input
+   here, not a reason to undo or withhold Sync/Archive progress.
 2. Stage only:
    - implementation files attributable to the completed proposal,
    - tests/docs/assets attributable to the completed proposal,
    - synced main specs,
    - archived OpenSpec change files.
-3. Do not stage unrelated dirty files. If unrelated files overlap the same paths and cannot be separated safely, stop.
+3. Build a file-level attribution table. Do not stage unrelated dirty files.
+   A large unrelated set is reportable but is not itself a blocker. If a
+   related file contains inseparable unrelated changes, or the candidate names
+   cannot be safely attributed, stop **at Commit** with Sync and Archive
+   recorded as complete.
 4. Review the staged diff before committing. Use `git diff --cached --name-status`, `git diff --cached --check`, and a focused cached diff review.
-5. Commit with the repository-approved identity when one is defined, using a concise imperative message that names the change or outcome.
-6. Fetch the upstream branch again immediately before pushing. If it advanced since preflight, stop before pushing and report the local commit SHA and remote SHA.
-7. Push with an ordinary non-force push only when the upstream branch is unchanged and fast-forward-safe.
+5. If the checkout is on the authorized branch, make the safe scoped local
+   commit with the repository-approved identity when one is defined. Invoke
+   `openspec-commit-inclusive` as the Commit phase owner with explicit macro
+   context. In that context, do not let an upstream change or missing upstream
+   suppress this local commit; those are Push gates in this macro. If the
+   branch is unauthorized, stop here before staging or committing.
+6. Fetch the upstream branch again immediately before pushing. If it advanced,
+   diverged, or is missing, stop **after** reporting the local commit SHA and
+   remote state.
+7. Push with an ordinary non-force push only when the upstream is unchanged and
+   fast-forward-safe.
 8. Fetch once more and verify that `origin/<branch>` resolves to the pushed commit or a descendant containing it.
 
 ## Final Audit
 
-Finish with a concise audit:
+Finish with a concise phase audit:
 
-- OpenSpec change name and archive path.
-- Synced specs.
-- Scoped commit SHA.
-- Pushed branch and verified remote SHA.
-- Validation commands run and results.
-- Any skipped validation or non-blocking limitation.
+- OpenSpec change name and each phase's state: completed, verified no-op,
+  blocked, or not reached.
+- Synced specs and archive path when completed.
+- Scoped local commit SHA when completed, even if Push is blocked.
+- Pushed branch and verified remote SHA only when Push succeeds.
+- Validation commands run, results, and the first blocking condition.
 
-If any step stopped, do not present the workflow as complete. List blockers and the smallest safe next step.
+If any step stopped, do not present the workflow as complete. Preserve the
+completed prefix and list the smallest safe next step.
 
 ## Boundaries
 
@@ -160,6 +217,8 @@ If any step stopped, do not present the workflow as complete. List blockers and 
 - Do not create a release, tag, pull request, release workflow, or branch-integration branch unless separately requested.
 - Do not use provider merge APIs in this workflow.
 - Preserve the normal OpenSpec sync-before-archive ordering.
+- Do not treat the macro as atomic or make an earlier safe phase wait for a
+  later Commit or Push condition.
 - Never use destructive Git operations, force pushes, rebases, resets, restores, or broad cleanups.
 - Never sweep unrelated dirty files into the commit.
 - Never claim that a rejected push succeeded.
