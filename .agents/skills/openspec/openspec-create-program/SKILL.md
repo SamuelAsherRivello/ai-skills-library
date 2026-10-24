@@ -3,6 +3,17 @@ name: openspec-create-program
 description: Turn a multi-part initiative into a durable program artifact and multiple coordinated OpenSpec proposals. Use when asked to plan a program of related changes, dependencies, and parallel workstreams.
 ---
 
+## Delegated workflow presentation
+
+This is a wrapper/macro, not an independent thread state. Follow the shared
+[title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). Delegate title, verified progress and
+footer updates to openspec-propose. Read and invoke the owning child workflow
+at each applicable phase. Do not prepend a macro prefix, append a second
+footer, restore an old title between calls, or repeat a child's question on
+an unchanged check. Preserve child checkpoints and human overrides.
+Editing this skill does not execute its children.
+
 # OpenSpec create program
 
 Create a program and its child proposals. This plans work only. It does not start implementation, create threads, or authorize publication.

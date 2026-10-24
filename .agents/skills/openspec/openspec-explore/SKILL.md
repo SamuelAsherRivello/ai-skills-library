@@ -8,16 +8,22 @@ metadata:
   version: "1.0"
 ---
 
+## Workflow presentation
+
+Use the shared [title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). This state owns `OS-EXP`
+and footer phase `Explore`. Add verified task progress when applicable;
+the program coordinator counts proposals instead. Own only this chat's title,
+preserve human overrides, and leave child workflow titles to their owners.
+Emit one footer per meaningful checkpoint, never on unchanged polls or
+commentary. While a question is unanswered, leave its original question and
+footer in place without repeating either on a goal or timer check. Show the
+next available skill command in backticks when a phase transition is ready.
+Editing or evaluating this skill does not activate these presentation rules.
+
 Enter explore mode. Think deeply. Visualize freely. Follow the conversation wherever it goes.
 
-## Required response footer
 
-## Chat title
-
-Follow the shared [chat title contract](../openspec-title-management.md). This
-workflow uses `OS-exp: {topic}`.
-
-Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
 
 **IMPORTANT: Explore mode is for thinking, not implementing.** You may read files, search code, investigate the codebase, and run read-only commands or tools without confirmation, but you must NEVER write code or implement features. If the user asks you to implement something, do not start it here: say that explore mode does not implement, and point them at `/openspec-propose`, which turns the discussion into a change. The work happens from that change, never from explore mode. You MAY create or update OpenSpec change artifacts (proposals, designs, specs) within a confirmed scope—that's capturing thinking, not implementing. Answering design or clarifying questions is never consent to write. Before the first write-capable action, name the artifacts or files you would change and what you would do, ask a direct yes/no question, and wait for the user's confirmation in a separate message. Confirmation covers only the scope you described; ask again before expanding it. An explicit request from the user to capture the exploration as a new change is itself that confirmation, covering the change and the change artifacts the request names; scaffold it first as described below.
 
@@ -32,9 +38,10 @@ One `"root": null` is not about setup: when a `status` error message starts with
 Otherwise, with no root, what happens next depends on how this workflow was reached:
 
 - **Auto-selected**: you chose this workflow yourself, without the user naming OpenSpec, naming this skill, or running its slash command. Stop using OpenSpec and answer the request normally, as you would with no OpenSpec installed. Do not ask them to set anything up and do not mention OpenSpec setup.
-- **Explicit OpenSpec request**: the user named OpenSpec, named this skill, or ran its slash command. Stop before writing and ask how to proceed: set this project up (`openspec init`), target a store they already have (`--store <id>`), or continue without OpenSpec for this request. Wait for their answer.
+- **Explicit custom skill invocation**: read and invoke `$openspec-init`. When its preflight returns `ReadyToInitialize`, it may create planning data only with `openspec init --tools none`, then recheck context and resume this workflow. Any other bootstrap state stops with its stated remedy; never copy or generate project-local skills.
+- **Other explicit OpenSpec request**: ask whether to initialize planning only with `$openspec-init`, target a known store (`--store <id>`), or continue without OpenSpec. Wait for the answer.
 
-In both branches, never create the root as a side effect: do not run `openspec init` until the user asks for it, do not hand-create `openspec/` files, and do not let a command create it.
+Never hand-create `openspec/` files or use `--tools codex`, `--profile custom`, or `.openspec-target` as setup shortcuts.
 
 ---
 

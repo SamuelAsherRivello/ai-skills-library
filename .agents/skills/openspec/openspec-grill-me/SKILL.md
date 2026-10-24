@@ -3,22 +3,30 @@ name: openspec-grill-me
 description: Interview the user about an OpenSpec exploration, proposal, or standalone plan using consistent numbered choices and a recommended answer. Investigate codebase facts directly and reconcile confirmed decisions into authorized planning artifacts. Planning only; never implements code.
 ---
 
+## Workflow presentation
+
+Use the shared [title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). This state owns `OS-GRL`
+and footer phase `Grill`. Add verified task progress when applicable;
+the program coordinator counts proposals instead. Own only this chat's title,
+preserve human overrides, and leave child workflow titles to their owners.
+Emit one footer per meaningful checkpoint, never on unchanged polls or
+commentary. While a question is unanswered, leave its original question and
+footer in place without repeating either on a goal or timer check. Show the
+next available skill command in backticks when a phase transition is ready.
+Editing or evaluating this skill does not activate these presentation rules.
+
 # OpenSpec Grill Me
 
-## Chat title
 
-Follow the shared [chat title contract](../openspec-title-management.md). This
-workflow uses `OS-dec: {change}` and renders the shared footer.
 
 This is a custom OpenSpec companion skill for structured planning interviews. It is intentionally optional and is not part of OpenSpec's core profile.
 
-## Required response footer
-
-Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
-
 Resolve material ambiguity through an adaptive, one-question-at-a-time
-interview. Turn confirmed decisions into coherent planning artifacts when
-authorized. Never edit implementation code or start implementation.
+interview. This skill includes authorization to update the active OpenSpec
+planning artifacts from the user's confirmed answers: Explorer discussions
+while Explorer is active, and the change artifacts once Proposal is active or
+complete. Never edit implementation code or start implementation.
 
 ## Establish Context
 
@@ -32,9 +40,10 @@ authorized. Never edit implementation code or start implementation.
 2. Follow repository instructions for OpenSpec setup and canonical paths.
    Resolve the planning root with `openspec context --json` before reading or
    updating artifacts, and use its returned root and change paths rather than
-   inferring repository-local locations. If context reports no root, do not
-   initialize or hand-create planning files; explain the state and wait for
-   explicit setup authorization.
+   inferring repository-local locations. If context reports no root during an
+   explicit custom workflow, delegate to `$openspec-init`; it may use only
+   `openspec init --tools none` after its source and duplicate preflight. For
+   any other request, explain the state and wait for setup authorization.
 
 3. For an OpenSpec target, use `openspec list --json` and
    `openspec status --change "<name>" --json` as applicable.
@@ -245,20 +254,27 @@ the plan as implementation-ready.
 
 ## Turn Decisions Into Artifact Updates
 
-Track authorization separately from design decisions.
+This skill carries the required planning-artifact write authorization for its
+active OpenSpec target. A clear interview answer authorizes incorporating that
+answer into the active phase's appropriate artifact; do not ask for a separate
+artifact-write confirmation or require a separate `openspec-update-change`
+invocation.
 
-- When the user has explicitly authorized updating the target artifacts,
-  apply confirmed conclusions within that scope. Do not request the same
-  permission again.
-- Answers to interview questions alone do not authorize file edits.
-  Without write authorization, prepare concrete proposed revisions for review.
+- While Explorer is active, update the Explorer discussion or exploration
+  notes with confirmed conclusions, evidence, tradeoffs, and unresolved items.
+- Once Proposal is active, or after Proposal is complete, update the existing
+  change artifacts that own each confirmed conclusion and reconcile affected
+  artifacts for consistency.
+- For a standalone document, continue to require the user's explicit
+  authorization to edit that named document; this built-in authorization
+  applies only to an active OpenSpec Explorer or Proposal target.
 - Capture settled conclusions without waiting for unrelated questions when
-  updates are already authorized.
+  their owning active-phase artifact is available.
 - Revise existing wording coherently. Remove contradictions rather than
   appending a transcript or a competing set of instructions.
 - Preserve unanswered recommendations as unresolved, not approved.
-- For a standalone document, update that document. Do not create a change
-  or modify unrelated instruction files without authorization.
+- Do not create a change or modify unrelated instruction files without
+  explicit authorization.
 - If a decision substantially changes the target's intent, explain the scope
   shift and propose a separate change rather than silently repurposing it.
 
@@ -270,8 +286,9 @@ At completion or budget exhaustion:
 2. Reconcile scope, requirements, design, and tasks so they agree.
 3. Preserve unresolved items as explicit open questions, assumptions,
    deferred work, or non-goals, as appropriate.
-4. For an existing change, follow `openspec-update-change` when available
-   and stay within the authorized artifact scope.
+4. For an existing change, use the reconciliation discipline of
+   `openspec-update-change` when available, but apply the revisions in this
+   invocation under this skill's built-in authorization.
 5. If no change exists and proposal creation is authorized, follow
    `openspec-propose` when available. Do not fabricate decisions to complete
    required artifacts.
@@ -281,8 +298,10 @@ At completion or budget exhaustion:
 
 ## Fold Results Into the Active OpenSpec Phase
 
-At the end of the interview, fold the confirmed decisions and unresolved
-items into the workflow phase that is actually underway:
+As answers are confirmed when their owning artifact is available, and again at
+the end of the interview, fold the confirmed decisions and unresolved items
+into the workflow phase that is actually underway. Do this in the same Grill
+Me invocation; do not require a separate update command or write confirmation:
 
 1. If the explorer phase is underway, update the exploration output or
    exploration notes with the clarified problem, decisions, evidence,

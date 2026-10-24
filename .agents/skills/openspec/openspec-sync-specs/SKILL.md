@@ -8,18 +8,24 @@ metadata:
   version: "1.0"
 ---
 
+## Workflow presentation
+
+Use the shared [title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). This state owns `OS-SYN`
+and footer phase `Sync`. Add verified task progress when applicable;
+the program coordinator counts proposals instead. Own only this chat's title,
+preserve human overrides, and leave child workflow titles to their owners.
+Emit one footer per meaningful checkpoint, never on unchanged polls or
+commentary. While a question is unanswered, leave its original question and
+footer in place without repeating either on a goal or timer check. Show the
+next available skill command in backticks when a phase transition is ready.
+Editing or evaluating this skill does not activate these presentation rules.
+
 Sync delta specs from a change to main specs.
 
 This is an **agent-driven** operation - you will read delta specs and directly edit main specs to apply the changes. This allows intelligent merging (e.g., adding a scenario without copying the entire requirement).
 
-## Required response footer
 
-## Chat title
-
-Follow the shared [chat title contract](../openspec-title-management.md). This
-workflow uses `OS-syn: {change}`.
-
-Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
 
 **Store selection:** If the user names a store (a store is a standalone OpenSpec repo registered on this machine) or the work lives in one, run `openspec store list --json` to discover registered store ids, then pass `--store <id>` on the commands that read or write specs and changes (`new change`, `status`, `instructions`, `list`, `show`, `validate`, `archive`, `doctor`, `context`, `schemas`, `view`). Once selected, treat `--store <id>` as sticky for the rest of the workflow. Every unscoped example of those commands below is shorthand: before running it, append the flag. For example, run `openspec status --change "<name>" --json --store "<id>"`, not the unscoped form shown below. Other commands do not take the flag. Hints printed by commands already carry the flag; keep it on follow-ups. Without a store, commands act on the nearest local `openspec/` root.
 
@@ -30,9 +36,10 @@ One `"root": null` is not about setup: when a `status` error message starts with
 Otherwise, with no root, what happens next depends on how this workflow was reached:
 
 - **Auto-selected**: you chose this workflow yourself, without the user naming OpenSpec, naming this skill, or running its slash command. Stop using OpenSpec and answer the request normally, as you would with no OpenSpec installed. Do not ask them to set anything up and do not mention OpenSpec setup.
-- **Explicit OpenSpec request**: the user named OpenSpec, named this skill, or ran its slash command. Stop before writing and ask how to proceed: set this project up (`openspec init`), target a store they already have (`--store <id>`), or continue without OpenSpec for this request. Wait for their answer.
+- **Explicit custom skill invocation**: read and invoke `$openspec-init`. When its preflight returns `ReadyToInitialize`, it may create planning data only with `openspec init --tools none`, then recheck context and resume this workflow. Any other bootstrap state stops with its stated remedy; never copy or generate project-local skills.
+- **Other explicit OpenSpec request**: ask whether to initialize planning only with `$openspec-init`, target a known store (`--store <id>`), or continue without OpenSpec. Wait for the answer.
 
-In both branches, never create the root as a side effect: do not run `openspec init` until the user asks for it, do not hand-create `openspec/` files, and do not let a command create it.
+Never hand-create `openspec/` files or use `--tools codex`, `--profile custom`, or `.openspec-target` as setup shortcuts.
 
 `<capability-path>` is the spec directory relative to `specs/` (for example, `user-auth` or `identity/user-auth`). Preserve the full path from each delta spec when resolving its main spec.
 

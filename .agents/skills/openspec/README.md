@@ -1,6 +1,8 @@
 # OpenSpec
 
-All OpenSpec workflow responses end with the shared [OpenSpec footer](./openspec-footer.md).
+An active OpenSpec state owner uses the shared [OpenSpec footer](./openspec-footer.md)
+at meaningful user-facing checkpoints. Unchanged polls and wrappers/macros stay
+silent; a wrapper delegates its title and footer to its active child.
 
 Use these workflows to shape, implement, and close a focused repository
 change. The sequence below is a common path, not a required gate.
@@ -9,7 +11,8 @@ change. The sequence below is a common path, not a required gate.
 
 ```text
 Optional discovery: dashboard | explore | grill-me
-Coordination:       orchestrate (project-wide, alongside the normal flow)
+Bootstrap:          init (explicit setup only; planning root, no local skills)
+Coordination:       orchestrate-proposal (one change) | orchestrate-program (one program)
 Plan:               propose <-> update-change
 Build:              apply-change
 Close:              sync-specs -> archive-change -> commit-inclusive
@@ -22,8 +25,11 @@ performs and verifies its normal push, so the close flow does not require a
 second push. Version release is intentionally separate from OpenSpec; use
 [`ai-skills-create-github-release`](../ai-skills-create/ai-skills-create-github-release/SKILL.md)
 only after a releasable remote commit exists.
-`openspec-orchestrate` coordinates existing project chats and is not a required
-step in the single-change flow.
+`openspec-orchestrate-proposal` coordinates one existing change and is not a
+required step in the single-change flow. `openspec-orchestrate-program`
+coordinates a program's proposal owners; `openspec-apply-program` is its
+execution wrapper. `openspec-create-program` delegates planning presentation to
+the proposal workflow that is actively creating a child proposal.
 
 ## User Workflows
 
@@ -34,10 +40,20 @@ step in the single-change flow.
 | 3 | [openspec-archive-change](./openspec-archive-change/SKILL.md) | Archive a completed OpenSpec change. |
 | 4 | [openspec-commit-inclusive](./openspec-commit-inclusive/SKILL.md) | Commit and push all files attributable to one archived change. |
 | 5 | [openspec-dashboard](./openspec-dashboard/SKILL.md) | Open or inspect the local OpenSpec dashboard. |
-| 6 | [openspec-explore](./openspec-explore/SKILL.md) | Investigate a change before committing to implementation. |
-| 7 | [openspec-grill-me](./openspec-grill-me/SKILL.md) | Interview the user to settle planning decisions. |
-| 8 | [openspec-macro-finalize-sync-archive-commit-push](./openspec-macro-finalize-sync-archive-commit-push/SKILL.md) | Run the close sequence for one completed change. |
-| 9 | [openspec-orchestrate](./openspec-orchestrate/SKILL.md) | Coordinate existing project chats to complete their assigned OpenSpec changes; its own managed title uses `OS-orchestrate: {change}`. |
-| 10 | [openspec-propose](./openspec-propose/SKILL.md) | Create a complete change proposal and planning artifacts. |
-| 11 | [openspec-sync-specs](./openspec-sync-specs/SKILL.md) | Sync accepted delta specifications into the main specifications. |
-| 12 | [openspec-update-change](./openspec-update-change/SKILL.md) | Revise an existing change's planning artifacts. |
+| 6 | [openspec-init](./openspec-init/SKILL.md) | Explicitly bootstrap an OpenSpec planning root without local skills. |
+| 7 | [openspec-explore](./openspec-explore/SKILL.md) | Investigate a change before committing to implementation. |
+| 8 | [openspec-grill-me](./openspec-grill-me/SKILL.md) | Interview the user to settle planning decisions. |
+| 9 | [openspec-macro-finalize-sync-archive-commit-push](./openspec-macro-finalize-sync-archive-commit-push/SKILL.md) | Run the close sequence for one completed change. |
+| 10 | [openspec-orchestrate-proposal](./openspec-orchestrate-proposal/SKILL.md) | Coordinate one existing OpenSpec proposal through verified completion. |
+| 11 | [openspec-orchestrate-program](./openspec-orchestrate-program/SKILL.md) | Coordinate an existing program's proposal owners and integrated verification. |
+| 12 | [openspec-apply-program](./openspec-apply-program/SKILL.md) | Execute an existing program through its program coordinator. |
+| 13 | [openspec-create-program](./openspec-create-program/SKILL.md) | Create program planning by delegating proposal creation to its active child. |
+| 14 | [openspec-propose](./openspec-propose/SKILL.md) | Create a complete change proposal and planning artifacts. |
+| 15 | [openspec-sync-specs](./openspec-sync-specs/SKILL.md) | Sync accepted delta specifications into the main specifications. |
+| 16 | [openspec-update-change](./openspec-update-change/SKILL.md) | Revise an existing change's planning artifacts. |
+
+## Legacy metadata
+
+`openspec-release-version` currently contains only `agents/openai.yaml`, not a
+`SKILL.md`. It is metadata, not an executable OpenSpec workflow; do not invent
+or list it as one until an actual workflow is supplied.

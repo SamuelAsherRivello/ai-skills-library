@@ -8,17 +8,33 @@ metadata:
   version: "1.0"
 ---
 
-Implement tasks from an OpenSpec change.
+## Workflow presentation
 
-## Chat title
+Use the shared [title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). This state owns `OS-APP`
+and footer phase `Apply`. Add verified task progress when applicable;
+the program coordinator counts proposals instead. Own only this chat's title,
+preserve human overrides, and leave child workflow titles to their owners.
+Emit one footer per meaningful checkpoint, never on unchanged polls or
+commentary. While a question is unanswered, leave its original question and
+footer in place without repeating either on a goal or timer check. Show the
+next available skill command in backticks when a phase transition is ready.
+Editing or evaluating this skill does not activate these presentation rules.
 
-Follow the shared [chat title contract](../openspec-title-management.md). This
-workflow uses `OS-app: {change} ({complete:02d}/{total:02d})`, with counts
-confirmed from the OpenSpec CLI, and renders the shared footer.
+Implement an OpenSpec change through a verified task loop. Keep iterating until every task is complete, the user interrupts, or a genuine blocker requires their decision.
 
-## Required response footer
+## Continuation invariant
 
-Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
+While the OpenSpec change is `ready` and reports remaining tasks, immediately
+start the next pending task. A completed task, passing test, status update,
+progress report, required footer, or milestone is never a stopping condition.
+`Next: Continue` means continue automatically; it does not ask the user to
+reply or invoke Apply again.
+
+Do not end a user-facing response while ready tasks remain. End the workflow
+only when the CLI reports `all_done`, the user interrupts, or a genuine
+blocker requires a user decision. If a check fails, fix the relevant task and
+continue the loop.
 
 **Store selection:** If the user names a store (a store is a standalone OpenSpec repo registered on this machine) or the work lives in one, run `openspec store list --json` to discover registered store ids, then pass `--store <id>` on the commands that read or write specs and changes (`new change`, `status`, `instructions`, `list`, `show`, `validate`, `archive`, `doctor`, `context`, `schemas`, `view`). Once selected, treat `--store <id>` as sticky for the rest of the workflow. Every unscoped example of those commands below is shorthand: before running it, append the flag. For example, run `openspec status --change "<name>" --json --store "<id>"`, not the unscoped form shown below. Other commands do not take the flag. Hints printed by commands already carry the flag; keep it on follow-ups. Without a store, commands act on the nearest local `openspec/` root.
 
@@ -29,9 +45,10 @@ One `"root": null` is not about setup: when a `status` error message starts with
 Otherwise, with no root, what happens next depends on how this workflow was reached:
 
 - **Auto-selected**: you chose this workflow yourself, without the user naming OpenSpec, naming this skill, or running its slash command. Stop using OpenSpec and answer the request normally, as you would with no OpenSpec installed. Do not ask them to set anything up and do not mention OpenSpec setup.
-- **Explicit OpenSpec request**: the user named OpenSpec, named this skill, or ran its slash command. Stop before writing and ask how to proceed: set this project up (`openspec init`), target a store they already have (`--store <id>`), or continue without OpenSpec for this request. Wait for their answer.
+- **Explicit custom skill invocation**: read and invoke `$openspec-init`. When its preflight returns `ReadyToInitialize`, it may create planning data only with `openspec init --tools none`, then recheck context and resume this workflow. Any other bootstrap state stops with its stated remedy; never copy or generate project-local skills.
+- **Other explicit OpenSpec request**: ask whether to initialize planning only with `$openspec-init`, target a known store (`--store <id>`), or continue without OpenSpec. Wait for the answer.
 
-In both branches, never create the root as a side effect: do not run `openspec init` until the user asks for it, do not hand-create `openspec/` files, and do not let a command create it.
+Never hand-create `openspec/` files or use `--tools codex`, `--profile custom`, or `.openspec-target` as setup shortcuts.
 
 **Input**: Optionally specify a change name (e.g., `/openspec-apply-change add-auth`). If omitted, check if it can be inferred from conversation context. If vague or ambiguous you MUST prompt for available changes.
 
@@ -114,12 +131,14 @@ In both branches, never create the root as a side effect: do not run `openspec i
 
    For each pending task:
    - Show which task is being worked on
+   - Keep the task loop active between tasks. Use commentary for progress if
+     useful, but do not send a final response after a task or validation step.
    - Make the code changes required
    - Keep changes minimal and focused
    - Before editing, confirm the checkbox at the returned `sourcePath` and `line` still matches the task description; if it does not, rerun the apply instructions and use the refreshed location
    - Mark the task complete at its returned `sourcePath` and `line`: `- [ ]` → `- [x]`
    - Rerun the apply instructions and confirm that task is now done and progress changed
-   - Continue to next task
+   - Immediately select and continue to the next task when any remain
 
    **Pause if:**
    - Task is unclear → ask for clarification
@@ -128,13 +147,15 @@ In both branches, never create the root as a side effect: do not run `openspec i
    - Error or blocker encountered → report and wait for guidance
    - User interrupts
 
-7. **On completion or pause, show status**
+7. **On completion or genuine pause, show status**
 
    Display:
    - Tasks completed this session
    - Overall progress: "N/M tasks complete"
    - If all done: suggest archive
    - If paused: explain why and wait for guidance
+
+   A completed task or progress milestone is not a pause.
 
 **Output During Implementation**
 
@@ -189,6 +210,10 @@ What would you like to do?
 
 **Guardrails**
 - Keep going through tasks until done or blocked
+- Treat `ready` with remaining tasks as mandatory execution, not permission
+  to hand work back to the user.
+- Do not let the OpenSpec footer, a progress report, or a completed validation
+  end the apply loop while ready tasks remain.
 - Always read context files before starting (from the apply instructions output)
 - If task is ambiguous, pause and ask before implementing
 - If implementation reveals issues, pause and suggest artifact updates

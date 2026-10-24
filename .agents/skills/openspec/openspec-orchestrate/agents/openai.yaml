@@ -1,4 +1,0 @@
-interface:
-  display_name: "OpenSpec Orchestrate"
-  short_description: "Coordinate project chats and finish assigned work"
-  default_prompt: "Use $openspec-orchestrate to coordinate the open chats in this project, complete and archive their assigned OpenSpec changes, unblock existing work, and establish periodic progress checks."

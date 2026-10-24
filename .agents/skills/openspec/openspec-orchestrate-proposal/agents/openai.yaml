@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenSpec Orchestrate Proposal"
+  short_description: "Coordinate one OpenSpec proposal through completion"
+  default_prompt: "Use $openspec-orchestrate-proposal to coordinate the owners and subtasks of one existing OpenSpec proposal, verify its completion, and preserve unrelated project work."

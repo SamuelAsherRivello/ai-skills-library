@@ -8,16 +8,35 @@ metadata:
   version: "1.0"
 ---
 
+## Delegated workflow presentation
+
+This is a wrapper/macro, not an independent thread state. Follow the shared
+[title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). Delegate title, verified progress and
+footer updates to openspec-apply-change. Read and invoke the owning child workflow
+at each applicable phase. Do not prepend a macro prefix, append a second
+footer, restore an old title between calls, or repeat a child's question on
+an unchanged check. Preserve child checkpoints and human overrides.
+Editing this skill does not execute its children.
+
 # Apply OpenSpec Change With Playwright
 
-## Chat title
 
-Follow the shared [chat title contract](../openspec-title-management.md). This
-workflow uses `OS-apw: {change} ({complete:02d}/{total:02d})`, with counts
-confirmed by the wrapped apply workflow, and renders the shared footer.
 
 This skill is a wrapper around `$openspec-apply-change`. It adds browser
 validation without changing the behavior or instructions of that skill.
+
+## Continuation invariant
+
+This wrapper inherits the apply skill's continuation invariant. While the
+underlying change is `ready` and has remaining tasks, immediately continue
+to the next pending task. Do not end a response for a task milestone, test
+result, status update, or footer.
+
+Browser validation is the final validation phase after implementation tasks are
+complete. If it reveals a defect, return to the relevant OpenSpec task, fix it,
+and continue the task loop; do not report a final outcome until the required
+browser flow passes or a genuine blocker requires the user's decision.
 
 ## Workflow
 
@@ -26,15 +45,18 @@ validation without changing the behavior or instructions of that skill.
    `$openspec-apply-change` instead.
 3. Invoke `$openspec-apply-change` and follow it exactly for change selection,
    status, context files, task implementation, checkbox updates, pause states,
-   and completion reporting.
+   and completion reporting. Do not issue an interim final response while its
+   ready task loop has remaining work.
 4. After the implementation tasks are complete, use `$playwright-cli` to start
    or connect to the application and exercise the requested user-facing flows.
    Use the repository's documented start command and local URL.
 5. Inspect snapshots and relevant console or request output. If validation
    reveals a defect, handle it within the OpenSpec workflow and rerun the
    affected validation before reporting completion.
-6. Report both the OpenSpec progress and the Playwright validation result. Do
-   not report completion while a required browser flow is failing.
+6. Report both the OpenSpec progress and the Playwright validation result only
+   after all required tasks and the required browser flow pass, or when a
+   genuine blocker requires the user's decision. Do not report completion while
+   a required browser flow is failing.
 
 Do not modify `$openspec-apply-change`, create unrelated OpenSpec artifacts, or
 infer deployment or publishing work from this skill.

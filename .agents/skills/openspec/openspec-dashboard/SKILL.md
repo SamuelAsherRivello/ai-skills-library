@@ -3,12 +3,22 @@ name: openspec-dashboard
 description: Open, set up, or inspect the local OpenSpecUI dashboard for an OpenSpec project. Check required CLI dependencies first, install or initialize missing pieces when authorized, and keep the dashboard read-only unless the user explicitly requests an action.
 ---
 
+## Workflow presentation
+
+Use the shared [title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). This state owns `OS-DSH`
+and footer phase `Dashboard`. Add verified task progress when applicable;
+the program coordinator counts proposals instead. Own only this chat's title,
+preserve human overrides, and leave child workflow titles to their owners.
+Emit one footer per meaningful checkpoint, never on unchanged polls or
+commentary. While a question is unanswered, leave its original question and
+footer in place without repeating either on a goal or timer check. Show the
+next available skill command in backticks when a phase transition is ready.
+Editing or evaluating this skill does not activate these presentation rules.
+
 # OpenSpec Dashboard
 
-## Chat title
 
-Follow the shared [chat title contract](../openspec-title-management.md). This
-workflow uses `OS-dsh: {change}` and renders the shared footer.
 
 Use this skill when the user asks to open, inspect, repair, or use the local OpenSpecUI dashboard for an OpenSpec project.
 
@@ -24,8 +34,9 @@ project lifecycle skills as needed:
 - `ai-skills-project-run-stop` for stopping only the current project's Vite
   server.
 
-Resolve these skills from the current project's `.agents/skills/` first, then
-from the installed global skills. Do not use the Vite lifecycle skills to
+Resolve the installed canonical global skills first. Use a project's local
+copy only when it is a confirmed intentional private fork; never merge the two
+sources or create a duplicate as a fallback. Do not use the Vite lifecycle skills to
 start, stop, or inspect the OpenSpecUI server itself. Keep the dashboard and
 project preview as separate servers, and preserve each skill's ownership and
 one-server invariants.
@@ -41,7 +52,7 @@ Before launching the dashboard, check the current project and required CLIs.
    - `openspecui --help`
 4. If OpenSpec is missing, inspect the project documentation for its expected install command. If no project-specific command exists, ask for approval before installing the OpenSpec CLI globally with npm.
 5. If OpenSpecUI is missing, ask for approval before installing the dashboard CLI globally with npm.
-6. If the project is not initialized for OpenSpec, explain that initialization will create or update project planning files and ask for explicit approval before running `openspec init` or an equivalent setup command.
+6. If the project is not initialized for OpenSpec, use `$openspec-init` for source and duplicate preflight. It may initialize planning data only with `openspec init --tools none` after an explicit custom workflow invocation; otherwise ask for setup authorization.
 7. If setup or installation fails, report the exact failing command and concrete error. Do not claim the dashboard is unavailable without first attempting the relevant check or setup path.
 
 Prefer existing local commands and project scripts over global installs. Never ask the user to paste secrets. Do not modify implementation code as part of dashboard setup.
@@ -93,23 +104,14 @@ When the user asks to look at the dashboard, summarize the actual visible state:
 
 Do not click workflow actions such as Apply, Archive, Continue, Fast-forward, Verify, or destructive/irreversible controls unless the user explicitly asks for that action.
 
-## Configure Codex As The Default Agent
+## Configure Custom OpenSpec Workflows
 
-When the user explicitly asks to configure the dashboard or project for Codex,
-use the dashboard's **Settings → Agent Integrations → Manage** surface. Select
-**Codex** in Agent Inventory and run the server-owned initialization command.
-OpenSpecUI currently invokes:
-
-```powershell
-openspec init --tools codex --profile custom
-```
-
-This creates or refreshes the project-local `.agents/skills/` OpenSpec skills
-and records `codex` in `.agents/skills/.openspec-target`; it does not install
-the Codex application or modify product implementation code. Treat this as a
-project-planning configuration write: do it only when the user explicitly asks
-for Codex setup, then verify the command exits successfully and the target file
-contains `codex`. Reload the dashboard before reporting the result.
+Do not use OpenSpecUI's Agent Integrations generator for the custom suite:
+`--profile custom` means OpenSpec's profile, not this library. For an explicit
+custom setup request, run `$openspec-init` and retain the globally installed
+custom suite. It creates planning data with `openspec init --tools none` only;
+it never generates project-local skills or `.openspec-target`. Reload the
+dashboard after initialization and verify the resolved planning root.
 
 ## Windows CLI-Runner Recovery
 

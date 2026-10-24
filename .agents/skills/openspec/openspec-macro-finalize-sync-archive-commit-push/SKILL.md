@@ -3,12 +3,20 @@ name: openspec-macro-finalize-sync-archive-commit-push
 description: "Run an ordered macro of OpenSpec finalization skills after apply: verify readiness, sync specs, archive, commit scoped files, then push normally when the remote branch is unchanged. Stop with clear blockers instead of creating release infrastructure, merging divergent branches, or sweeping unrelated work."
 ---
 
+## Delegated workflow presentation
+
+This is a wrapper/macro, not an independent thread state. Follow the shared
+[title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). Delegate title, verified progress and
+footer updates to openspec-sync-specs, openspec-archive-change and openspec-commit-inclusive. Read and invoke the owning child workflow
+at each applicable phase. Do not prepend a macro prefix, append a second
+footer, restore an old title between calls, or repeat a child's question on
+an unchanged check. Preserve child checkpoints and human overrides.
+Editing this skill does not execute its children.
+
 # OpenSpec Macro: Finalize, Sync, Archive, Commit, Push
 
-## Chat title
 
-Follow the shared [chat title contract](../openspec-title-management.md). This
-workflow uses `OS-fin: {change}` and renders the shared footer.
 
 Use only when the user explicitly asks to finish one completed OpenSpec change through sync, archive, Git commit, and a normal push. This macro coordinates the applicable finalization skills in that required order: `openspec-sync-specs`, `openspec-archive-change`, and `openspec-commit-inclusive`, followed by a normal push. It is not a substitute for implementation, review, release, tagging, pull requests, or remote branch integration.
 

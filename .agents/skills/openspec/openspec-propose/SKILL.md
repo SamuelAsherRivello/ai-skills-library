@@ -8,16 +8,22 @@ metadata:
   version: "1.0"
 ---
 
+## Workflow presentation
+
+Use the shared [title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). This state owns `OS-PRP`
+and footer phase `Propose`. Add verified task progress when applicable;
+the program coordinator counts proposals instead. Own only this chat's title,
+preserve human overrides, and leave child workflow titles to their owners.
+Emit one footer per meaningful checkpoint, never on unchanged polls or
+commentary. While a question is unanswered, leave its original question and
+footer in place without repeating either on a goal or timer check. Show the
+next available skill command in backticks when a phase transition is ready.
+Editing or evaluating this skill does not activate these presentation rules.
+
 Propose a new change - create the change and generate all artifacts in one step.
 
-## Chat title
 
-Follow the shared [chat title contract](../openspec-title-management.md). This
-workflow uses `OS-prp: {change}` and renders the shared footer.
-
-## Required response footer
-
-Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
 
 **Planning boundary**: This workflow creates planning artifacts only. The user request that selected or triggered this workflow authorizes planning only, even if it asks to build or fix something. Do not edit project code. After the planning artifacts are complete, stop. Do not start implementation in the same response, even if the initial request asks for it. Wait for a new user request after the artifacts are presented; then start the apply workflow.
 
@@ -42,9 +48,10 @@ One `"root": null` is not about setup: when a `status` error message starts with
 Otherwise, with no root, what happens next depends on how this workflow was reached:
 
 - **Auto-selected**: you chose this workflow yourself, without the user naming OpenSpec, naming this skill, or running its slash command. Stop using OpenSpec and answer the request normally, as you would with no OpenSpec installed. Do not ask them to set anything up and do not mention OpenSpec setup.
-- **Explicit OpenSpec request**: the user named OpenSpec, named this skill, or ran its slash command. Stop before writing and ask how to proceed: set this project up (`openspec init`), target a store they already have (`--store <id>`), or continue without OpenSpec for this request. Wait for their answer.
+- **Explicit custom skill invocation**: read and invoke `$openspec-init`. When its preflight returns `ReadyToInitialize`, it may create planning data only with `openspec init --tools none`, then recheck context and resume this workflow. Any other bootstrap state stops with its stated remedy; never copy or generate project-local skills.
+- **Other explicit OpenSpec request**: ask whether to initialize planning only with `$openspec-init`, target a known store (`--store <id>`), or continue without OpenSpec. Wait for the answer.
 
-In both branches, never create the root as a side effect: do not run `openspec init` until the user asks for it, do not hand-create `openspec/` files, and do not let a command create it.
+Never hand-create `openspec/` files or use `--tools codex`, `--profile custom`, or `.openspec-target` as setup shortcuts.
 
 **Input**: The user's request should include a change name (kebab-case) OR a description of what they want to build.
 

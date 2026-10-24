@@ -51,28 +51,34 @@ Assert (Test-Path -LiteralPath $titleContract -PathType Leaf) 'OpenSpec title co
 Assert ((Get-Content -LiteralPath $footer -Raw).Contains('Coordination: Standalone')) 'OpenSpec footer lacks standalone coordination context.'
 
 $titleSlots = @{
-    'openspec-explore' = 'OS-exp:'
-    'openspec-grill-me' = 'OS-dec:'
-    'openspec-dashboard' = 'OS-dsh:'
-    'openspec-propose' = 'OS-prp:'
-    'openspec-update-change' = 'OS-rev:'
-    'openspec-apply-change' = 'OS-app:'
-    'openspec-apply-change-with-playwright' = 'OS-apw:'
-    'openspec-sync-specs' = 'OS-syn:'
-    'openspec-archive-change' = 'OS-arc:'
-    'openspec-commit-inclusive' = 'OS-cmt:'
-    'openspec-macro-finalize-sync-archive-commit-push' = 'OS-fin:'
-    'openspec-orchestrate' = 'OS-orc:'
+    'openspec-dashboard' = 'OS-DSH'
+    'openspec-init' = 'OS-INI'
+    'openspec-explore' = 'OS-EXP'
+    'openspec-grill-me' = 'OS-GRL'
+    'openspec-propose' = 'OS-PRP'
+    'openspec-update-change' = 'OS-REV'
+    'openspec-apply-change' = 'OS-APP'
+    'openspec-sync-specs' = 'OS-SYN'
+    'openspec-archive-change' = 'OS-ARC'
+    'openspec-commit-inclusive' = 'OS-CMT'
+    'openspec-orchestrate-proposal' = 'OS-ORC'
+    'openspec-orchestrate-program' = 'OS-ORP'
 }
 foreach ($entry in $titleSlots.GetEnumerator()) {
     $content = Get-Content -LiteralPath (Join-Path (Join-Path $openSpecRoot $entry.Key) 'SKILL.md') -Raw
     Assert ($content.Contains('../openspec-title-management.md')) "OpenSpec skill lacks title contract: $($entry.Key)"
-    Assert ($content.Contains($entry.Value)) "OpenSpec skill has the wrong title slot: $($entry.Key)"
+    Assert ($content.Contains("owns ``$($entry.Value)``")) "OpenSpec skill has the wrong title slot: $($entry.Key)"
 }
 
-$orchestrationConfig = Get-Content -LiteralPath (Join-Path $openSpecRoot 'openspec-orchestrate\references\openspec-orchestrate-config.md') -Raw
-Assert ($orchestrationConfig.Contains('[OS-orc: {change}]')) 'Orchestrator title format is missing.'
-Assert ($orchestrationConfig.Contains('[{prev-name}]')) 'Managed agent bracket format is missing.'
+foreach ($wrapper in @('openspec-apply-change-with-playwright', 'openspec-apply-program', 'openspec-create-program', 'openspec-macro-finalize-sync-archive-commit-push')) {
+    $content = Get-Content -LiteralPath (Join-Path (Join-Path $openSpecRoot $wrapper) 'SKILL.md') -Raw
+    Assert ($content.Contains('../openspec-title-management.md')) "OpenSpec wrapper lacks title contract: $wrapper"
+    Assert ($content.Contains('## Delegated workflow presentation')) "OpenSpec wrapper owns presentation unexpectedly: $wrapper"
+}
+
+$orchestrationConfig = Get-Content -LiteralPath (Join-Path $openSpecRoot 'openspec-orchestrate-proposal\references\openspec-orchestrate-proposal-config.md') -Raw
+Assert ($orchestrationConfig.Contains('OS-ORC: {change}')) 'Proposal coordinator title format is missing.'
+Assert (-not $orchestrationConfig.Contains('OS-orc:')) 'Retired lower-case proposal coordinator title remains.'
 
 foreach ($skillName in @('ai-skills-library-push', 'ai-skills-library-pull', 'ai-skills-library-move-global', 'ai-skills-library-move-project')) {
     $content = Get-Content -LiteralPath (Join-Path (Join-Path $skillsRoot 'ai-skills-library') "$skillName\SKILL.md") -Raw

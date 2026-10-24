@@ -3,6 +3,17 @@ name: openspec-apply-program
 description: Implement an existing OpenSpec program through its child proposals and integrated acceptance checks. Use when asked to apply a named program, rather than create its plans or apply one change.
 ---
 
+## Delegated workflow presentation
+
+This is a wrapper/macro, not an independent thread state. Follow the shared
+[title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). Delegate title, verified progress and
+footer updates to openspec-orchestrate-program. Read and invoke the owning child workflow
+at each applicable phase. Do not prepend a macro prefix, append a second
+footer, restore an old title between calls, or repeat a child's question on
+an unchanged check. Preserve child checkpoints and human overrides.
+Editing this skill does not execute its children.
+
 # OpenSpec apply program
 
 Apply a program by ID or artifact path. Creating, editing or evaluating this skill does not invoke it or authorize implementation.

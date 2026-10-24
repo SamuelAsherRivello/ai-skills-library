@@ -5,18 +5,24 @@ metadata:
   short-description: Inclusive commit for archived OpenSpec work
 ---
 
+## Workflow presentation
+
+Use the shared [title contract](../openspec-title-management.md) and
+[footer contract](../openspec-footer.md). This state owns `OS-CMT`
+and footer phase `Commit`. Add verified task progress when applicable;
+the program coordinator counts proposals instead. Own only this chat's title,
+preserve human overrides, and leave child workflow titles to their owners.
+Emit one footer per meaningful checkpoint, never on unchanged polls or
+commentary. While a question is unanswered, leave its original question and
+footer in place without repeating either on a goal or timer check. Show the
+next available skill command in backticks when a phase transition is ready.
+Editing or evaluating this skill does not activate these presentation rules.
+
 # OpenSpec Inclusive Commit
 
-## Chat title
 
-Follow the shared [chat title contract](../openspec-title-management.md). This
-workflow uses `OS-cmt: {change}` and renders the shared footer.
 
 Use this skill only when the user explicitly invokes it to commit one completed OpenSpec proposal. It favors frequent POC commits at whole-file granularity: every related file is committed completely, while wholly unrelated files are excluded.
-
-## Required response footer
-
-Before every response, including blocked, failed, or clarification responses, read and render the shared [OpenSpec footer](../openspec-footer.md) as the final content. Do not place any text after it.
 
 ## Branch policy
 
