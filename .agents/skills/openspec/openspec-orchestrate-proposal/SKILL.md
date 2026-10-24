@@ -8,8 +8,10 @@ description: Coordinate owners and subtasks for one existing OpenSpec proposal t
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-ORC`
 and footer phase `Orchestrate proposal`. Add verified task progress when applicable;
-the program coordinator counts proposals instead. Own only this chat's title,
-preserve human overrides, and leave child workflow titles to their owners.
+the program coordinator counts proposals instead. Delegate every title read and
+write for this chat to `$openspec-title-management`; it preserves a normalized
+user subject, restores `OS-ORC`, and refreshes verified progress. Leave child
+workflow titles to their owners.
 Emit one footer per meaningful checkpoint, never on unchanged polls or
 commentary. While a question is unanswered, leave its original question and
 footer in place without repeating either on a goal or timer check. Show the
@@ -32,7 +34,7 @@ Keep a durable ledger under the project's permitted generated-output directory. 
 
 ## Coordinator naming
 
-Read [the naming configuration](references/openspec-orchestrate-proposal-config.md). Name only this coordinator chat using the configured single-proposal title and shared title contract. Preserve child OpenSpec phase/progress titles and human title overrides. Do not run a project-wide naming pass. Naming failure must not block coordination.
+Read [the naming configuration](references/openspec-orchestrate-proposal-config.md). Delegate only this coordinator chat to `$openspec-title-management` using the configured single-proposal prefix and shared title contract. Preserve child OpenSpec phase/progress titles; their owners invoke the manager for their own chats. Do not run a project-wide naming pass. Naming failure must not block coordination.
 
 ## Continue the authorized work
 

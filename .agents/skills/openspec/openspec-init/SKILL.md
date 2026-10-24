@@ -8,9 +8,10 @@ allowed-tools: Bash(openspec:*)
 
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-INI` and footer
-phase `Initialize`. There is no task count until a change exists. Own only this
-chat's title, preserve human overrides, and leave child workflow titles to their
-owners. Emit a footer only at a meaningful checkpoint; never repeat a pending
+phase `Initialize`. There is no task count until a change exists. Delegate every
+title read and write for this chat to `$openspec-title-management`; it preserves
+a normalized user subject and restores `OS-INI`. Leave child workflow titles to
+their owners. Emit a footer only at a meaningful checkpoint; never repeat a pending
 question or footer on an unchanged check. Editing this skill does not initialize
 a project.
 

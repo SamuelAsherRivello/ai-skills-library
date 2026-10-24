@@ -10,13 +10,14 @@ motivation and the accompanying delta specs for required behavior.
 
 **Goals:**
 - Give every OpenSpec skill one unambiguous three-letter `OS` slug.
-- Keep optional title changes safe, observable, and subordinate to user edits.
+- Keep optional title changes safe, observable, and responsive to user-edited
+  subjects.
 - Preserve an orchestrated agent's title exactly except for one bracket pair.
 - Keep the repository catalog canonical, then synchronize its finished skills
   to global discovery before normal repository publication.
 
 **Non-Goals:**
-- Rename user-managed chats after an override or unrelated request.
+- Correct user spelling, punctuation, capitalization, or subjective wording.
 - Introduce a background title service or change unrelated skill categories.
 - Infer task progress outside the two apply workflows.
 
@@ -27,12 +28,19 @@ motivation and the accompanying delta specs for required behavior.
    and `orc`. This keeps titles short and avoids collision with long skill
    names. Using full skill names was rejected because it makes titles harder to
    scan.
-2. Apply titles derive progress from the current OpenSpec task count rather
-   than a guessed phase. This makes `(07/10)` verifiable. Other workflows omit
-   progress because their lifecycle steps are not the change task list.
+2. Every owner derives an applicable task or proposal suffix from current
+   verified OpenSpec progress rather than a guessed phase. It rebuilds that
+   suffix at every meaningful title update and after observed progress changes.
+   An owner without trustworthy applicable tracking omits the suffix instead of
+   inventing a count.
 3. Skills use the supported thread-title capability automatically when it is
-   available, and have a no-op/report fallback. Changing the existing title
-   skill's explicit-user-title contract is not required.
+   available, and have a no-op/report fallback. The active owner reads the
+   current title before each write. A changed title supplies a user subject:
+   remove repeated `OS-<slug>:` fragments, normalize whitespace, and collapse
+   only exact adjacent repeated text (including an exact repeated final word or
+   phrase). The active owner then renders its own prefix and current verified
+   suffix. It does not correct spelling, punctuation, capitalization, or other
+   subjective wording.
 4. The orchestrator retains its ledger-based user-override detection. Its own
    title uses `[OS-orc: {change}]`; managed agents use only `[{old-name}]`.
    Existing bracketed managed titles are treated as idempotent.
@@ -46,11 +54,12 @@ motivation and the accompanying delta specs for required behavior.
 ## Risks / Trade-offs
 
 - [A user edit can race a title update] → Refresh and compare the title before
-  every write; record an uncertain result as an override until verified.
+  every write; use the latest title as the user subject, then verify the
+  normalized rebuilt title before retrying.
 - [Title APIs differ by chat backend] → Use the supported title tool with the
   correct backend and skip, rather than retrying blindly, when unavailable.
-- [A title lacks a recognizable change name] → Preserve the user title and
-  omit the optional update instead of inventing a summary.
+- [A title lacks a recognizable change name] → Preserve its normalized text as
+  the subject and omit only an unverified progress suffix.
 
 ## Migration Plan
 

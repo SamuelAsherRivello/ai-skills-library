@@ -8,8 +8,10 @@ description: Interview the user about an OpenSpec exploration, proposal, or stan
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-GRL`
 and footer phase `Grill`. Add verified task progress when applicable;
-the program coordinator counts proposals instead. Own only this chat's title,
-preserve human overrides, and leave child workflow titles to their owners.
+the program coordinator counts proposals instead. Delegate every title read and
+write for this chat to `$openspec-title-management`; it preserves a normalized
+user subject, restores `OS-GRL`, and refreshes verified progress. Leave child
+workflow titles to their owners.
 Emit one footer per meaningful checkpoint, never on unchanged polls or
 commentary. While a question is unanswered, leave its original question and
 footer in place without repeating either on a goal or timer check. Show the

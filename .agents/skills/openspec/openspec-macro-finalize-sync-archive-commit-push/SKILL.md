@@ -11,7 +11,8 @@ This is a wrapper/macro, not an independent thread state. Follow the shared
 footer updates to openspec-sync-specs, openspec-archive-change and openspec-commit-inclusive. Read and invoke the owning child workflow
 at each applicable phase. Do not prepend a macro prefix, append a second
 footer, restore an old title between calls, or repeat a child's question on
-an unchanged check. Preserve child checkpoints and human overrides.
+an unchanged check. The active child invokes `$openspec-title-management` for
+its own current-chat title; preserve that child's checkpoints.
 Editing this skill does not execute its children.
 
 # OpenSpec Macro: Finalize, Sync, Archive, Commit, Push

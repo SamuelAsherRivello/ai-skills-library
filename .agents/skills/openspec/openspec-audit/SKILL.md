@@ -8,8 +8,10 @@ allowed-tools: Bash(openspec:*) Bash(git:*)
 
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-AUD` and footer
-phase `Audit`. Show verified task progress only for a selected change. Own only
-this chat's title, preserve human overrides, and emit a footer only for a
+phase `Audit`. Show verified task progress only for a selected change. Delegate
+every title read and write for this chat to `$openspec-title-management`; it
+preserves a normalized user subject, restores `OS-AUD`, and refreshes verified
+progress. Emit a footer only for a
 material result, blocker, or requested recap. Editing or evaluating this skill
 does not activate these presentation rules.
 

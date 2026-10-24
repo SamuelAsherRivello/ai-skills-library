@@ -9,6 +9,7 @@ param(
 $ErrorActionPreference = 'Stop'
 $requiredSkills = @(
     'openspec-init',
+    'openspec-title-management',
     'openspec-audit',
     'openspec-dashboard',
     'openspec-explore',

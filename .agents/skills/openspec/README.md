@@ -51,7 +51,8 @@ the proposal workflow that is actively creating a child proposal.
 | 14 | [openspec-create-program](./openspec-create-program/SKILL.md) | Create program planning by delegating proposal creation to its active child. |
 | 15 | [openspec-propose](./openspec-propose/SKILL.md) | Create a complete change proposal and planning artifacts. |
 | 16 | [openspec-sync-specs](./openspec-sync-specs/SKILL.md) | Sync accepted delta specifications into the main specifications. |
-| 17 | [openspec-update-change](./openspec-update-change/SKILL.md) | Revise an existing change's planning artifacts. |
+| 17 | [openspec-title-management](./openspec-title-management/SKILL.md) | Centrally rebuild active OpenSpec thread titles. |
+| 18 | [openspec-update-change](./openspec-update-change/SKILL.md) | Revise an existing change's planning artifacts. |
 
 ## Legacy metadata
 

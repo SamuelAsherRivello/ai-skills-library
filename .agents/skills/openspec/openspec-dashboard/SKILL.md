@@ -8,8 +8,10 @@ description: Open, set up, or inspect the local OpenSpecUI dashboard for an Open
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-DSH`
 and footer phase `Dashboard`. Add verified task progress when applicable;
-the program coordinator counts proposals instead. Own only this chat's title,
-preserve human overrides, and leave child workflow titles to their owners.
+the program coordinator counts proposals instead. Delegate every title read and
+write for this chat to `$openspec-title-management`; it preserves a normalized
+user subject, restores `OS-DSH`, and refreshes verified progress. Leave child
+workflow titles to their owners.
 Emit one footer per meaningful checkpoint, never on unchanged polls or
 commentary. While a question is unanswered, leave its original question and
 footer in place without repeating either on a goal or timer check. Show the

@@ -23,3 +23,9 @@
 - [x] 4.1 Update push, pull, and move lifecycle skill instructions and shared helper behavior to compare conflicts by quality and recency; verify a clearly better newer copy is selected automatically and an unclear or inferior one requests user direction.
 - [x] 4.2 Copy validated changed skill directories to global discovery only after the comparison policy selects their source, and verify physical-directory content equality.
 - [x] 4.3 Commit only the scoped library and OpenSpec change files, then publish through the repository's normal authorized Git workflow; verify the remote commit contains the validated changes.
+
+## 5. Rebuild user-renamed titles
+
+- [x] 5.1 Replace the permanent human-override opt-out with subject-preserving title reconstruction for every title-owning OpenSpec workflow; normalize only repeated OpenSpec prefixes, exact adjacent duplicate text, and whitespace.
+- [x] 5.2 Derive every applicable task or proposal suffix from current verified OpenSpec state, replace stale suffixes, and refresh counts whenever verified progress changes; omit a suffix only when tracking is unavailable or inapplicable.
+- [x] 5.3 Add focused scenarios covering removed or stale prefixes, duplicate title fragments, preserved subjective wording, and refreshed verified counts; validate the revised OpenSpec artifacts and affected skills.

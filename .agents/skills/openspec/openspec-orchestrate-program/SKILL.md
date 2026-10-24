@@ -8,8 +8,10 @@ description: Execute a named program of OpenSpec proposals through coordinated c
 Use the shared [title contract](../openspec-title-management.md) and
 [footer contract](../openspec-footer.md). This state owns `OS-ORP`
 and footer phase `Orchestrate program`. Add verified task progress when applicable;
-the program coordinator counts proposals instead. Own only this chat's title,
-preserve human overrides, and leave child workflow titles to their owners.
+the program coordinator counts proposals instead. Delegate every title read and
+write for this chat to `$openspec-title-management`; it preserves a normalized
+user subject, restores `OS-ORP`, and refreshes verified progress. Leave child
+workflow titles to their owners.
 Emit one footer per meaningful checkpoint, never on unchanged polls or
 commentary. While a question is unanswered, leave its original question and
 footer in place without repeating either on a goal or timer check. Show the
@@ -40,7 +42,7 @@ When research blocks work, read [research dependency rules](references/research-
 
 Keep this thread as the coordinator. Reuse a suitable existing owner thread when appropriate; otherwise create one thread per assignable proposal through supported app tools. Use project discovery for the exact repository. Do not create worktrees or feature branches without explicit authorization.
 
-Child OpenSpec workflows exclusively own their chat titles under the shared [chat title contract](../openspec-title-management.md). A readable creation title is temporary until the child starts its workflow. Do not overwrite, wrap, prefix or restore child titles, including phase and progress changes. Record thread handles and observed titles in the ledger. Tell each child to read the contract and manage its own title; if naming is missing, diagnose or notify its owner instead of renaming it. Preserve human overrides. These rules also apply when invoked through openspec-apply-program.
+Child OpenSpec workflows exclusively own their chat titles under the shared [chat title contract](../openspec-title-management.md). A readable creation title is temporary until the child starts its workflow. Do not overwrite, wrap, prefix, restore, or directly rename child titles, including phase and progress changes. Record thread handles and observed titles in the ledger. Tell each child to invoke `$openspec-title-management` for its own title; if naming is missing, diagnose or notify its owner instead of renaming it. These rules also apply when invoked through openspec-apply-program.
 
 Each assignment must give the program and proposal paths, exact change ID/store, outcome, file and interface ownership, prerequisites, required verification, and allowed external actions. Direct the owner to use openspec-apply-change and continue until its CLI reports all_done or a genuine blocker requires a decision. Tell owners where to record evidence. Reports do not authorize messages back to other chats; the coordinator can poll them.
 
